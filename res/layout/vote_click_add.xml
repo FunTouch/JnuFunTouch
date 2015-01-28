@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center|center_vertical|top"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/lsv_vote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_click_add"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/btn_click_add"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_use"
+        android:layout_alignBottom="@+id/btn_use"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="36dp"
+        android:text="添加活动"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/btn_click_add"
+        android:text="开始使用" />
+
+</RelativeLayout>

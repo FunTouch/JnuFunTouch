@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+     <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tsv_more"
+        android:layout_marginLeft="23dp" >
+
+        <TableRow
+            android:id="@+id/tbr_wify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tsv_wify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="wify一键开启标签" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbr_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tsv_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="情景模式一键设置标签" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbr_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tsv_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其它定制标签" />
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

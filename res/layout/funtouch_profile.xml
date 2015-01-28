@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tsv_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="91dp"
+        android:layout_marginTop="20dp"
+        android:text="FunTouch简介" />
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tsv_more"
+        android:layout_marginLeft="23dp" >
+
+        <TableRow
+            android:id="@+id/tbr_nfc_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tsv_nfc_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nfc标签" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbr_nfc_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tsv_nfc_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nfc手机应用" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbr_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tsv_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我们的团队" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tsv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tableLayout1"
+        android:layout_below="@+id/tsv_profile"
+        android:layout_marginTop="62dp"
+        android:text="更多了解" />
+
+</RelativeLayout>

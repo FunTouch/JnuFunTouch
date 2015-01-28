@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom|end|top"
+    android:orientation="vertical"
+    android:stretchColumns="1" >
+
+<TableRow>
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="活动名称："
+        android:textSize="16sp"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="请填写活动名称"
+        android:selectAllOnFocus="true" >
+
+        <requestFocus />
+    </EditText>
+
+</TableRow>
+
+<TableRow>
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="请设置每人可投的最多票数："
+    android:textSize="16sp"
+    />
+</TableRow>
+
+<RadioGroup android:id="@id/rg"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
+
+<RadioButton android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="一票" 
+    />
+
+
+<RadioButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="两票" />
+
+<RadioButton android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="三票" 
+    />
+
+</RadioGroup>
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="完成" />
+</TableLayout>

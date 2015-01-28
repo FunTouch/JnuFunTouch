@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tsv_info"
+        android:layout_below="@+id/tsv_info"
+        android:layout_marginTop="80dp"
+        android:text="ok->" />
+
+    <Button
+        android:id="@+id/btn_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_ok"
+        android:layout_alignBottom="@+id/btn_ok"
+        android:layout_alignRight="@+id/tsv_info"
+        android:text="不要&gt;_&lt;" />
+
+    <TextView
+        android:id="@+id/tsv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp"
+        android:text="初次使用，创建自己的名片吧" />
+
+    <CheckBox
+        android:id="@+id/ckb_no_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btn_no"
+        android:layout_below="@+id/btn_no"
+        android:layout_marginTop="18dp"
+        android:text="不再提示" />
+
+</RelativeLayout>

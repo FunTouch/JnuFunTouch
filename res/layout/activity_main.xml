@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:stretchColumns="1"
+    tools:context=".SecondActivity" >
+
+     <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="传说中的甲烷界面" />
+
+     <Button
+         android:id="@+id/btn_funtouch"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="FunTouch" />
+
+     <Button
+         android:id="@+id/btn_social"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="社交" />
+
+     <Button
+         android:id="@+id/btn_game_help"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="桌游小助手" />
+
+     <Button
+         android:id="@+id/btn_setting"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="设置" />
+
+     <Button
+         android:id="@+id/btn_login"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="登陆/注册" />
+
+     <Button
+         android:id="@+id/btn_about_activity"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="关于活动" />
+
+</TableLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tsv_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:text="功能" />
+
+    <TextView
+        android:id="@+id/tsv_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tsv_appearance"
+        android:layout_marginTop="24dp"
+        android:text="截止时间" />
+
+    <TextView
+        android:id="@+id/tsv_other_require"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tsv_deadline"
+        android:layout_marginTop="21dp"
+        android:text="其它要求" />
+
+    <TextView
+        android:id="@+id/tsv_appearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tsv_function"
+        android:layout_marginTop="28dp"
+        android:text="外形要求" />
+
+    <EditText
+        android:id="@+id/edt_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tsv_function"
+        android:layout_alignBottom="@+id/tsv_function"
+        android:layout_alignLeft="@+id/edt_other_require"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/edt_appearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tsv_appearance"
+        android:layout_alignBottom="@+id/tsv_appearance"
+        android:layout_alignLeft="@+id/edt_function"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/edt_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tsv_deadline"
+        android:layout_alignBottom="@+id/tsv_deadline"
+        android:layout_alignLeft="@+id/edt_appearance"
+        android:ems="10"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/edt_other_require"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tsv_other_require"
+        android:layout_alignBottom="@+id/tsv_other_require"
+        android:layout_toRightOf="@+id/tsv_other_require"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/btn_send_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_other_require"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="发送给我们" />
+
+</RelativeLayout>

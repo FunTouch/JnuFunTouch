@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/img_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher" />
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/img_head" >
+
+        <TableRow android:id="@+id/tbr_name" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="姓名：" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" >
+
+                <requestFocus />
+            </EditText>
+
+        </TableRow>
+
+        <TableRow android:id="@+id/tbr_institute" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="学院：" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </EditText>
+        </TableRow>
+
+        <TableRow android:id="@+id/tbr_sno" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="学号：" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </EditText>
+        </TableRow>
+
+        <TableRow android:id="@+id/tbr_phone" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="电话："/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </EditText>
+        </TableRow>
+
+        <TableRow android:id="@+id/tbr_qq" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="QQ："/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </EditText>
+        </TableRow>
+
+        <TableRow android:id="@+id/tbr_wechat" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="微信："/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </EditText>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_ok"
+        android:layout_alignBottom="@+id/btn_ok"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:text="退出" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tableLayout1"
+        android:layout_marginLeft="44dp"
+        android:text="确定" />
+
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+
+<TableRow>
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="用户名："
+        android:textSize="16sp"
+        />
+    <EditText
+        android:id="@+id/edit_UserName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="请填写真实姓名"
+        android:selectAllOnFocus="true" 
+        />
+</TableRow>
+
+<TableRow>
+    <TextView
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="密码："
+        android:textSize="16sp"
+        />
+    <EditText
+        android:id="@+id/edit_UserPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="请填写6-12位密码"
+        android:inputType="numberPassword"
+        />
+</TableRow>
+
+<Button
+    android:id="@+id/btn_login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="登陆" />
+<Button
+    android:id="@+id/btn_regist"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="注册新账号" />
+            
+</TableLayout>
