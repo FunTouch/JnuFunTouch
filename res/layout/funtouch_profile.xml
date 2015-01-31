@@ -13,7 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="91dp"
         android:layout_marginTop="20dp"
-        android:text="FunTouch简介" />
+        android:text="FunTouch简介" 
+        android:textSize="20sp"/>
 
     <TableLayout
         android:id="@+id/tableLayout1"
@@ -21,42 +22,50 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tsv_more"
-        android:layout_marginLeft="23dp" >
+        android:layout_marginLeft="23dp" 
+        android:layout_margin="10dp">
 
         <TableRow
             android:id="@+id/tbr_nfc_tag"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:layout_margin="10dp"
+            >
 
             <TextView
                 android:id="@+id/tsv_nfc_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nfc标签" />
+                android:text="nfc标签" 
+                android:textSize="20sp"/>
         </TableRow>
 
         <TableRow
             android:id="@+id/tbr_nfc_app"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/tsv_nfc_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nfc手机应用" />
+                android:text="nfc手机应用" 
+                android:textSize="20sp"/>
         </TableRow>
 
         <TableRow
             android:id="@+id/tbr_team"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/tsv_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我们的团队" />
+                android:text="我们的团队" 
+                android:textSize="20sp"/>
         </TableRow>
     </TableLayout>
 
@@ -67,6 +76,8 @@
         android:layout_alignLeft="@+id/tableLayout1"
         android:layout_below="@+id/tsv_profile"
         android:layout_marginTop="62dp"
-        android:text="更多了解" />
+        android:text="更多了解" 
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"/>
 
 </RelativeLayout>

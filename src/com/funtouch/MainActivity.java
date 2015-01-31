@@ -3,18 +3,15 @@ package com.funtouch;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	public Cookie application ; 
 
 	private static boolean isSocialFirstUse = true;
 	
@@ -24,14 +21,11 @@ public class MainActivity extends Activity {
 	private Button btnSetting = null;
 	private Button btnGame = null;
 	private Button btnLogin = null;
-	private long temptime = 0;
-	String cookie = application.getInstance().getCookie();
-	String name = application.getInstance().getName();
+	private Button btnValidatePass = null;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {	
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-     
 		setContentView(R.layout.activity_main);
 
 		init();
@@ -51,7 +45,6 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, AboutActivity.class);
 				startActivity(intent);
-				finish();
 			}
 		});
 		
@@ -84,15 +77,22 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, Login.class);
 				startActivity(intent);
-				finish();
 			}
 		});
-		if(cookie!=null)
-		{
-			btnLogin.setText(name);
-		}
-	}
+		
+		btnValidatePass.setOnClickListener(new OnClickListener(){
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, validatePassActivity.class);
+				startActivity(intent);
+			}
+			
+		});
+	}
+		
 	private void init() {
 		btnFunTouch = (Button) findViewById(R.id.btn_funtouch);
 		btnAct = (Button) findViewById(R.id.btn_about_activity);
@@ -100,37 +100,14 @@ public class MainActivity extends Activity {
 		btnSetting = (Button) findViewById(R.id.btn_setting);
 		btnGame = (Button) findViewById(R.id.btn_game_help);
 		btnLogin = (Button) findViewById(R.id.btn_login);
-
+		btnValidatePass = (Button) findViewById(R.id.btn_validate_pass);
 	}
 	
 	public static void setSocialStatus(boolean status)
 	{
 		isSocialFirstUse = status;
 	}
-	
-	//双击返回键退出
-	public boolean onKeyDown(int keyCode, KeyEvent event)   
-	{  
-	    // TODO Auto-generated method stub  	
-	  
-	    if((keyCode == KeyEvent.KEYCODE_BACK)&&(event.getAction() == KeyEvent.ACTION_DOWN))  
-	    {  
-	    	  
-	        if(System.currentTimeMillis() - temptime >2000) // 2s内再次选择back键有效   
-	        {  
-	            System.out.println(Toast.LENGTH_LONG);  
-	            Toast.makeText(this, "请再按一次返回退出", Toast.LENGTH_LONG).show();  
-	            temptime = System.currentTimeMillis();  
-	        }  
-	        else {  
-	               finish();   
-	               System.exit(0); //凡是非零都表示异常退出!0表示正常退出!   
-	        }  
-	             
-	        return true;   
-	  
-	    }  
-	    return super.onKeyDown(keyCode, event);  
-	}  
 
+	
+	
 }

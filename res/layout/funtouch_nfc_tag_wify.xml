@@ -13,14 +13,6 @@
         android:layout_alignParentTop="true"
         android:text="wify一触连接标签：\n  用于放置在餐馆，宿舍等地方，接触连接wifi" />
 
-    <Button
-        android:id="@+id/btn_buy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="35dp"
-        android:text="购买" />
+ 
 
 </RelativeLayout>

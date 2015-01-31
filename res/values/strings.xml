@@ -2,5 +2,14 @@
 <resources>
 
     <string name="app_name">Funtouch</string>
-
+	<string name="noPaperPost">无纸动态宣传海报标签</string>
+	<string name="wifi">一键开启Wifi标签</string>
+	<string name="personalInfo">个人信息标签</string>
+	<string name="meetingSilence">开会一键静音并签到标签</string>
+	<string name="newBookInfo">图书馆新书信息标签</string>
+	<string name="move">迁移信息标签</string>
+	<string name="validateWord">验证码:</string>
+	<string name="getAward">领奖</string>
+	<string name="confirm">确定</string>
+	<string name="ToGetAward">你还可以:</string>
 </resources>

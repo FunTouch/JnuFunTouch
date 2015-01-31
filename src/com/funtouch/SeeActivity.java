@@ -18,19 +18,11 @@ public class SeeActivity extends Activity {
 		
 		init();
 		
-		btnGetAward.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent();
-				intent.setClass(SeeActivity.this, GetAward.class);
-				startActivity(intent);
-			}
-		});
+		
 		
 	}
 	private void init() {
-		btnGetAward = (Button) findViewById(R.id.btn_award);
+
 		
 	}
 

@@ -23,7 +23,7 @@
          android:id="@+id/btn_social"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="社交" />
+         android:text="名片推送" />
 
      <Button
          android:id="@+id/btn_game_help"
@@ -48,5 +48,11 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:text="关于活动" />
+     
+     <Button
+         android:id="@+id/btn_validate_pass"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="验证通过" />
 
 </TableLayout>

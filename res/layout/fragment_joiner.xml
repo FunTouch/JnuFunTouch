@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    >
+    
+    <LinearLayout
+        android:id="@+id/joiner_validateActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <TextView 
+        android:text="@string/validateWord"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_joiner_validatePassWord"
+        />
+
+    <EditText
+        android:id="@+id/et_joiner_validatePassWord"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content" 
+        android:hint="请输入验证码"/>
+	<Button
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/joiner_btn_confirmValidate"
+	    android:text="@string/confirm"/>
+	    
+	</LinearLayout>
+	
+    <TextView
+        android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="15dp"
+	    android:id="@+id/tv_getAward"
+	    android:text="@string/ToGetAward"
+	    android:textSize="24sp"
+	    android:layout_below="@id/joiner_validateActivity"/>
+	
+	<Button
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/tv_getAward"
+	    android:id="@+id/btn_getAward"
+	    android:text="@string/getAward"/>
+
+</RelativeLayout>

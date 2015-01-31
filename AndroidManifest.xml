@@ -37,9 +37,10 @@
             android:label="查看活动"></activity>
           <activity android:name=".GetAward"
             android:label="领奖"></activity>
-        
+          <activity android:name=".validatePassActivity"
+            android:label="验证通过"></activity>
         <activity android:name=".Login"
-            android:label="登陆"></activity>
+            android:label="登陆"></activity>																																																																							
         <activity android:name=".UserMenu"
             android:label="用户菜单"></activity>
         

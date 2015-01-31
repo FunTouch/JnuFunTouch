@@ -59,5 +59,10 @@
         android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="完成" />
+        android:text="点击添加队伍" />
+    <ListView
+        android:id="@+id/lv_team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 </TableLayout>

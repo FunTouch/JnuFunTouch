@@ -4,49 +4,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-     <TableLayout
-        android:id="@+id/tableLayout1"
+     <RadioGroup
+         android:id="@+id/radioGroup"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         >
+         <RadioButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/noPaperPost"
+             android:textSize="18sp"
+             android:id="@+id/rB_noPaperPost"
+             />
+         <RadioButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/wifi"
+             android:id="@+id/rB_wifi"
+             />
+         <RadioButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/personalInfo"
+             android:id="@+id/rB_personalInfo"
+             />
+         <RadioButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/meetingSilence"
+             android:id="@+id/rB_meetingSilence"
+             />
+         <RadioButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/newBookInfo"
+             android:id="@+id/rB_newBookInfo"
+             />
+         <RadioButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/move"
+             android:id="@+id/rB_move"
+             />
+     </RadioGroup>
+    <Button
+        android:layout_below="@id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tsv_more"
-        android:layout_marginLeft="23dp" >
-
-        <TableRow
-            android:id="@+id/tbr_wify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/tsv_wify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="wify一键开启标签" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tbr_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/tsv_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="情景模式一键设置标签" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tbr_other"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/tsv_other"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其它定制标签" />
-        </TableRow>
-    </TableLayout>
-
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="80dp"
+        android:id="@+id/btn_details"
+        android:text="详情"
+        />
+	<Button
+	    android:layout_below="@id/radioGroup"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="25dp"
+	    android:text="去购买"
+	    android:id="@+id/btn_goBuy"
+	    android:layout_toRightOf="@id/btn_details"/>
 </RelativeLayout>
