@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+       android:id="@+id/exportFlyer"
+       android:orderInCategory="1"
+       android:title="导出传单到本地"
+       android:showAsAction="never"
+        />
+    <item
+       android:id="@+id/importpicture"
+       android:orderInCategory="2"
+       android:title="导入传单图片"
+       android:showAsAction="never"/>
+    <item
+       android:id="@+id/useNoPaperFlyer"
+       android:orderInCategory="3"
+       android:title="使用无纸传单"
+       android:showAsAction="never"/>
+</menu>

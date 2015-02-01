@@ -3,6 +3,8 @@ package com.funtouch;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -35,6 +37,14 @@ public class FlyerNew extends Activity {
 		});
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_flyernew, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
 	private void init() {
 		btnImportImg = (Button) findViewById(R.id.btn_import_image);
 		btnAddDetail = (Button) findViewById(R.id.btn_add_detail);

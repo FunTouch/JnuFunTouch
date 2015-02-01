@@ -49,7 +49,7 @@ public class UserMenu extends Activity{
 		btnFlyer.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent=new Intent();
-        		intent.setClass(UserMenu.this, FlyerList.class);
+        		intent.setClass(UserMenu.this, FlyerNew.class);
         		startActivity(intent);
 	
         	}
