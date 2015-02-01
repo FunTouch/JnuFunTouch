@@ -10,6 +10,12 @@
         android:layout_height="wrap_content"
         android:text="接触即可为你喜爱的队伍投票" />
 
+    <TextView
+        android:id="@+id/nfc_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nfc_test" />
+
     <Button
         android:id="@+id/btn_return"
         android:layout_width="wrap_content"

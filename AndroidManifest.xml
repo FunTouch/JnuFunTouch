@@ -11,6 +11,10 @@
         android:targetSdkVersion="21" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+	<uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    
 
     <application
         
@@ -55,6 +59,14 @@
             android:label="发起投票"></activity>
         <activity android:name=".VoteEdit"
             android:label="投票"></activity>
+        <activity android:name=".util.nfc.Beam"
+            android:label="P2P">
+            <intent-filter>
+  			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+  			<category android:name="android.intent.category.DEFAULT"/>
+ 			<data android:mimeType="text/plain"/>
+			</intent-filter>
+        </activity>
         <activity android:name=".VoteUse"
             android:label="使用"></activity>
         
@@ -122,6 +134,8 @@
 
           
     </application>
+    
+    
 
 </manifest>
 

@@ -1,5 +1,7 @@
 package com.funtouch;
 
+import com.funtouch.util.nfc.Beam;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +36,7 @@ public class VoteClickAdd extends Activity{
 		btnUse.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent=new Intent();
-        		intent.setClass(VoteClickAdd.this, VoteUse.class);
+        		intent.setClass(VoteClickAdd.this, Beam.class);
         		startActivity(intent);
          	}
         });
