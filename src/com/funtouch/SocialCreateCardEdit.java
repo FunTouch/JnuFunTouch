@@ -25,7 +25,7 @@ public class SocialCreateCardEdit extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent();
-        		intent.setClass(SocialCreateCardEdit.this, SocialMyCard.class);
+        		intent.setClass(SocialCreateCardEdit.this, CardTransportActivity.class);
         		startActivity(intent);
 			}
 		});

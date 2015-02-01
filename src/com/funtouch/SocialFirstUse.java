@@ -41,23 +41,23 @@ public class SocialFirstUse extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent();
-        		intent.setClass(SocialFirstUse.this, SocialMyCard.class);
+        		intent.setClass(SocialFirstUse.this, CardTransportActivity.class);
         		startActivity(intent);
 			}
 		});
 		
-		//ÉèÖÃ²»ÔÙÌáÊ¾
+		//ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 		ckbFirstUse.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 				if (ckbFirstUse.isChecked())
 				{
-					MainActivity.setSocialStatus(false);
+					//MainActivity.setSocialStatus(false);
 				}
 				else
 				{
-					MainActivity.setSocialStatus(true);
+					//MainActivity.setSocialStatus(true);
 				}
 				
 			}			

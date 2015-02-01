@@ -112,8 +112,8 @@
 		
 		<activity android:name=".SocialFirstUse"
             android:label="欢迎"></activity>
-		<activity android:name=".SocialMyCard"
-            android:label="我的名片"></activity>
+		<activity android:name=".CardTransportActivity"
+            android:label="名片推送"></activity>
 		<activity android:name=".SocialCreateCardMenu"
             android:label="创建名片"></activity>
 		<activity android:name=".SocialCreateCardEdit"
