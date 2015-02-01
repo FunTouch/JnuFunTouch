@@ -24,7 +24,7 @@
     </EditText>
 
 </TableRow>
-
+ 
 <TableRow>
 <TextView
     android:layout_width="fill_parent"
@@ -65,4 +65,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        >
+        <Button
+            android:id="@+id/btn_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始使用"
+            />
+        <Button
+            android:id="@+id/btn_export"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/btn_use"
+            android:text="导出结果"
+            />
+    </RelativeLayout>
 </TableLayout>
