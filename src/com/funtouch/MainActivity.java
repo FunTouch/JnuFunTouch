@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 	private long temptime = 0;
 	String cookie = application.getInstance().getCookie();
 	String name = application.getInstance().getName();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,8 +105,7 @@ public class MainActivity extends Activity {
 	    {  
 	    	  
 	        if(System.currentTimeMillis() - temptime >2000) // 2s内再按一次返回键退出   
-	        {  
-	            System.out.println(Toast.LENGTH_LONG);  
+	        {    
 	            Toast.makeText(this, "再按一次返回键退出", Toast.LENGTH_LONG).show();  
 	            temptime = System.currentTimeMillis();  
 	        }  

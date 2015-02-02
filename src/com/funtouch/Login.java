@@ -63,11 +63,11 @@ public class Login extends Activity {
 		//application = (Data) this.getApplicationContext(); 
 		//userLogin = getSPUser();
 		
-		//��֤�Ƿ��Ѿ���¼
+		//用户已登录
 		if(cookie!=null)			
 		{
 			Intent intent = new Intent();
-			intent.setClass(Login.this, UserMenu.class);
+			intent.setClass(Login.this, UserCenter.class);
 			intent.putExtra("flag", "0");
 			startActivity(intent);
 			this.finish(); 
@@ -84,8 +84,7 @@ public class Login extends Activity {
 					{
 						showToast("登陆成功");
 						Intent intent = new Intent();
-						intent.setClass(Login.this, UserMenu.class);
-						intent.putExtra("flag", "0");
+						intent.setClass(Login.this, UserCenter.class);
 						startActivity(intent);
 						finish();  
 					}

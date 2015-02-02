@@ -11,9 +11,16 @@ public class Speaker implements Serializable{
     private String type;
     private String org;
     private String actor;
-    private String limit;
     private String code;
+    private String act_id;
+    private String user_id;
     
+    public String getAct_id() {
+    	return this.act_id;
+    }
+    public String getUser_id() {
+    	return this.user_id;
+    }
     public String getName() {
     	return this.name;
     }
@@ -35,9 +42,7 @@ public class Speaker implements Serializable{
     public String getActor() {
     	return this.actor;
     }
-    public String getLimit() {
-    	return this.limit;
-    }
+
     public String getCode() {
     	return this.code;
     }
@@ -60,14 +65,17 @@ public class Speaker implements Serializable{
     public void setOrg(String org) {
     	this.org = org;
     }
-    public void setLimit(String limit) {
-    	this.limit = limit;
-    }
     public void setActor(String actor) {
     	this.actor = actor;
     }
     public void setCode(String code) {
     	this.code = code;
+    }
+    public void setAct_id(String id) {
+    	this.act_id = id;
+    }
+    public void setUser_id(String id) {
+    	this.user_id = id;
     }
 
 }

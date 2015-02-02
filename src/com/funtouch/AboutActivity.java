@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -67,7 +66,6 @@ public class AboutActivity extends Activity {
 		listSpeaker = dataRetriever.retrieveAllAct(cookie);
 		if(listSpeaker.get(0).getCode().equals("200"))
 		{
-			Log.i("b",listSpeaker.get(0).getCode());
 			showToast("获取活动列表成功");
 			getData();
 			adapter = new SimpleAdapter(this, listData, R.layout.lsv_act_info_raw,
@@ -96,7 +94,8 @@ public class AboutActivity extends Activity {
 							tmp.put("type", spk.getType());
 							tmp.put("org", spk.getOrg());
 							tmp.put("actor", spk.getActor());
-							tmp.put("limit", spk.getLimit());					
+							tmp.put("act_id", spk.getAct_id());	
+							tmp.put("user_id", spk.getUser_id());
 							ActDetail.add(tmp);
 
 							ActDetailsInfo info1 = new ActDetailsInfo(ActDetail);		//����Serializable����ͨ��intent����ActDetail
@@ -169,6 +168,7 @@ public class AboutActivity extends Activity {
 			listData.add(tmp);
 		}
 	}
+	
 	//提示类
 	private void showToast(CharSequence msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();

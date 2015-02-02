@@ -3,6 +3,7 @@ package com.funtouch;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -98,8 +99,7 @@ public class DataRetriever extends Activity{
 			String jsonString = EntityUtils.toString(httpEntity);
 			JSONObject result = new JSONObject(jsonString);
 			String code = result.getString("code");
-			
-			Log.i("b", code);	
+				
 			
 			if (code.equals("200"))      //注册成功
 				return 200;
@@ -150,7 +150,6 @@ public class DataRetriever extends Activity{
 			}		
 			//JSONObject jsonObj = jsonArray.getJSONObject(1);
 			//String res = jsonArray.getString(0);
-			Log.i("login", code);	
 			//Log.i("b", application.getInstance().getCookie());				
 			if (code.equals("410"))      //无效用户名
 				return 410;
@@ -172,7 +171,7 @@ public class DataRetriever extends Activity{
 	}
 	
 	//创建活动
-		public int createAct(String cookie,String name, String info, String time, String place,String type,String org,String actor,String limit){
+		public int createAct(String cookie,String name, String info, String time, String place,String type,String org,String actor){
 	
 			String url = "http://pyfun.sinaapp.com/act/create";
 			
@@ -181,7 +180,7 @@ public class DataRetriever extends Activity{
 			sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":");
 			sb.append("{"+"\"name\":"+"\""+name+"\""+","+"\"info\":"+"\""+info+"\""+","+"\"time\":"+"\""+time+"\""+","
 					+"\"place\":"+"\""+place+"\""+","+"\"type\":"+"\""+type+"\""+","+"\"org\":"+"\""+org+"\""+
-					","+"\"actor\":"+"\""+actor+"\""+","+"\"limit\":"+"\""+limit+"\""+"}");
+					","+"\"actor\":"+"\""+actor+"\""+"}");
 			sb.append("}");                 			
 			
 			//POST���Ϣ��URL
@@ -201,7 +200,6 @@ public class DataRetriever extends Activity{
 				JSONObject result = new JSONObject(jsonString);
 				String code = result.getString("code");
 				
-				Log.i("act", code);	
 				
 				if (code.equals("200"))      //创建成功
 					return 200;
@@ -227,6 +225,7 @@ public class DataRetriever extends Activity{
 		//添加活动信息到Speaker
 		public List<Speaker> retrieveAllAct(String cookie) {
 			String url = "http://pyfun.sinaapp.com/act/myact";
+			
 			List<Speaker> speakerArrayList = new ArrayList<Speaker>();
 			HttpPost httpPost = new HttpPost(url);
 			HttpClient httpClient = new DefaultHttpClient();
@@ -271,7 +270,8 @@ public class DataRetriever extends Activity{
 					speaker.setType(jsonObj.getString("type"));
 					speaker.setOrg(jsonObj.getString("org"));
 					speaker.setActor(jsonObj.getString("actor"));
-					speaker.setLimit(jsonObj.getString("limit"));
+					speaker.setAct_id(jsonObj.getString("act_id"));
+					speaker.setUser_id(jsonObj.getString("user_id"));
 
 					speakerArrayList.add(speaker);
 					}
@@ -299,7 +299,154 @@ public class DataRetriever extends Activity{
 
 			return speakerArrayList;
 		}
+		
+		//创建投票
+		public int createVote(String cookie, String act_id, String limit, ArrayList<Map<String, Object>> teams){
+			
+			String url = "http://pyfun.sinaapp.com/act/vote/add";
+			int length = teams.size();
+					
+					
+			//打包JSON数据
+			StringBuffer sb = new StringBuffer();  	
+			sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":");
+			sb.append("{"+"\"act_id\":"+"\""+act_id+"\""+","+"\"limit\":"+"\""+limit+"\""+","+"\"team\":"+"[");
+			if(length!=0)
+			{
+				for(int i = 0; i < length; i++ )
+				{
+					sb.append("{"+"\"team_name\":"+"\""+teams.get(i).get("team_name")+"\""+","+"\"team_info\":"+"\""+teams.get(i).get("team_info")+"\""+"}");
+					if(i < length - 1)
+					{
+						sb.append(",");
+					}
+				}
+			}
+			sb.append("]"+"}"+"}");                 			
+					
+			//POST投票信息到URL
+			List <NameValuePair> params = new ArrayList <NameValuePair>();
+			params.add(new BasicNameValuePair("post", sb.toString()));
+					
+			HttpPost httpPost = new HttpPost(url);
+					
+			HttpClient httpClient = new DefaultHttpClient();
+			try {
 
+				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				HttpEntity httpEntity = httpResponse.getEntity();
+
+				String jsonString = EntityUtils.toString(httpEntity);
+				JSONObject result = new JSONObject(jsonString);
+				String code = result.getString("code");
+						
+				Log.i("vote", code);	
+						
+				if (code.equals("200"))      //创建成功
+					return 200;
+				if (code.equals("420"))      //创建失败
+					return 420;
+				if (code.equals("404"))      //未登录
+					return 404;
+				
+			} catch (ClientProtocolException e) {
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (JSONException e) {
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+					
+			return 0;
+		}
+	
+	//查看投票
+	public List<Team> seeVote(String cookie, String act_id){
+					
+		String url = "http://pyfun.sinaapp.com/act/vote/list";                 			
+						
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		params.add(new BasicNameValuePair("act_id", act_id));
+		List<Team> teamlistArrayList = new ArrayList<Team>();
+							
+		HttpPost httpPost = new HttpPost(url);
+						
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+			
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject object = new JSONObject(jsonString);		
+			String code = object.getString("code");
+			//Log.i("SeeVote", object.getString("result"));
+			
+				
+			if(code.equals("200"))
+			{			
+				String res = object.getString("result");
+				JSONObject result = new JSONObject(res);
+				String team = result.getString("team");
+				String limit = result.getString("limit");
+				if(team.equals("[]"))
+				{
+					Team teamlist;
+					teamlist = new Team();
+					teamlist.setCode("null");
+					teamlistArrayList.add(teamlist);
+				}
+				else{
+						
+				JSONArray jsonArray = new JSONArray(result.getString("team"));
+				Team teamlist;
+				
+				for (int i = 0; i < jsonArray.length(); i++) {
+
+					JSONObject jsonObj = jsonArray.getJSONObject(i);
+					teamlist = new Team();
+
+					teamlist.setCode(code);
+					teamlist.setLimit(limit);
+					teamlist.setTeam_name(jsonObj.getString("team_name"));
+					teamlist.setTeam_info(jsonObj.getString("team_info"));
+					teamlist.setTicket(jsonObj.getInt("ticket"));
+					teamlist.setVote_id(jsonObj.getString("vote_id"));
+					//Log.i("id",jsonObj.getString("vote_id"));
+
+					teamlistArrayList.add(teamlist);
+				}
+
+				}
+			}
+			else if(code.equals("420")||code.equals("404"))
+			{
+				Team teamlist;
+				teamlist = new Team();
+				teamlist.setCode(code);
+				teamlistArrayList.add(teamlist);
+			}
+				
+						
+		} catch (ClientProtocolException e) {
+								// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+								// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {
+								// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+							
+		return teamlistArrayList;
+	}
+		
 	// check the Internet connection
 	public boolean isNetworkConnected(Context context) {
 		if (context != null) {

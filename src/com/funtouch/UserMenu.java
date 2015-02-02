@@ -16,11 +16,13 @@ public class UserMenu extends Activity{
 	private Button btnSignUp = null;
 	private Button btnFlyer = null;
 	
-	private Button btnLogoff = null;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
-	private String name;
+	private String act_id;
 	List<ActDetailsInfo> objectList = new ArrayList<ActDetailsInfo>();
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -30,30 +32,20 @@ public class UserMenu extends Activity{
 		 
 		init();
 		
-		objectList = (List<ActDetailsInfo>) getIntent().getSerializableExtra("ListObject");
+		Intent intent1 = getIntent();
+		act_id = intent1.getStringExtra("act_id");
 		
-		btnLogoff = (Button) findViewById(R.id.btn_logoff);
+		//objectList = (List<ActDetailsInfo>) getIntent().getSerializableExtra("ListObject");
 		
-		btnLogoff.setOnClickListener(new OnClickListener(){
-        	public void onClick(View v){
-
-        		application.getInstance().setCookie(null);    		
-        		Intent intent=new Intent();
-        		intent.setClass(UserMenu.this, MainActivity.class);	
-        		startActivity(intent);
-        		finish();
-        	}
-        });	
 		btnVote.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
-	        		Intent intent=new Intent();
+	        		Intent intent = new Intent();
 	        		intent.setClass(UserMenu.this, VoteEdit.class);
+	        		intent.putExtra("act_id", act_id);
 	        		startActivity(intent);
-		
 	        	}
 	        });
-	    
-		
+	    	
 		btnSignUp.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	        		Intent intent=new Intent();
@@ -81,19 +73,6 @@ public class UserMenu extends Activity{
 		btnFlyer = (Button)findViewById(R.id.btn_nfc_flyer);
 	}
 	
-	@Override 
-    public void onBackPressed() { 
-		Intent intent = getIntent();
-		String flag = intent.getStringExtra("flag");
-        super.onBackPressed(); 
-        if(flag.equals("0"))
-        {
-        	Intent intent1 = new Intent();
-        	intent1.setClass(UserMenu.this, MainActivity.class);
-        	startActivity(intent1);
-        	this.finish();
-        }
-    } 
 
 }
 

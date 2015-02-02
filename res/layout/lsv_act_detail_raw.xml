@@ -70,13 +70,7 @@
         android:layout_below="@+id/textView6"
         android:text="活动对象：" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView8"
-        android:text="人数限制：" />
+
 
     <TextView
         android:id="@+id/act_detail_info"
@@ -138,14 +132,6 @@
         android:layout_alignParentRight="true"
         android:text="TextView" />
 
-    <TextView
-        android:id="@+id/act_detail_limit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView9"
-        android:layout_alignBottom="@+id/textView9"
-        android:layout_alignLeft="@+id/act_detail_actor"
-        android:layout_alignParentRight="true"
-        android:text="TextView" />
+
 
 </RelativeLayout>

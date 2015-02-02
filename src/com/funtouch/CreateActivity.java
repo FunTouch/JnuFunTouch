@@ -46,7 +46,6 @@ public class CreateActivity extends Activity{
 		type = (EditText) findViewById(R.id.edt_ActType);
 		org = (EditText) findViewById(R.id.edt_ActOrg);
 		actor = (EditText) findViewById(R.id.edt_ActActor);
-		limit = (EditText) findViewById(R.id.edt_ActLimit);
 		info = (EditText) findViewById(R.id.edt_ActInfo);
 		btnCreateAct = (Button) findViewById(R.id.btn_CreateAct);	
 		
@@ -55,13 +54,12 @@ public class CreateActivity extends Activity{
 				if(name.getText().toString().trim().equals("")||time.getText().toString().trim().equals("")||
 					place.getText().toString().trim().equals("")||type.getText().toString().trim().equals("")||
 					org.getText().toString().trim().equals("")||actor.getText().toString().trim().equals("")||
-					limit.getText().toString().trim().equals("")||info.getText().toString().trim().equals("")){
+					info.getText().toString().trim().equals("")){
 					showToast("请填写完整的活动信息!");
 				}
 				else{
 					int flag = dataRetriever.createAct(cookie,name.getText().toString(),info.getText().toString(),time.getText().toString(),
-							place.getText().toString(),type.getText().toString(),org.getText().toString(),actor.getText().toString(),
-							limit.getText().toString());
+							place.getText().toString(),type.getText().toString(),org.getText().toString(),actor.getText().toString());
 					if(flag == 200)
 					{
 						showToast("活动创建成功");

@@ -21,7 +21,10 @@ import java.nio.charset.Charset;
 import android.annotation.SuppressLint;
 import com.funtouch.util.nfc.BobNdefMessage;
 
+import com.funtouch.Cookie;
 import com.funtouch.R;
+import com.funtouch.Team;
+import com.funtouch.TeamListInfo;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
@@ -51,7 +54,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,12 +68,24 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     TextView mInfoText;
     private Context mContext = null;
     private static final int MESSAGE_SENT = 1;
+    private List<Team> listTeam = new ArrayList<Team>();
+    private String limit = null;
+    public Cookie application ; 
+    String cookie = application.getInstance().getCookie();
+   
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vote_use);
+        setContentView(R.layout.beam);
+        
+        Intent intent1=getIntent();
+        limit = intent1.getStringExtra("limit");
+        
+        Log.i("cookie",cookie);
 
+        List<TeamListInfo> objectList = (List<TeamListInfo>)getIntent().getSerializableExtra("teamlist");
+       // listTeam = objectList.get(0).getTeamList();
         mContext = this;
         mInfoText = (TextView) findViewById(R.id.nfc_test);
         // Check for available NFC Adapter
@@ -94,12 +111,10 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         time.setToNow();
         Byte identifierCode = 0x01;
         StringBuffer sb = new StringBuffer();  	
-        sb.append("{"+"\"∂”ŒÈ√˚≥∆\":"+"\""+"fucker"+"\""+","+"\"∂”ŒÈºÚΩÈ\":"+"\""+"motherfucker"+"\""+"}");
-        String text = ("Beam me up!\n" +
-                "Beam Time: " + time.format("%H:%M:%S"));
+        sb.append("fuck");
+        //sb.append("{"+"\"Èòü‰ºçÂêçÁß∞\":"+"\""+listTeam.get(0).getTeam_name()+"\""+","+"\"Èòü‰ºçÁÆÄ‰ªã\":"+"\""+listTeam.get(0).getTeam_info()+"\""+"}");
+        Log.i("sb",sb.toString());
         NdefMessage msg = BobNdefMessage.getNdefMsg_from_RTD_TEXT(sb.toString(), false, false);
-        NdefMessage msg1 = new NdefMessage(NdefRecord.createMime(
-                "application/com.example.android.beam", text.getBytes())
          /**
           * The Android Application Record (AAR) is commented out. When a device
           * receives a push with an AAR in it, the application specified in the AAR
@@ -109,7 +124,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
           * uses the tag dispatch system.
           */
           //,NdefRecord.createApplicationRecord("com.example.android.beam")
-        );
+        
         return msg;
     }
 
@@ -253,9 +268,9 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     	try
     	{
     		JSONObject result = new JSONObject(uri.toString());
-    		String team = result.getString("∂”ŒÈ√˚≥∆");
-    		String info = result.getString("∂”ŒÈºÚΩÈ");
-    		mInfoText.setText("Rev MSG : " + "\n" + "∂”ŒÈ√˚≥∆: " + team +"\n" +"∂”ŒÈºÚΩÈ: "+info);
+    		//String team = result.getString("Èòü‰ºçÂêçÁß∞");
+    		//String info = result.getString("Èòü‰ºçÁÆÄ‰ªã");
+    		mInfoText.setText("Rev MSG : " + "\n" + "Èòü‰ºçÂêçÁß∞: " + "team" +"\n" +"Èòü‰ºçÁÆÄ‰ªã: "+ "info" );
     	}
     	catch (JSONException e) {
 			// TODO Auto-generated catch block

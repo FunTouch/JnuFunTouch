@@ -25,8 +25,8 @@ public class ActDetails extends Activity{
 		ActDetail = objectList.get(0).getActDetail();
 		ListView lsvActDetails = (ListView)findViewById(R.id.lsv_act_details);
 		adapter1 = new SimpleAdapter(this, ActDetail, R.layout.lsv_act_detail_raw,
-				new String[] {"name", "info", "time","place","type","org","actor","limit"},
-				new int[] {R.id.act_detail_name, R.id.act_detail_info, R.id.act_detail_time,R.id.act_detail_place,R.id.act_detail_type,R.id.act_detail_org,R.id.act_detail_actor,R.id.act_detail_limit});
+				new String[] {"name", "info", "time","place","type","org","actor"},
+				new int[] {R.id.act_detail_name, R.id.act_detail_info, R.id.act_detail_time,R.id.act_detail_place,R.id.act_detail_type,R.id.act_detail_org,R.id.act_detail_actor,});
 		lsvActDetails.setAdapter(adapter1);
 		
 		lsvActDetails.setOnItemClickListener(new OnItemClickListener(){
@@ -38,8 +38,8 @@ public class ActDetails extends Activity{
 				objectList.add(info);		
 				Intent intent = new Intent();
 				intent.setClass(ActDetails.this, UserMenu.class);
-				intent.putExtra("ListObject", (Serializable) objectList);
-				intent.putExtra("flag", "1");
+				//intent.putExtra("ListObject", (Serializable) objectList);
+				intent.putExtra("act_id", ActDetail.get(0).get("act_id").toString());
 				startActivity(intent);	
 			}
 		});

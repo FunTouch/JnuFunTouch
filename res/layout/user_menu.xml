@@ -23,14 +23,6 @@
         android:layout_marginTop="30dp"
         android:text="发起报名" />
     
-    <Button
-        android:id="@+id/btn_logoff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/btn_sign_up"
-        android:layout_marginLeft="21dp"
-        android:text="注销" />
 
     <Button
         android:id="@+id/btn_vote"
