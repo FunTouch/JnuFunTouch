@@ -41,7 +41,7 @@ public class SocialFirstUse extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent();
-        		intent.setClass(SocialFirstUse.this, CardTransportActivity.class);
+        		intent.setClass(SocialFirstUse.this, CardTransport.class);
         		startActivity(intent);
 			}
 		});

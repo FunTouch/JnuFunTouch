@@ -66,22 +66,22 @@ public class RegistInfo extends Activity{
 	        		if(userName.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")
 	        				||passwordAgain.getText().toString().trim().equals("")||userMailbox.getText().toString().trim().equals("")
 	        				||userClass.getText().toString().trim().equals("")||userPhone.getText().toString().trim().equals("")){
-						showToast("ÇëÊäÈëÈ«²¿ĞÅÏ¢..");
+						showToast("è¯·è¾“å…¥å®Œæ•´çš„æ³¨å†Œä¿¡æ¯!");
 					}
 	        		else if(!password.getText().toString().equals(passwordAgain.getText().toString())){
-	        			showToast("Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ,ÇëÖØĞÂÊäÈë");
+	        			showToast("ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´!");
 	        		}
 	        		else if(password.getText().length()<6){
-	        			showToast("ÃÜÂë²»·ûºÏ¹æÔò,ÇëÖØĞÂÊäÈë");
+	        			showToast("å¯†ç é•¿åº¦ä¸ç¬¦åˆè§„åˆ™!");
 	        		}
 	        		else if(!userMailbox.getText().toString().contains("@")){
-	        			showToast("ÓÊÏä¸ñÊ½²»·ûºÏ¹æÔò,ÇëÖØĞÂÊäÈë");
+	        			showToast("é‚®ç®±æ ¼å¼ä¸ç¬¦åˆè§„åˆ™!");
 	        		}
 	        		else if(!userClass.getText().toString().contains("-")){
-	        			showToast("°à¼¶¸ñÊ½²»·ûºÏ¹æÔò,ÇëÖØĞÂÊäÈë");
+	        			showToast("ç­çº§æ ¼å¼ä¸ç¬¦åˆè§„åˆ™!");
 	        		}
 	        		else if(userPhone.getText().length()<11){
-	        			showToast("µç»°ºÅÂë²»·ûºÏ¹æÔò,ÇëÖØĞÂÊäÈë");
+	        			showToast("ç”µè¯å·ç æ ¼å¼ä¸ç¬¦åˆè§„åˆ™!");
 	        		}
 	        		else{
 	        			//application.setUserName(userName.getText().toString());
@@ -96,18 +96,18 @@ public class RegistInfo extends Activity{
 	        					userMailbox.getText().toString(),userClass.getText().toString(),userPhone.getText().toString());
 	        			if(flag == 200)
 	        			{
-	        				showToast("×¢²á³É¹¦,·µ»ØµÇÂ½Ò³Ãæ!");
+	        				showToast("æ³¨å†ŒæˆåŠŸ!");
 	        				Intent intent=new Intent();
 	        				intent.setClass(RegistInfo.this, Login.class);
 	        				startActivity(intent);
 	        			}
 	        			if(flag == 401)
 	        			{
-	        				showToast("´ËÓÃ»§ÃûÒÑ´æÔÚ!ÇëÖØĞÂ×¢²á!");
+	        				showToast("ç”¨æˆ·åå·²å­˜åœ¨!");
 	        			}
 	        			if(flag == 0)
 	        			{
-	        				showToast("Òì³£´íÎó!");
+	        				showToast("æ³¨å†Œå¤±è´¥!");
 	        			}
 	        			}
 	     
@@ -115,7 +115,7 @@ public class RegistInfo extends Activity{
 	        });
 		
 	}
-	// ÏÔÊ¾Toast
+	//æç¤ºç±»
 	private void showToast(CharSequence msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}

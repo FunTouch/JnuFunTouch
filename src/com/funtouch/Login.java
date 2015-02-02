@@ -63,7 +63,7 @@ public class Login extends Activity {
 		//application = (Data) this.getApplicationContext(); 
 		//userLogin = getSPUser();
 		
-		//ÑéÖ¤ÊÇ·ñÒÑ¾­µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Â¼
 		if(cookie!=null)			
 		{
 			Intent intent = new Intent();
@@ -76,13 +76,13 @@ public class Login extends Activity {
 		btnLogin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if(userName.getText().toString().trim().equals("")||password.getText().toString().trim().equals("")){
-					showToast("ÇëÊäÈëÕË»§ºÍÃÜÂë");
+					showToast("è¯·è¾“å…¥ç”¨æˆ·åå’Œå¯†ç !");
 				}
 				else{
 					int flag = dataRetriever.login(userName.getText().toString(),MD5.Encode(password.getText().toString()));
 					if(flag == 200)
 					{
-						showToast("µÇÂ¼³É¹¦");
+						showToast("ç™»é™†æˆåŠŸ");
 						Intent intent = new Intent();
 						intent.setClass(Login.this, UserMenu.class);
 						intent.putExtra("flag", "0");
@@ -91,11 +91,11 @@ public class Login extends Activity {
 					}
 					else if(flag == 410)
 					{
-						showToast("ÎŞĞ§µÄÓÃ»§Ãû");
+						showToast("æ— æ•ˆçš„ç”¨æˆ·å");
 					}	
 					else if(flag == 411)
 					{
-						showToast("ÃÜÂë´íÎó,ÇëÖØĞÂÊäÈëÃÜÂë");
+						showToast("å¯†ç é”™è¯¯,è¯·é‡æ–°è¾“å…¥å¯†ç ");
 					}
 				}
 			}
@@ -113,7 +113,7 @@ public class Login extends Activity {
 		});
 	}
 	
-	//ÌáÊ¾Àà
+	//æç¤ºç±»
 	private void showToast(CharSequence msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}

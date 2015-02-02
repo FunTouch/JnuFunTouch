@@ -56,7 +56,7 @@ public class CreateActivity extends Activity{
 					place.getText().toString().trim().equals("")||type.getText().toString().trim().equals("")||
 					org.getText().toString().trim().equals("")||actor.getText().toString().trim().equals("")||
 					limit.getText().toString().trim().equals("")||info.getText().toString().trim().equals("")){
-					showToast("请输入活动的所有信息!");
+					showToast("璇峰～鍐欏畬鏁寸殑娲诲姩淇℃伅!");
 				}
 				else{
 					int flag = dataRetriever.createAct(cookie,name.getText().toString(),info.getText().toString(),time.getText().toString(),
@@ -64,7 +64,7 @@ public class CreateActivity extends Activity{
 							limit.getText().toString());
 					if(flag == 200)
 					{
-						showToast("活动创建成功");
+						showToast("娲诲姩鍒涘缓鎴愬姛");
 						Intent intent = new Intent();
 						intent.setClass(CreateActivity.this, AboutActivity.class);
 						startActivity(intent);
@@ -72,11 +72,11 @@ public class CreateActivity extends Activity{
 					}
 					else if(flag == 420)
 					{
-						showToast("创建失败");
+						showToast("娲诲姩鍒涘缓澶辫触");
 					}
 					else if(flag == 404)
 					{
-						showToast("请先登陆");
+						showToast("璇峰厛鐧婚檰!");
 						Intent intent = new Intent();
 						intent.setClass(CreateActivity.this, Login.class);
 						startActivity(intent);
@@ -88,7 +88,7 @@ public class CreateActivity extends Activity{
 		
 	}	
 	
-	//提示类
+	//锟斤拷示锟斤拷
 		private void showToast(CharSequence msg) {
 			Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 		}

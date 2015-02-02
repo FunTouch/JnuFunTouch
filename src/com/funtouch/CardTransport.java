@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class CardTransportActivity extends FragmentActivity {
+public class CardTransport extends FragmentActivity {
 	private Button btn_Edit;
 	private Button btn_Transport;
 	private Button btn_Confirm;

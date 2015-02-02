@@ -112,7 +112,7 @@
 		
 		<activity android:name=".SocialFirstUse"
             android:label="欢迎"></activity>
-		<activity android:name=".CardTransportActivity"
+		<activity android:name=".CardTransport"
             android:label="名片推送"></activity>
 		<activity android:name=".SocialCreateCardMenu"
             android:label="创建名片"></activity>

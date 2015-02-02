@@ -31,7 +31,7 @@ import android.widget.Toast;
 import com.funtouch.Cookie;
 
 public class DataRetriever extends Activity{
-	public Cookie application ;            //applicationÎªÈ«¾Ö±äÁ¿	
+	public Cookie application ;            //applicationÎªÈ«ï¿½Ö±ï¿½ï¿½ï¿½	
 
 	/*public List<Speaker> retrieveAllSpeakers() {
 		String url = "http://pyfun.sinaapp.com/test/get";
@@ -73,7 +73,7 @@ public class DataRetriever extends Activity{
 		return speakerArrayList;
 	}*/
 	
-	//×¢²á
+	//æ³¨å†Œ
 	public int regist(String name, String password, String mailbox, String userclass,String phone){
 		
 		
@@ -101,9 +101,9 @@ public class DataRetriever extends Activity{
 			
 			Log.i("b", code);	
 			
-			if (code.equals("200"))      //×¢²á³É¹¦
+			if (code.equals("200"))      //æ³¨å†ŒæˆåŠŸ
 				return 200;
-			if (code.equals("401"))      //ÓÃ»§ÃûÒÑ´æÔÚ
+			if (code.equals("401"))      //æ³¨å†Œå¤±è´¥
 				return 401;
 			
 		} catch (ClientProtocolException e) {
@@ -120,7 +120,7 @@ public class DataRetriever extends Activity{
 		return 0;
 	}
 	
-	//µÇÂ½
+	//ç™»é™†
 	public int login(String name, String password){
 		
 		String url = "http://pyfun.sinaapp.com/login";
@@ -140,11 +140,11 @@ public class DataRetriever extends Activity{
 			String jsonString = EntityUtils.toString(httpEntity);
 			JSONObject object = new JSONObject(jsonString);
 			String code = object.getString("code");
-			if (code.equals("200"))       //µÇÂ½³É¹¦
+			if (code.equals("200"))       //ç™»é™†æˆåŠŸ
 			{
 				JSONObject result = new JSONObject(object.getString("result"));
 				String res = result.getString("cookie");
-				application.getInstance().setCookie(res);     //°ÑcookieĞÅÏ¢±£´æµ½application
+				application.getInstance().setCookie(res);     //ä¿å­˜cookieåˆ°application
 				application.getInstance().setName(name);
 				return 200;
 			}		
@@ -152,9 +152,9 @@ public class DataRetriever extends Activity{
 			//String res = jsonArray.getString(0);
 			Log.i("login", code);	
 			//Log.i("b", application.getInstance().getCookie());				
-			if (code.equals("410"))      //ÎŞĞ§ÓÃ»§Ãû
+			if (code.equals("410"))      //æ— æ•ˆç”¨æˆ·å
 				return 410;
-			if (code.equals("411"))      //ÃÜÂë´íÎó
+			if (code.equals("411"))      //å¯†ç é”™è¯¯
 				return 411;
 			
 		} catch (ClientProtocolException e) {
@@ -171,12 +171,12 @@ public class DataRetriever extends Activity{
 		return 0;
 	}
 	
-	//´´½¨»î¶¯
+	//åˆ›å»ºæ´»åŠ¨î¶¯
 		public int createAct(String cookie,String name, String info, String time, String place,String type,String org,String actor,String limit){
 	
 			String url = "http://pyfun.sinaapp.com/act/create";
 			
-			//´ò°üJSON×Ö·û´®
+			//æ‰“åŒ…JSONæ•°æ®
 			StringBuffer sb = new StringBuffer();  	
 			sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":");
 			sb.append("{"+"\"name\":"+"\""+name+"\""+","+"\"info\":"+"\""+info+"\""+","+"\"time\":"+"\""+time+"\""+","
@@ -184,7 +184,7 @@ public class DataRetriever extends Activity{
 					","+"\"actor\":"+"\""+actor+"\""+","+"\"limit\":"+"\""+limit+"\""+"}");
 			sb.append("}");                 			
 			
-			//POST»î¶¯ĞÅÏ¢µ½URL
+			//POSTï¿½î¶¯ï¿½ï¿½Ï¢ï¿½ï¿½URL
 			List <NameValuePair> params = new ArrayList <NameValuePair>();
 			params.add(new BasicNameValuePair("post", sb.toString()));
 			
@@ -203,11 +203,11 @@ public class DataRetriever extends Activity{
 				
 				Log.i("act", code);	
 				
-				if (code.equals("200"))      //´´½¨³É¹¦
+				if (code.equals("200"))      //åˆ›å»ºæˆåŠŸ
 					return 200;
-				if (code.equals("420"))      //´´½¨Ê§°Ü
+				if (code.equals("420"))      //åˆ›å»ºå¤±è´¥
 					return 420;
-				if (code.equals("404"))      //Î´µÇÂ½
+				if (code.equals("404"))      //æœªç™»å½•
 					return 404;
 				
 			} catch (ClientProtocolException e) {
@@ -224,7 +224,7 @@ public class DataRetriever extends Activity{
 			return 0;
 		}
 		
-		//»ñÈ¡»î¶¯ĞÅÏ¢²¢Ìí¼Óµ½Speaker
+		//æ·»åŠ æ´»åŠ¨ä¿¡æ¯åˆ°Speaker
 		public List<Speaker> retrieveAllAct(String cookie) {
 			String url = "http://pyfun.sinaapp.com/act/myact";
 			List<Speaker> speakerArrayList = new ArrayList<Speaker>();

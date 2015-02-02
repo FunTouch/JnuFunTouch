@@ -43,7 +43,7 @@ public class AboutActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		//android4.0Ö®ºó²»ÔÊĞíÓÃÖ÷Ïß³Ì·ÃÎÊÍøÂç
+
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
         .detectDiskReads()
         .detectDiskWrites()
@@ -63,19 +63,19 @@ public class AboutActivity extends Activity {
 				
 		init();
 		
-		//»ñÈ¡»î¶¯ĞÅÏ¢ÁĞ±í
+		//è·å–æ´»åŠ¨åˆ—è¡¨
 		listSpeaker = dataRetriever.retrieveAllAct(cookie);
 		if(listSpeaker.get(0).getCode().equals("200"))
 		{
 			Log.i("b",listSpeaker.get(0).getCode());
-			showToast("»ñÈ¡»î¶¯ĞÅÏ¢³É¹¦");
+			showToast("è·å–æ´»åŠ¨åˆ—è¡¨æˆåŠŸ");
 			getData();
 			adapter = new SimpleAdapter(this, listData, R.layout.lsv_act_info_raw,
 					new String[] {"name", "info", "time"},
 					new int[] {R.id.act_name, R.id.act_info, R.id.act_time});
 			lsvActInfo.setAdapter(adapter);
 			
-			//µã»÷»î¶¯ÏÔÊ¾»î¶¯ÏêÇé
+			//ç‚¹å‡»æ´»åŠ¨æ˜¾ç¤ºè¯¦æƒ…
 			lsvActInfo.setOnItemClickListener(new OnItemClickListener(){
 				public void onItemClick(AdapterView<?> parent, View view,  
 					     int position, long id) {
@@ -99,7 +99,7 @@ public class AboutActivity extends Activity {
 							tmp.put("limit", spk.getLimit());					
 							ActDetail.add(tmp);
 
-							ActDetailsInfo info1 = new ActDetailsInfo(ActDetail);		//´´½¨Serializable¶ÔÏóÍ¨¹ıintent´«µİActDetail
+							ActDetailsInfo info1 = new ActDetailsInfo(ActDetail);		//ï¿½ï¿½ï¿½ï¿½Serializableï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½intentï¿½ï¿½ï¿½ï¿½ActDetail
 							List<ActDetailsInfo> objectList = new ArrayList<ActDetailsInfo>();
 							objectList.add(info1);		
 							Intent intent = new Intent();
@@ -114,15 +114,15 @@ public class AboutActivity extends Activity {
 		}
 		else if(listSpeaker.get(0).getCode().equals("null"))
 		{
-			showToast("ÉĞÎŞÈÎºÎ»î¶¯");
+			showToast("æ´»åŠ¨åˆ—è¡¨ä¸ºç©º");
 		}
 		else if(listSpeaker.get(0).getCode().equals("420"))
 		{
-			showToast("»ñÈ¡»î¶¯ĞÅÏ¢Ê§°Ü");
+			showToast("è·å–æ´»åŠ¨åˆ—è¡¨å¤±è´¥");
 		}
 		else if(listSpeaker.get(0).getCode().equals("404"))
 		{
-			showToast("ÇëÏÈµÇÂ½");
+			showToast("è¯·å…ˆç™»é™†!");
 			Intent intent = new Intent();
 			intent.setClass(AboutActivity.this, Login.class);
 			startActivity(intent);
@@ -157,7 +157,7 @@ public class AboutActivity extends Activity {
 		btnSeeAct = (Button) findViewById(R.id.btn_see_activity);
 	}
 	
-	//»ñÈ¡»î¶¯ĞÅÏ¢ÁĞ±í
+	//è·å–æ´»åŠ¨åˆ—è¡¨æ•°æ®
 	private void getData() {
 		listData.clear();
 		for (Iterator<Speaker> it=listSpeaker.iterator(); it.hasNext(); ){
@@ -169,7 +169,7 @@ public class AboutActivity extends Activity {
 			listData.add(tmp);
 		}
 	}
-	//ÌáÊ¾Àà
+	//æç¤ºç±»
 	private void showToast(CharSequence msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}

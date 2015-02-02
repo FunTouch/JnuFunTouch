@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, AboutActivity.class);
 				startActivity(intent);
+				finish();
 			}
 		});
 		
@@ -61,7 +62,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, CardTransportActivity.class);
+				intent.setClass(MainActivity.this, CardTransport.class);
 				startActivity(intent);
 			}
 		});
@@ -72,6 +73,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, Login.class);
 				startActivity(intent);
+				finish();
 			}
 		});
 		
@@ -92,7 +94,8 @@ public class MainActivity extends Activity {
 			
 		});
 	}
-		
+	
+	//双击返回键退出程序
 	public boolean onKeyDown(int keyCode, KeyEvent event)   
 	{  
 	    // TODO Auto-generated method stub  	
@@ -100,15 +103,15 @@ public class MainActivity extends Activity {
 	    if((keyCode == KeyEvent.KEYCODE_BACK)&&(event.getAction() == KeyEvent.ACTION_DOWN))  
 	    {  
 	    	  
-	        if(System.currentTimeMillis() - temptime >2000) // 2s���ٴ�ѡ��back����Ч   
+	        if(System.currentTimeMillis() - temptime >2000) // 2s内再按一次返回键退出   
 	        {  
 	            System.out.println(Toast.LENGTH_LONG);  
-	            Toast.makeText(this, "���ٰ�һ�η����˳�", Toast.LENGTH_LONG).show();  
+	            Toast.makeText(this, "再按一次返回键退出", Toast.LENGTH_LONG).show();  
 	            temptime = System.currentTimeMillis();  
 	        }  
 	        else {  
 	               finish();   
-	               System.exit(0); //���Ƿ��㶼��ʾ�쳣�˳�!0��ʾ�����˳�!   
+	               System.exit(0); //程序正常退出  
 	        }  
 	             
 	        return true;   
