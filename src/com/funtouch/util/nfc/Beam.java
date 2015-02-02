@@ -111,8 +111,8 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         time.setToNow();
         Byte identifierCode = 0x01;
         StringBuffer sb = new StringBuffer();  	
-        sb.append("fuck");
-        //sb.append("{"+"\"队伍名称\":"+"\""+listTeam.get(0).getTeam_name()+"\""+","+"\"队伍简介\":"+"\""+listTeam.get(0).getTeam_info()+"\""+"}");
+        //sb.append("fuck");
+        sb.append("{"+"\"队伍名称\":"+"\""+"fucking"+"\""+","+"\"队伍简介\":"+"\""+"team"+"\""+"}");
         Log.i("sb",sb.toString());
         NdefMessage msg = BobNdefMessage.getNdefMsg_from_RTD_TEXT(sb.toString(), false, false);
          /**
@@ -258,7 +258,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     	//String prefix = URI_PREFIX_MAP.get(payload[0]);
     	byte[] fullUri = Bytes.concat(Arrays.copyOfRange(payload,0, payload.length));
     	Uri uri = Uri.parse(payloadStr);
-    	Log.i("b",uri.toString());
+    	//Log.i("b",uri.toString());
     	uiControl(uri);
     }
     

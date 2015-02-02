@@ -385,7 +385,6 @@ public class DataRetriever extends Activity{
 			String jsonString = EntityUtils.toString(httpEntity);
 			JSONObject object = new JSONObject(jsonString);		
 			String code = object.getString("code");
-			//Log.i("SeeVote", object.getString("result"));
 			
 				
 			if(code.equals("200"))
@@ -424,7 +423,7 @@ public class DataRetriever extends Activity{
 
 				}
 			}
-			else if(code.equals("420")||code.equals("404"))
+			else if(code.equals("431")||code.equals("404"))
 			{
 				Team teamlist;
 				teamlist = new Team();

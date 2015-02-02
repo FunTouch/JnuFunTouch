@@ -60,7 +60,7 @@ public class SeeVote extends Activity{
 					new int[] {R.id.team_name, R.id.team_info, R.id.ticket});
 			lsvVoteInfo.setAdapter(adapter);
 		}
-     	else if(listTeamList.get(0).getCode().equals("null"))
+     	else if(listTeamList.get(0).getCode().equals("null")||listTeamList.get(0).getCode().equals("431"))
 		{
 			showToast("尚无投票信息");
 		}

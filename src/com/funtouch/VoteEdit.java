@@ -94,18 +94,18 @@ public class VoteEdit extends Activity{
 			btnUse.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	        		Intent intent = new Intent();
-	        		TeamListInfo info = new TeamListInfo(listTeam);	
+	        		//TeamListInfo info = new TeamListInfo(listTeam);	
 	        		intent.setClass(VoteEdit.this, Beam.class);
-	        		List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
-	        		objectList.add(info);
-	        		intent.putExtra("teamlist", (Serializable) objectList);
-	        		intent.putExtra("limit", listTeam.get(0).getLimit());
+	        		//List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
+	        		//objectList.add(info);
+	        		//intent.putExtra("teamlist", (Serializable) objectList);
+	        		//intent.putExtra("limit", listTeam.get(0).getLimit());
 	        		//Log.i("rg",Integer.toString(rg.getCheckedRadioButtonId()));
 	        		startActivity(intent);
 	        		}      	
 	        });
 		}
-     	else if(listTeam.get(0).getCode().equals("null"))
+     	else if(listTeam.get(0).getCode().equals("null")||listTeam.get(0).getCode().equals("431"))
 		{	
 		//添加队伍按钮
 		btnOk.setOnClickListener(new OnClickListener(){
