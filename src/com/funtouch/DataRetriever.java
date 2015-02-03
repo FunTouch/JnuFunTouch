@@ -301,7 +301,7 @@ public class DataRetriever extends Activity{
 		}
 		
 		//创建投票
-		public int createVote(String cookie, String act_id, String limit, ArrayList<Map<String, Object>> teams){
+		public int createVote(String cookie, String act_id, int limit, ArrayList<Map<String, Object>> teams){
 			
 			String url = "http://pyfun.sinaapp.com/act/vote/add";
 			int length = teams.size();
@@ -340,8 +340,7 @@ public class DataRetriever extends Activity{
 				String jsonString = EntityUtils.toString(httpEntity);
 				JSONObject result = new JSONObject(jsonString);
 				String code = result.getString("code");
-						
-				Log.i("vote", code);	
+							
 						
 				if (code.equals("200"))      //创建成功
 					return 200;
@@ -444,6 +443,49 @@ public class DataRetriever extends Activity{
 		}
 							
 		return teamlistArrayList;
+	}
+	
+	//投一票
+	public int postVote(String cookie, String act_id, String vote_id){
+				
+		String url = "http://pyfun.sinaapp.com/act/vote/ticket";						                 			
+						
+		//POST投票信息到URL
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		params.add(new BasicNameValuePair("act_id", act_id));
+		params.add(new BasicNameValuePair("vote_id", vote_id));
+						
+		HttpPost httpPost = new HttpPost(url);
+						
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject result = new JSONObject(jsonString);
+			String code = result.getString("code");	
+							
+			if (code.equals("200"))      //投票成功
+				return 200;
+			if (code.equals("430"))      //票数已经用完
+				return 430;
+					
+		} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+							// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {
+							// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
+		return 0;
 	}
 		
 	// check the Internet connection

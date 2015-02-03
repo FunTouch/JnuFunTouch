@@ -1,6 +1,7 @@
 package com.funtouch.util.nfc;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +13,14 @@ import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,9 +30,12 @@ import android.annotation.SuppressLint;
 import com.funtouch.util.nfc.BobNdefMessage;
 
 import com.funtouch.Cookie;
+import com.funtouch.DataRetriever;
 import com.funtouch.R;
+import com.funtouch.SeeVote;
 import com.funtouch.Team;
 import com.funtouch.TeamListInfo;
+import com.funtouch.VoteEdit;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
@@ -46,50 +57,82 @@ import android.os.Parcelable;
 import android.provider.Settings;
 import android.text.format.Time;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Vector;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
 public class Beam extends Activity implements CreateNdefMessageCallback,
-        OnNdefPushCompleteCallback {
+        OnNdefPushCompleteCallback, OnItemClickListener {
     NfcAdapter mNfcAdapter;
     TextView mInfoText;
+    private Button btnSubmit = null;
+    private Button btnReturn = null;
+    private List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();
+    private PendingIntent mPendingIntent;
     private Context mContext = null;
     private static final int MESSAGE_SENT = 1;
     private List<Team> listTeam = new ArrayList<Team>();
-    private String limit = null;
+    private int limit ;
     public Cookie application ; 
+    private ListView lv_vote_team = null;
+    private MyAdapter mSimpleAdapter;
+    private int[] flag = {0,0,0,0,0,0};
+    private String vote_id = null;
+    private String act_id = null;
+    private DataRetriever dataRetriever = new DataRetriever();
     String cookie = application.getInstance().getCookie();
-   
     
-    @Override
+   
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beam);
         
         Intent intent1=getIntent();
-        limit = intent1.getStringExtra("limit");
-        
-        Log.i("cookie",cookie);
-
+        limit = Integer.parseInt(intent1.getStringExtra("limit"));         //获得intent传过来的limit,并转化为int型
+        act_id = intent1.getStringExtra("act_id");  
+        lv_vote_team = (ListView)findViewById(R.id.lv_vote_team);
         List<TeamListInfo> objectList = (List<TeamListInfo>)getIntent().getSerializableExtra("teamlist");
-       // listTeam = objectList.get(0).getTeamList();
+        listTeam = objectList.get(0).getTeamList();		 //获得intent传过来的listTeam
         mContext = this;
-        mInfoText = (TextView) findViewById(R.id.nfc_test);
+        mInfoText = (TextView) findViewById(R.id.nfc_test); 
+        btnSubmit = (Button)findViewById(R.id.btn_submit);
+        
         // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        mPendingIntent = PendingIntent.getActivity(this, 0,
+        		new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+        
+        getData();		//获取投票列表
+        
+        mSimpleAdapter = new MyAdapter(this, listData, R.layout.lsv_vote_team_raw,
+				new String[] {"team_name", "team_info"},
+				new int[] {R.id.multiple_team, R.id.multiple_info});
+        
+        
+        lv_vote_team.setAdapter(mSimpleAdapter);
+        lv_vote_team.setOnItemClickListener(this);
+        
+        
         if (mNfcAdapter == null) {
             mInfoText = (TextView) findViewById(R.id.nfc_test);
             mInfoText.setText("NFC is not available on this device.");
@@ -99,7 +142,63 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
             // Register callback to listen for message-sent success
             mNfcAdapter.setOnNdefPushCompleteCallback(this, this);
         }
+        
+        btnSubmit.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		int q = 0;
+        		int flag1 = 0;
+        		for(int i = 0; i < listTeam.size(); i++)
+        		{
+        			int j = flag[i];
+        			if( j%2 == 1)
+        			{
+        				q++;
+        				if(q > limit)
+        				{
+        					showToast("超过投票限制!");
+        					break;
+        				}
+        				else{
+        					vote_id = listTeam.get(i).getVote_id();
+        					flag1 = dataRetriever.postVote(cookie,act_id,vote_id);
+        					Log.i("flag1",Integer.toString(flag1));
+        				if(flag1 == 200)
+           					showToast("投票成功");
+        				else if(flag1 == 430)
+        				{
+        					showToast("票数已用完");
+        					break;
+        				}
+        				}
+        			}
+        		}
+        		if(q == 0)
+        			showToast("请选择队伍!");
+        		if(flag1 == 200)
+        		{
+        			Intent intent = new Intent();
+        			intent.setClass(Beam.this, SeeVote.class);
+        			intent.putExtra("act_id", act_id);
+        			startActivity(intent);
+        			finish();
+        		}
+         	}
+        });
     }
+    
+    
+    
+  //获取投票数据
+  	private void getData() {
+  		listData.clear();
+  		for (Iterator<Team> it=listTeam.iterator(); it.hasNext(); ){
+  			Map<String, Object> tmp = new HashMap<String, Object>();
+  			Team tl = it.next();		
+  			tmp.put("team_name", tl.getTeam_name());
+  			tmp.put("team_info", tl.getTeam_info());
+  			listData.add(tmp);
+  		}
+  	}
 
 
     /**
@@ -107,12 +206,17 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
      */
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-        Time time = new Time();
-        time.setToNow();
-        Byte identifierCode = 0x01;
         StringBuffer sb = new StringBuffer();  	
-        //sb.append("fuck");
-        sb.append("{"+"\"队伍名称\":"+"\""+"fucking"+"\""+","+"\"队伍简介\":"+"\""+"team"+"\""+"}");
+        sb.append("[");
+        for(int i = 0; i < listTeam.size(); i++)
+        {
+        	sb.append("{"+"\"队伍名称\":"+"\""+listTeam.get(i).getTeam_name()+"\""+","+"\"队伍简介\":"+"\""+listTeam.get(i).getTeam_info()+"\""+"}");
+        	if(i < listTeam.size() - 1)
+			{
+				sb.append(",");
+			}
+        }
+        sb.append("]");
         Log.i("sb",sb.toString());
         NdefMessage msg = BobNdefMessage.getNdefMsg_from_RTD_TEXT(sb.toString(), false, false);
          /**
@@ -150,19 +254,29 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         }
     };
 
-    @Override
+    /*@Override
     public void onResume() {
         super.onResume();
         // Check to see that the Activity started due to an Android Beam
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             processIntent(getIntent());
         }
-    }
+    }*/
+    
+    protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		//Log.i("onResume", "enableFroeground");
+		if (mNfcAdapter != null) 
+			mNfcAdapter.enableForegroundDispatch(this, mPendingIntent, null,
+                null);
+	}
 
     @Override
     public void onNewIntent(Intent intent) {
         // onResume gets called after this to handle the intent
         setIntent(intent);
+        processIntent(intent);
     }
 
     /**
@@ -267,10 +381,13 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     	Button button = (Button)findViewById(R.id.btn_return);
     	try
     	{
-    		JSONObject result = new JSONObject(uri.toString());
-    		//String team = result.getString("队伍名称");
-    		//String info = result.getString("队伍简介");
-    		mInfoText.setText("Rev MSG : " + "\n" + "队伍名称: " + "team" +"\n" +"队伍简介: "+ "info" );
+    		JSONArray jsonArray = new JSONArray(uri.toString());
+    		for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject jsonObj = jsonArray.getJSONObject(i);
+				String team = jsonObj.getString("队伍名称");
+				String info = jsonObj.getString("队伍简介");
+				mInfoText.setText("Rev MSG : " + "\n" + "队伍名称: " + team +"\n" +"队伍简介: "+ info );
+    		}
     	}
     	catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -297,6 +414,14 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
 		});
     }
     
+    @Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (mNfcAdapter != null) 
+			mNfcAdapter.disableForegroundDispatch(this);
+	}
+    
     public static boolean isUri(NdefRecord record)
     {
     	if (record.getTnf() == NdefRecord.TNF_WELL_KNOWN)
@@ -311,6 +436,80 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     	else
     		return false;
     }
+    
+    //自创Adapter
+    public class MyAdapter extends SimpleAdapter {
+        
+        Map<Integer, Boolean> map; 
+        
+        LayoutInflater mInflater;
+        
+        private List<? extends Map<String, ?>> mList;
+        
+        public MyAdapter(Context context, List<Map<String, Object>> data,
+                        int resource, String[] from, int[] to) {
+                super(context, data, resource, from, to);
+                map = new HashMap<Integer, Boolean>();
+                mInflater = LayoutInflater.from(context);
+                mList = data;
+                for(int i = 0; i < data.size(); i++) {
+                        map.put(i, false);
+                } 
+        }
+        
+        @Override
+        public int getCount() {
+                return mList.size();
+        }
+        
+        public List<Map<String, Object>> getList() {
+                return (List<Map<String, Object>>)mList;
+        }
+
+        @Override
+        public Object getItem(int position) {
+                return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+                return position;
+        }
+        
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+                if(convertView == null) {
+                        convertView = mInflater.inflate(R.layout.lsv_vote_team_raw, null);
+                }
+                TextView tN = (TextView) convertView.findViewById(R.id.multiple_team);
+                tN.setText((String)mList.get(position).get("team_name"));
+                
+                TextView tP = (TextView) convertView.findViewById(R.id.multiple_info);
+                tP.setText((String)mList.get(position).get("team_info"));
+                
+                CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.multiple_checkbox);
+                
+                checkBox.setChecked(map.get(position)); 
+                
+                return convertView;
+        }
+        
+    }
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        CheckBox checkBox = (CheckBox) view.findViewById(R.id.multiple_checkbox);
+        checkBox.toggle();
+        int i = flag[position];
+        i++;
+        flag[position] = i;
+        
+        mSimpleAdapter.map.put(position, checkBox.isChecked());
+        
+    }
+    
+  //提示类
+  	public void showToast(String msg){
+  		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+  	}
 
     
     private static final BiMap<Byte, String> URI_PREFIX_MAP = ImmutableBiMap

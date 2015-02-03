@@ -6,69 +6,73 @@
     android:orientation="vertical"
     android:stretchColumns="1" >
 
-<TableRow>
+    <TableRow>
+    </TableRow>
 
-</TableRow>
- 
-<TableRow>
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="请设置每人可投的最多票数："
-    android:textSize="16sp"
-    />
-</TableRow>
+    <TableRow>
 
-<RadioGroup android:id="@id/rg"
-    android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
-    >
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="请设置每人可投的最多票数："
+            android:textSize="16sp" />
+    </TableRow>
 
-<RadioButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="一票" />
+    <RadioGroup
+        android:id="@id/rg"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
 
-<RadioButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:checked="false"
-    android:text="两票" />
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" 
+            android:text="一票" />
 
-<RadioButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:checked="false"
-    android:text="三票" />
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="两票" />
 
-</RadioGroup>
+        <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="三票" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="点击添加队伍" />
+
     <ListView
         android:id="@+id/lv_team"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="232dp"
+        android:layout_weight="1.56"
+        android:scrollbarAlwaysDrawVerticalTrack="true" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        >
+        android:gravity="center_horizontal" >
+
         <Button
             android:id="@+id/btn_use"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="开始使用"
-            />
+            android:text="开始使用" />
+
         <Button
             android:id="@+id/btn_export"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/btn_use"
-            android:text="导出结果"
-            />
+            android:text="导出结果" />
     </RelativeLayout>
+
 </TableLayout>

@@ -26,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -45,6 +46,8 @@ public class VoteEdit extends Activity{
 	private DataRetriever dataRetriever = new DataRetriever();
 	String cookie = application.getInstance().getCookie();
 	private List<Team> listTeam;
+	private RadioButton checkRadioButton;
+	private int limit = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +75,31 @@ public class VoteEdit extends Activity{
 		btnUse = (Button)findViewById(R.id.btn_use);
 		btnExport = (Button)findViewById(R.id.btn_export);
 		rg = (RadioGroup)findViewById(R.id.rg);
+		rg.check(R.id.radio1);
+		checkRadioButton = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
 		lv_team = (ListView)findViewById(R.id.lv_team);
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		
 		listTeam = dataRetriever.seeVote(cookie,act_id);
+		if(listTeam.get(0).getCode().equals("200"))
+		
+		rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {  
+
+            @Override  
+            public void onCheckedChanged(RadioGroup group, int checkedId) {  
+
+                // 点击事件获取的选择对象  
+                checkRadioButton = (RadioButton) rg.findViewById(checkedId); 
+                if(checkRadioButton.getText().toString().equals("一票"))
+                	limit = 1;
+                else if(checkRadioButton.getText().toString().equals("两票"))
+                	limit = 2;
+                else if(checkRadioButton.getText().toString().equals("三票"))
+                	limit = 3;
+            }  
+        }); 
+		
      	if(listTeam.get(0).getCode().equals("200"))
 		{
 			btnUse.setText("Beam投票信息/进行投票");
@@ -94,13 +117,13 @@ public class VoteEdit extends Activity{
 			btnUse.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	        		Intent intent = new Intent();
-	        		//TeamListInfo info = new TeamListInfo(listTeam);	
+	        		TeamListInfo info = new TeamListInfo(listTeam);	
 	        		intent.setClass(VoteEdit.this, Beam.class);
-	        		//List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
-	        		//objectList.add(info);
-	        		//intent.putExtra("teamlist", (Serializable) objectList);
-	        		//intent.putExtra("limit", listTeam.get(0).getLimit());
-	        		//Log.i("rg",Integer.toString(rg.getCheckedRadioButtonId()));
+	        		List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
+	        		objectList.add(info);
+	        		intent.putExtra("teamlist", (Serializable) objectList);
+	        		intent.putExtra("limit", listTeam.get(0).getLimit());
+	        		intent.putExtra("act_id", act_id);
 	        		startActivity(intent);
 	        		}      	
 	        });
@@ -132,7 +155,6 @@ public class VoteEdit extends Activity{
         	public void onClick(View v){
         		if(rg.getCheckedRadioButtonId()!= -1 && lv_team.getCount()!=0)
         		{
-        			String limit = Integer.toString(rg.getCheckedRadioButtonId());
         			int code = dataRetriever.createVote(cookie, act_id, limit , teams);
         			if(code == 200)
         			{
@@ -140,6 +162,13 @@ public class VoteEdit extends Activity{
         				//btnUse.setText("Beam投票信息/进行投票");
         				Intent intent = new Intent();
     	        		intent.setClass(VoteEdit.this, Beam.class);
+    	        		listTeam = dataRetriever.seeVote(cookie,act_id);
+    	        		TeamListInfo info = new TeamListInfo(listTeam);	
+    	        		List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
+    	        		objectList.add(info);  	        		
+    	        		intent.putExtra("teamlist", (Serializable) objectList);
+    	        		intent.putExtra("limit", listTeam.get(0).getLimit());
+    	        		intent.putExtra("act_id", act_id);
     	        		startActivity(intent);
         			}
         		}
