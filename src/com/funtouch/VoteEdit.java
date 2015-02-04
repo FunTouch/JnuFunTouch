@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.funtouch.util.nfc.Beam;
 
 import android.app.Activity;
 import android.app.AlertDialog;

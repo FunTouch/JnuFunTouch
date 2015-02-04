@@ -16,6 +16,7 @@ public class UserMenu extends Activity{
 	private Button btnSignUp = null;
 	private Button btnFlyer = null;
 	
+	
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	private String act_id;
@@ -45,6 +46,8 @@ public class UserMenu extends Activity{
 	        		startActivity(intent);
 	        	}
 	        });
+		
+		
 	    	
 		btnSignUp.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
@@ -71,6 +74,7 @@ public class UserMenu extends Activity{
 		btnVote = (Button)findViewById(R.id.btn_vote);
 		btnSignUp = (Button)findViewById(R.id.btn_sign_up);
 		btnFlyer = (Button)findViewById(R.id.btn_nfc_flyer);
+		
 	}
 	
 

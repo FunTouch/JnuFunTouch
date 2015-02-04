@@ -13,6 +13,7 @@ import android.widget.Button;
 public class UserCenter extends Activity{
 	
 	private Button btnLogoff = null;
+	private Button btnRevBeam = null;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	
@@ -25,6 +26,7 @@ public class UserCenter extends Activity{
 		setContentView(R.layout.user_center);
 		
 		btnLogoff = (Button) findViewById(R.id.btn_logoff);
+		btnRevBeam = (Button)findViewById(R.id.btn_rev_beam);
 		
 		btnLogoff.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
@@ -34,6 +36,14 @@ public class UserCenter extends Activity{
         		intent.setClass(UserCenter.this, MainActivity.class);	
         		startActivity(intent);
         		finish();
+        	}
+        });
+		
+		btnRevBeam.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		Intent intent = new Intent();
+        		intent.setClass(UserCenter.this, RevBeam.class);
+        		startActivity(intent);
         	}
         });
 		

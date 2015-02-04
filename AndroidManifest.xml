@@ -46,7 +46,7 @@
         <activity android:name=".Login"
             android:label="登陆"></activity>																																																																							
         <activity android:name=".UserMenu"
-            android:label="用户菜单"></activity>
+            android:label="活动菜单"></activity>
         <activity android:name=".UserCenter"
             android:label="用户中心"></activity>
         <activity android:name=".SeeVote"
@@ -62,8 +62,11 @@
             android:label="发起投票"></activity>
         <activity android:name=".VoteEdit"
             android:label="投票"></activity>
-        <activity android:name=".util.nfc.Beam"
+        <activity android:name="com.funtouch.Beam"
             android:label="投票界面">
+        </activity>
+        <activity android:name=".RevBeam"
+            android:label="接触投票">
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
   			<category android:name="android.intent.category.DEFAULT"/>

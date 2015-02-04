@@ -1,6 +1,5 @@
 package com.funtouch;
 
-import com.funtouch.util.nfc.Beam;
 
 import android.app.Activity;
 import android.content.Intent;
