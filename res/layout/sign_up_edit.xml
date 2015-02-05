@@ -140,7 +140,7 @@
             android:text="完成" />
 
         <Button
-            android:id="@+id/btn_use"
+            android:id="@+id/btn_del_vote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/btn_use"
+            android:layout_toRightOf="@+id/btn_del_vote"
             android:text="删除" />
 
         <Button

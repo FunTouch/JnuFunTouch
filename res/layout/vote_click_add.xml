@@ -21,15 +21,15 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="106dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btn_use"
-        android:layout_alignBottom="@+id/btn_use"
+        android:layout_alignBaseline="@+id/btn_del_vote"
+        android:layout_alignBottom="@+id/btn_del_vote"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="36dp"
         android:text="添加活动"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/btn_use"
+        android:id="@+id/btn_del_vote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -71,6 +71,15 @@ public class RevBeam extends Activity implements OnItemClickListener{
         mPendingIntent = PendingIntent.getActivity(this, 0,
         		new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
         
+        if(cookie == null)
+        {
+        	showToast("请先登陆!");
+        	Intent intent = new Intent();
+			intent.setClass(RevBeam.this, Login.class);
+			startActivity(intent);
+			finish();
+        }
+        
        
 	}
 	

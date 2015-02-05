@@ -106,7 +106,6 @@ public class Login extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(Login.this, RegistInfo.class);
 				startActivity(intent);
-				finish();
 
 			}
 		});

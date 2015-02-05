@@ -82,7 +82,6 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
     private Button btnReturn = null;
     private List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();
     private PendingIntent mPendingIntent;
-    private Context mContext = null;
     private static final int MESSAGE_SENT = 1;
     private List<Team> listTeam = new ArrayList<Team>();
     private int limit ;
@@ -108,8 +107,6 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         lv_vote_team = (ListView)findViewById(R.id.lv_vote_team);
         List<TeamListInfo> objectList = (List<TeamListInfo>)getIntent().getSerializableExtra("teamlist");
         listTeam = objectList.get(0).getTeamList();		 //获得intent传过来的listTeam
-        mContext = this;
-        mInfoText = (TextView) findViewById(R.id.nfc_test); 
         btnSubmit = (Button)findViewById(R.id.btn_submit);
         btnReturn = (Button)findViewById(R.id.btn_return);
         
@@ -130,8 +127,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         
         
         if (mNfcAdapter == null) {
-            mInfoText = (TextView) findViewById(R.id.nfc_test);
-            mInfoText.setText("NFC is not available on this device.");
+            showToast("NFC is not available on this device.");
         } else {
             // Register callback to set NDEF message
             mNfcAdapter.setNdefPushMessageCallback(this, this);
@@ -150,6 +146,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         	public void onClick(View v){
         		int q = 0;
         		int flag1 = 0;
+        		int flag2 = 0;
         		for(int i = 0; i < listTeam.size(); i++)
         		{
         			int j = flag[i];
@@ -159,24 +156,35 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         				if(q > limit)
         				{
         					showToast("超过投票限制!");
+        					flag2 = 1;
         					break;
         				}
-        				else{
+        				
+        			}
+        		}
+        		if(flag2 == 0){
+        			for(int i = 0; i < listTeam.size(); i++)
+        			{
+        				int j = flag[i];
+        				if(q == 0)
+        				{
+                			showToast("请选择队伍!");
+                			break;
+        				}
+        				if( j%2 == 1)
+        				{
         					vote_id = listTeam.get(i).getVote_id();
         					flag1 = dataRetriever.postVote(cookie,act_id,vote_id);
-        					Log.i("flag1",Integer.toString(flag1));
-        				//if(flag1 == 200)
-           					//showToast("投票成功");
-        				if(flag1 == 430)
-        				{
-        					showToast("票数已用完");
-        					break;
-        				}
+        					if(flag1 == 430)
+        					{
+        						showToast("票数已用完");
+        						break;
+        					}
+        				
         				}
         			}
         		}
-        		if(q == 0)
-        			showToast("请选择队伍!");
+        		
         		if(flag1 == 200)
         		{
         			showToast("投票成功");
@@ -223,7 +231,6 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
 			}
         }
         sb.append("]"+"}");
-        Log.i("sb",sb.toString());
         NdefMessage msg = BobNdefMessage.getNdefMsg_from_RTD_TEXT(sb.toString(), false, false);
          /**
           * The Android Application Record (AAR) is commented out. When a device

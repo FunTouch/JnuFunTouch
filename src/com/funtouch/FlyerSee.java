@@ -32,7 +32,7 @@ public class FlyerSee extends Activity {
 	}
 
 	private void init() {
-		btnUse = (Button) findViewById(R.id.btn_use);
+		btnUse = (Button) findViewById(R.id.btn_del_vote);
 		btnDelete = (Button) findViewById(R.id.btn_delete);
 		
 	}

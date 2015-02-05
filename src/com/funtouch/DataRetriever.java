@@ -487,6 +487,50 @@ public class DataRetriever extends Activity{
 						
 		return 0;
 	}
+	
+	//删除投票
+		public int delVote(String cookie, String act_id){
+					
+			String url = "http://pyfun.sinaapp.com/act/vote/del";						                 			
+							
+			//POST投票信息到URL
+			List <NameValuePair> params = new ArrayList <NameValuePair>();
+			params.add(new BasicNameValuePair("cookie", cookie));
+			params.add(new BasicNameValuePair("act_id", act_id));
+							
+			HttpPost httpPost = new HttpPost(url);
+							
+			HttpClient httpClient = new DefaultHttpClient();
+			try {
+
+				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				HttpEntity httpEntity = httpResponse.getEntity();
+
+				String jsonString = EntityUtils.toString(httpEntity);
+				JSONObject result = new JSONObject(jsonString);
+				String code = result.getString("code");	
+				
+				Log.i("code",code);
+								
+				if (code.equals("200"))      //删除成功
+					return 200;
+				if (code.equals("404"))      //未登陆
+					return 404;
+						
+			} catch (ClientProtocolException e) {
+						// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+								// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (JSONException e) {
+								// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+							
+			return 0;
+		}
 		
 	// check the Internet connection
 	public boolean isNetworkConnected(Context context) {

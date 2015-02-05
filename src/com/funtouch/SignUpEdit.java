@@ -66,7 +66,7 @@ public class SignUpEdit extends Activity{
 		// TODO Auto-generated method stub
 		//button
 		btnOk = (Button)findViewById(R.id.btn_ok);
-		btnUse = (Button)findViewById(R.id.btn_use);
+		btnUse = (Button)findViewById(R.id.btn_del_vote);
 		btnEdit = (Button)findViewById(R.id.btn_edit);
 		btnDelete = (Button)findViewById(R.id.btn_del);
 		btnSee = (Button)findViewById(R.id.btn_see);

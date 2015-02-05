@@ -45,7 +45,7 @@ public class VoteClickAdd extends Activity{
 
 	private void init() {
 		btnClickAdd = (Button)findViewById(R.id.btn_click_add);
-		btnUse = (Button)findViewById(R.id.btn_use);
+		btnUse = (Button)findViewById(R.id.btn_del_vote);
 		
 	}
    

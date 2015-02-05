@@ -35,6 +35,7 @@ public class VoteEdit extends Activity{
 	private Button btnOk = null;
 	private Button btnUse = null;
 	private Button btnExport = null;
+	private Button btnDelVote = null;
 	private RadioGroup rg = null;
 	private ListView lv_team = null;
 	private ArrayList<Map<String, Object>> teams = null;
@@ -72,6 +73,7 @@ public class VoteEdit extends Activity{
 		teams = new ArrayList<Map<String, Object>>();
 		btnOk = (Button)findViewById(R.id.btn_ok);
 		btnUse = (Button)findViewById(R.id.btn_use);
+		btnDelVote = (Button)findViewById(R.id.btn_del_vote);
 		btnExport = (Button)findViewById(R.id.btn_export);
 		rg = (RadioGroup)findViewById(R.id.rg);
 		rg.check(R.id.radio1);
@@ -80,9 +82,8 @@ public class VoteEdit extends Activity{
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		
-		listTeam = dataRetriever.seeVote(cookie,act_id);
-		if(listTeam.get(0).getCode().equals("200"))
 		
+		listTeam = dataRetriever.seeVote(cookie,act_id);
 		rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {  
 
             @Override  
@@ -97,11 +98,11 @@ public class VoteEdit extends Activity{
                 else if(checkRadioButton.getText().toString().equals("三票"))
                 	limit = 3;
             }  
-        }); 
+        }); 		
 		
      	if(listTeam.get(0).getCode().equals("200"))
 		{
-			btnUse.setText("Beam投票信息/进行投票");
+			btnUse.setText("进入投票");
 			
 			//导出投票结果
 			btnExport.setOnClickListener(new OnClickListener(){
@@ -126,7 +127,21 @@ public class VoteEdit extends Activity{
 	        		startActivity(intent);
 	        		}      	
 	        });
+			
+			btnDelVote.setOnClickListener(new OnClickListener(){
+	        	public void onClick(View v){
+	        		showDelDialog();
+	        		
+	        		}      	
+	        });
+			
+			btnOk.setOnClickListener(new OnClickListener(){
+	        	public void onClick(View v){
+	        		showToast("你已创建过投票");
+	         	}
+	        });
 		}
+     	
      	else if(listTeam.get(0).getCode().equals("null")||listTeam.get(0).getCode().equals("431"))
 		{	
 		//添加队伍按钮
@@ -135,6 +150,13 @@ public class VoteEdit extends Activity{
 	        		showDialog();
 	         	}
 	        });
+		
+		btnDelVote.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		showToast("尚未创建投票!");
+        		
+        		}      	
+        });
 		
 		//长按队伍修改队名
 		lv_team.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -158,7 +180,6 @@ public class VoteEdit extends Activity{
         			if(code == 200)
         			{
         				showToast("投票创建成功");
-        				//btnUse.setText("Beam投票信息/进行投票");
         				Intent intent = new Intent();
     	        		intent.setClass(VoteEdit.this, Beam.class);
     	        		listTeam = dataRetriever.seeVote(cookie,act_id);
@@ -169,6 +190,7 @@ public class VoteEdit extends Activity{
     	        		intent.putExtra("limit", listTeam.get(0).getLimit());
     	        		intent.putExtra("act_id", act_id);
     	        		startActivity(intent);
+    	        		VoteEdit.this.recreate();
         			}
         		}
         		else
@@ -179,13 +201,34 @@ public class VoteEdit extends Activity{
 		//导出投票结果
 		btnExport.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
-        		Intent intent = new Intent();
-        		intent.setClass(VoteEdit.this, SeeVote.class);
-        		intent.putExtra("act_id", act_id);
-        		startActivity(intent);
+        		showToast("尚未创建投票!");
          	}
         });
 		}
+	}
+	
+	public void showDelDialog(){
+		new AlertDialog.Builder(VoteEdit.this)
+		.setTitle("删除投票")
+		.setMessage("确定要删除所创建的投票?\n所有投票信息都会被清空!")
+		.setPositiveButton("确认", new android.content.DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				int flag = dataRetriever.delVote(cookie, act_id);
+				Log.i("flag",Integer.toString(flag));
+				if (flag == 200)
+				{
+					btnUse.setText("开始使用");
+					showToast("删除成功");
+					VoteEdit.this.recreate();
+				}
+				else if (flag == 404)
+					showToast("未登陆");
+			}	
+		})
+		.setNegativeButton("取消", null)
+		.show();
 	}
 	
 	
@@ -243,7 +286,7 @@ public class VoteEdit extends Activity{
 	
 	//提示类
 	public void showToast(String msg){
-		Toast.makeText(VoteEdit.this, msg, Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 	
 	@Override

@@ -1,12 +1,21 @@
 package com.funtouch;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -19,6 +28,7 @@ public class MainActivity extends Activity {
 	private Button btnGame = null;
 	private Button btnLogin = null;
 	private Button btnValidatePass = null;
+	private boolean wifi,internet = true;
 	public Cookie application ; 
 	private long temptime = 0;
 	String cookie = application.getInstance().getCookie();
@@ -30,6 +40,15 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		init();
+		
+		ConnectivityManager con=(ConnectivityManager)getSystemService(Activity.CONNECTIVITY_SERVICE);  
+		wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();  
+		internet=con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();  
+		if(wifi|internet){  
+		    //执行相关操作  
+		}else{  
+			showDialog();  
+		} 
 		
 		btnFunTouch.setOnClickListener(new OnClickListener() {
 			@Override
@@ -119,6 +138,7 @@ public class MainActivity extends Activity {
 	    }  
 	    return super.onKeyDown(keyCode, event);  
 	}  
+	
 	private void init() {
 		btnFunTouch = (Button) findViewById(R.id.btn_funtouch);
 		btnAct = (Button) findViewById(R.id.btn_about_activity);
@@ -128,6 +148,29 @@ public class MainActivity extends Activity {
 		btnLogin = (Button) findViewById(R.id.btn_login);
 		btnValidatePass = (Button) findViewById(R.id.btn_validate_pass);
 	}
+	
+	
+	//提示类
+		public void showToast(String msg){
+			Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+		}
+		
+		public void showDialog(){
+			new AlertDialog.Builder(MainActivity.this)
+			.setTitle("请检查网络状态")
+			.setMessage("亲，网络连了么？")
+			.setCancelable(false)
+			.setPositiveButton("退出", new android.content.DialogInterface.OnClickListener(){
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					System.exit(0);
+				}
+				
+			})
+			.show();
+		}
 	
 	
 	
