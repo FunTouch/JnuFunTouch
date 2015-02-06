@@ -14,30 +14,30 @@
         android:text="注销" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="45dp"
-        android:text="修改密码" />
-
-    <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_update_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_logoff"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
-        android:text="更改邮箱" />
+        android:layout_marginTop="30dp"
+        android:text="个人信息修改" />
 
     <Button
         android:id="@+id/btn_rev_beam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="55dp"
+        android:layout_below="@+id/btn_update_info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp"
         android:text="接收投票" />
+
+    <Button
+        android:id="@+id/btn_change_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_rev_beam"
+        android:layout_below="@+id/btn_update_info"
+        android:layout_marginTop="30dp"
+        android:text="修改密码" />
 
 </RelativeLayout>

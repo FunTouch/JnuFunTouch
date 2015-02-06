@@ -44,7 +44,11 @@
           <activity android:name=".validatePassActivity"
             android:label="验证通过"></activity>
         <activity android:name=".Login"
-            android:label="登陆"></activity>																																																																							
+            android:label="登陆"></activity>	
+        <activity android:name=".ChangePass"
+            android:label="修改密码"></activity>	
+         <activity android:name=".UpdateInfo"
+            android:label="个人信息修改"></activity>																																																																							
         <activity android:name=".UserMenu"
             android:label="活动菜单"></activity>
         <activity android:name=".UserCenter"

@@ -84,14 +84,6 @@ public class RegistInfo extends Activity{
 	        			showToast("电话号码格式不符合规则!");
 	        		}
 	        		else{
-	        			//application.setUserName(userName.getText().toString());
-	        			//application.setPassword(password.getText().toString());
-	        			//application.setUserMailbox(userMailbox.getText().toString());
-	        			//application.setUserClass(userClass.getText().toString());
-	        			//application.setUserPhone(userPhone.getText().toString());
-	        			//Intent intent=new Intent();
-	        			//intent.setClass(RegistInfo.this, RegistOrgan.class);
-	        			//startActivity(intent);
 	        			int flag = dataRetriever.regist(userName.getText().toString(),MD5.Encode(password.getText().toString()),
 	        					userMailbox.getText().toString(),userClass.getText().toString(),userPhone.getText().toString());
 	        			if(flag == 200)
@@ -100,12 +92,13 @@ public class RegistInfo extends Activity{
 	        				Intent intent=new Intent();
 	        				intent.setClass(RegistInfo.this, Login.class);
 	        				startActivity(intent);
+	        				finish();
 	        			}
-	        			if(flag == 401)
+	        			else if(flag == 401)
 	        			{
 	        				showToast("用户名已存在!");
 	        			}
-	        			if(flag == 0)
+	        			else if(flag == 0)
 	        			{
 	        				showToast("注册失败!");
 	        			}

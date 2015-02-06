@@ -530,7 +530,119 @@ public class DataRetriever extends Activity{
 			}
 							
 			return 0;
+	}
+	
+		
+	//修改密码
+	public int changePass(String cookie, String old_pass, String new_pass){
+							
+		String url = "http://pyfun.sinaapp.com/usr/update/password";						                 			
+									
+		//POST投票信息到URL
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		params.add(new BasicNameValuePair("old_password", old_pass));
+		params.add(new BasicNameValuePair("new_password", new_pass));
+									
+		HttpPost httpPost = new HttpPost(url);
+									
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject result = new JSONObject(jsonString);
+			String code = result.getString("code");	
+						
+			Log.i("code",code);
+										
+			if (code.equals("200"))      //修改成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+			if (code.equals("441"))      //原密码错误
+				return 441;
+								
+		} catch (ClientProtocolException e) {
+							// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+								// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {
+									// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+									
+		return 0;
+	}
+	
+	//修改个人信息
+	/*public int updateInfo(String cookie, String info){
+				
+		String url = "http://pyfun.sinaapp.com/act/vote/add";
+		int length = teams.size();
+						
+						
+		//打包JSON数据
+		StringBuffer sb = new StringBuffer();  	
+		sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":");
+		sb.append("{"+"\"act_id\":"+"\""+act_id+"\""+","+"\"limit\":"+"\""+limit+"\""+","+"\"team\":"+"[");
+		if(length!=0)
+		{
+			for(int i = 0; i < length; i++ )
+			{
+				sb.append("{"+"\"team_name\":"+"\""+teams.get(i).get("team_name")+"\""+","+"\"team_info\":"+"\""+teams.get(i).get("team_info")+"\""+"}");
+				if(i < length - 1)
+				{
+					sb.append(",");
+				}
+			}
+		}
+		sb.append("]"+"}"+"}");                 			
+						
+		//POST投票信息到URL
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("post", sb.toString()));
+						
+		HttpPost httpPost = new HttpPost(url);
+						
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject result = new JSONObject(jsonString);
+			String code = result.getString("code");
+								
+							
+			if (code.equals("200"))      //创建成功
+				return 200;
+			if (code.equals("420"))      //创建失败
+				return 420;
+			if (code.equals("404"))      //未登录
+					return 404;
+					
+		} catch (ClientProtocolException e) {
+							// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+						// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {
+							// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
+		return 0;
+	}*/
+		
 		
 	// check the Internet connection
 	public boolean isNetworkConnected(Context context) {
