@@ -13,13 +13,14 @@
         android:text="用户名："
         android:textSize="16sp"
         />
+
     <EditText
         android:id="@+id/edit_UserName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="请填写真实姓名"
-        android:selectAllOnFocus="true" 
-        />
+        android:hint="请填写您的用户名"
+        android:selectAllOnFocus="true" />
+
 </TableRow>
 
 <TableRow>

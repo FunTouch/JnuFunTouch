@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal" >
 
     <TextView
         android:id="@+id/textView1"
@@ -9,7 +10,129 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="请点击需要修改的个人信息"
+        android:text="请填写需要修改的个人信息"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="19dp"
+        android:text="姓名:" />
+
+    <EditText
+        android:id="@+id/edt_update_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textView2"
+        android:ems="10"
+        android:hint="你的真实姓名" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edt_update_name"
+        android:layout_marginTop="14dp"
+        android:text="学号:" />
+
+    <EditText
+        android:id="@+id/edt_update_sno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_update_name"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_update_name"
+        android:ems="10"
+        android:hint="你的个人学号" />
+
+    <EditText
+        android:id="@+id/edt_update_mailbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/edt_update_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_update_mailbox"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView4"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/edt_update_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_update_grade"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_update_grade"
+        android:ems="10" android:inputType="phone"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_update_phone"
+        android:layout_alignBottom="@+id/edt_update_phone"
+        android:layout_toLeftOf="@+id/edt_update_phone"
+        android:text="手机:" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_update_grade"
+        android:layout_alignBottom="@+id/edt_update_grade"
+        android:layout_toLeftOf="@+id/edt_update_grade"
+        android:text="班级:" />
+
+    <EditText
+        android:id="@+id/edt_update_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_update_phone"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_update_phone"
+        android:ems="10"
+        android:hint="你的QQ号码" />
+
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_update_qq"
+        android:layout_alignBottom="@+id/edt_update_qq"
+        android:layout_alignParentLeft="true"
+        android:text="QQ：" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_update_mailbox"
+        android:layout_alignBottom="@+id/edt_update_mailbox"
+        android:layout_alignParentLeft="true"
+        android:text="邮箱:" />
+
+    <Button
+        android:id="@+id/btn_submit_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_update_qq"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:text="提交修改" />
 
 </RelativeLayout>

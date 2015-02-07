@@ -2,6 +2,7 @@ package com.funtouch;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -581,30 +582,53 @@ public class DataRetriever extends Activity{
 	}
 	
 	//修改个人信息
-	/*public int updateInfo(String cookie, String info){
+	public int updateInfo(String cookie, Map<String,String> info){
 				
-		String url = "http://pyfun.sinaapp.com/act/vote/add";
-		int length = teams.size();
+		String url = "http://pyfun.sinaapp.com/usr/update/info";
 						
 						
 		//打包JSON数据
+		int flag = 0;
 		StringBuffer sb = new StringBuffer();  	
-		sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":");
-		sb.append("{"+"\"act_id\":"+"\""+act_id+"\""+","+"\"limit\":"+"\""+limit+"\""+","+"\"team\":"+"[");
-		if(length!=0)
+		sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":"+"{");
+		if(!info.get("name").toString().equals("null"))
 		{
-			for(int i = 0; i < length; i++ )
-			{
-				sb.append("{"+"\"team_name\":"+"\""+teams.get(i).get("team_name")+"\""+","+"\"team_info\":"+"\""+teams.get(i).get("team_info")+"\""+"}");
-				if(i < length - 1)
-				{
-					sb.append(",");
-				}
-			}
+			flag++;
+			sb.append("\"name\":"+"\""+info.get("name").toString()+"\""+",");
 		}
-		sb.append("]"+"}"+"}");                 			
+		if(!info.get("sno").toString().equals("null"))
+		{
+			flag++;
+			sb.append("\"sno\":"+"\""+info.get("sno").toString()+"\""+",");
+		}
+		if(!info.get("mailbox").toString().equals("null"))
+		{
+			flag++;
+			sb.append("\"mailbox\":"+"\""+info.get("mailbox").toString()+"\""+",");
+		}
+		if(!info.get("grade").toString().equals("null"))
+		{
+			flag++;
+			sb.append("\"grade\":"+"\""+info.get("grade").toString()+"\""+",");
+		}
+		if(!info.get("phone").toString().equals("null"))
+		{
+			flag++;
+			sb.append("\"phone\":"+"\""+info.get("phone").toString()+"\""+",");
+		}
+		if(!info.get("qq").toString().equals("null"))
+		{
+			flag++;
+			sb.append("\"qq\":"+"\""+info.get("qq").toString()+"\""+",");
+		}
+		if(flag!=0)
+		{
+			sb.deleteCharAt(sb.length()-1);
+		}
+		
+		sb.append("}"+"}");                 			
 						
-		//POST投票信息到URL
+
 		List <NameValuePair> params = new ArrayList <NameValuePair>();
 		params.add(new BasicNameValuePair("post", sb.toString()));
 						
@@ -622,12 +646,12 @@ public class DataRetriever extends Activity{
 			String code = result.getString("code");
 								
 							
-			if (code.equals("200"))      //创建成功
+			if (code.equals("200"))      //修改成功
 				return 200;
-			if (code.equals("420"))      //创建失败
-				return 420;
+			if (code.equals("440"))      //有无效的列名
+				return 440;
 			if (code.equals("404"))      //未登录
-					return 404;
+				return 404;
 					
 		} catch (ClientProtocolException e) {
 							// TODO Auto-generated catch block
@@ -641,7 +665,69 @@ public class DataRetriever extends Activity{
 		}
 						
 		return 0;
-	}*/
+	}
+	
+	//获取个人信息
+	public Map<String,String> getInfo(String cookie){
+					
+		String url = "http://pyfun.sinaapp.com/usr/info/list";
+							                			
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		Map<String,String> info = new HashMap<String,String>();
+							
+		HttpPost httpPost = new HttpPost(url);
+							
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject object = new JSONObject(jsonString);		
+			String code = object.getString("code");		
+				
+			if(code.equals("200"))
+			{			
+				String res = object.getString("result");
+				JSONObject result = new JSONObject(res);
+				String qq = result.getString("qq");
+				String name = result.getString("name");
+				String grade = result.getString("grade");
+				String sno = result.getString("sno");
+				String mailbox = result.getString("mailbox");
+				String phone = result.getString("phone");
+				info.put("qq", qq);
+				info.put("name", name);
+				info.put("grade", grade);
+				info.put("sno", sno);
+				info.put("mailbox", mailbox);
+				info.put("phone", phone);
+				info.put("code", code);
+				return info;
+			}
+			
+			else if(code.equals("404"))
+			{
+				info.put("code", code);
+				return info;
+			}
+						
+			} catch (ClientProtocolException e) {
+								// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+							// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (JSONException e) {
+								// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+							
+			return info;
+		}
 		
 		
 	// check the Internet connection
