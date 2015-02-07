@@ -52,7 +52,7 @@ public class UserMenu extends Activity{
 		btnSignUp.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	        		Intent intent=new Intent();
-	        		intent.setClass(UserMenu.this, SignUpClickAdd.class);
+	        		intent.setClass(UserMenu.this, SignUpEdit.class);
 	        		startActivity(intent);
 		
 	        	}
