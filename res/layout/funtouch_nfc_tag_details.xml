@@ -6,13 +6,13 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="wify一触连接标签：\n  用于放置在餐馆，宿舍等地方，接触连接wifi" />
-
+        android:textSize="17sp"
+	/>
  
 
 </RelativeLayout>

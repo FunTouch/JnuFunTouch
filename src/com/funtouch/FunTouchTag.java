@@ -34,8 +34,23 @@ public class FunTouchTag extends Activity {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				// TODO Auto-generated method stub
+				if(rB_noPaperPost.getId() == checkedId){
+					selectedId = 0;
+				}
 				if(rB_wifi.getId() == checkedId) {
 					selectedId = 1;
+				}
+				if(rB_personalInfo.getId() == checkedId){
+					selectedId = 2;
+				}
+				if(rB_meetingSilence.getId() == checkedId){
+					selectedId = 3;
+				}
+				if(rB_newBookInfo.getId() == checkedId){
+					selectedId = 4;
+				}
+				if(rB_move.getId() == checkedId){
+					selectedId = 5;
 				}
 			}
 		});
@@ -45,13 +60,10 @@ public class FunTouchTag extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				switch(selectedId){
-				case 1 :
-					Intent intent = new Intent();
-					intent.setClass(FunTouchTag.this, FunTouchTagWify.class);
-					startActivity(intent);
-					break;
-				}
+				Intent intent = new Intent();
+				intent.setClass(FunTouchTag.this, FunTouchTagDetails.class);
+				intent.putExtra("selectedId", selectedId);
+				startActivity(intent);
 			}
 			
 		});

@@ -135,9 +135,11 @@
 		
 		<activity android:name=".FunTouchProfile"
             android:label="FunTouch简介"></activity>
+		<activity android:name=".FunTouchAppIntroduction"
+            android:label="nfc手机应用"></activity>
 		<activity android:name=".FunTouchTag"
             android:label="NFC标签"></activity>
-		<activity android:name=".FunTouchTagWify"
+		<activity android:name=".FunTouchTagDetails"
             android:label="Wifi标签"></activity>
 		<activity android:name=".FunTouchTagOther"
             android:label="定制"></activity>

@@ -30,6 +30,17 @@ public class FunTouchProfile extends Activity {
 				startActivity(intent);
 			}
 		});
+		tbrApp.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(FunTouchProfile.this, FunTouchAppIntroduction.class);
+				startActivity(intent);
+			}
+			
+		});
 		
 	}
 
