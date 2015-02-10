@@ -1,54 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
-
-<TableRow>
-    <TextView 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="用户名："
-        android:textSize="16sp"
+	<ImageView android:id="@+id/iv_User"
+    	android:layout_width="250dp"
+    	android:layout_height="220dp"
+    	android:src="@drawable/dengluzhuce2"
+    	android:layout_centerHorizontal="true"
+    />
+    <ImageView 
+        android:id="@+id/iv_userName"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_below="@id/iv_User"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/yonghuming2"
         />
 
     <EditText
         android:id="@+id/edit_UserName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_userName"
+        android:layout_alignBottom="@id/iv_userName"
+        android:layout_alignRight="@id/iv_User"
         android:hint="请填写您的用户名"
         android:selectAllOnFocus="true" />
 
-</TableRow>
+    <ImageView
+        android:id="@+id/iv_password"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignLeft="@+id/iv_userName"
+        android:layout_alignRight="@+id/iv_userName"
+        android:layout_below="@id/iv_userName"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/mima2" />
 
-<TableRow>
-    <TextView
-        
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="密码："
-        android:textSize="16sp"
-        />
     <EditText
         android:id="@+id/edit_UserPassword"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_password"
+        android:layout_alignBottom="@id/iv_password"
+        android:layout_alignRight="@id/iv_User"
         android:hint="请填写6-12位密码"
         android:inputType="numberPassword"
         />
-</TableRow>
 
-<Button
+<LinearLayout android:id="@+id/llyt_loginButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/edit_UserPassword"
+    android:layout_marginTop="20dp"
+    >
+    <Button
     android:id="@+id/btn_login"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="登陆" />
-<Button
+	<Button
     android:id="@+id/btn_regist"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="注册新账号" />
+    android:text="注册" />
+    
+</LinearLayout>
+
             
-</TableLayout>
+</RelativeLayout>
