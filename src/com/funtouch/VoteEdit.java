@@ -118,7 +118,7 @@ public class VoteEdit extends Activity{
 	        	public void onClick(View v){
 	        		Intent intent = new Intent();
 	        		TeamListInfo info = new TeamListInfo(listTeam);	
-	        		intent.setClass(VoteEdit.this, Beam.class);
+	        		intent.setClass(VoteEdit.this, VoteBeam.class);
 	        		List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
 	        		objectList.add(info);
 	        		intent.putExtra("teamlist", (Serializable) objectList);
@@ -181,7 +181,7 @@ public class VoteEdit extends Activity{
         			{
         				showToast("投票创建成功");
         				Intent intent = new Intent();
-    	        		intent.setClass(VoteEdit.this, Beam.class);
+    	        		intent.setClass(VoteEdit.this, VoteBeam.class);
     	        		listTeam = dataRetriever.seeVote(cookie,act_id);
     	        		TeamListInfo info = new TeamListInfo(listTeam);	
     	        		List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
@@ -216,7 +216,6 @@ public class VoteEdit extends Activity{
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				int flag = dataRetriever.delVote(cookie, act_id);
-				Log.i("flag",Integer.toString(flag));
 				if (flag == 200)
 				{
 					btnUse.setText("开始使用");

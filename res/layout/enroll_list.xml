@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/lsv_details"
+        android:id="@+id/lsv_enroll_details"
         android:layout_width="match_parent"
         android:layout_height="383sp"
         android:layout_alignParentLeft="true"

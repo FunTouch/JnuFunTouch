@@ -37,7 +37,7 @@ public class ActDetails extends Activity{
 				List<ActDetailsInfo> objectList = new ArrayList<ActDetailsInfo>();
 				objectList.add(info);		
 				Intent intent = new Intent();
-				intent.setClass(ActDetails.this, UserMenu.class);
+				intent.setClass(ActDetails.this, ActMenu.class);
 				//intent.putExtra("ListObject", (Serializable) objectList);
 				intent.putExtra("act_id", ActDetail.get(0).get("act_id").toString());
 				startActivity(intent);	

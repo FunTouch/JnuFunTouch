@@ -1,71 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:gravity="bottom|end|top"
     android:orientation="vertical"
     android:stretchColumns="1" >
 
-    <GridLayout
-        android:id="@+id/GridLayout2"
-        android:columnCount="3"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_gravity="fill_horizontal"
-            android:text="活动名称："
-            android:textSize="16sp" />
-
-        <EditText
-            android:layout_gravity="fill_horizontal"
-            android:hint="请填写活动名称"
-            android:selectAllOnFocus="true" />
-
-        <Space
-            android:layout_column="2"
-            android:layout_gravity="fill_vertical"
-            android:layout_row="1" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_gravity="fill_horizontal|top"
-            android:layout_row="1"
-            android:ems="10"
-            android:hint="请输入允许报名的人数上限"
-            android:inputType="number" />
-
-        <TextView
-            android:layout_column="0"
-            android:layout_gravity="center"
-            android:layout_row="1"
-            android:text="名额限制："
-            android:textSize="16sp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_gravity="fill_horizontal|top"
-            android:layout_row="2"
-            android:ems="10"
-            android:hint="50字以内"
-            android:inputType="text" >
-
-            <requestFocus />
-        </EditText>
-
-        <TextView
-            android:layout_column="0"
-            android:layout_gravity="left|center_vertical"
-            android:layout_row="2"
-            android:text="活动简介："
-            android:textSize="16sp" />
-
-    </GridLayout>
-
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="请选择要读取的信息："
         android:textSize="16sp" />
 
@@ -74,94 +18,122 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical" >
+
     </LinearLayout>
 
     <TableRow>
 
         <CheckBox
+            android:id="@+id/chk_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="姓名" />
+
     </TableRow>
 
     <TableRow>
 
         <CheckBox
+            android:id="@+id/chk_sno"
             android:layout_width="169dp"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="学号" />
+
     </TableRow>
 
     <TableRow>
 
         <CheckBox
+            android:id="@+id/chk_phone"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="联系方式" />
+
     </TableRow>
 
     <TableRow>
 
         <CheckBox
+            android:id="@+id/chk_mailbox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="邮箱" />
+
     </TableRow>
 
     <TableRow>
 
         <CheckBox
+            android:id="@+id/chk_qq"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="QQ" />
+
     </TableRow>
+
+    <CheckBox
+        android:id="@+id/chk_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="班级" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="报名人数限制:" 
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edt_sign_up_limit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_sign_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="完成" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:gravity="center" >
 
         <Button
-            android:id="@+id/btn_edit"
+            android:id="@+id/btn_sign_rev_beam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="编辑" />
+            android:layout_alignParentTop="true"
+            android:text="使用" />
 
         <Button
-            android:id="@+id/btn_ok"
+            android:id="@+id/btn_sign_see"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="完成" />
+            android:text="查看" />
 
         <Button
-            android:id="@+id/btn_del_vote"
+            android:id="@+id/btn_sign_del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/btn_edit"
-            android:text="使用" />
-
-        <Button
-            android:id="@+id/btn_del"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/btn_del_vote"
+            android:layout_centerHorizontal="true"
             android:text="删除" />
 
-        <Button
-            android:id="@+id/btn_see"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/btn_del"
-            android:text="查看" />
     </RelativeLayout>
 
 </TableLayout>

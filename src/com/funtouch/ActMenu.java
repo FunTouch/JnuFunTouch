@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class UserMenu extends Activity{
+public class ActMenu extends Activity{
 
 	private Button btnVote = null;
 	private Button btnSignUp = null;
@@ -41,7 +41,7 @@ public class UserMenu extends Activity{
 		btnVote.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	        		Intent intent = new Intent();
-	        		intent.setClass(UserMenu.this, VoteEdit.class);
+	        		intent.setClass(ActMenu.this, VoteEdit.class);
 	        		intent.putExtra("act_id", act_id);
 	        		startActivity(intent);
 	        	}
@@ -52,7 +52,8 @@ public class UserMenu extends Activity{
 		btnSignUp.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	        		Intent intent=new Intent();
-	        		intent.setClass(UserMenu.this, SignUpEdit.class);
+	        		intent.setClass(ActMenu.this, SignUpEdit.class);
+	        		intent.putExtra("act_id", act_id);
 	        		startActivity(intent);
 		
 	        	}
@@ -61,7 +62,7 @@ public class UserMenu extends Activity{
 		btnFlyer.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent=new Intent();
-        		intent.setClass(UserMenu.this, FlyerNew.class);
+        		intent.setClass(ActMenu.this, FlyerNew.class);
         		startActivity(intent);
 	
         	}

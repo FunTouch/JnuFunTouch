@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.funtouch.Beam.MyAdapter;
+import com.funtouch.VoteBeam.MyAdapter;
 import com.google.common.base.Preconditions;
 import com.google.common.primitives.Bytes;
 
@@ -42,7 +42,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RevBeam extends Activity implements OnItemClickListener{
+public class RevVoteBeam extends Activity implements OnItemClickListener{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
 	public Cookie application ; 
@@ -75,7 +75,7 @@ public class RevBeam extends Activity implements OnItemClickListener{
         {
         	showToast("请先登陆!");
         	Intent intent = new Intent();
-			intent.setClass(RevBeam.this, Login.class);
+			intent.setClass(RevVoteBeam.this, Login.class);
 			startActivity(intent);
 			finish();
         }
@@ -282,7 +282,7 @@ public class RevBeam extends Activity implements OnItemClickListener{
         		{
         			showToast("投票成功");
         			Intent intent = new Intent();
-        			intent.setClass(RevBeam.this, SeeVote.class);
+        			intent.setClass(RevVoteBeam.this, SeeVote.class);
         			intent.putExtra("act_id", act_id);
         			startActivity(intent);
         			finish();
@@ -293,7 +293,7 @@ public class RevBeam extends Activity implements OnItemClickListener{
         
         builder.setNegativeButton("取消", null);
         
-        LayoutInflater layout = LayoutInflater.from(RevBeam.this);
+        LayoutInflater layout = LayoutInflater.from(RevVoteBeam.this);
         View dialogView  = layout.inflate(R.layout.dialog_teams, null);
         lv_vote_team =(ListView)dialogView.findViewById(R.id.lv_vote_team1);
         lv_vote_team.setAdapter(mSimpleAdapter);

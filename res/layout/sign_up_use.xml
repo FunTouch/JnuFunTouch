@@ -17,8 +17,18 @@
         android:id="@+id/img_using"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_rev_beam"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_using"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:text="触碰手机以接受投票"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

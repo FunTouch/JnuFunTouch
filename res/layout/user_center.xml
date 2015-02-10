@@ -40,4 +40,13 @@
         android:layout_marginTop="30dp"
         android:text="修改密码" />
 
+    <Button
+        android:id="@+id/btn_sign_up_beam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_rev_beam"
+        android:layout_below="@+id/btn_rev_beam"
+        android:layout_marginTop="27dp"
+        android:text="我要报名" />
+
 </RelativeLayout>

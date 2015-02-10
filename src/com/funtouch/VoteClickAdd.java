@@ -35,7 +35,7 @@ public class VoteClickAdd extends Activity{
 		btnUse.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent=new Intent();
-        		intent.setClass(VoteClickAdd.this, Beam.class);
+        		intent.setClass(VoteClickAdd.this, VoteBeam.class);
         		startActivity(intent);
          	}
         });

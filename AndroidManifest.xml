@@ -51,7 +51,7 @@
             android:label="修改密码"></activity>	
          <activity android:name=".UpdateInfo"
             android:label="个人信息修改"></activity>																																																																							
-        <activity android:name=".UserMenu"
+        <activity android:name=".ActMenu"
             android:label="活动菜单"></activity>
         <activity android:name=".UserCenter"
             android:label="用户中心"></activity>
@@ -68,10 +68,10 @@
             android:label="发起投票"></activity>
         <activity android:name=".VoteEdit"
             android:label="投票"></activity>
-        <activity android:name="com.funtouch.Beam"
+        <activity android:name="com.funtouch.VoteBeam"
             android:label="投票界面">
         </activity>
-        <activity android:name=".RevBeam"
+        <activity android:name=".RevVoteBeam"
             android:label="接触投票">
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
@@ -85,11 +85,21 @@
         <activity android:name=".SignUpClickAdd"
             android:label="发起报名"></activity>
         <activity android:name=".SignUpEdit"
-            android:label="报名"></activity>
-        <activity android:name=".SignUpSeeDetails"
-            android:label="查看"></activity>
+            android:label="发起报名"></activity>
+        <activity android:name=".EnrollList"
+            android:label="报名列表"></activity>
+        <activity android:name=".EnrollListDetails"
+            android:label="报名信息"></activity>
         <activity android:name=".SignUpUse"
             android:label="使用"></activity>
+        <activity android:name=".SignUpBeam"
+            android:label="接触报名">
+            <intent-filter>
+  			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+  			<category android:name="android.intent.category.DEFAULT"/>
+ 			<data android:mimeType="text/plain"/>
+			</intent-filter>
+        </activity>
         
 		<activity android:name=".FlyerList"
             android:label="无纸传单"></activity>

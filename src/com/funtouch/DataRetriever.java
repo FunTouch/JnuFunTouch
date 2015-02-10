@@ -416,7 +416,6 @@ public class DataRetriever extends Activity{
 					teamlist.setTeam_info(jsonObj.getString("team_info"));
 					teamlist.setTicket(jsonObj.getInt("ticket"));
 					teamlist.setVote_id(jsonObj.getString("vote_id"));
-					//Log.i("id",jsonObj.getString("vote_id"));
 
 					teamlistArrayList.add(teamlist);
 				}
@@ -512,7 +511,6 @@ public class DataRetriever extends Activity{
 				JSONObject result = new JSONObject(jsonString);
 				String code = result.getString("code");	
 				
-				Log.i("code",code);
 								
 				if (code.equals("200"))      //删除成功
 					return 200;
@@ -558,7 +556,6 @@ public class DataRetriever extends Activity{
 			JSONObject result = new JSONObject(jsonString);
 			String code = result.getString("code");	
 						
-			Log.i("code",code);
 										
 			if (code.equals("200"))      //修改成功
 				return 200;
@@ -728,6 +725,187 @@ public class DataRetriever extends Activity{
 							
 			return info;
 		}
+	
+	//创建报名
+		public int createSignUp(String cookie, String act_id, String limit, String info){
+								
+			String url = "http://pyfun.sinaapp.com/act/enroll/create";						                 			
+										
+			//POST投票信息到URL
+			List <NameValuePair> params = new ArrayList <NameValuePair>();
+			params.add(new BasicNameValuePair("cookie", cookie));
+			params.add(new BasicNameValuePair("act_id", act_id));
+			params.add(new BasicNameValuePair("limit", limit));
+			params.add(new BasicNameValuePair("info", info));
+										
+			HttpPost httpPost = new HttpPost(url);
+										
+			HttpClient httpClient = new DefaultHttpClient();
+			try {
+
+				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				HttpEntity httpEntity = httpResponse.getEntity();
+
+				String jsonString = EntityUtils.toString(httpEntity);
+				JSONObject result = new JSONObject(jsonString);
+				String code = result.getString("code");	
+							
+											
+				if (code.equals("200"))      //创建成功
+					return 200;
+				if (code.equals("404"))      //未登陆
+					return 404;
+				if (code.equals("451"))      //已创建过报名
+					return 451;
+				if (code.equals("454"))      //info存在无效值
+					return 454;
+									
+			} catch (ClientProtocolException e) {
+								// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+									// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (JSONException e) {
+										// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+										
+			return 0;
+		}
+		
+	//查看报名
+		public List<Enroll> seeEnroll(String act_id){
+			
+			String url = "http://pyfun.sinaapp.com/act/enroll/list";						                 			
+										
+			List <NameValuePair> params = new ArrayList <NameValuePair>();
+			params.add(new BasicNameValuePair("act_id", act_id));
+			List<Enroll> enrolllistArrayList = new ArrayList<Enroll>();
+										
+			HttpPost httpPost = new HttpPost(url);
+										
+			HttpClient httpClient = new DefaultHttpClient();
+			try {
+
+				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				HttpEntity httpEntity = httpResponse.getEntity();
+
+				String jsonString = EntityUtils.toString(httpEntity);
+				JSONObject object = new JSONObject(jsonString);
+				String code = object.getString("code");	
+				
+										
+				if (code.equals("200"))      //成功
+				{
+					String res = object.getString("result");
+					JSONObject result = new JSONObject(res);
+					String num = result.getString("num");
+					String limit = result.getString("limit");
+					String enroll = result.getString("enroll_list");
+					if(enroll.equals("[]"))
+					{
+						Enroll enrolllist;
+						enrolllist = new Enroll();
+						enrolllist.setCode("null");
+						enrolllistArrayList.add(enrolllist);
+					}
+					else{
+							
+					JSONArray jsonArray = new JSONArray(result.getString("enroll_list"));
+					Enroll enrolllist;
+					
+					for (int i = 0; i < jsonArray.length(); i++) {
+
+						JSONObject jsonObj = jsonArray.getJSONObject(i);
+						enrolllist = new Enroll();
+
+						enrolllist.setCode(code);
+						enrolllist.setLimit(limit);
+						
+						enrolllist.setName(jsonObj.getString("name"));
+						enrolllist.setGrade(jsonObj.getString("grade"));
+						enrolllist.setMailbox(jsonObj.getString("mailbox"));
+						enrolllist.setNum(num);
+						enrolllist.setPhone(jsonObj.getString("phone"));
+						enrolllist.setQQ(jsonObj.getString("qq"));
+						enrolllist.setSno(jsonObj.getString("sno"));
+						//Log.i("id",jsonObj.getString("vote_id"));
+
+						enrolllistArrayList.add(enrolllist);
+					}
+
+					}
+				}
+				else if(code.equals("453"))  //没有创建报名
+				{
+					Enroll enrolllist;
+					enrolllist = new Enroll();
+					enrolllist.setCode(code);
+					enrolllistArrayList.add(enrolllist);
+				}
+									
+			} catch (ClientProtocolException e) {
+								// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+									// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (JSONException e) {
+										// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+										
+			return enrolllistArrayList;
+		}
+		
+	//报名
+	public int signUp(String cookie, String act_id){
+										
+		String url = "http://pyfun.sinaapp.com/act/enroll/add";						                 			
+												
+		//POST投票信息到URL
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		params.add(new BasicNameValuePair("act_id", act_id));
+												
+		HttpPost httpPost = new HttpPost(url);
+												
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject result = new JSONObject(jsonString);
+			String code = result.getString("code");	
+																	
+			if (code.equals("200"))      //报名成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+			if (code.equals("450"))      //已报过名
+				return 450;
+			if (code.equals("452"))      //名额已满
+				return 452;
+								
+		} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+					// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {
+					// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+												
+		return 0;
+	}
 		
 		
 	// check the Internet connection

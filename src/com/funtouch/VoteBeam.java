@@ -74,10 +74,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class Beam extends Activity implements CreateNdefMessageCallback,
+public class VoteBeam extends Activity implements CreateNdefMessageCallback,
         OnNdefPushCompleteCallback, OnItemClickListener {
     NfcAdapter mNfcAdapter;
-    TextView mInfoText;
     private Button btnSubmit = null;
     private Button btnReturn = null;
     private List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();
@@ -98,11 +97,10 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.beam);
+        setContentView(R.layout.vote_beam);
         
         Intent intent1=getIntent();
         limit = Integer.parseInt(intent1.getStringExtra("limit"));         //获得intent传过来的limit,并转化为int型
-        Log.i("limit",intent1.getStringExtra("limit"));
         act_id = intent1.getStringExtra("act_id");  
         lv_vote_team = (ListView)findViewById(R.id.lv_vote_team);
         List<TeamListInfo> objectList = (List<TeamListInfo>)getIntent().getSerializableExtra("teamlist");
@@ -189,7 +187,7 @@ public class Beam extends Activity implements CreateNdefMessageCallback,
         		{
         			showToast("投票成功");
         			Intent intent = new Intent();
-        			intent.setClass(Beam.this, SeeVote.class);
+        			intent.setClass(VoteBeam.this, SeeVote.class);
         			intent.putExtra("act_id", act_id);
         			startActivity(intent);
         			finish();

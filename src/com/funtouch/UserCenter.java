@@ -19,6 +19,7 @@ public class UserCenter extends Activity{
 	private Button btnRevBeam = null;
 	private Button btnChangePass = null;
 	private Button btnUpdateInfo = null;
+	private Button btnSignUpBeam = null;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	
@@ -34,6 +35,7 @@ public class UserCenter extends Activity{
 		btnRevBeam = (Button)findViewById(R.id.btn_rev_beam);
 		btnChangePass = (Button)findViewById(R.id.btn_change_pass);
 		btnUpdateInfo = (Button)findViewById(R.id.btn_update_info);	
+		btnSignUpBeam = (Button)findViewById(R.id.btn_sign_up_beam);
 		
 		btnLogoff.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
@@ -62,7 +64,15 @@ public class UserCenter extends Activity{
 		btnRevBeam.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent = new Intent();
-        		intent.setClass(UserCenter.this, RevBeam.class);
+        		intent.setClass(UserCenter.this, RevVoteBeam.class);
+        		startActivity(intent);
+        	}
+        });
+		
+		btnSignUpBeam.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		Intent intent = new Intent();
+        		intent.setClass(UserCenter.this, SignUpBeam.class);
         		startActivity(intent);
         	}
         });
