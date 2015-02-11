@@ -32,7 +32,7 @@ public class AboutActivity extends Activity {
 	private SimpleAdapter adapter1;
 	private List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();
 	private List<Map<String, Object>> ActDetail = new ArrayList<Map<String, Object>>();
-	private List<Speaker> listSpeaker;
+	private List<Act> listSpeaker;
 	private DataRetriever dataRetriever = new DataRetriever();
 	String cookie = application.getInstance().getCookie();
 	Map<String, Object> tmp = new HashMap<String, Object>();
@@ -82,9 +82,9 @@ public class AboutActivity extends Activity {
 				    HashMap<String, String> map = (HashMap<String, String>) listView.getItemAtPosition(position);
 				    String name = map.get("name");
 				    String info = map.get("info");
-				    for (Iterator<Speaker> it=listSpeaker.iterator(); it.hasNext(); )
+				    for (Iterator<Act> it=listSpeaker.iterator(); it.hasNext(); )
 				    {	    	
-				    	Speaker spk = it.next();
+				    	Act spk = it.next();
 				    	if(name.equals(spk.getName()) && info.equals(spk.getInfo()))
 				    	{
 				    		tmp.put("name", spk.getName());
@@ -159,9 +159,9 @@ public class AboutActivity extends Activity {
 	//获取活动列表数据
 	private void getData() {
 		listData.clear();
-		for (Iterator<Speaker> it=listSpeaker.iterator(); it.hasNext(); ){
+		for (Iterator<Act> it=listSpeaker.iterator(); it.hasNext(); ){
 			Map<String, Object> tmp = new HashMap<String, Object>();
-			Speaker spk = it.next();		
+			Act spk = it.next();		
 			tmp.put("name", spk.getName());
 			tmp.put("info", spk.getInfo());
 			tmp.put("time", spk.getTime());

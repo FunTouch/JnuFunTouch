@@ -29,7 +29,7 @@ import com.funtouch.Data;
 public class RegistInfo extends Activity{
 	private EditText userName, password,passwordAgain, userMailbox, userClass, userPhone;
 	//public Data application;
-	private List<Speaker> listSpeaker;
+	private List<Act> listSpeaker;
 	private DataRetriever dataRetriever = new DataRetriever();
 	private SimpleAdapter adapter;
 	private List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();

@@ -50,5 +50,13 @@ public class FunTouchProfile extends Activity {
 		tbrTeam = (TableRow)findViewById(R.id.tbr_team);
 
 	}
+	
+	public void onBackPressed() { 
+        super.onBackPressed(); 
+        Intent intent = new Intent();
+		intent.setClass(FunTouchProfile.this, MainActivity.class);
+		startActivity(intent);
+		this.finish();       
+    } 
 
 }

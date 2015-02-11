@@ -93,14 +93,17 @@
         <activity android:name=".SignUpUse"
             android:label="使用"></activity>
         <activity android:name=".SignUpBeam"
-            android:label="接触报名">
+            android:label="报名">
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
   			<category android:name="android.intent.category.DEFAULT"/>
  			<data android:mimeType="text/plain"/>
 			</intent-filter>
         </activity>
-        
+        <activity android:name=".SignUpOL"
+            android:label="在线报名"></activity>
+        <activity android:name=".SignUpOLDetail"
+            android:label="报名详情"></activity>
 		<activity android:name=".FlyerList"
             android:label="无纸传单"></activity>
 		<activity android:name=".FlyerNew"

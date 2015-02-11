@@ -62,7 +62,7 @@ public class EnrollList extends Activity {
 					new String[] {"name", "grade", "phone"},
 					new int[] {R.id.enroll_name, R.id.enroll_grade, R.id.enroll_phone});
 			lsvDetails.setAdapter(adapter);
-			//点击活动显示详情
+			//点击报名显示详情
 			lsvDetails.setOnItemClickListener(new OnItemClickListener(){
 				public void onItemClick(AdapterView<?> parent, View view,  
 					     int position, long id) {

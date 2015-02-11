@@ -22,7 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.funtouch.Speaker;
+import com.funtouch.Act;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,32 +33,40 @@ import android.widget.Toast;
 import com.funtouch.Cookie;
 
 public class DataRetriever extends Activity{
-	public Cookie application ;            //applicationΪȫ�ֱ���	
+	public Cookie application ;            
 
-	/*public List<Speaker> retrieveAllSpeakers() {
-		String url = "http://pyfun.sinaapp.com/test/get";
-		List<Speaker> speakerArrayList = new ArrayList<Speaker>();
+	//查看所有可报名活动简介(GET)
+	public List<Act> getEnrollAct() {
+		String url = "http://pyfun.sinaapp.com/act/enroll/get/simple/all";
+		List<Act> actArrayList = new ArrayList<Act>();
 		HttpGet httpGet = new HttpGet(url);
 		HttpClient httpClient = new DefaultHttpClient();
 
 		try {
-			//HttpResponse httpResponse = httpClient.execute(httpGet);
-			//HttpEntity httpEntity = httpResponse.getEntity();
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			HttpEntity httpEntity = httpResponse.getEntity();
 			String jsonString = EntityUtils.toString(httpEntity);
-			JSONArray jsonArray = new JSONArray(jsonString);
-			Speaker speaker;
-			
-			for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject object = new JSONObject(jsonString);
+			String code = object.getString("code");
+			if (code.equals("200"))
+			{
+				Act speaker;
+				String res = object.getString("result");
+				JSONArray jsonArray = new JSONArray(res);
+				for (int i = 0; i < jsonArray.length(); i++) {
 
 				JSONObject jsonObj = jsonArray.getJSONObject(i);
-				speaker = new Speaker();
+				speaker = new Act();
 
+				speaker.setAct_id(jsonObj.getString("act_id"));
+				speaker.setInfo(jsonObj.getString("act_info"));
 				speaker.setName(jsonObj.getString("name"));
-				speaker.setPhone(jsonObj.getString("phone"));
-				speaker.setValue(jsonObj.getInt("value"));
+				speaker.setRest(jsonObj.getString("rest"));
+				speaker.setCode(code);
 
-				speakerArrayList.add(speaker);
+				actArrayList.add(speaker);
 
+				}
 			}
 
 		} catch (JSONException e) {
@@ -72,8 +80,62 @@ public class DataRetriever extends Activity{
 			e.printStackTrace();
 		}
 
-		return speakerArrayList;
-	}*/
+		return actArrayList;
+	}
+	
+	//查看一个可报名活动详情(GET)
+	public List<Act> getEnrollActDetail(String act_id) {
+			String url = "http://pyfun.sinaapp.com/act/enroll/get/one/act/"+act_id;
+			List<Act> actArrayList = new ArrayList<Act>();
+			HttpGet httpGet = new HttpGet(url);
+			HttpClient httpClient = new DefaultHttpClient();
+
+			try {
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				HttpEntity httpEntity = httpResponse.getEntity();
+				String jsonString = EntityUtils.toString(httpEntity);
+				JSONObject object = new JSONObject(jsonString);
+				String code = object.getString("code");
+				if (code.equals("200"))
+				{
+					Act speaker;
+					String res = object.getString("result");
+					JSONObject result = new JSONObject(res);
+					
+					speaker = new Act();
+
+					speaker.setAct_id(result.getString("act_id"));
+					speaker.setInfo(result.getString("act_info"));
+					speaker.setName(result.getString("name"));
+					speaker.setEnrollLimit(result.getString("enroll_limit"));
+					speaker.setNeedInfo(result.getString("need_info"));
+					speaker.setActor(result.getString("actor"));
+					speaker.setNum(result.getString("num"));
+					speaker.setPlace(result.getString("place"));
+					speaker.setTime(result.getString("time"));
+					speaker.setOrg(result.getString("org"));
+					speaker.setType(result.getString("type"));
+					speaker.setUser_id(result.getString("user_id"));
+					speaker.setCode(code);
+
+					actArrayList.add(speaker);
+
+					
+				}
+
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return actArrayList;
+		}
 	
 	//注册
 	public int regist(String name, String password, String mailbox, String userclass,String phone){
@@ -224,10 +286,10 @@ public class DataRetriever extends Activity{
 		}
 		
 		//添加活动信息到Speaker
-		public List<Speaker> retrieveAllAct(String cookie) {
+		public List<Act> retrieveAllAct(String cookie) {
 			String url = "http://pyfun.sinaapp.com/act/myact";
 			
-			List<Speaker> speakerArrayList = new ArrayList<Speaker>();
+			List<Act> speakerArrayList = new ArrayList<Act>();
 			HttpPost httpPost = new HttpPost(url);
 			HttpClient httpClient = new DefaultHttpClient();
 			List <NameValuePair> params = new ArrayList <NameValuePair>();
@@ -249,19 +311,19 @@ public class DataRetriever extends Activity{
 					String res = object.getString("result");
 					if(res.equals("[]"))
 					{
-						Speaker speaker;
-						speaker = new Speaker();
+						Act speaker;
+						speaker = new Act();
 						speaker.setCode("null");
 						speakerArrayList.add(speaker);
 					}
 					else{
 					JSONArray jsonArray = new JSONArray(object.getString("result"));
-					Speaker speaker;
+					Act speaker;
 				
 					for (int i = 0; i < jsonArray.length(); i++) {
 
 					JSONObject jsonObj = jsonArray.getJSONObject(i);
-					speaker = new Speaker();
+					speaker = new Act();
 
 					speaker.setCode(code);
 					speaker.setName(jsonObj.getString("name"));
@@ -281,8 +343,8 @@ public class DataRetriever extends Activity{
 				}
 				else if(code.equals("420")||code.equals("404"))
 				{
-					Speaker speaker;
-					speaker = new Speaker();
+					Act speaker;
+					speaker = new Act();
 					speaker.setCode(code);
 					speakerArrayList.add(speaker);
 				}

@@ -56,6 +56,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, FunTouchProfile.class);
 				startActivity(intent);
+				finish();
 			}
 		});
 		

@@ -3,7 +3,7 @@ package com.funtouch;
 import java.io.Serializable;
 import java.util.List;
 
-public class Speaker implements Serializable{
+public class Act implements Serializable{
 	private String name;
     private String info;
     private String time;
@@ -14,9 +14,25 @@ public class Speaker implements Serializable{
     private String code;
     private String act_id;
     private String user_id;
+    private String needinfo;
+    private String num;
+    private String enroll_limit;
+    private String rest;
     
     public String getAct_id() {
     	return this.act_id;
+    }
+    public String getRest() {
+    	return this.rest;
+    }
+    public String getNeedInfo() {
+    	return this.needinfo;
+    }
+    public String getNum() {
+    	return this.num;
+    }
+    public String getEnrollLimit() {
+    	return this.enroll_limit;
     }
     public String getUser_id() {
     	return this.user_id;
@@ -76,6 +92,30 @@ public class Speaker implements Serializable{
     }
     public void setUser_id(String id) {
     	this.user_id = id;
+    }
+    public void setNum(String s) {
+    	this.num = s;
+    }
+    public void setNeedInfo(String s) {
+    	if(s.contains("name"))
+    		this.needinfo = "姓名,";
+    	if(s.contains("sno"))
+    		this.needinfo = needinfo + "学号,";
+    	if(s.contains("grade"))
+    		this.needinfo = needinfo + "班级,";
+    	if(s.contains("phone"))
+    		this.needinfo = needinfo + "电话,";
+    	if(s.contains("mailbox"))
+    		this.needinfo = needinfo + "邮箱,";
+    	if(s.contains("qq"))
+    		this.needinfo = needinfo + "QQ,";
+    	this.needinfo = needinfo.substring(0,needinfo.length()-1);
+    }
+    public void setEnrollLimit(String s) {
+    	this.enroll_limit = s;
+    }
+    public void setRest(String s) {
+    	this.rest = s;
     }
 
 }
