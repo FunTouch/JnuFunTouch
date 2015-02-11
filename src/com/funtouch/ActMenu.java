@@ -9,12 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class ActMenu extends Activity{
 
-	private Button btnVote = null;
-	private Button btnSignUp = null;
-	private Button btnFlyer = null;
+	private ImageButton btnVote = null;
+	private ImageButton btnSignUp = null;
+	private ImageButton btnFlyer = null;
 	
 	
 	public Cookie application ; 
@@ -72,9 +73,9 @@ public class ActMenu extends Activity{
 	}
 
 	private void init() {
-		btnVote = (Button)findViewById(R.id.btn_vote);
-		btnSignUp = (Button)findViewById(R.id.btn_sign_up);
-		btnFlyer = (Button)findViewById(R.id.btn_nfc_flyer);
+		btnVote = (ImageButton)findViewById(R.id.btn_vote);
+		btnSignUp = (ImageButton)findViewById(R.id.btn_sign_up);
+		btnFlyer = (ImageButton)findViewById(R.id.btn_nfc_flyer);
 		
 	}
 	
