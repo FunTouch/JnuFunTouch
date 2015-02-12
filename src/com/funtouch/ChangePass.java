@@ -79,14 +79,6 @@ public class ChangePass extends Activity{
      	
 	}
 	
-	public void onBackPressed() { 
-        super.onBackPressed(); 
-        Intent intent = new Intent();
-		intent.setClass(ChangePass.this, UserCenter.class);
-		startActivity(intent);
-		this.finish();       
-    } 
-	
 	
 	//提示类
 		private void showToast(CharSequence msg) {

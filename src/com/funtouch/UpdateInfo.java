@@ -152,13 +152,7 @@ public class UpdateInfo extends Activity{
 			Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 		}
 		
-		public void onBackPressed() { 
-	        super.onBackPressed(); 
-	        Intent intent = new Intent();
-			intent.setClass(UpdateInfo.this, UserCenter.class);
-			startActivity(intent);
-			this.finish();       
-	    } 
+
 	
 
 }

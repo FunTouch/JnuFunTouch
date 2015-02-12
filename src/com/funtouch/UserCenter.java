@@ -48,7 +48,6 @@ public class UserCenter extends Activity{
         		Intent intent=new Intent();
         		intent.setClass(UserCenter.this, ChangePass.class);	
         		startActivity(intent);
-        		finish();
         	}
         });
 		
@@ -57,7 +56,6 @@ public class UserCenter extends Activity{
         		Intent intent=new Intent();
         		intent.setClass(UserCenter.this, UpdateInfo.class);	
         		startActivity(intent);
-        		finish();
         	}
         });
 		
@@ -97,8 +95,6 @@ public class UserCenter extends Activity{
 		.setNegativeButton("取消", null)
 		.show();
 	}
-	
-	
 	
 	public void onBackPressed() { 
         super.onBackPressed(); 

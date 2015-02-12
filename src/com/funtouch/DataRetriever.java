@@ -984,7 +984,6 @@ public class DataRetriever extends Activity{
 										
 		String url = "http://pyfun.sinaapp.com/act/enroll/add";						                 			
 												
-		//POST投票信息到URL
 		List <NameValuePair> params = new ArrayList <NameValuePair>();
 		params.add(new BasicNameValuePair("cookie", cookie));
 		params.add(new BasicNameValuePair("act_id", act_id));
@@ -1024,6 +1023,92 @@ public class DataRetriever extends Activity{
 												
 		return 0;
 	}
+	
+	//删除一个活动
+	public int deleteAct(String cookie, String act_id){
+											
+		String url = "http://pyfun.sinaapp.com/act/del/one/all";						                 			
+													
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		params.add(new BasicNameValuePair("act_id", act_id));
+													
+		HttpPost httpPost = new HttpPost(url);
+													
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject result = new JSONObject(jsonString);
+			String code = result.getString("code");	
+																		
+			if (code.equals("200"))      //删除成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+			if (code.equals("432"))      //不是活动的创建者
+				return 432;
+									
+		} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+				// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {
+				// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+													
+		return 0;
+	}
+	
+	//删除一个活动的全部报名
+	public int deleteEnroll(String cookie, String act_id){
+												
+			String url = "http://pyfun.sinaapp.com/act/del/one/enroll/all";						                 			
+														
+			List <NameValuePair> params = new ArrayList <NameValuePair>();
+			params.add(new BasicNameValuePair("cookie", cookie));
+			params.add(new BasicNameValuePair("act_id", act_id));
+														
+			HttpPost httpPost = new HttpPost(url);
+														
+			HttpClient httpClient = new DefaultHttpClient();
+			try {
+
+				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				HttpEntity httpEntity = httpResponse.getEntity();
+
+				String jsonString = EntityUtils.toString(httpEntity);
+				JSONObject result = new JSONObject(jsonString);
+				String code = result.getString("code");	
+																			
+				if (code.equals("200"))      //删除成功
+					return 200;
+				if (code.equals("404"))      //未登陆
+					return 404;
+				if (code.equals("432"))      //不是活动的创建者
+					return 432;
+										
+			} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+					// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (JSONException e) {
+					// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+														
+			return 0;
+		}
 		
 		
 	// check the Internet connection

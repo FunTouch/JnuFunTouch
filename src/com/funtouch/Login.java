@@ -116,13 +116,13 @@ public class Login extends Activity {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 	
-	public void onBackPressed() { 
+	/*public void onBackPressed() { 
         super.onBackPressed(); 
         Intent intent = new Intent();
 		intent.setClass(Login.this, MainActivity.class);
 		startActivity(intent);
 		this.finish();       
-    } 
+    } */
 
 }
 

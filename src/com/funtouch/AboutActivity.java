@@ -175,12 +175,10 @@ public class AboutActivity extends Activity {
 	}
 	
 	
-	public void onBackPressed() { 
-	        super.onBackPressed(); 
-	        Intent intent = new Intent();
-			intent.setClass(AboutActivity.this, MainActivity.class);
-			startActivity(intent);
-			this.finish();       
-	   } 
+	protected void onNewIntent(Intent intent) {
+
+		super.onNewIntent(intent);
+		AboutActivity.this.recreate();
+	}
 
 }

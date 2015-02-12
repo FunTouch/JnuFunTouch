@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -75,6 +77,7 @@ public class SignUpEdit extends Activity{
         		startActivity(intent);
 			}
 		});
+		
 		if(listEnroll.get(0).getCode().equals("200")||listEnroll.get(0).getCode().equals("null"))
 		{
 			btnUse.setOnClickListener(new OnClickListener() {
@@ -88,17 +91,53 @@ public class SignUpEdit extends Activity{
         		startActivity(intent);
 				}
 			});
+			
+			btnDelete.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					showDialog();
+				}
+			});
+			
+			btnOk.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v){
+					showToast("该活动已创建了报名!");
+				}
+			});
+				
 		}
+		
 		else{
-		btnOk.setOnClickListener(new OnClickListener(){
-        	public void onClick(View v){
-        		StringBuffer info = new StringBuffer();
-        		if(edtLimit.getText().toString().trim().equals(""))
-        			showToast("请填写报名人数限制!");
-        		else{
-        			limit = edtLimit.getText().toString();
-        			int chosen = 0;
-        			if(chkName.isChecked())
+			btnDelete.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					showToast("该活动尚未创建报名!");
+				}
+			});
+			
+			btnUse.setOnClickListener(new OnClickListener() {
+				
+				@Override
+					public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					showToast("请先创建报名");
+					}
+				});
+
+			btnOk.setOnClickListener(new OnClickListener(){
+				public void onClick(View v){
+					StringBuffer info = new StringBuffer();
+					if(edtLimit.getText().toString().trim().equals(""))
+						showToast("请填写报名人数限制!");
+					else{
+						limit = edtLimit.getText().toString();
+						int chosen = 0;
+						if(chkName.isChecked())
         			{
         				info.append("name,");
         				chosen++;
@@ -159,6 +198,7 @@ public class SignUpEdit extends Activity{
 		btnUse = (Button)findViewById(R.id.btn_sign_rev_beam);
 		btnDelete = (Button)findViewById(R.id.btn_sign_del);
 		btnSee = (Button)findViewById(R.id.btn_sign_see);
+		btnDelete = (Button)findViewById(R.id.btn_sign_del);
 		chkName = (CheckBox)findViewById(R.id.chk_name);
 		chkSno = (CheckBox)findViewById(R.id.chk_sno);
 		chkPhone = (CheckBox)findViewById(R.id.chk_phone);
@@ -171,7 +211,29 @@ public class SignUpEdit extends Activity{
 	}
 	
 	//提示类
-		private void showToast(CharSequence msg) {
-			Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-		}
+	private void showToast(CharSequence msg) {
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+	}
+	
+	public void showDialog(){
+		new AlertDialog.Builder(SignUpEdit.this)
+		.setTitle("删除报名")
+		.setMessage("确定要删除该活动的报名吗?\n所有报名信息都会被清空!")
+		.setPositiveButton("确认", new android.content.DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				int flag = dataRetriever.deleteEnroll(cookie, act_id);
+				if(flag == 200)
+				{
+					showToast("该活动所有报名信息删除成功");
+	        		finish();
+				}
+					
+        		
+			}	
+		})
+		.setNegativeButton("取消", null)
+		.show();
+	}
 }

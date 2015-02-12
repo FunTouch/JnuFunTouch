@@ -7,7 +7,14 @@
     <ListView
         android:id="@+id/lsv_act_details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="400dp" >
     </ListView>
+
+    <Button
+        android:id="@+id/btn_del_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="删除活动" />
 
 </LinearLayout>

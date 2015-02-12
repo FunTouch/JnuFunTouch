@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, FunTouchProfile.class);
 				startActivity(intent);
-				finish();
+				//finish();
 			}
 		});
 		
@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, AboutActivity.class);
 				startActivity(intent);
-				finish();
+				//finish();
 			}
 		});
 		
@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, Login.class);
 				startActivity(intent);
-				finish();
+				//finish();
 			}
 		});
 		
@@ -171,6 +171,12 @@ public class MainActivity extends Activity {
 				
 			})
 			.show();
+		}
+		
+		protected void onNewIntent(Intent intent) {
+
+			super.onNewIntent(intent);
+			MainActivity.this.recreate();
 		}
 	
 	

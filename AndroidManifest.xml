@@ -3,7 +3,7 @@
     package="com.funtouch"
     android:versionCode="1"
     android:versionName="1.0" 
-    android:launchMode="singleTop">
+    android:launchMode="singleTask">
     
 
     <uses-sdk
@@ -27,7 +27,8 @@
         
         <activity
             android:name=".MainActivity"
-            android:label="甲烷首页" >
+            android:label="甲烷首页" 
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +37,8 @@
         </activity>
         
          <activity android:name=".AboutActivity"
-            android:label="关于活动"></activity>
+            android:label="关于活动"
+            android:launchMode="singleTask"></activity>
          <activity android:name=".ActDetails"
             android:label="活动详情"></activity>
           <activity android:name=".SeeActivity"
@@ -46,7 +48,8 @@
           <activity android:name=".validatePassActivity"
             android:label="验证通过"></activity>
         <activity android:name=".Login"
-            android:label="登陆"></activity>	
+            android:label="登陆"
+            android:launchMode="singleTask"></activity>	
         <activity android:name=".ChangePass"
             android:label="修改密码"></activity>	
          <activity android:name=".UpdateInfo"
@@ -54,7 +57,8 @@
         <activity android:name=".ActMenu"
             android:label="活动菜单"></activity>
         <activity android:name=".UserCenter"
-            android:label="用户中心"></activity>
+            android:label="用户中心"
+            android:launchMode="singleTask"></activity>
         <activity android:name=".SeeVote"
             android:label="查看投票"></activity>
         <activity android:name=".CreateActivity"
