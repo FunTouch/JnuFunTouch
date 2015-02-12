@@ -83,8 +83,8 @@ public class EnrollList extends Activity {
 							tmp.put("qq", enroll.getQQ());
 							EnrollDetail.add(tmp);
 
-							EnrollListDetailsInfo info1 = new EnrollListDetailsInfo(EnrollDetail);		//����Serializable����ͨ��intent����ActDetail
-							List<EnrollListDetailsInfo> objectList = new ArrayList<EnrollListDetailsInfo>();
+							DetailsInfo info1 = new DetailsInfo(EnrollDetail);		//����Serializable����ͨ��intent����ActDetail
+							List<DetailsInfo> objectList = new ArrayList<DetailsInfo>();
 							objectList.add(info1);		
 							Intent intent = new Intent();
 							intent.setClass(EnrollList.this, EnrollListDetails.class);

@@ -1,5 +1,6 @@
 package com.funtouch;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -49,6 +51,7 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
 	private String vote_id = null;
     private String act_id = null;
     private String limit ;
+    private Button btnOLVote = null;
     private int[] flag = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	private ListView lv_vote_team = null;
     private MyAdapter mSimpleAdapter;
@@ -61,10 +64,11 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.rev_beam);
+        setContentView(R.layout.rev_vote_beam);
         
         //lv_vote_team = (ListView)findViewById(R.id.lv_vote_team1);
         teams = new ArrayList<Map<String, Object>>();
+        btnOLVote = (Button)findViewById(R.id.btn_ol_vote);
         
      // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -80,6 +84,16 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
 			finish();
         }
         
+        btnOLVote.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(RevVoteBeam.this, VoteOL.class);
+				startActivity(intent);
+			}
+        });
        
 	}
 	

@@ -20,7 +20,7 @@ public class EnrollListDetails extends Activity{
 		  
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enroll_details);
-		List<EnrollListDetailsInfo> objectList = (List<EnrollListDetailsInfo>) getIntent().getSerializableExtra("ListObject");
+		List<DetailsInfo> objectList = (List<DetailsInfo>) getIntent().getSerializableExtra("ListObject");
 		EnrollDetail = objectList.get(0).getEnrollDetails();
 		ListView lsvActDetails = (ListView)findViewById(R.id.lsv_enroll_details);
 		adapter = new SimpleAdapter(this, EnrollDetail, R.layout.lsv_enroll_details_raw,
@@ -32,8 +32,8 @@ public class EnrollListDetails extends Activity{
 			public void onItemClick(AdapterView<?> parent, View view,  
 				     int position, long id) {
 				ListView listView = (ListView)parent;
-				EnrollListDetailsInfo info = new EnrollListDetailsInfo(EnrollDetail);
-				List<EnrollListDetailsInfo> objectList = new ArrayList<EnrollListDetailsInfo>();
+				DetailsInfo info = new DetailsInfo(EnrollDetail);
+				List<DetailsInfo> objectList = new ArrayList<DetailsInfo>();
 				objectList.add(info);		
 			}
 		});

@@ -29,7 +29,7 @@
         android:layout_below="@+id/btn_update_info"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="107dp"
-        android:text="接收投票" />
+        android:text="我要投票" />
 
     <Button
         android:id="@+id/btn_change_pass"

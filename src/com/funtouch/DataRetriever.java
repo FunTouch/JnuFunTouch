@@ -62,6 +62,7 @@ public class DataRetriever extends Activity{
 				speaker.setInfo(jsonObj.getString("act_info"));
 				speaker.setName(jsonObj.getString("name"));
 				speaker.setRest(jsonObj.getString("rest"));
+				speaker.setTime(jsonObj.getString("time"));
 				speaker.setCode(code);
 
 				actArrayList.add(speaker);
@@ -137,6 +138,61 @@ public class DataRetriever extends Activity{
 			return actArrayList;
 		}
 	
+	
+	//查看所有可投票活动简介(GET)
+	public List<Act> getVoteAct() {
+			String url = "http://pyfun.sinaapp.com/act/vote/get/all";
+			List<Act> actArrayList = new ArrayList<Act>();
+			HttpGet httpGet = new HttpGet(url);
+			HttpClient httpClient = new DefaultHttpClient();
+
+			try {
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				HttpEntity httpEntity = httpResponse.getEntity();
+				String jsonString = EntityUtils.toString(httpEntity);
+				JSONObject object = new JSONObject(jsonString);
+				String code = object.getString("code");
+				if (code.equals("200"))
+				{
+					Act speaker;
+					String res = object.getString("result");
+					JSONArray jsonArray = new JSONArray(res);
+					for (int i = 0; i < jsonArray.length(); i++) {
+
+					JSONObject jsonObj = jsonArray.getJSONObject(i);
+					speaker = new Act();
+
+					speaker.setAct_id(jsonObj.getString("act_id"));
+					speaker.setInfo(jsonObj.getString("info"));
+					speaker.setName(jsonObj.getString("name"));
+					speaker.setPlace(jsonObj.getString("place"));
+					speaker.setTime(jsonObj.getString("time"));
+					speaker.setOrg(jsonObj.getString("org"));
+					speaker.setType(jsonObj.getString("type"));
+					speaker.setUser_id(jsonObj.getString("user_id"));
+					speaker.setActor(jsonObj.getString("actor"));
+					speaker.setVoteLimit(jsonObj.getString("vote_limit"));
+					speaker.setCode(code);
+
+					actArrayList.add(speaker);
+
+					}
+				}
+
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return actArrayList;
+		}
+		
 	//注册
 	public int regist(String name, String password, String mailbox, String userclass,String phone){
 		

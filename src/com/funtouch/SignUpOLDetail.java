@@ -26,6 +26,7 @@ public class SignUpOLDetail extends Activity{
 	private List<Act> listAct;
 	private DataRetriever dataRetriever = new DataRetriever();
 	String cookie = application.getInstance().getCookie();
+	String user_name = application.getInstance().getName();
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		  
@@ -54,13 +55,13 @@ public class SignUpOLDetail extends Activity{
 				int flag = dataRetriever.signUp(cookie, act_id);
 				if(flag == 200)
 				{
-					showToast("报名成功");
+					showToast("用户"+"\""+user_name+"\""+"已成功报名"+"\""+listData.get(0).get("name")+"\"活动");
 					SignUpOLDetail.this.recreate();
 				}
 				else if (flag == 450)
-		    		showToast("已经报名");
+		    		showToast("用户"+"\""+user_name+"\""+"已经报名过"+"\""+listData.get(0).get("name")+"\"活动");
 		    	else if (flag == 452)
-		    		showToast("名额已满");
+		    		showToast("\""+listData.get(0).get("name")+"\" 活动"+"名额已满");
 			}
 		});
 		

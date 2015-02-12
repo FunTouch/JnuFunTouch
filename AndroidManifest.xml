@@ -68,6 +68,10 @@
             android:label="发起投票"></activity>
         <activity android:name=".VoteEdit"
             android:label="投票"></activity>
+        <activity android:name=".VoteOL"
+            android:label="在线投票"></activity>
+        <activity android:name=".VoteOLDetail"
+            android:label="选择投票队伍"></activity>
         <activity android:name="com.funtouch.VoteBeam"
             android:label="投票界面">
         </activity>

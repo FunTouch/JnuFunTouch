@@ -18,9 +18,13 @@ public class Act implements Serializable{
     private String num;
     private String enroll_limit;
     private String rest;
+    private String vote_limit;
     
     public String getAct_id() {
     	return this.act_id;
+    }
+    public String getVoteLimit() {
+    	return this.vote_limit;
     }
     public String getRest() {
     	return this.rest;
@@ -113,6 +117,9 @@ public class Act implements Serializable{
     }
     public void setEnrollLimit(String s) {
     	this.enroll_limit = s;
+    }
+    public void setVoteLimit(String s) {
+    	this.vote_limit = s;
     }
     public void setRest(String s) {
     	this.rest = s;
