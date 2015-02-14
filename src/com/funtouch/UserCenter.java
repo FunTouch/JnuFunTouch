@@ -62,7 +62,7 @@ public class UserCenter extends Activity{
 		btnRevBeam.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent = new Intent();
-        		intent.setClass(UserCenter.this, RevVoteBeam.class);
+        		intent.setClass(UserCenter.this, MyVote.class);
         		startActivity(intent);
         	}
         });
@@ -70,7 +70,7 @@ public class UserCenter extends Activity{
 		btnSignUpBeam.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent = new Intent();
-        		intent.setClass(UserCenter.this, SignUpBeam.class);
+        		intent.setClass(UserCenter.this, MySignUp.class);
         		startActivity(intent);
         	}
         });

@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -81,6 +82,8 @@ public class EnrollList extends Activity {
 							tmp.put("phone", enroll.getPhone());
 							tmp.put("mailbox", enroll.getMailbox());
 							tmp.put("qq", enroll.getQQ());
+							tmp.put("user_id", enroll.getUser_id());
+							
 							EnrollDetail.add(tmp);
 
 							DetailsInfo info1 = new DetailsInfo(EnrollDetail);		//����Serializable����ͨ��intent����ActDetail
@@ -89,6 +92,7 @@ public class EnrollList extends Activity {
 							Intent intent = new Intent();
 							intent.setClass(EnrollList.this, EnrollListDetails.class);
 							intent.putExtra("ListObject", (Serializable) objectList);
+							intent.putExtra("act_id", act_id);
 							startActivity(intent);
 							break;
 				    	}			    	
@@ -130,6 +134,12 @@ public class EnrollList extends Activity {
 	//提示类
 		private void showToast(CharSequence msg) {
 			Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+		}
+		
+		protected void onNewIntent(Intent intent) {
+
+			super.onNewIntent(intent);
+			EnrollList.this.recreate();
 		}
 
 }

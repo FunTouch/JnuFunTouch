@@ -24,6 +24,8 @@ public class SignUpOLDetail extends Activity{
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	private String act_id = null;
 	private List<Act> listAct;
+	private String flag = null;
+	private String user_id =null;
 	private DataRetriever dataRetriever = new DataRetriever();
 	String cookie = application.getInstance().getCookie();
 	String user_name = application.getInstance().getName();
@@ -35,6 +37,7 @@ public class SignUpOLDetail extends Activity{
 		
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
+		flag = intent1.getStringExtra("flag");
 		listAct = dataRetriever.getEnrollActDetail(act_id);
 		
 		ListView lsvDetail = (ListView)findViewById(R.id.lsv_enroll_act_detail);	
@@ -47,6 +50,8 @@ public class SignUpOLDetail extends Activity{
 				R.id.enroll_act_detail_type,R.id.enroll_act_detail_org,R.id.enroll_act_detail_actor,R.id.enroll_act_detail_limit,R.id.enroll_act_detail_num,R.id.enroll_act_detail_need_info,});
 		lsvDetail.setAdapter(adapter);
 		
+		if(flag.equals("0"))
+		{
 		btnSignUp.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -64,6 +69,27 @@ public class SignUpOLDetail extends Activity{
 		    		showToast("\""+listData.get(0).get("name")+"\" 活动"+"名额已满");
 			}
 		});
+		}
+		else if(flag.equals("1"))
+		{
+			btnSignUp.setText("撤销报名");
+			btnSignUp.setOnClickListener(new OnClickListener() {			
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					int flag = dataRetriever.deleteOneSignUp(cookie, act_id, user_id);
+					if(flag == 200)
+					{
+						showToast("用户"+"\""+user_name+"\""+"已成功报名"+"\""+listData.get(0).get("name")+"\"活动");
+						SignUpOLDetail.this.recreate();
+					}
+					else if (flag == 450)
+			    		showToast("用户"+"\""+user_name+"\""+"已经报名过"+"\""+listData.get(0).get("name")+"\"活动");
+			    	else if (flag == 452)
+			    		showToast("\""+listData.get(0).get("name")+"\" 活动"+"名额已满");
+				}
+			});
+		}
 		
 	}
 	

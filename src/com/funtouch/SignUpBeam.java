@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 public class SignUpBeam extends Activity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
-	private Button btnSignUp = null;
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
 	private static final int MESSAGE_SENT = 1;
@@ -35,7 +34,6 @@ OnNdefPushCompleteCallback{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_beam);
         
-        btnSignUp = (Button)findViewById(R.id.btn_ol_sign_up);
         
      // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -51,16 +49,6 @@ OnNdefPushCompleteCallback{
             mNfcAdapter.setOnNdefPushCompleteCallback(this, this);
         }
         
-        btnSignUp.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(SignUpBeam.this, SignUpOL.class);
-				startActivity(intent);
-			}
-		});
     }
         
         @Override

@@ -30,7 +30,7 @@ public class ActMenu extends Activity{
 		
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.user_menu);
+		setContentView(R.layout.act_menu);
 		 
 		init();
 		

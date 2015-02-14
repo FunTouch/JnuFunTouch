@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <ListView
-        android:id="@+id/lsv_enroll_details"
+        android:id="@+id/lsv_my_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button1"
@@ -14,11 +14,21 @@
     </ListView>
 
     <Button
-        android:id="@+id/btn_delete_enroll"
+        android:id="@+id/btn_beam_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="删除此报名信息" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38dp"
+        android:text="接触报名" />
+
+    <Button
+        android:id="@+id/btn_ol_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="41dp"
+        android:text="在线报名" />
 
 </RelativeLayout>

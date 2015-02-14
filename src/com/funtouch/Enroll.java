@@ -12,9 +12,13 @@ public class Enroll implements Serializable{
     private String sno;
     private String mailbox;
     private String qq;
+    private String user_id;
 
     public String getName() {
     	return this.name;
+    }
+    public String getUser_id() {
+    	return this.user_id;
     }
     public String getNum() {
     	return this.num;
@@ -58,6 +62,9 @@ public class Enroll implements Serializable{
     }
     public void setLimit(String s) {
     	this.limit = s;
+    }
+    public void setUser_id(String s) {
+    	this.user_id = s;
     }
     public void setGrade(String s) {
     	this.grade = s;

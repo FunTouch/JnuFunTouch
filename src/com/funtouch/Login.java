@@ -60,8 +60,7 @@ public class Login extends Activity {
 		userName = (EditText) findViewById(R.id.edit_UserName);
 		password = (EditText) findViewById(R.id.edit_UserPassword);
 		btnLogin = (Button) findViewById(R.id.btn_login);
-		//application = (Data) this.getApplicationContext(); 
-		//userLogin = getSPUser();
+
 		
 		//用户已登录
 		if(cookie!=null)			

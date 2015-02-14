@@ -29,7 +29,7 @@
         android:layout_below="@+id/btn_update_info"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="107dp"
-        android:text="我要投票" />
+        android:text="我的投票" />
 
     <Button
         android:id="@+id/btn_change_pass"
@@ -47,6 +47,6 @@
         android:layout_alignLeft="@+id/btn_rev_beam"
         android:layout_below="@+id/btn_rev_beam"
         android:layout_marginTop="27dp"
-        android:text="我要报名" />
+        android:text="我的报名" />
 
 </RelativeLayout>

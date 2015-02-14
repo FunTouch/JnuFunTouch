@@ -31,13 +31,4 @@
         android:text="请接触手机以获取投票信息"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/btn_ol_vote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="97dp"
-        android:text="在线投票" />
-
 </RelativeLayout>

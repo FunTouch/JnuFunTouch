@@ -51,7 +51,6 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
 	private String vote_id = null;
     private String act_id = null;
     private String limit ;
-    private Button btnOLVote = null;
     private int[] flag = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	private ListView lv_vote_team = null;
     private MyAdapter mSimpleAdapter;
@@ -68,7 +67,7 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
         
         //lv_vote_team = (ListView)findViewById(R.id.lv_vote_team1);
         teams = new ArrayList<Map<String, Object>>();
-        btnOLVote = (Button)findViewById(R.id.btn_ol_vote);
+        //btnOLVote = (Button)findViewById(R.id.btn_ol_vote);
         
      // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -84,16 +83,6 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
 			finish();
         }
         
-        btnOLVote.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(RevVoteBeam.this, VoteOL.class);
-				startActivity(intent);
-			}
-        });
        
 	}
 	

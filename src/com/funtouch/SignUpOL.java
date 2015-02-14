@@ -72,6 +72,7 @@ public class SignUpOL extends Activity{
 							intent.setClass(SignUpOL.this, SignUpOLDetail.class);
 							act_id = act.getAct_id();
 							intent.putExtra("act_id", act_id);
+							intent.putExtra("flag", "0");
 							startActivity(intent);
 							break;
 				    	}

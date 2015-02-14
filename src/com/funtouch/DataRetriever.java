@@ -265,11 +265,10 @@ public class DataRetriever extends Activity{
 				String res = result.getString("cookie");
 				application.getInstance().setCookie(res);     //保存cookie到application
 				application.getInstance().setName(name);
+				//application.getInstance().setUser_id(name);
 				return 200;
 			}		
-			//JSONObject jsonObj = jsonArray.getJSONObject(1);
-			//String res = jsonArray.getString(0);
-			//Log.i("b", application.getInstance().getCookie());				
+				
 			if (code.equals("410"))      //无效用户名
 				return 410;
 			if (code.equals("411"))      //密码错误
@@ -949,6 +948,7 @@ public class DataRetriever extends Activity{
 						enrolllist.setNum(num);
 						enrolllist.setPhone(jsonObj.getString("phone"));
 						enrolllist.setQQ(jsonObj.getString("qq"));
+						enrolllist.setUser_id(jsonObj.getString("user_id"));
 						enrolllist.setSno(jsonObj.getString("sno"));
 						//Log.i("id",jsonObj.getString("vote_id"));
 
@@ -1109,7 +1109,127 @@ public class DataRetriever extends Activity{
 														
 			return 0;
 		}
+	
+	//删除一个报名的一项
+	public int deleteOneSignUp(String cookie, String act_id,String user_id){
+													
+		String url = "http://pyfun.sinaapp.com/act/del/enroll/one";						                 			
+															
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		params.add(new BasicNameValuePair("act_id", act_id));
+		params.add(new BasicNameValuePair("user_id", user_id));
+															
+		HttpPost httpPost = new HttpPost(url);
+															
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject result = new JSONObject(jsonString);
+			String code = result.getString("code");	
+																				
+			if (code.equals("200"))      //删除成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+			if (code.equals("432"))      //不是活动的创建者
+				return 432;
+			if (code.equals("455"))      //user_id错误
+				return 455;
+											
+		} catch (ClientProtocolException e) {				// TODO Auto-generated catch block
+			e.printStackTrace();
+				} catch (IOException e) {				// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {				// TODO Auto-generated catch block
+		e.printStackTrace();
+		}													
+		return 0;
+	}
+	
+	//查看自己报名的活动
+	public List<Act> seeMySignUp(String cookie){
 		
+		String url = "http://pyfun.sinaapp.com/act/get/enroll/my";						                 			
+									
+		List <NameValuePair> params = new ArrayList <NameValuePair>();
+		params.add(new BasicNameValuePair("cookie", cookie));
+		List<Act> actlistArrayList = new ArrayList<Act>();
+									
+		HttpPost httpPost = new HttpPost(url);
+									
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+
+			String jsonString = EntityUtils.toString(httpEntity);
+			JSONObject object = new JSONObject(jsonString);
+			String code = object.getString("code");		
+			
+									
+			if (code.equals("200"))      //成功
+			{
+				String res = object.getString("result");
+				//JSONObject result = new JSONObject(res);
+				if(res.equals("[]"))
+				{
+					Act actlist;
+					actlist = new Act();
+					actlist.setCode("null");
+					actlistArrayList.add(actlist);
+				}
+				else{
+						
+				JSONArray jsonArray = new JSONArray(res);
+				Act actlist;
+				
+				for (int i = 0; i < jsonArray.length(); i++) {
+
+					JSONObject jsonObj = jsonArray.getJSONObject(i);
+					actlist = new Act();
+
+					actlist.setCode(code);
+					
+					actlist.setName(jsonObj.getString("name"));
+					actlist.setAct_id(jsonObj.getString("act_id"));
+					actlist.setInfo(jsonObj.getString("act_info"));
+					actlist.setRest(jsonObj.getString("rest"));
+					actlist.setTime(jsonObj.getString("time"));
+
+					actlistArrayList.add(actlist);
+				}
+
+				}
+			}
+			else if(code.equals("404"))  //没有创建报名
+			{
+				Act actlist;
+				actlist = new Act();
+				actlist.setCode(code);
+				actlistArrayList.add(actlist);
+			}
+								
+		} catch (ClientProtocolException e) {
+							// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+								// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (JSONException e) {
+									// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+									
+		return actlistArrayList;
+	}
 		
 	// check the Internet connection
 	public boolean isNetworkConnected(Context context) {

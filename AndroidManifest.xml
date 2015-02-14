@@ -53,7 +53,11 @@
         <activity android:name=".ChangePass"
             android:label="修改密码"></activity>	
          <activity android:name=".UpdateInfo"
-            android:label="个人信息修改"></activity>																																																																							
+            android:label="个人信息修改"></activity>	
+         <activity android:name=".MyVote"
+            android:label="我的投票"></activity>	
+            <activity android:name=".MySignUp"
+            android:label="我的报名"></activity>																																																																							
         <activity android:name=".ActMenu"
             android:label="活动菜单"></activity>
         <activity android:name=".UserCenter"
@@ -95,13 +99,14 @@
         <activity android:name=".SignUpEdit"
             android:label="发起报名"></activity>
         <activity android:name=".EnrollList"
-            android:label="报名列表"></activity>
+            android:label="报名列表"
+            android:launchMode="singleTask"></activity>
         <activity android:name=".EnrollListDetails"
             android:label="报名信息"></activity>
         <activity android:name=".SignUpUse"
             android:label="使用"></activity>
         <activity android:name=".SignUpBeam"
-            android:label="报名">
+            android:label="接触报名">
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
   			<category android:name="android.intent.category.DEFAULT"/>
