@@ -8,18 +8,18 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class UserCenter extends Activity{
 	
-	private Button btnLogoff = null;
-	private Button btnRevBeam = null;
-	private Button btnChangePass = null;
-	private Button btnUpdateInfo = null;
-	private Button btnSignUpBeam = null;
+	private ImageButton btnLogoff = null;
+	private ImageButton btnRevBeam = null;
+	private ImageButton btnChangePass = null;
+	private ImageButton btnUpdateInfo = null;
+	private ImageButton btnSignUpBeam = null;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	
@@ -31,11 +31,11 @@ public class UserCenter extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_center);
 		
-		btnLogoff = (Button) findViewById(R.id.btn_logoff);
-		btnRevBeam = (Button)findViewById(R.id.btn_rev_beam);
-		btnChangePass = (Button)findViewById(R.id.btn_change_pass);
-		btnUpdateInfo = (Button)findViewById(R.id.btn_update_info);	
-		btnSignUpBeam = (Button)findViewById(R.id.btn_sign_up_beam);
+		btnLogoff = (ImageButton) findViewById(R.id.btn_logoff);
+		btnRevBeam = (ImageButton)findViewById(R.id.btn_rev_beam);
+		btnChangePass = (ImageButton)findViewById(R.id.btn_change_pass);
+		btnUpdateInfo = (ImageButton)findViewById(R.id.btn_update_info);	
+		btnSignUpBeam = (ImageButton)findViewById(R.id.btn_sign_up_beam);
 		
 		btnLogoff.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){

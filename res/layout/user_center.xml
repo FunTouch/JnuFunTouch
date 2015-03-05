@@ -3,50 +3,57 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="1" >
+    android:columnCount="1" 
+    android:background="@drawable/background_usercenter"
+    >"
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_logoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:background="@drawable/logout"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="注销" />
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_update_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_logoff"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="个人信息修改" />
+        android:layout_above="@+id/btn_logoff"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/changeinfo"
+        android:layout_alignParentLeft="true"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_rev_beam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_update_info"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="107dp"
-        android:text="我的投票" />
+        android:layout_above="@+id/btn_logoff"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/rev_vote"
+         />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_change_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_rev_beam"
-        android:layout_below="@+id/btn_update_info"
-        android:layout_marginTop="30dp"
-        android:text="修改密码" />
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/btn_update_info"
+        android:background="@drawable/changepass"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_sign_up_beam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_rev_beam"
-        android:layout_below="@+id/btn_rev_beam"
-        android:layout_marginTop="27dp"
-        android:text="我的报名" />
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/btn_rev_beam"
+        android:background="@drawable/iwantsignup"
+        />
 
 </RelativeLayout>
