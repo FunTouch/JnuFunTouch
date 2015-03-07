@@ -2,7 +2,7 @@ package com.funtouch;
 
 import java.security.MessageDigest;
 
-//MD5º”√‹£¨32Œª 
+ 
 public class MD5 {
 	public static String Encode(String str) { 
 		MessageDigest md5 = null; 
