@@ -85,6 +85,10 @@ OnNdefPushCompleteCallback{
             switch (msg.what) {
             case MESSAGE_SENT:
                 Toast.makeText(getApplicationContext(), "报名信息发送成功!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent();
+				intent.setClass(SignUpBeam.this, MySignUp.class);
+				startActivity(intent);
+				finish();
                 break;
             }
         }

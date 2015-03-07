@@ -126,6 +126,12 @@ public class MySignUp  extends Activity{
 			Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 		}
 		
+		protected void onNewIntent(Intent intent) {
+
+			super.onNewIntent(intent);
+			MySignUp.this.recreate();
+		}
+		
 	
 
 }
