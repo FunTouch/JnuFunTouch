@@ -9,9 +9,14 @@ public class Team implements Serializable{
     private String vote_id;
     private String code;
     private String limit;
+    private String supporter;
+    private String rest_tickets;
     
     public String getTeam_name() {
     	return this.team_name;
+    }
+    public String getRest_tickets() {
+    	return this.rest_tickets;
     }
     public String getTeam_info() {
     	return this.team_info;
@@ -22,6 +27,9 @@ public class Team implements Serializable{
     public String getVote_id() {
     	return this.vote_id;
     }
+    public String getSupporter() {
+    	return this.supporter;
+    }
     public String getCode() {
     	return this.code;
     }
@@ -31,6 +39,12 @@ public class Team implements Serializable{
     
     public void setTeam_name(String name) {
     	this.team_name = name;
+    }
+    public void setSupporter(String s) {
+    	this.supporter = s;
+    }
+    public void setRest_tickets(String s) {
+    	this.rest_tickets = s;
     }
     public void setTeam_info(String info) {
     	this.team_info = info;

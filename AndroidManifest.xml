@@ -40,7 +40,10 @@
             android:label="关于活动"
             android:launchMode="singleTask"></activity>
          <activity android:name=".ActDetails"
-            android:label="活动详情"></activity>
+            android:label="活动详情"
+            android:launchMode="singleTask"></activity>
+          <activity android:name=".UpdateAct"
+            android:label="修改信息活动"></activity>
           <activity android:name=".SeeActivity"
             android:label="查看活动"></activity>
           <activity android:name=".GetAward"

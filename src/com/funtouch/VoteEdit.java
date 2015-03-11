@@ -83,7 +83,7 @@ public class VoteEdit extends Activity{
 		act_id = intent1.getStringExtra("act_id");
 		
 		
-		listTeam = dataRetriever.seeVote(cookie,act_id);
+		listTeam = dataRetriever.seeVoteAdmin(cookie,act_id);
 		rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {  
 
             @Override  
@@ -110,6 +110,7 @@ public class VoteEdit extends Activity{
 	        		Intent intent = new Intent();
 	        		intent.setClass(VoteEdit.this, SeeVote.class);
 	        		intent.putExtra("act_id", act_id);
+	        		intent.putExtra("authority", "admin");
 	        		startActivity(intent);
 	         	}
 	        });
@@ -182,7 +183,7 @@ public class VoteEdit extends Activity{
         				showToast("投票创建成功");
         				Intent intent = new Intent();
     	        		intent.setClass(VoteEdit.this, VoteBeam.class);
-    	        		listTeam = dataRetriever.seeVote(cookie,act_id);
+    	        		listTeam = dataRetriever.seeVoteAdmin(cookie,act_id);
     	        		TeamListInfo info = new TeamListInfo(listTeam);	
     	        		List<TeamListInfo> objectList = new ArrayList<TeamListInfo>();
     	        		objectList.add(info);  	        		

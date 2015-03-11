@@ -17,7 +17,7 @@
             android:id="@+id/edit_UserName1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="请填写真实姓名"
+            android:hint="请填写用户名"
             android:selectAllOnFocus="true" />
     </TableRow>
 
@@ -67,7 +67,9 @@
             android:id="@+id/edit_Mailbox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:hint="请填写你的邮箱(可选)"
             android:selectAllOnFocus="true" />
+
     </TableRow>
 
     <TableRow>
@@ -83,7 +85,7 @@
             android:id="@+id/edit_Class"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="格式为:院系-年级-班级" />
+            android:hint="院系-年级-班级(可选)" />
     </TableRow>
 
     <TableRow>
@@ -99,7 +101,7 @@
             android:id="@+id/edit_Phone"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="请填写11位电话号码"
+            android:hint="请填写你的号码(可选)"
             android:inputType="phone"
             android:maxLength="11"
             android:selectAllOnFocus="true" />

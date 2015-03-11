@@ -17,6 +17,7 @@ public class Cookie extends Application{
 	private String cookie;
 	private String name;
 	private String user_id;
+	private String token;
 	
 	public List<UserInfo> info = new ArrayList<UserInfo>(); 
 	public void onCreate() { 
@@ -30,6 +31,9 @@ public class Cookie extends Application{
 	
 	public void setCookie(String s){
 		this.cookie=s;
+	}
+	public void setToken(String s){
+		this.token=s;
 	}
 	public void setUser_id(String s){
 		this.user_id=s;

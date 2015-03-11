@@ -64,8 +64,7 @@ public class RegistInfo extends Activity{
 		btnNext.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
 	        		if(userName.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")
-	        				||passwordAgain.getText().toString().trim().equals("")||userMailbox.getText().toString().trim().equals("")
-	        				||userClass.getText().toString().trim().equals("")||userPhone.getText().toString().trim().equals("")){
+	        				||passwordAgain.getText().toString().trim().equals("")){
 						showToast("请输入完整的注册信息!");
 					}
 	        		else if(!password.getText().toString().equals(passwordAgain.getText().toString())){
@@ -74,13 +73,13 @@ public class RegistInfo extends Activity{
 	        		else if(password.getText().length()<6){
 	        			showToast("密码长度不符合规则!");
 	        		}
-	        		else if(!userMailbox.getText().toString().contains("@")){
+	        		else if(!userMailbox.getText().toString().contains("@") && !userMailbox.getText().toString().isEmpty()){
 	        			showToast("邮箱格式不符合规则!");
 	        		}
-	        		else if(!userClass.getText().toString().contains("-")){
+	        		else if( !userClass.getText().toString().contains("-")&& !userClass.getText().toString().isEmpty()){
 	        			showToast("班级格式不符合规则!");
 	        		}
-	        		else if(userPhone.getText().length()<11){
+	        		else if(userPhone.getText().length()<11 && !userPhone.getText().toString().isEmpty()){
 	        			showToast("电话号码格式不符合规则!");
 	        		}
 	        		else{
@@ -94,9 +93,9 @@ public class RegistInfo extends Activity{
 	        				startActivity(intent);
 	        				finish();
 	        			}
-	        			else if(flag == 401)
+	        			else if(flag == 400)
 	        			{
-	        				showToast("用户名已存在!");
+	        				showToast("该用户名已存在!");
 	        			}
 	        			else if(flag == 0)
 	        			{

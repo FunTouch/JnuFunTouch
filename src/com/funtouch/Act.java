@@ -17,7 +17,7 @@ public class Act implements Serializable{
     private String needinfo;
     private String num;
     private String enroll_limit;
-    private String rest;
+    private int rest;
     private String vote_limit;
     
     public String getAct_id() {
@@ -26,7 +26,7 @@ public class Act implements Serializable{
     public String getVoteLimit() {
     	return this.vote_limit;
     }
-    public String getRest() {
+    public int getRest() {
     	return this.rest;
     }
     public String getNeedInfo() {
@@ -121,7 +121,7 @@ public class Act implements Serializable{
     public void setVoteLimit(String s) {
     	this.vote_limit = s;
     }
-    public void setRest(String s) {
+    public void setRest(int s) {
     	this.rest = s;
     }
 

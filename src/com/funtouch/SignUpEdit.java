@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -63,7 +65,7 @@ public class SignUpEdit extends Activity{
 		signup = new HashMap<String, String>();
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
-		listEnroll = dataRetriever.seeEnroll(act_id);
+		listEnroll = dataRetriever.seeEnroll(cookie,act_id);
 	
 		
 		btnSee.setOnClickListener(new OnClickListener() {
@@ -131,60 +133,59 @@ public class SignUpEdit extends Activity{
 
 			btnOk.setOnClickListener(new OnClickListener(){
 				public void onClick(View v){
-					StringBuffer info = new StringBuffer();
+					JSONArray array = new JSONArray();
 					if(edtLimit.getText().toString().trim().equals(""))
 						showToast("请填写报名人数限制!");
 					else{
 						limit = edtLimit.getText().toString();
 						int chosen = 0;
 						if(chkName.isChecked())
-        			{
-        				info.append("name,");
-        				chosen++;
-        			}
+						{
+							array.put("name");
+							chosen++;
+						}
         			if(chkSno.isChecked())
         			{
-        				info.append("sno,");
+        				array.put("sno");
         				chosen++;
         			}
         			if(chkPhone.isChecked())
         			{
-        				info.append("phone,");
+        				array.put("phone");
         				chosen++;
         				}
         			if(chkMailbox.isChecked())
         			{
-        				info.append("mailbox,");
+        				array.put("email");
         				chosen++;
         			}
         			if(chkQQ.isChecked())
         			{
-        				info.append("qq,");
+        				array.put("qq");
         				chosen++;
         			}
         			if(chkClass.isChecked())
         			{
-        				info.append("grade,");
+        				array.put("grade");
         				chosen++;
         			}
         			
         			if(chosen == 0)
         				showToast("请至少勾选一个选项!");
         			else{
-        				info.deleteCharAt(info.length()-1);
-        			int flag = dataRetriever.createSignUp(cookie, act_id, limit, info.toString());
-        			if(flag == 200)
-        			{
+        				
+        				int flag = dataRetriever.createSignUp(cookie, act_id, limit, array);
+        				if(flag == 200)
+        				{
         				showToast("报名创建成功");
         				SignUpEdit.this.recreate();
-        			}
-        			else if(flag == 451)
-        				showToast("该活动已创建过报名!");
-        			else if(flag == 454)
-        				showToast("info存在无效值");
-        			}
-        			
-        		}
+        				}
+        				else if(flag == 451)
+        					showToast("该活动已创建过报名!");
+        				else if(flag == 454)
+        					showToast("info存在无效值");
+        				}
+              	}
          	}
         });
 		}

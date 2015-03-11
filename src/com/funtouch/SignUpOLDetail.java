@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,10 +63,19 @@ public class SignUpOLDetail extends Activity{
 				if(flag == 200)
 				{
 					showToast("用户"+"\""+user_name+"\""+"已成功报名"+"\""+listData.get(0).get("name")+"\"活动");
-					SignUpOLDetail.this.recreate();
+					Intent intent = new Intent();
+					intent.setClass(SignUpOLDetail.this, MySignUp.class);
+					startActivity(intent);
+					finish();
 				}
 				else if (flag == 450)
+				{
 		    		showToast("用户"+"\""+user_name+"\""+"已经报名过"+"\""+listData.get(0).get("name")+"\"活动");
+		    		Intent intent = new Intent();
+					intent.setClass(SignUpOLDetail.this, MySignUp.class);
+					startActivity(intent);
+					finish();
+				}
 		    	else if (flag == 452)
 		    		showToast("\""+listData.get(0).get("name")+"\" 活动"+"名额已满");
 			}
@@ -77,20 +88,36 @@ public class SignUpOLDetail extends Activity{
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					int flag = dataRetriever.deleteOneSignUp(cookie, act_id, user_id);
-					if(flag == 200)
-					{
-						showToast("用户"+"\""+user_name+"\""+"已成功报名"+"\""+listData.get(0).get("name")+"\"活动");
-						SignUpOLDetail.this.recreate();
-					}
-					else if (flag == 450)
-			    		showToast("用户"+"\""+user_name+"\""+"已经报名过"+"\""+listData.get(0).get("name")+"\"活动");
-			    	else if (flag == 452)
-			    		showToast("\""+listData.get(0).get("name")+"\" 活动"+"名额已满");
+					showDelDialog();
 				}
 			});
 		}
 		
+	}
+	
+	public void showDelDialog(){
+		new AlertDialog.Builder(SignUpOLDetail.this)
+		.setTitle("取消报名")
+		.setMessage("确定要取消此活动的报名?\n")
+		.setPositiveButton("确认", new android.content.DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				int flag = dataRetriever.cancelSignUp(cookie, act_id);
+				if(flag == 200)
+				{
+					showToast("用户"+"\""+user_name+"\""+"已成功取消报名"+"\""+listData.get(0).get("name")+"\"活动");
+					Intent intent = new Intent();
+					intent.setClass(SignUpOLDetail.this, MySignUp.class);
+					startActivity(intent);
+					finish();
+				}
+				else if (flag == 450)
+		    		showToast("用户"+"\""+user_name+"\""+"已经报名过"+"\""+listData.get(0).get("name")+"\"活动");
+			}	
+		})
+		.setNegativeButton("取消", null)
+		.show();
 	}
 	
 	//获取报名列表数据

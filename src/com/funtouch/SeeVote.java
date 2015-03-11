@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ public class SeeVote extends Activity{
 	private List<Team> listTeamList;
 	private DataRetriever dataRetriever = new DataRetriever();
 	private Map<String, Object> tmp = new HashMap<String, Object>();
-	private String act_id;
+	private String act_id, authority;
 	String cookie = application.getInstance().getCookie();
 	
 	
@@ -32,6 +33,7 @@ public class SeeVote extends Activity{
 		
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
+		authority = intent1.getStringExtra("authority");
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
         .detectDiskReads()
@@ -50,7 +52,11 @@ public class SeeVote extends Activity{
      	
      	ListView lsvVoteInfo = (ListView)findViewById(R.id.lsv_vote_info);
      	
-     	listTeamList = dataRetriever.seeVote(cookie,act_id);
+     	if(authority.equals("admin"))
+     		listTeamList = dataRetriever.seeVoteAdmin(cookie,act_id);
+     	else if(authority.equals("user"))
+     		listTeamList = dataRetriever.seeVoteUser(cookie,act_id);
+     	
      	if(listTeamList.get(0).getCode().equals("200"))
 		{
 			showToast("获取投票信息成功");

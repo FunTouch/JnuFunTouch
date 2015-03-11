@@ -31,6 +31,7 @@ import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.Toast;
 import com.funtouch.Cookie;
+import com.funtouch.util.Restful;
 
 public class DataRetriever extends Activity{
 	public Cookie application ;            
@@ -39,19 +40,16 @@ public class DataRetriever extends Activity{
 	public List<Act> getEnrollAct() {
 		String url = "http://pyfun.sinaapp.com/act/enroll/get/simple/all";
 		List<Act> actArrayList = new ArrayList<Act>();
-		HttpGet httpGet = new HttpGet(url);
-		HttpClient httpClient = new DefaultHttpClient();
+		Restful restful = new Restful();
 
 		try {
-			HttpResponse httpResponse = httpClient.execute(httpGet);
-			HttpEntity httpEntity = httpResponse.getEntity();
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject object = new JSONObject(jsonString);
-			String code = object.getString("code");
+			JSONObject result = restful.get("activity/registration/?"+"act_id=0", "");
+			
+			String code = result.getString("code");
 			if (code.equals("200"))
 			{
 				Act speaker;
-				String res = object.getString("result");
+				String res = result.getString("registarions");
 				JSONArray jsonArray = new JSONArray(res);
 				for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -59,9 +57,9 @@ public class DataRetriever extends Activity{
 				speaker = new Act();
 
 				speaker.setAct_id(jsonObj.getString("act_id"));
-				speaker.setInfo(jsonObj.getString("act_info"));
+				speaker.setInfo(jsonObj.getString("info"));
 				speaker.setName(jsonObj.getString("name"));
-				speaker.setRest(jsonObj.getString("rest"));
+				speaker.setRest(jsonObj.getInt("limit")-jsonObj.getInt("num"));
 				speaker.setTime(jsonObj.getString("time"));
 				speaker.setCode(code);
 
@@ -69,95 +67,75 @@ public class DataRetriever extends Activity{
 
 				}
 			}
+			else if(code.equals("404"))
+			{
+				Act speaker;
+				speaker = new Act();
+				speaker.setCode(code);
+				actArrayList.add(speaker);
+			}
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		} 
 		return actArrayList;
 	}
 	
 	//查看一个可报名活动详情(GET)
 	public List<Act> getEnrollActDetail(String act_id) {
-			String url = "http://pyfun.sinaapp.com/act/enroll/get/one/act/"+act_id;
-			List<Act> actArrayList = new ArrayList<Act>();
-			HttpGet httpGet = new HttpGet(url);
-			HttpClient httpClient = new DefaultHttpClient();
-
-			try {
-				HttpResponse httpResponse = httpClient.execute(httpGet);
-				HttpEntity httpEntity = httpResponse.getEntity();
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject object = new JSONObject(jsonString);
-				String code = object.getString("code");
-				if (code.equals("200"))
+		String url = "http://pyfun.sinaapp.com/act/enroll/get/one/act/"+act_id;
+		List<Act> actArrayList = new ArrayList<Act>();
+		Restful restful = new Restful();
+		try {
+			JSONObject result = restful.get("activity/registration/?act_id="+act_id, "");
+			//Log.i("res",object.toString());
+			String code = result.getString("code");
+			if (code.equals("200"))
 				{
-					Act speaker;
-					String res = object.getString("result");
-					JSONObject result = new JSONObject(res);
-					
+					Act speaker;					
 					speaker = new Act();
 
 					speaker.setAct_id(result.getString("act_id"));
-					speaker.setInfo(result.getString("act_info"));
+					speaker.setInfo(result.getString("info"));
 					speaker.setName(result.getString("name"));
-					speaker.setEnrollLimit(result.getString("enroll_limit"));
-					speaker.setNeedInfo(result.getString("need_info"));
+					speaker.setEnrollLimit(result.getString("limit"));
+					speaker.setNeedInfo(result.getString("default_property_names"));
 					speaker.setActor(result.getString("actor"));
 					speaker.setNum(result.getString("num"));
 					speaker.setPlace(result.getString("place"));
 					speaker.setTime(result.getString("time"));
 					speaker.setOrg(result.getString("org"));
 					speaker.setType(result.getString("type"));
-					speaker.setUser_id(result.getString("user_id"));
+					//speaker.setUser_id(result.getString("user_id"));
 					speaker.setCode(code);
 
 					actArrayList.add(speaker);
 
-					
 				}
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-
-			return actArrayList;
-		}
+		return actArrayList;
+	}
 	
 	
 	//查看所有可投票活动简介(GET)
-	public List<Act> getVoteAct() {
-			String url = "http://pyfun.sinaapp.com/act/vote/get/all";
-			List<Act> actArrayList = new ArrayList<Act>();
-			HttpGet httpGet = new HttpGet(url);
-			HttpClient httpClient = new DefaultHttpClient();
-
-			try {
-				HttpResponse httpResponse = httpClient.execute(httpGet);
-				HttpEntity httpEntity = httpResponse.getEntity();
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject object = new JSONObject(jsonString);
-				String code = object.getString("code");
-				if (code.equals("200"))
-				{
-					Act speaker;
-					String res = object.getString("result");
-					JSONArray jsonArray = new JSONArray(res);
-					for (int i = 0; i < jsonArray.length(); i++) {
+	public List<Act> getVoteAct(String token) {
+		String url = "http://pyfun.sinaapp.com/act/vote/get/all";
+		List<Act> actArrayList = new ArrayList<Act>();
+		Restful restful = new Restful();
+		try {
+			JSONObject result = restful.get("activity/voting/",token+":");
+			String code = result.getString("code");
+			if (code.equals("200"))
+			{
+				Act speaker;
+				String res = result.getString("votes");
+				JSONArray jsonArray = new JSONArray(res);
+				for (int i = 0; i < jsonArray.length(); i++) {
 
 					JSONObject jsonObj = jsonArray.getJSONObject(i);
 					speaker = new Act();
@@ -169,9 +147,10 @@ public class DataRetriever extends Activity{
 					speaker.setTime(jsonObj.getString("time"));
 					speaker.setOrg(jsonObj.getString("org"));
 					speaker.setType(jsonObj.getString("type"));
-					speaker.setUser_id(jsonObj.getString("user_id"));
+					//speaker.setUser_id(jsonObj.getString("user_id"));
 					speaker.setActor(jsonObj.getString("actor"));
-					speaker.setVoteLimit(jsonObj.getString("vote_limit"));
+					speaker.setVoteLimit(jsonObj.getString("limit"));
+					speaker.setRest(jsonObj.getInt("rest_tickets"));
 					speaker.setCode(code);
 
 					actArrayList.add(speaker);
@@ -182,55 +161,42 @@ public class DataRetriever extends Activity{
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+			} 
 			return actArrayList;
 		}
 		
 	//注册
-	public int regist(String name, String password, String mailbox, String userclass,String phone){
+	public int regist(String name, String password, String mailbox, String grade,String phone){
 		
+		Restful restful = new Restful();
 		
-		String url = "http://pyfun.sinaapp.com/regist";
+		//HttpPost httpPost = new HttpPost(url);
 		
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("name", name));
-		params.add(new BasicNameValuePair("password", password));
-		params.add(new BasicNameValuePair("mailbox", mailbox));
-		params.add(new BasicNameValuePair("grade", userclass));
-		params.add(new BasicNameValuePair("tel", phone));
-		
-		HttpPost httpPost = new HttpPost(url);
-		
-		HttpClient httpClient = new DefaultHttpClient();
+		//HttpClient httpClient = new DefaultHttpClient();
 		try {
+			JSONObject json_data = new JSONObject();
+			json_data.put("username", name);
+			json_data.put("password", password);
+			json_data.put("mailbox", mailbox);
+			json_data.put("grade", grade);
+			json_data.put("tel", phone);
+			//httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			//HttpResponse httpResponse = httpClient.execute(httpPost);
+			//HttpEntity httpEntity = httpResponse.getEntity();
 
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
+			//String jsonString = EntityUtils.toString(httpEntity);
 
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject result = new JSONObject(jsonString);
+			JSONObject result = restful.post("register",  "", json_data.toString());
+
+			//JSONObject result = new JSONObject(jsonString);
 			String code = result.getString("code");
 				
 			
 			if (code.equals("200"))      //注册成功
 				return 200;
-			if (code.equals("401"))      //注册失败
-				return 401;
+			if (code.equals("400"))      //注册失败
+				return 400;
 			
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -242,44 +208,32 @@ public class DataRetriever extends Activity{
 	//登陆
 	public int login(String name, String password){
 		
-		String url = "http://pyfun.sinaapp.com/login";
+		Restful restful = new Restful();
 		
 		List <NameValuePair> params = new ArrayList <NameValuePair>();
 		params.add(new BasicNameValuePair("name", name));
 		params.add(new BasicNameValuePair("password", password));	
 			
-		HttpPost httpPost = new HttpPost(url);
-		
-		HttpClient httpClient = new DefaultHttpClient();
-		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
 
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject object = new JSONObject(jsonString);
-			String code = object.getString("code");
+		try {
+			
+			JSONObject result = restful.get("token",  name+":"+password);
+
+			String code = result.getString("code");
 			if (code.equals("200"))       //登陆成功
 			{
-				JSONObject result = new JSONObject(object.getString("result"));
-				String res = result.getString("cookie");
-				application.getInstance().setCookie(res);     //保存cookie到application
+				
+				String token = result.getString("token");
+				application.getInstance().setCookie(token);     //保存cookie到application
 				application.getInstance().setName(name);
 				//application.getInstance().setUser_id(name);
 				return 200;
 			}		
 				
-			if (code.equals("410"))      //无效用户名
-				return 410;
-			if (code.equals("411"))      //密码错误
-				return 411;
+			if (code.equals("412"))      //认证错误
+				return 412;
+
 			
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -289,81 +243,133 @@ public class DataRetriever extends Activity{
 	}
 	
 	//创建活动
-		public int createAct(String cookie,String name, String info, String time, String place,String type,String org,String actor){
+	public int createAct(String token,String name, String info, String time, String place,String type,String org,String actor){
 	
-			String url = "http://pyfun.sinaapp.com/act/create";
-			
-			//打包JSON数据
-			StringBuffer sb = new StringBuffer();  	
-			sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":");
-			sb.append("{"+"\"name\":"+"\""+name+"\""+","+"\"info\":"+"\""+info+"\""+","+"\"time\":"+"\""+time+"\""+","
-					+"\"place\":"+"\""+place+"\""+","+"\"type\":"+"\""+type+"\""+","+"\"org\":"+"\""+org+"\""+
-					","+"\"actor\":"+"\""+actor+"\""+"}");
-			sb.append("}");                 			
-			
-			//POST���Ϣ��URL
-			List <NameValuePair> params = new ArrayList <NameValuePair>();
-			params.add(new BasicNameValuePair("post", sb.toString()));
-			
-			HttpPost httpPost = new HttpPost(url);
-			
-			HttpClient httpClient = new DefaultHttpClient();
-			try {
-
-				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
-
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject result = new JSONObject(jsonString);
-				String code = result.getString("code");
+		String url = "http://pyfun.sinaapp.com/act/create";
+		Restful restful = new Restful();
+		
+		try {
+			JSONObject json_data = new JSONObject();
+			json_data.put("name", name);
+			json_data.put("info", info);
+			json_data.put("time", time);
+			json_data.put("place", place);
+			json_data.put("type", type);
+			json_data.put("org", org);
+			json_data.put("actor", actor);
+							
+			JSONObject result = restful.post("activity/", token+":", json_data.toString());
+			String code = result.getString("code");			
 				
+			if (code.equals("200"))      //创建成功
+				return 200;
+			if (code.equals("420"))      //创建失败
+				return 420;
+			if (code.equals("404"))      //未登录
+				return 404;
+
+		}catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		return 0;
+	}
+	
+	//查看一个活动基本信息
+	public Act seeAct(String token,String act_id){
+		
+		Restful restful = new Restful();
+		Act act = new Act();
+		
+		try {
+								
+			JSONObject result = restful.get("activity/"+act_id, token+":");
+			String code = result.getString("code");	
+			act.setAct_id(result.getString("act_id"));
+			act.setName(result.getString("name"));
+			act.setOrg(result.getString("org"));
+			act.setTime(result.getString("time"));
+			act.setPlace(result.getString("place"));
+			act.setType(result.getString("type"));
+			act.setActor(result.getString("actor"));
+			act.setInfo(result.getString("info"));
+					
+			if (code.equals("200"))      
+			{
+				act.setCode(code);
+				return act;
+			}			
+			else    					
+			{
+				act.setCode(code);
+				return act;
+			}
+
+		}catch (JSONException e) {
+				// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 				
-				if (code.equals("200"))      //创建成功
+		return act;
+	}
+	
+	//修改个人信息
+	public int updateAct(String token, String act_id, Map<String,String> info){
+					
+		Restful restful = new Restful();					
+		//打包JSON数据  
+		JSONObject json_data = new JSONObject();                			
+							
+		try {
+			if(!info.get("name").toString().equals("null"))
+				json_data.put("name", info.get("name").toString());
+			if(!info.get("time").toString().equals("null"))
+				json_data.put("time", info.get("time").toString());
+			if(!info.get("info").toString().equals("null"))
+				json_data.put("info", info.get("info").toString());
+			if(!info.get("place").toString().equals("null"))
+				json_data.put("place", info.get("place").toString());
+			if(!info.get("actor").toString().equals("null"))
+				json_data.put("actor", info.get("actor").toString());
+			if(!info.get("org").toString().equals("null"))
+				json_data.put("org", info.get("org").toString());
+			if(!info.get("type").toString().equals("null"))
+				json_data.put("type", info.get("type").toString());
+				
+			JSONObject result = restful.put("activity/"+act_id, token+":", json_data.toString());
+			String code = result.getString("code");
+								
+				if (code.equals("200"))      //修改成功
 					return 200;
-				if (code.equals("420"))      //创建失败
-					return 420;
+				if (code.equals("440"))      //有无效的列名
+					return 440;
 				if (code.equals("404"))      //未登录
 					return 404;
-				
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			return 0;
-		}
-		
-		//添加活动信息到Speaker
-		public List<Act> retrieveAllAct(String cookie) {
-			String url = "http://pyfun.sinaapp.com/act/myact";
-			
-			List<Act> speakerArrayList = new ArrayList<Act>();
-			HttpPost httpPost = new HttpPost(url);
-			HttpClient httpClient = new DefaultHttpClient();
-			List <NameValuePair> params = new ArrayList <NameValuePair>();
-			params.add(new BasicNameValuePair("cookie", cookie));
 
-			try {
-				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
-				
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject object = new JSONObject(jsonString);		
-				//String res = object.getString("result");
-				String code = object.getString("code");
-				//Log.i("Act", code);
-				
+		}catch (JSONException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		return 0;
+	}
+		
+	//添加活动信息到Speaker
+	public List<Act> retrieveAllAct(String token) {
+		String url = "http://pyfun.sinaapp.com/act/myact";
+		Restful restful = new Restful();
+			
+		List<Act> speakerArrayList = new ArrayList<Act>();
+		
+		try {
+	
+				JSONObject result = restful.get("activity/", token+":");
+				String code = result.getString("code");
+				Log.i("act",result.toString());
+		
 				if(code.equals("200"))
 				{			
-					String res = object.getString("result");
+					String res = result.getString("activities");
 					if(res.equals("[]"))
 					{
 						Act speaker;
@@ -372,7 +378,7 @@ public class DataRetriever extends Activity{
 						speakerArrayList.add(speaker);
 					}
 					else{
-					JSONArray jsonArray = new JSONArray(object.getString("result"));
+					JSONArray jsonArray = new JSONArray(result.getString("activities"));
 					Act speaker;
 				
 					for (int i = 0; i < jsonArray.length(); i++) {
@@ -389,14 +395,14 @@ public class DataRetriever extends Activity{
 					speaker.setOrg(jsonObj.getString("org"));
 					speaker.setActor(jsonObj.getString("actor"));
 					speaker.setAct_id(jsonObj.getString("act_id"));
-					speaker.setUser_id(jsonObj.getString("user_id"));
+					//speaker.setUser_id(jsonObj.getString("user_id"));
 
 					speakerArrayList.add(speaker);
 					}
 
 					}
 				}
-				else if(code.equals("420")||code.equals("404"))
+				else if(code.equals("412")||code.equals("404")||code.equals("414"))
 				{
 					Act speaker;
 					speaker = new Act();
@@ -404,12 +410,6 @@ public class DataRetriever extends Activity{
 					speakerArrayList.add(speaker);
 				}
 
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -418,97 +418,63 @@ public class DataRetriever extends Activity{
 			return speakerArrayList;
 		}
 		
-		//创建投票
-		public int createVote(String cookie, String act_id, int limit, ArrayList<Map<String, Object>> teams){
+	//创建投票
+	public int createVote(String token, String act_id, int limit, ArrayList<Map<String, Object>> teams){
 			
-			String url = "http://pyfun.sinaapp.com/act/vote/add";
-			int length = teams.size();
+		String url = "http://pyfun.sinaapp.com/act/vote/add";
+		int length = teams.size();
+		Restful restful = new Restful();
 					
 					
-			//打包JSON数据
-			StringBuffer sb = new StringBuffer();  	
-			sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":");
-			sb.append("{"+"\"act_id\":"+"\""+act_id+"\""+","+"\"limit\":"+"\""+limit+"\""+","+"\"team\":"+"[");
+		//打包JSON数据
+		JSONObject json_data = new JSONObject();               			
+				
+		//POST投票信息到URL
+		try {
+			json_data.put("limit", limit);
+			JSONArray team = new JSONArray();		
 			if(length!=0)
 			{
 				for(int i = 0; i < length; i++ )
 				{
-					sb.append("{"+"\"team_name\":"+"\""+teams.get(i).get("team_name")+"\""+","+"\"team_info\":"+"\""+teams.get(i).get("team_info")+"\""+"}");
-					if(i < length - 1)
-					{
-						sb.append(",");
-					}
+					JSONObject ateam = new JSONObject();
+					ateam.put("team_name", teams.get(i).get("team_name"));
+					ateam.put("team_info", teams.get(i).get("team_info"));
+					team.put(ateam);
 				}
+				json_data.put("teams", team);
 			}
-			sb.append("]"+"}"+"}");                 			
-					
-			//POST投票信息到URL
-			List <NameValuePair> params = new ArrayList <NameValuePair>();
-			params.add(new BasicNameValuePair("post", sb.toString()));
-					
-			HttpPost httpPost = new HttpPost(url);
-					
-			HttpClient httpClient = new DefaultHttpClient();
-			try {
+			JSONObject result = restful.post("activity/"+act_id+"/vote/", token+":", json_data.toString());
+			String code = result.getString("code");
+											
+			if (code.equals("200"))      //创建成功
+				return 200;
+			if (code.equals("420"))      //创建失败
+				return 420;
+			if (code.equals("404"))      //未登录
+				return 404;
 
-				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
-
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject result = new JSONObject(jsonString);
-				String code = result.getString("code");
-							
-						
-				if (code.equals("200"))      //创建成功
-					return 200;
-				if (code.equals("420"))      //创建失败
-					return 420;
-				if (code.equals("404"))      //未登录
-					return 404;
-				
-			} catch (ClientProtocolException e) {
-						// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-						// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (JSONException e) {
-						// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-					
-			return 0;
-		}
+		}catch (JSONException e) {
+				// TODO Auto-generated catch block
+		e.printStackTrace();
+		}			
+		return 0;
+	}
 	
-	//查看投票
-	public List<Team> seeVote(String cookie, String act_id){
+	//查看一个活动的投票(管理员)
+	public List<Team> seeVoteAdmin(String token, String act_id){
 					
-		String url = "http://pyfun.sinaapp.com/act/vote/list";                 			
-						
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
-		params.add(new BasicNameValuePair("act_id", act_id));
+		String url = "http://pyfun.sinaapp.com/act/vote/list";   
+		Restful restful = new Restful();
+
 		List<Team> teamlistArrayList = new ArrayList<Team>();
 							
-		HttpPost httpPost = new HttpPost(url);
-						
-		HttpClient httpClient = new DefaultHttpClient();
 		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-			
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject object = new JSONObject(jsonString);		
-			String code = object.getString("code");
-			
-				
+			JSONObject result = restful.get("activity/"+act_id+"/vote/", token+":");
+			String code = result.getString("code");
 			if(code.equals("200"))
 			{			
-				String res = object.getString("result");
-				JSONObject result = new JSONObject(res);
-				String team = result.getString("team");
+				String team = result.getString("teams");
 				String limit = result.getString("limit");
 				if(team.equals("[]"))
 				{
@@ -519,7 +485,7 @@ public class DataRetriever extends Activity{
 				}
 				else{
 						
-				JSONArray jsonArray = new JSONArray(result.getString("team"));
+				JSONArray jsonArray = new JSONArray(result.getString("teams"));
 				Team teamlist;
 				
 				for (int i = 0; i < jsonArray.length(); i++) {
@@ -531,12 +497,70 @@ public class DataRetriever extends Activity{
 					teamlist.setLimit(limit);
 					teamlist.setTeam_name(jsonObj.getString("team_name"));
 					teamlist.setTeam_info(jsonObj.getString("team_info"));
-					teamlist.setTicket(jsonObj.getInt("ticket"));
-					teamlist.setVote_id(jsonObj.getString("vote_id"));
+					teamlist.setTicket(jsonObj.getInt("tickets"));
+					teamlist.setVote_id(jsonObj.getString("team_id"));
+					teamlist.setSupporter(jsonObj.getString("supporter"));
 
 					teamlistArrayList.add(teamlist);
 				}
 
+				}
+			}
+			else if(code.equals("412")||code.equals("431"))
+			{
+				Team teamlist;
+				teamlist = new Team();
+				teamlist.setCode(code);
+				teamlistArrayList.add(teamlist);
+			}
+
+		}catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
+		return teamlistArrayList;
+	}
+	
+	//查看一个活动的投票(用户)
+	public List<Team> seeVoteUser(String token, String act_id){
+						
+		String url = "http://pyfun.sinaapp.com/act/vote/list";   
+		Restful restful = new Restful();
+		List<Team> teamlistArrayList = new ArrayList<Team>();
+								
+		try {
+			JSONObject result = restful.get("activity/"+act_id+"/voting/", token+":");
+			String code = result.getString("code");
+			if(code.equals("200"))
+			{			
+				String team = result.getString("teams");
+				String limit = result.getString("limit");
+				if(team.equals("[]"))
+				{
+					Team teamlist;
+					teamlist = new Team();
+					teamlist.setCode("null");
+					teamlistArrayList.add(teamlist);
+				}
+				else{
+						
+				JSONArray jsonArray = new JSONArray(result.getString("teams"));
+				Team teamlist;
+					
+				for (int i = 0; i < jsonArray.length(); i++) {
+
+					JSONObject jsonObj = jsonArray.getJSONObject(i);
+					teamlist = new Team();
+
+					teamlist.setCode(code);
+					teamlist.setLimit(limit);
+					teamlist.setTeam_name(jsonObj.getString("team_name"));
+					teamlist.setTeam_info(jsonObj.getString("team_info"));
+					teamlist.setTicket(jsonObj.getInt("tickets"));
+					teamlist.setVote_id(jsonObj.getString("team_id"));
+					teamlist.setRest_tickets(result.getString("rest_tickets"));
+					teamlistArrayList.add(teamlist);
+				}
 				}
 			}
 			else if(code.equals("431")||code.equals("404"))
@@ -546,134 +570,74 @@ public class DataRetriever extends Activity{
 				teamlist.setCode(code);
 				teamlistArrayList.add(teamlist);
 			}
-				
-						
-		} catch (ClientProtocolException e) {
-								// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-								// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}catch (JSONException e) {
-								// TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-							
+		}			
 		return teamlistArrayList;
 	}
 	
 	//投一票
-	public int postVote(String cookie, String act_id, String vote_id){
+	public int postVote(String token, String act_id, String team_id){
 				
-		String url = "http://pyfun.sinaapp.com/act/vote/ticket";						                 			
+		String url = "http://pyfun.sinaapp.com/act/vote/ticket";	
+		Restful restful = new Restful();
 						
-		//POST投票信息到URL
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
-		params.add(new BasicNameValuePair("act_id", act_id));
-		params.add(new BasicNameValuePair("vote_id", vote_id));
-						
-		HttpPost httpPost = new HttpPost(url);
-						
-		HttpClient httpClient = new DefaultHttpClient();
 		try {
 
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject result = new JSONObject(jsonString);
+			JSONObject result = restful.post("activity/"+act_id+"/voting/"+team_id, token+":", "");
 			String code = result.getString("code");	
 							
 			if (code.equals("200"))      //投票成功
 				return 200;
 			if (code.equals("430"))      //票数已经用完
 				return 430;
-					
-		} catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-							// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}catch (JSONException e) {
-							// TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-						
-		return 0;
+		}				
+	return 0;
 	}
 	
-	//删除投票
-		public int delVote(String cookie, String act_id){
+	//删除投票(管理员)
+	public int delVote(String token, String act_id){
 					
-			String url = "http://pyfun.sinaapp.com/act/vote/del";						                 			
+		String url = "http://pyfun.sinaapp.com/act/vote/del";	
+		Restful restful = new Restful();
 							
-			//POST投票信息到URL
-			List <NameValuePair> params = new ArrayList <NameValuePair>();
-			params.add(new BasicNameValuePair("cookie", cookie));
-			params.add(new BasicNameValuePair("act_id", act_id));
-							
-			HttpPost httpPost = new HttpPost(url);
-							
-			HttpClient httpClient = new DefaultHttpClient();
-			try {
+		try {
 
-				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
-
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject result = new JSONObject(jsonString);
-				String code = result.getString("code");	
-				
-								
-				if (code.equals("200"))      //删除成功
-					return 200;
-				if (code.equals("404"))      //未登陆
-					return 404;
+			JSONObject result = restful.delete("activity/"+act_id+"/vote/", token+":");
+			String code = result.getString("code");	
 						
-			} catch (ClientProtocolException e) {
-						// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-								// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (JSONException e) {
-								// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-							
-			return 0;
+			if (code.equals("200"))      //删除成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+
+		}catch (JSONException e) {
+			// TODO Auto-generated catch block
+		e.printStackTrace();
+		}					
+		return 0;
 	}
 	
 		
 	//修改密码
-	public int changePass(String cookie, String old_pass, String new_pass){
+	public int changePass(String token, String old_pass, String new_pass){
 							
-		String url = "http://pyfun.sinaapp.com/usr/update/password";						                 			
+		String url = "http://pyfun.sinaapp.com/usr/update/password";
+		Restful restful = new Restful();
 									
-		//POST投票信息到URL
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
-		params.add(new BasicNameValuePair("old_password", old_pass));
-		params.add(new BasicNameValuePair("new_password", new_pass));
-									
-		HttpPost httpPost = new HttpPost(url);
-									
-		HttpClient httpClient = new DefaultHttpClient();
 		try {
-
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject result = new JSONObject(jsonString);
+			JSONObject json_data = new JSONObject();
+			json_data.put("old_password", old_pass);
+			json_data.put("new_password", new_pass);
+			JSONObject result = restful.put("users/password", token+":", json_data.toString());
 			String code = result.getString("code");	
-						
-										
+
 			if (code.equals("200"))      //修改成功
 				return 200;
 			if (code.equals("404"))      //未登陆
@@ -681,12 +645,6 @@ public class DataRetriever extends Activity{
 			if (code.equals("441"))      //原密码错误
 				return 441;
 								
-		} catch (ClientProtocolException e) {
-							// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-								// TODO Auto-generated catch block
-			e.printStackTrace();
 		}catch (JSONException e) {
 									// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -696,69 +654,32 @@ public class DataRetriever extends Activity{
 	}
 	
 	//修改个人信息
-	public int updateInfo(String cookie, Map<String,String> info){
+	public int updateInfo(String token, Map<String,String> info){
 				
 		String url = "http://pyfun.sinaapp.com/usr/update/info";
+		Restful restful = new Restful();					
+		//打包JSON数据  
+		JSONObject json_data = new JSONObject();                			
 						
-						
-		//打包JSON数据
-		int flag = 0;
-		StringBuffer sb = new StringBuffer();  	
-		sb.append("{"+"\"cookie\":"+"\""+cookie+"\""+","+"\"data\":"+"{");
-		if(!info.get("name").toString().equals("null"))
-		{
-			flag++;
-			sb.append("\"name\":"+"\""+info.get("name").toString()+"\""+",");
-		}
-		if(!info.get("sno").toString().equals("null"))
-		{
-			flag++;
-			sb.append("\"sno\":"+"\""+info.get("sno").toString()+"\""+",");
-		}
-		if(!info.get("mailbox").toString().equals("null"))
-		{
-			flag++;
-			sb.append("\"mailbox\":"+"\""+info.get("mailbox").toString()+"\""+",");
-		}
-		if(!info.get("grade").toString().equals("null"))
-		{
-			flag++;
-			sb.append("\"grade\":"+"\""+info.get("grade").toString()+"\""+",");
-		}
-		if(!info.get("phone").toString().equals("null"))
-		{
-			flag++;
-			sb.append("\"phone\":"+"\""+info.get("phone").toString()+"\""+",");
-		}
-		if(!info.get("qq").toString().equals("null"))
-		{
-			flag++;
-			sb.append("\"qq\":"+"\""+info.get("qq").toString()+"\""+",");
-		}
-		if(flag!=0)
-		{
-			sb.deleteCharAt(sb.length()-1);
-		}
-		
-		sb.append("}"+"}");                 			
-						
-
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("post", sb.toString()));
-						
-		HttpPost httpPost = new HttpPost(url);
-						
-		HttpClient httpClient = new DefaultHttpClient();
 		try {
 
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject result = new JSONObject(jsonString);
+			if(!info.get("name").toString().equals("null"))
+				json_data.put("name", info.get("name").toString());
+			if(!info.get("sno").toString().equals("null"))
+				json_data.put("sno", info.get("sno").toString());
+			if(!info.get("mailbox").toString().equals("null"))
+				json_data.put("mailbox", info.get("mailbox").toString());
+			if(!info.get("grade").toString().equals("null"))
+				json_data.put("grade", info.get("grade").toString());
+			if(!info.get("phone").toString().equals("null"))
+				json_data.put("tel", info.get("phone").toString());
+			if(!info.get("qq").toString().equals("null"))
+				json_data.put("qq", info.get("qq").toString());
+			if(!info.get("about_me").toString().equals("null"))
+				json_data.put("about_me", info.get("about_me").toString());
+			
+			JSONObject result = restful.put("users/info", token+":", json_data.toString());
 			String code = result.getString("code");
-								
 							
 			if (code.equals("200"))      //修改成功
 				return 200;
@@ -766,15 +687,9 @@ public class DataRetriever extends Activity{
 				return 440;
 			if (code.equals("404"))      //未登录
 				return 404;
-					
-		} catch (ClientProtocolException e) {
-							// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-						// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}catch (JSONException e) {
-							// TODO Auto-generated catch block
+		// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 						
@@ -782,38 +697,29 @@ public class DataRetriever extends Activity{
 	}
 	
 	//获取个人信息
-	public Map<String,String> getInfo(String cookie){
+	public Map<String,String> getInfo(String token){
 					
 		String url = "http://pyfun.sinaapp.com/usr/info/list";
-							                			
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
+		Restful restful = new Restful();
+
 		Map<String,String> info = new HashMap<String,String>();
-							
-		HttpPost httpPost = new HttpPost(url);
-							
-		HttpClient httpClient = new DefaultHttpClient();
+
 		try {
 
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject object = new JSONObject(jsonString);		
-			String code = object.getString("code");		
+			JSONObject result = restful.get("users/"+application.getInstance().getName(), token+":");
+			String code = result.getString("code");		
 				
 			if(code.equals("200"))
 			{			
-				String res = object.getString("result");
-				JSONObject result = new JSONObject(res);
 				String qq = result.getString("qq");
 				String name = result.getString("name");
 				String grade = result.getString("grade");
 				String sno = result.getString("sno");
 				String mailbox = result.getString("mailbox");
-				String phone = result.getString("phone");
+				String phone = result.getString("tel");
+				String about_me = result.getString("about_me");
 				info.put("qq", qq);
+				info.put("about_me", about_me);
 				info.put("name", name);
 				info.put("grade", grade);
 				info.put("sno", sno);
@@ -823,115 +729,77 @@ public class DataRetriever extends Activity{
 				return info;
 			}
 			
-			else if(code.equals("404"))
+			else if(code.equals("412"))
 			{
 				info.put("code", code);
 				return info;
 			}
-						
-			} catch (ClientProtocolException e) {
-								// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-							// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (JSONException e) {
-								// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-							
-			return info;
-		}
+
+		}catch (JSONException e) {					// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		return info;
+	}
 	
 	//创建报名
-		public int createSignUp(String cookie, String act_id, String limit, String info){
+	public int createSignUp(String token, String act_id, String limit, JSONArray info){
 								
-			String url = "http://pyfun.sinaapp.com/act/enroll/create";						                 			
-										
-			//POST投票信息到URL
-			List <NameValuePair> params = new ArrayList <NameValuePair>();
-			params.add(new BasicNameValuePair("cookie", cookie));
-			params.add(new BasicNameValuePair("act_id", act_id));
-			params.add(new BasicNameValuePair("limit", limit));
-			params.add(new BasicNameValuePair("info", info));
-										
-			HttpPost httpPost = new HttpPost(url);
-										
-			HttpClient httpClient = new DefaultHttpClient();
-			try {
+		String url = "http://pyfun.sinaapp.com/act/enroll/create";
+		Restful restful = new Restful();
 
-				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
-
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject result = new JSONObject(jsonString);
-				String code = result.getString("code");	
-							
-											
-				if (code.equals("200"))      //创建成功
-					return 200;
-				if (code.equals("404"))      //未登陆
-					return 404;
-				if (code.equals("451"))      //已创建过报名
-					return 451;
-				if (code.equals("454"))      //info存在无效值
-					return 454;
-									
-			} catch (ClientProtocolException e) {
-								// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-									// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (JSONException e) {
-										// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			JSONObject json_data = new JSONObject();
+			json_data.put("limit", Integer.parseInt(limit));
+			json_data.put("default_property_names", info);
+			
+			JSONObject result = restful.post("activity/"+act_id+"/registration/", token+":", json_data.toString());
+			//Log.i("res0",result.toString());
+			String code = result.getString("code");				
 										
-			return 0;
-		}
+			if (code.equals("200"))      //创建成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+			if (code.equals("451"))      //已创建过报名
+				return 451;
+			if (code.equals("454"))      //info存在无效值
+				return 454;
+
+		}catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}								
+		return 0;
+	}
 		
 	//查看报名
-		public List<Enroll> seeEnroll(String act_id){
+	public List<Enroll> seeEnroll(String token, String act_id){
 			
-			String url = "http://pyfun.sinaapp.com/act/enroll/list";						                 			
-										
-			List <NameValuePair> params = new ArrayList <NameValuePair>();
-			params.add(new BasicNameValuePair("act_id", act_id));
-			List<Enroll> enrolllistArrayList = new ArrayList<Enroll>();
-										
-			HttpPost httpPost = new HttpPost(url);
-										
-			HttpClient httpClient = new DefaultHttpClient();
-			try {
+		String url = "http://pyfun.sinaapp.com/act/enroll/list";
+								
+		Restful restful = new Restful();
+		List<Enroll> enrolllistArrayList = new ArrayList<Enroll>();
 
-				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
+		try {
 
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject object = new JSONObject(jsonString);
-				String code = object.getString("code");	
-				
-										
-				if (code.equals("200"))      //成功
+			JSONObject result = restful.get("activity/"+act_id+"/registration/", token+":");
+			//Log.i("res",result.toString());
+			String code = result.getString("code");	
+						
+			if (code.equals("200"))      		//成功
+			{
+				String num = result.getString("num");
+				String limit = result.getString("limit");
+				String enroll = result.getString("registration_user_list");
+				if(enroll.equals("[]"))
 				{
-					String res = object.getString("result");
-					JSONObject result = new JSONObject(res);
-					String num = result.getString("num");
-					String limit = result.getString("limit");
-					String enroll = result.getString("enroll_list");
-					if(enroll.equals("[]"))
-					{
-						Enroll enrolllist;
-						enrolllist = new Enroll();
-						enrolllist.setCode("null");
-						enrolllistArrayList.add(enrolllist);
-					}
-					else{
-							
-					JSONArray jsonArray = new JSONArray(result.getString("enroll_list"));
+					Enroll enrolllist;
+					enrolllist = new Enroll();
+					enrolllist.setCode("null");
+					enrolllistArrayList.add(enrolllist);
+				}
+				else{				
+					JSONArray jsonArray = new JSONArray(result.getString("registration_user_list"));
 					Enroll enrolllist;
 					
 					for (int i = 0; i < jsonArray.length(); i++) {
@@ -940,65 +808,44 @@ public class DataRetriever extends Activity{
 						enrolllist = new Enroll();
 
 						enrolllist.setCode(code);
-						enrolllist.setLimit(limit);
-						
-						enrolllist.setName(jsonObj.getString("name"));
+						enrolllist.setLimit(limit);		
+						enrolllist.setName(jsonObj.getString("username"));
 						enrolllist.setGrade(jsonObj.getString("grade"));
 						enrolllist.setMailbox(jsonObj.getString("mailbox"));
 						enrolllist.setNum(num);
-						enrolllist.setPhone(jsonObj.getString("phone"));
+						enrolllist.setPhone(jsonObj.getString("tel"));
 						enrolllist.setQQ(jsonObj.getString("qq"));
-						enrolllist.setUser_id(jsonObj.getString("user_id"));
+						//enrolllist.setUser_id(jsonObj.getString("user_id"));
 						enrolllist.setSno(jsonObj.getString("sno"));
-						//Log.i("id",jsonObj.getString("vote_id"));
 
 						enrolllistArrayList.add(enrolllist);
 					}
 
 					}
 				}
-				else if(code.equals("453"))  //没有创建报名
-				{
-					Enroll enrolllist;
-					enrolllist = new Enroll();
-					enrolllist.setCode(code);
-					enrolllistArrayList.add(enrolllist);
-				}
-									
-			} catch (ClientProtocolException e) {
-								// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-									// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (JSONException e) {
-										// TODO Auto-generated catch block
-				e.printStackTrace();
+			else if(code.equals("453"))				 //没有创建报名
+			{
+				Enroll enrolllist;
+				enrolllist = new Enroll();
+				enrolllist.setCode(code);
+				enrolllistArrayList.add(enrolllist);
 			}
-										
-			return enrolllistArrayList;
-		}
+
+			}catch (JSONException e) {
+				// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return enrolllistArrayList;
+	}
 		
 	//报名
-	public int signUp(String cookie, String act_id){
+	public int signUp(String token, String act_id){
 										
-		String url = "http://pyfun.sinaapp.com/act/enroll/add";						                 			
-												
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
-		params.add(new BasicNameValuePair("act_id", act_id));
-												
-		HttpPost httpPost = new HttpPost(url);
-												
-		HttpClient httpClient = new DefaultHttpClient();
+		String url = "http://pyfun.sinaapp.com/act/enroll/add";	
+		Restful restful = new Restful();
+
 		try {
-
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject result = new JSONObject(jsonString);
+			JSONObject result = restful.post("activity/"+act_id+"/registration/enroll/", token + ":", "");
 			String code = result.getString("code");	
 																	
 			if (code.equals("200"))      //报名成功
@@ -1009,41 +856,23 @@ public class DataRetriever extends Activity{
 				return 450;
 			if (code.equals("452"))      //名额已满
 				return 452;
-								
-		} catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-					// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}catch (JSONException e) {
-					// TODO Auto-generated catch block
-		e.printStackTrace();
-		}
-												
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}											
 		return 0;
 	}
 	
 	//删除一个活动
-	public int deleteAct(String cookie, String act_id){
+	public int deleteAct(String token, String act_id){
 											
-		String url = "http://pyfun.sinaapp.com/act/del/one/all";						                 			
-													
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
-		params.add(new BasicNameValuePair("act_id", act_id));
-													
-		HttpPost httpPost = new HttpPost(url);
-													
-		HttpClient httpClient = new DefaultHttpClient();
+		String url = "http://pyfun.sinaapp.com/act/del/one/all";	
+		Restful restful = new Restful();
+
 		try {
 
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject result = new JSONObject(jsonString);
+			JSONObject result = restful.delete("activity/"+act_id , token+":");
 			String code = result.getString("code");	
 																		
 			if (code.equals("200"))      //删除成功
@@ -1052,41 +881,46 @@ public class DataRetriever extends Activity{
 				return 404;
 			if (code.equals("432"))      //不是活动的创建者
 				return 432;
-									
-		} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-				// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}catch (JSONException e) {
-				// TODO Auto-generated catch block
-		e.printStackTrace();
-		}
-													
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}												
 		return 0;
 	}
 	
 	//删除一个活动的全部报名
-	public int deleteEnroll(String cookie, String act_id){
+	public int deleteEnroll(String token, String act_id){
 												
-			String url = "http://pyfun.sinaapp.com/act/del/one/enroll/all";						                 			
-														
-			List <NameValuePair> params = new ArrayList <NameValuePair>();
-			params.add(new BasicNameValuePair("cookie", cookie));
-			params.add(new BasicNameValuePair("act_id", act_id));
-														
-			HttpPost httpPost = new HttpPost(url);
-														
-			HttpClient httpClient = new DefaultHttpClient();
+		String url = "http://pyfun.sinaapp.com/act/del/one/enroll/all";	
+		Restful restful = new Restful();
+
+		try {
+			JSONObject result = restful.delete("activity/"+act_id+"/registration/", token+":");
+			String code = result.getString("code");	
+																		
+			if (code.equals("200"))      //删除成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+			if (code.equals("432"))      //不是活动的创建者
+				return 432;
+
+		}catch (JSONException e) {
+			// TODO Auto-generated catch block
+		e.printStackTrace();
+		}											
+		return 0;
+	}
+	
+	//取消报名
+	public int cancelSignUp(String token, String act_id){
+													
+			String url = "http://pyfun.sinaapp.com/act/del/one/enroll/all";	
+			Restful restful = new Restful();
+
 			try {
-
-				httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-				HttpResponse httpResponse = httpClient.execute(httpPost);
-				HttpEntity httpEntity = httpResponse.getEntity();
-
-				String jsonString = EntityUtils.toString(httpEntity);
-				JSONObject result = new JSONObject(jsonString);
+				JSONObject result = restful.delete("activity/"+act_id+"/registration/enroll/", token+":");
 				String code = result.getString("code");	
 																			
 				if (code.equals("200"))      //删除成功
@@ -1095,25 +929,19 @@ public class DataRetriever extends Activity{
 					return 404;
 				if (code.equals("432"))      //不是活动的创建者
 					return 432;
-										
-			} catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-					// TODO Auto-generated catch block
-				e.printStackTrace();
+
 			}catch (JSONException e) {
-					// TODO Auto-generated catch block
-			e.printStackTrace();
-			}
-														
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}											
 			return 0;
 		}
 	
 	//删除一个报名的一项
 	public int deleteOneSignUp(String cookie, String act_id,String user_id){
 													
-		String url = "http://pyfun.sinaapp.com/act/del/enroll/one";						                 			
+		String url = "http://pyfun.sinaapp.com/act/del/enroll/one";	
+		Restful restful = new Restful();
 															
 		List <NameValuePair> params = new ArrayList <NameValuePair>();
 		params.add(new BasicNameValuePair("cookie", cookie));
@@ -1153,32 +981,21 @@ public class DataRetriever extends Activity{
 	}
 	
 	//查看自己报名的活动
-	public List<Act> seeMySignUp(String cookie){
+	public List<Act> seeMySignUp(String token){
 		
-		String url = "http://pyfun.sinaapp.com/act/get/enroll/my";						                 			
+		String url = "http://pyfun.sinaapp.com/act/get/enroll/my";	
+		Restful restful = new Restful();
 									
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
 		List<Act> actlistArrayList = new ArrayList<Act>();
-									
-		HttpPost httpPost = new HttpPost(url);
-									
-		HttpClient httpClient = new DefaultHttpClient();
+
 		try {
 
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject object = new JSONObject(jsonString);
-			String code = object.getString("code");		
-			
+			JSONObject result = restful.get("users/registration/", token+":");
+			String code = result.getString("code");				
 									
 			if (code.equals("200"))      //成功
 			{
-				String res = object.getString("result");
-				//JSONObject result = new JSONObject(res);
+				String res = result.getString("registrations");
 				if(res.equals("[]"))
 				{
 					Act actlist;
@@ -1200,8 +1017,8 @@ public class DataRetriever extends Activity{
 					
 					actlist.setName(jsonObj.getString("name"));
 					actlist.setAct_id(jsonObj.getString("act_id"));
-					actlist.setInfo(jsonObj.getString("act_info"));
-					actlist.setRest(jsonObj.getString("rest"));
+					actlist.setInfo(jsonObj.getString("info"));
+					actlist.setRest(Integer.parseInt(jsonObj.getString("limit"))-Integer.parseInt(jsonObj.getString("num")));
 					actlist.setTime(jsonObj.getString("time"));
 
 					actlistArrayList.add(actlist);
@@ -1216,13 +1033,7 @@ public class DataRetriever extends Activity{
 				actlist.setCode(code);
 				actlistArrayList.add(actlist);
 			}
-								
-		} catch (ClientProtocolException e) {
-							// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-								// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}catch (JSONException e) {
 									// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1230,6 +1041,66 @@ public class DataRetriever extends Activity{
 									
 		return actlistArrayList;
 	}
+	
+	//查看自己投票的活动
+	public List<Act> seeMyVote(String token){
+			
+		String url = "http://pyfun.sinaapp.com/act/get/enroll/my";	
+		Restful restful = new Restful();
+
+		List<Act> actlistArrayList = new ArrayList<Act>();
+
+		try {
+
+			JSONObject result = restful.get("users/voting/", token+":");
+			String code = result.getString("code");		
+										
+			if (code.equals("200"))      //成功
+			{
+				String res = result.getString("activities");
+					if(res.equals("[]"))
+					{
+						Act actlist;
+						actlist = new Act();
+						actlist.setCode("null");
+						actlistArrayList.add(actlist);
+					}
+					else{
+							
+					JSONArray jsonArray = new JSONArray(res);
+					Act actlist;
+					
+					for (int i = 0; i < jsonArray.length(); i++) {
+
+						JSONObject jsonObj = jsonArray.getJSONObject(i);
+						actlist = new Act();
+
+						actlist.setCode(code);
+						
+						actlist.setName(jsonObj.getString("name"));
+						actlist.setAct_id(jsonObj.getString("act_id"));
+						actlist.setInfo(jsonObj.getString("info"));
+						actlist.setTime(jsonObj.getString("time"));
+
+						actlistArrayList.add(actlist);
+					}
+
+					}
+				}
+				else if(code.equals("404"))  //没有创建投票
+				{
+					Act actlist;
+					actlist = new Act();
+					actlist.setCode(code);
+					actlistArrayList.add(actlist);
+				}
+			}catch (JSONException e) {
+										// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+										
+			return actlistArrayList;
+		}
 		
 	// check the Internet connection
 	public boolean isNetworkConnected(Context context) {

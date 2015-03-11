@@ -56,8 +56,7 @@ public class SignUpUse extends Activity {
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mPendingIntent = PendingIntent.getActivity(this, 0,
         		new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-        
-        
+                
         if(cookie == null)
         {
         	showToast("请先登陆!");

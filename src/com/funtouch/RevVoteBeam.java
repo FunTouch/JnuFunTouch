@@ -268,7 +268,7 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
         				else{
         					vote_id = (String)teams.get(i).get("vote_id");
         					flag1 = dataRetriever.postVote(cookie,act_id,vote_id);
-        					Log.i("flag1",Integer.toString(flag1));
+        					//Log.i("flag1",Integer.toString(flag1));
         				//if(flag1 == 200)
            					//showToast("投票成功");
         				if(flag1 == 430)
@@ -287,6 +287,7 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
         			Intent intent = new Intent();
         			intent.setClass(RevVoteBeam.this, SeeVote.class);
         			intent.putExtra("act_id", act_id);
+        			intent.putExtra("authority", "user");
         			startActivity(intent);
         			finish();
         		}

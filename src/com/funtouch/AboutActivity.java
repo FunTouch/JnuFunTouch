@@ -10,6 +10,8 @@ import java.util.Map;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -18,7 +20,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -115,9 +119,13 @@ public class AboutActivity extends Activity {
 		{
 			showToast("活动列表为空");
 		}
-		else if(listSpeaker.get(0).getCode().equals("420"))
+		else if(listSpeaker.get(0).getCode().equals("412"))
 		{
 			showToast("获取活动列表失败");
+		}
+		else if(listSpeaker.get(0).getCode().equals("414"))
+		{
+			showDialog();
 		}
 		else if(listSpeaker.get(0).getCode().equals("404"))
 		{
@@ -149,6 +157,24 @@ public class AboutActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+	}
+	
+	public void showDialog(){
+		new AlertDialog.Builder(AboutActivity.this)
+		.setTitle("权限错误")
+		.setMessage("非管理员没有此权限!")
+		.setPositiveButton("返回", new android.content.DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(AboutActivity.this, MainActivity.class);
+				startActivity(intent);
+				finish();
+			}	
+		})
+		
+		.show();
 	}
 
 	private void init() {

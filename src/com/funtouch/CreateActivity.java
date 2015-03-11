@@ -52,10 +52,8 @@ public class CreateActivity extends Activity{
 		btnCreateAct.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if(name.getText().toString().trim().equals("")||time.getText().toString().trim().equals("")||
-					place.getText().toString().trim().equals("")||type.getText().toString().trim().equals("")||
-					org.getText().toString().trim().equals("")||actor.getText().toString().trim().equals("")||
-					info.getText().toString().trim().equals("")){
-					showToast("请填写完整的活动信息!");
+					org.getText().toString().trim().equals("")||info.getText().toString().trim().equals("")){
+					showToast("请填写必要的活动信息!");
 				}
 				else{
 					int flag = dataRetriever.createAct(cookie,name.getText().toString(),info.getText().toString(),time.getText().toString(),

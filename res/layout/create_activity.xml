@@ -3,8 +3,25 @@
     android:id="@+id/GridLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="3"
+    android:columnCount="16"
     android:orientation="horizontal" >
+
+    <Space />
+    <Space />
+
+    <Space />
+
+    <Space />
+
+    <Space />
+
+    <Space />
+
+    <Space />
+
+    <Space />
+
+    <Space />
 
     <Space />
 
@@ -28,7 +45,7 @@
     <Space
         android:layout_width="1dp"
         android:layout_height="15dp"
-        android:layout_row="32" />
+        android:layout_row="33" />
 
     <EditText
         android:id="@+id/edt_ActInfo"
@@ -40,7 +57,7 @@
         android:hint="50字以内"
         android:inputType="text" >
 
-        <requestFocus />
+        
     </EditText>
 
     <TextView
@@ -93,7 +110,7 @@
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="9"
         android:ems="10"
-        android:hint="活动举办地点" />
+        android:hint="活动举办地点(选填)" />
 
     <TextView
         android:id="@+id/textView4"
@@ -110,7 +127,7 @@
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="13"
         android:ems="10"
-        android:hint="活动类型" />
+        android:hint="活动类型(选填)" />
 
     <TextView
         android:id="@+id/textView5"
@@ -144,7 +161,7 @@
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="19"
         android:ems="10"
-        android:hint="活动面向对象" />
+        android:hint="活动面向对象(选填)" />
 
     <TextView
         android:id="@+id/textView7"
@@ -157,8 +174,12 @@
     <Button
         android:id="@+id/btn_CreateAct"
         android:layout_column="1"
-        android:layout_gravity="left|center_vertical"
-        android:layout_row="31"
-        android:text="尼玛终于写完" />
+        android:layout_gravity="center"
+        android:layout_row="32"
+        android:text="提交" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="15dp" />
 
 </GridLayout>

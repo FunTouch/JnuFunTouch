@@ -19,7 +19,7 @@
     </TableRow>
 
     <RadioGroup
-        android:id="@id/rg"
+        android:id="@+id/rg"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical" >
 

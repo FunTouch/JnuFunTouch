@@ -94,7 +94,7 @@ public class SignUpOL extends Activity{
 			Act act = it.next();		
 			tmp.put("name", act.getName());
 			tmp.put("info", act.getInfo());
-			tmp.put("rest", act.getRest());
+			tmp.put("rest",  Integer.toString(act.getRest()));
 			tmp.put("time", act.getTime());
 			tmp.put("act_id", act.getAct_id());
 			listData.add(tmp);

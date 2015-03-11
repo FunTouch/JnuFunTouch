@@ -22,7 +22,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class ActDetails extends Activity{
 	private SimpleAdapter adapter;
 	private List<Map<String, Object>> ActDetail = new ArrayList<Map<String, Object>>();
-	private Button btnDelAct = null;
+	private Button btnDelAct,btnUpdateAct = null;
 	private DataRetriever dataRetriever = new DataRetriever();
 	private Cookie application ;
 	private String cookie = application.getInstance().getCookie();
@@ -40,12 +40,23 @@ public class ActDetails extends Activity{
 		lsvActDetails.setAdapter(adapter);
 		
 		btnDelAct = (Button)findViewById(R.id.btn_del_act);
+		btnUpdateAct = (Button)findViewById(R.id.btn_update_act);
 		
 		btnDelAct.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				showDialog();
+			}
+		});
+		btnUpdateAct.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(ActDetails.this, UpdateAct.class);
+				intent.putExtra("act_id", ActDetail.get(0).get("act_id").toString());
+				startActivity(intent);	
 			}
 		});
 		
@@ -92,5 +103,11 @@ public class ActDetails extends Activity{
 	//提示类
 	private void showToast(CharSequence msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+	}
+	
+	protected void onNewIntent(Intent intent) {
+
+		super.onNewIntent(intent);
+		ActDetails.this.recreate();
 	}
 }

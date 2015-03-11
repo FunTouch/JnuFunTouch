@@ -87,9 +87,9 @@ public class Login extends Activity {
 						startActivity(intent);
 						finish();  
 					}
-					else if(flag == 410)
+					else if(flag == 412)
 					{
-						showToast("无效的用户名");
+						showToast("认证错误!");
 					}	
 					else if(flag == 411)
 					{

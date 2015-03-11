@@ -19,6 +19,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class VoteOL extends Activity{
+	public Cookie application ; 
 	private SimpleAdapter adapter;
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	private List<Map<String, String>> VoteDetail = new ArrayList<Map<String, String>>();
@@ -26,6 +27,7 @@ public class VoteOL extends Activity{
 	Map<String, String> tmp = new HashMap<String, String>();
 	private List<Act> listAct;
 	private String act_id;
+	String cookie = application.getInstance().getCookie();
 	
 	
 	@Override
@@ -47,15 +49,15 @@ public class VoteOL extends Activity{
         setContentView(R.layout.vote_ol);
         
         ListView lsvActInfo = (ListView)findViewById(R.id.lsv_vote_act);
-        listAct = dataRetriever.getVoteAct();
+        listAct = dataRetriever.getVoteAct(cookie);
         
         if(listAct.get(0).getCode().equals("200"))
         {
         	showToast("获取活动列表成功");
         	getData();
 			adapter = new SimpleAdapter(this, listData, R.layout.lsv_vote_act_raw,
-					new String[] {"name", "time", "info", "limit"},
-					new int[] {R.id.vote_act_name,R.id.vote_act_time, R.id.vote_act_info, R.id.vote_act_limit});
+					new String[] {"name", "time", "info", "limit","rest"},
+					new int[] {R.id.vote_act_name,R.id.vote_act_time, R.id.vote_act_info, R.id.vote_act_limit,R.id.vote_act_rest});
 			lsvActInfo.setAdapter(adapter);
 			
 			lsvActInfo.setOnItemClickListener(new OnItemClickListener(){
@@ -78,6 +80,7 @@ public class VoteOL extends Activity{
 							tmp.put("place", act.getPlace());
 							tmp.put("type", act.getType());
 							tmp.put("org", act.getOrg());
+							tmp.put("rest", Integer.toString(act.getRest()));
 							tmp.put("actor", act.getActor());
 							VoteDetail.add(tmp);
 							
@@ -111,6 +114,7 @@ public class VoteOL extends Activity{
 				tmp.put("limit", act.getVoteLimit());
 				tmp.put("time", act.getTime());
 				tmp.put("act_id", act.getAct_id());
+				tmp.put("rest", Integer.toString(act.getRest()));
 				listData.add(tmp);
 			}
 		}

@@ -31,7 +31,7 @@ public class VoteOLDetail extends Activity implements OnItemClickListener{
 	private List<Map<String, String>> VoteDetail = new ArrayList<Map<String, String>>();
 	private Map<String,String> Team = new HashMap<String, String>();
 	private Button btnSubmit = null;
-	private TextView name,info,time, type, place, actor, org, limit = null;
+	private TextView name,info,time, type, place, actor, org, limit,rest = null;
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	private String act_id = null;
 	private ListView lv_vote_team = null;
@@ -62,6 +62,7 @@ public class VoteOLDetail extends Activity implements OnItemClickListener{
 		actor = (TextView)findViewById(R.id.vote_act_detail_actor);
 		org = (TextView)findViewById(R.id.vote_act_detail_org);
 		limit = (TextView)findViewById(R.id.vote_act_detail_limit);
+		rest = (TextView)findViewById(R.id.vote_act_detail_rest);
 		List<DetailsInfo> objectList = (List<DetailsInfo>) getIntent().getSerializableExtra("ListObject");
 		VoteDetail = objectList.get(0).getEnrollDetails();
 		Team = VoteDetail.get(0);
@@ -74,8 +75,9 @@ public class VoteOLDetail extends Activity implements OnItemClickListener{
 		place.setText(Team.get("place"));
 		actor.setText(Team.get("actor"));
 		org.setText(Team.get("org"));
+		rest.setText(Team.get("rest"));
 		
-		listTeam = dataRetriever.seeVote(cookie,act_id);
+		listTeam = dataRetriever.seeVoteAdmin(cookie,act_id);
 		vote_limit =  Integer.parseInt(Team.get("limit").toString());
 		
 		getData();		//获取投票列表
@@ -136,6 +138,7 @@ public class VoteOLDetail extends Activity implements OnItemClickListener{
         			Intent intent = new Intent();
         			intent.setClass(VoteOLDetail.this, SeeVote.class);
         			intent.putExtra("act_id", act_id);
+        			intent.putExtra("authority", "user");
         			startActivity(intent);
         			finish();
         		}

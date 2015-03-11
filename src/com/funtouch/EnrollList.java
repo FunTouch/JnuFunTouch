@@ -23,6 +23,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class EnrollList extends Activity {
 
 	private ListView lsvDetails = null;
+	public Cookie application ;
 	private Button btnExport = null;
 	private List<Enroll> listEnroll;
 	private String act_id;
@@ -31,6 +32,7 @@ public class EnrollList extends Activity {
 	private List<Map<String, String>> EnrollDetail = new ArrayList<Map<String, String>>();
 	private DataRetriever dataRetriever = new DataRetriever();
 	Map<String, String> tmp = new HashMap<String, String>();
+	String cookie = application.getInstance().getCookie();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class EnrollList extends Activity {
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		
-		listEnroll = dataRetriever.seeEnroll(act_id);
+		listEnroll = dataRetriever.seeEnroll(cookie,act_id);
 		if(listEnroll.get(0).getCode().equals("200"))
 		{
 			showToast("获取报名列表成功");

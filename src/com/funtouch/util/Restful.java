@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Base64;
+import android.util.Log;
 
 public class Restful {
 	private String host = "http://funoftouch.sinaapp.com/api/v1.0/";
@@ -54,11 +55,11 @@ public class Restful {
 
 			String json_str = EntityUtils.toString(httpEntity);
 			
-			int code = httpResponse.getStatusLine().getStatusCode();
+			//int code = httpResponse.getStatusLine().getStatusCode();
 	
 			res = new JSONObject(json_str);
 			
-			res.put("code", String.valueOf(code));
+			//res.put("code", String.valueOf(code));
 			
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
@@ -99,11 +100,11 @@ public class Restful {
 
 			String json_str = EntityUtils.toString(httpEntity);
 			
-			int code = httpResponse.getStatusLine().getStatusCode();
+			//int code = httpResponse.getStatusLine().getStatusCode();
 			
 			res = new JSONObject(json_str);
 			
-			res.put("code", String.valueOf(code));
+			//res.put("code", String.valueOf(code));
 			
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
@@ -144,11 +145,11 @@ public class Restful {
 
 			String json_str = EntityUtils.toString(httpEntity);
 			
-			int code = httpResponse.getStatusLine().getStatusCode();
+			//int code = httpResponse.getStatusLine().getStatusCode();
 			
 			res = new JSONObject(json_str);
 			
-			res.put("code", String.valueOf(code));
+			//res.put("code", String.valueOf(code));
 			
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
@@ -186,11 +187,11 @@ public class Restful {
 
 			String json_str = EntityUtils.toString(httpEntity);
 			
-			int code = httpResponse.getStatusLine().getStatusCode();
+			//int code = httpResponse.getStatusLine().getStatusCode();
 			
 			res = new JSONObject(json_str);
 			
-			res.put("code", String.valueOf(code));
+			//res.put("code", String.valueOf(code));
 			
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
