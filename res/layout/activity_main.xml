@@ -1,58 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:stretchColumns="1"
-    tools:context=".SecondActivity" >
+    tools:context=".SecondActivity" 
+    android:background="@drawable/background_maininterface">
 
-     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="传说中的甲烷界面" />
+     
 
-     <Button
-         android:id="@+id/btn_funtouch"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="FunTouch" />
+     
 
-     <Button
-         android:id="@+id/btnCardTransport"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="名片推送" />
-
-     <Button
-         android:id="@+id/btn_game_help"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="桌游小助手" />
-
-     <Button
+     <ImageButton
          android:id="@+id/btn_setting"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="设置" />
+         android:layout_width="113dp"
+         android:layout_height="43dp"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentTop="true"
+         android:background="@drawable/button_maininterface_setting" />
 
-     <Button
-         android:id="@+id/btn_login"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="登陆/注册" />
-
-     <Button
-         android:id="@+id/btn_about_activity"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="关于活动" />
+     <ImageButton
+         android:id="@+id/btn_funtouch"
+         android:layout_width="113dp"
+         android:layout_height="43dp"
+         android:layout_alignParentRight="true"
+         android:layout_below="@id/btn_setting"
+         android:layout_alignLeft="@id/btn_setting"
+         android:layout_marginTop="55dp"
+         android:background="@drawable/button_maininterface_funtouch" />
+     
+     <ImageButton
+         android:id="@+id/btnCardTransport"
+         android:layout_width="113dp"
+         android:layout_height="43dp"
+         android:layout_alignParentRight="true"
+         android:layout_below="@id/btn_funtouch"
+         android:layout_marginTop="7dp"
+         android:background="@drawable/button_maininterface_card"/>
      
      <Button
-         android:id="@+id/btn_validate_pass"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="验证通过" />
+         android:id="@+id/btn_login"
+         android:layout_width="113dp"
+         android:layout_height="43dp"
+         android:layout_alignParentRight="true"
+         android:layout_below="@id/btnCardTransport"
+         android:layout_marginTop="7dp"
+         android:background="@drawable/button_maininterface_login" />
 
-</TableLayout>
+     <ImageButton
+         android:id="@+id/btn_about_activity"
+         android:layout_width="113dp"
+         android:layout_height="43dp"
+         android:layout_alignParentRight="true"
+         android:layout_below="@id/btn_login"
+         android:layout_marginTop="7dp"
+         android:background="@drawable/button_maininterface_aboutactivity" />
+     
+     <ImageButton
+         android:id="@+id/btn_validate_pass"
+         android:layout_width="113dp"
+         android:layout_height="43dp"
+         android:layout_alignParentRight="true"
+         android:layout_below="@id/btn_about_activity"
+         android:layout_marginTop="7dp"
+         android:background="@drawable/button_maininterface_validatepass" />
+	<ImageButton
+         android:id="@+id/btn_exit"
+         android:layout_width="113dp"
+         android:layout_height="43dp"
+         android:layout_alignParentRight="true"
+         android:layout_below="@id/btn_validate_pass"
+         android:layout_marginTop="7dp"
+         android:background="@drawable/button_maininterface_exit" />
+</RelativeLayout>

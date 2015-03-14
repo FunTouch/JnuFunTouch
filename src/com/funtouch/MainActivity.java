@@ -1,8 +1,5 @@
 package com.funtouch;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,22 +9,21 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
 	
-	private Button btnFunTouch = null;
-	private Button btnCardTransport = null;
-	private Button btnAct = null;
-	private Button btnSetting = null;
-	private Button btnGame = null;
+	private ImageButton btnFunTouch = null;
+	private ImageButton btnCardTransport = null;
+	private ImageButton btnAct = null;
+	private ImageButton btnSetting = null;
+	private ImageButton btnGame = null;
 	private Button btnLogin = null;
-	private Button btnValidatePass = null;
+	private ImageButton btnValidatePass = null;
+	private ImageButton btnExit = null;
 	private boolean wifi,internet = true;
 	public Cookie application ; 
 	private long temptime = 0;
@@ -70,14 +66,14 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		btnGame.setOnClickListener(new OnClickListener() {
+		/*btnGame.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, GameList.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 		
 		btnCardTransport.setOnClickListener(new OnClickListener() {
 			@Override
@@ -114,8 +110,20 @@ public class MainActivity extends Activity {
 			}
 			
 		});
+		
+		btnExit.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+				System.exit(0);
+			}
+			
+		});
 	}
-	
+		
+		
 	//双击返回键退出程序
 	public boolean onKeyDown(int keyCode, KeyEvent event)   
 	{  
@@ -141,13 +149,13 @@ public class MainActivity extends Activity {
 	}  
 	
 	private void init() {
-		btnFunTouch = (Button) findViewById(R.id.btn_funtouch);
-		btnAct = (Button) findViewById(R.id.btn_about_activity);
-		btnCardTransport = (Button) findViewById(R.id.btnCardTransport);
-		btnSetting = (Button) findViewById(R.id.btn_setting);
-		btnGame = (Button) findViewById(R.id.btn_game_help);
+		btnFunTouch = (ImageButton) findViewById(R.id.btn_funtouch);
+		btnAct = (ImageButton) findViewById(R.id.btn_about_activity);
+		btnCardTransport = (ImageButton) findViewById(R.id.btnCardTransport);
+		btnSetting = (ImageButton) findViewById(R.id.btn_setting);
 		btnLogin = (Button) findViewById(R.id.btn_login);
-		btnValidatePass = (Button) findViewById(R.id.btn_validate_pass);
+		btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);
+		btnExit = (ImageButton) findViewById(R.id.btn_exit);
 	}
 	
 	
