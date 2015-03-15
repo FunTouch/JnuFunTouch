@@ -56,12 +56,12 @@ public class EnrollListDetails extends Activity{
 			}
 		});
 		
-		btnDelSign.setOnClickListener(new OnClickListener(){
+		/*btnDelSign.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		showDialog();
         		
         	}
-        });
+        });*/
 		
 	}
 	
@@ -78,9 +78,6 @@ public class EnrollListDetails extends Activity{
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				Log.i("user", EnrollDetail.get(0).get("user_id"));
-				Log.i("cookie", cookie);
-				Log.i("act_id", act_id);
 				int flag = dataRetriever.deleteOneSignUp(cookie, act_id, EnrollDetail.get(0).get("user_id"));
 				if(flag == 200)
 				{

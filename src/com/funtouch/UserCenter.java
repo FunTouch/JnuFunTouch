@@ -20,6 +20,7 @@ public class UserCenter extends Activity{
 	private ImageButton btnChangePass = null;
 	private ImageButton btnUpdateInfo = null;
 	private ImageButton btnSignUpBeam = null;
+	private Button btnMyCode = null;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	
@@ -36,10 +37,19 @@ public class UserCenter extends Activity{
 		btnChangePass = (ImageButton)findViewById(R.id.btn_change_pass);
 		btnUpdateInfo = (ImageButton)findViewById(R.id.btn_update_info);	
 		btnSignUpBeam = (ImageButton)findViewById(R.id.btn_sign_up_beam);
+		btnMyCode = (Button)findViewById(R.id.btn_my_code);
 		
 		btnLogoff.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		showDialog();
+        	}
+        });
+		
+		btnMyCode.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		Intent intent=new Intent();
+        		intent.setClass(UserCenter.this, MyCode.class);
+        		startActivity(intent);
         	}
         });
 		

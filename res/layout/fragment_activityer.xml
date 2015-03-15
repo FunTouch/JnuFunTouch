@@ -28,4 +28,5 @@
 	    android:text="@string/confirm"/>
 
 	</LinearLayout>
+
 </RelativeLayout>

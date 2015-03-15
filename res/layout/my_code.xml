@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GridLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:orientation="horizontal" >
+
+    <ListView
+        android:id="@+id/lsv_my_code"
+        android:layout_height="402dp"
+        android:layout_gravity="fill_horizontal" >
+
+    </ListView>
+
+    <Space
+        android:layout_column="1"
+        android:layout_gravity="fill_vertical"
+        android:layout_row="1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_row="1"
+        android:textSize="16sp"
+        android:text="请点击相应的活动验证码，进入验证模式" />
+
+</GridLayout>

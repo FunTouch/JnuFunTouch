@@ -938,27 +938,15 @@ public class DataRetriever extends Activity{
 		}
 	
 	//删除一个报名的一项
-	public int deleteOneSignUp(String cookie, String act_id,String user_id){
+	public int deleteOneSignUp(String token, String act_id,String user_id){
 													
 		String url = "http://pyfun.sinaapp.com/act/del/enroll/one";	
 		Restful restful = new Restful();
 															
-		List <NameValuePair> params = new ArrayList <NameValuePair>();
-		params.add(new BasicNameValuePair("cookie", cookie));
-		params.add(new BasicNameValuePair("act_id", act_id));
-		params.add(new BasicNameValuePair("user_id", user_id));
-															
-		HttpPost httpPost = new HttpPost(url);
-															
-		HttpClient httpClient = new DefaultHttpClient();
 		try {
 
-			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			String jsonString = EntityUtils.toString(httpEntity);
-			JSONObject result = new JSONObject(jsonString);
+			JSONObject result = restful.delete("activity/"+act_id+"/registration/enroll/", token+":");
+			Log.i("res1",result.toString());
 			String code = result.getString("code");	
 																				
 			if (code.equals("200"))      //删除成功
@@ -969,11 +957,7 @@ public class DataRetriever extends Activity{
 				return 432;
 			if (code.equals("455"))      //user_id错误
 				return 455;
-											
-		} catch (ClientProtocolException e) {				// TODO Auto-generated catch block
-			e.printStackTrace();
-				} catch (IOException e) {				// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}catch (JSONException e) {				// TODO Auto-generated catch block
 		e.printStackTrace();
 		}													
@@ -1100,6 +1084,145 @@ public class DataRetriever extends Activity{
 			}
 										
 			return actlistArrayList;
+		}
+	
+	//激活验证码功能
+	public int actVali(String token, String act_id){
+
+		Restful restful = new Restful();
+																
+		try {
+
+			JSONObject result = restful.post("activity/"+act_id+"/use-key", token+":","");
+			String code = result.getString("code");	
+																				
+			if (code.equals("200"))      //删除成功
+				return 200;
+			if (code.equals("404"))      //未登陆
+				return 404;
+			if (code.equals("456"))      //未报名
+				return 456;
+
+		}catch (JSONException e) {				// TODO Auto-generated catch block
+		e.printStackTrace();
+		}													
+		return 0;
+	}
+	
+	//激活验证码功能
+	public int valiCode(String token, JSONObject data){
+
+		Restful restful = new Restful();
+																	
+		try {
+			JSONObject json_data = new JSONObject();
+			json_data.put("username", data.get("username"));
+			json_data.put("value", data.get("value"));
+			JSONObject result = restful.put("activity/"+data.getString("act_id")+"/key/", token+":",json_data.toString());
+			Log.i("res3",result.toString());
+			String code = result.getString("code");	
+																					
+				if (code.equals("200"))      //验证成功
+					return 200;
+				else if (code.equals("461"))      //无效key
+					return 461;
+
+			}catch (JSONException e) {				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}													
+			return 0;
+		}
+	
+	//生成验证码
+	public Code genCode(String token, String act_id, String username){
+
+		Restful restful = new Restful();
+		Code vali_code = new Code();
+																
+		try {
+			JSONObject json_data = new JSONObject();
+			json_data.put("username", username);
+			JSONObject result = restful.post("activity/"+act_id+"/key/", token+":",json_data.toString());
+			//Log.i("res2",result.toString());
+			String code = result.getString("code");	
+																			
+			if (code.equals("200"))      //成功
+			{
+				vali_code.setCode(result.getString("value"));
+				vali_code.setStatus(result.getString("status"));
+				vali_code.setCode(result.getString("code"));
+				return vali_code;
+			}
+			if (code.equals("460"))      //未激活验证码功能
+			{
+				vali_code.setCode(result.getString("code"));
+				return vali_code;
+			}
+
+		}catch (JSONException e) {				// TODO Auto-generated catch block
+			e.printStackTrace();
+		}													
+		return vali_code;
+	}
+	
+	//查看自己的验证码
+	public List<Code> seeCode(String token){
+
+		Restful restful = new Restful();
+		List<Code> listCode = new ArrayList<Code>();
+																	
+		try {
+
+			JSONObject result = restful.get("users/keys/", token+":");
+			Log.i("res2",result.toString());
+			String code = result.getString("code");	
+																				
+			if (code.equals("200"))      //成功
+			{
+				String res = result.getString("keys");
+				if(res.equals("[]"))
+				{
+					Code codelist;
+					codelist = new Code();
+					codelist.setCode("null");
+					listCode.add(codelist);
+				}
+				else{
+						
+				JSONArray jsonArray = new JSONArray(res);
+				Code codelist;
+				
+				for (int i = 0; i < jsonArray.length(); i++) {
+
+					JSONObject jsonObj = jsonArray.getJSONObject(i);
+					codelist = new Code();
+
+					codelist.setCode(code);
+					
+					codelist.setName(jsonObj.getString("name"));
+					codelist.setAct_id(jsonObj.getString("act_id"));
+					codelist.setInfo(jsonObj.getString("info"));
+					codelist.setValue(jsonObj.getString("value"));
+
+					listCode.add(codelist);
+					}
+
+				}
+				return listCode;
+			}
+			else if (code.equals("460"))      
+			{
+				Code codelist;
+				codelist = new Code();
+				codelist.setCode(code);
+				listCode.add(codelist);
+				return listCode;
+				}
+
+			}catch (JSONException e) {				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}													
+			return listCode;
 		}
 		
 	// check the Internet connection

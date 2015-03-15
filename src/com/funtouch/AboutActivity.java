@@ -119,15 +119,11 @@ public class AboutActivity extends Activity {
 		{
 			showToast("活动列表为空");
 		}
-		else if(listSpeaker.get(0).getCode().equals("412"))
-		{
-			showToast("获取活动列表失败");
-		}
 		else if(listSpeaker.get(0).getCode().equals("414"))
 		{
 			showDialog();
 		}
-		else if(listSpeaker.get(0).getCode().equals("404"))
+		else if(listSpeaker.get(0).getCode().equals("404")||listSpeaker.get(0).getCode().equals("412"))
 		{
 			showToast("请先登陆!");
 			Intent intent = new Intent();

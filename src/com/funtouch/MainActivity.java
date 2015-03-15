@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, validatePassActivity.class);
+				intent.setClass(MainActivity.this, ValidatePassActivity.class);
 				startActivity(intent);
 			}
 			
@@ -116,11 +116,26 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				finish();
-				System.exit(0);
+				showExitDialog();
 			}
 			
 		});
+	}
+	
+	public void showExitDialog(){
+		new AlertDialog.Builder(MainActivity.this)
+		.setTitle("退出")
+		.setMessage("确定要退出软件吗嘤嘤嘤\n")
+		.setPositiveButton("确认", new android.content.DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				//finish();
+				System.exit(0);
+				}
+		})
+		.setNegativeButton("取消", null)
+		.show();
 	}
 		
 		

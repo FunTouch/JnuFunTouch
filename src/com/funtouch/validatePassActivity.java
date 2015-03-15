@@ -17,16 +17,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class validatePassActivity extends FragmentActivity{
+public class ValidatePassActivity extends FragmentActivity{
 	ViewPager viewPager = null;
+	public Cookie application ; 
 	FragmentPagerAdapter adapter = null;
 	Fragment activityerFragment = null;
 	Fragment joinerFragment = null;
 	List<Fragment> datas = null;
 	TextView tv_activityer = null;
 	TextView tv_joiner = null;
+	private DataRetriever dataRetriever = new DataRetriever();
+	String cookie = application.getInstance().getCookie();
+	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -119,7 +124,7 @@ public class validatePassActivity extends FragmentActivity{
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Intent intent = new Intent();
-					intent.setClass(validatePassActivity.this, GetAward.class);
+					intent.setClass(ValidatePassActivity.this, GetAward.class);
 					startActivity(intent);
 				}
 			});
