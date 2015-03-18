@@ -30,4 +30,13 @@
         android:layout_marginTop="73dp"
         android:text="验证用户" />
 
+    <Button
+        android:id="@+id/btn_see_rel_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:text="查看发放的验证码" />
+
 </RelativeLayout>

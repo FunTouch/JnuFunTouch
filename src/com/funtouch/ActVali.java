@@ -21,6 +21,7 @@ public class ActVali extends Activity {
 	private Button btnActVali = null;
 	private Button btnGenCode = null;
 	private Button btnValiUser = null;
+	private Button btnSeeRelCode = null;
 	public Cookie application ;
 	String cookie = application.getInstance().getCookie();
 	private String act_id;
@@ -52,6 +53,7 @@ public class ActVali extends Activity {
 		
 		btnActVali = (Button)findViewById(R.id.btn_act_vali);
 		btnGenCode = (Button)findViewById(R.id.btn_gen_code);
+		btnSeeRelCode = (Button)findViewById(R.id.btn_see_rel_code);
 		btnValiUser = (Button)findViewById(R.id.btn_vali_user);
 		
 
@@ -71,6 +73,15 @@ public class ActVali extends Activity {
         	public void onClick(View v){
         		Intent intent = new Intent();
 				intent.setClass(ActVali.this, ValiUser.class);
+				startActivity(intent);
+        	}
+        });
+		
+		btnSeeRelCode.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		Intent intent = new Intent();
+				intent.setClass(ActVali.this,RelCode.class);
+				intent.putExtra("act_id", act_id);
 				startActivity(intent);
         	}
         });
@@ -121,6 +132,10 @@ public class ActVali extends Activity {
 				else if(code.getCode().equals("460"))
 				{
 					showToast("活动尚未激活验证码功能!");
+				}
+				else if(code.getCode().equals("410"))
+				{
+					showToast("没有此用户!");
 				}
 			}
 			

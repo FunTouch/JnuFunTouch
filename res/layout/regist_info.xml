@@ -1,116 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GridLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:columnCount="3"
+    android:orientation="horizontal" >
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+    <TextView
+        android:layout_gravity="fill_horizontal"
+        android:text="用户名:"
+        android:textSize="16sp" />
 
-    <TableRow>
+    <EditText
+        android:id="@+id/edit_UserName1"
+        android:layout_gravity="fill_horizontal"
+        android:hint="请填写用户名"
+        android:selectAllOnFocus="true" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="用户名:"
-            android:textSize="16sp" />
+    <TextView
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="2"
+        android:text="密码:"
+        android:textSize="16sp" />
+    <!-- android:inputType="numberPassword"表明只能接收数字密码 -->
 
-        <EditText
-            android:id="@+id/edit_UserName1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="请填写用户名"
-            android:selectAllOnFocus="true" />
-    </TableRow>
+    <EditText
+        android:id="@+id/edit_Password"
+        android:layout_gravity="fill_horizontal"
+        android:hint="请输入6-12位密码"
+        android:inputType="numberPassword" />
 
-    <TableRow>
+    <TextView
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
+        android:text="再次确认密码:"
+        android:textSize="16sp" />
+    <!-- android:inputType="numberPassword"表明只能接收数字密码 -->
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="密码:"
-            android:textSize="16sp" />
-        <!-- android:inputType="numberPassword"表明只能接收数字密码 -->
+    <EditText
+        android:id="@+id/edit_PasswordAgain"
+        android:layout_gravity="fill_horizontal"
+        android:hint="请输入6-12位密码"
+        android:inputType="numberPassword" />
 
-        <EditText
-            android:id="@+id/edit_Password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入6-12位密码"
-            android:inputType="numberPassword" />
-    </TableRow>
+    <TextView
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
+        android:text="邮箱"
+        android:textSize="16sp" />
 
-    <TableRow>
+    <EditText
+        android:id="@+id/edit_Mailbox"
+        android:layout_gravity="fill_horizontal"
+        android:hint="请填写你的邮箱(可选)"
+        android:selectAllOnFocus="true" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="再次确认密码:"
-            android:textSize="16sp" />
-        <!-- android:inputType="numberPassword"表明只能接收数字密码 -->
+    <TextView
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
+        android:text="所在班级:"
+        android:textSize="16sp" />
+    <!-- inputType="date"表明是日期输入框 -->
 
-        <EditText
-            android:id="@+id/edit_PasswordAgain"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入6-12位密码"
-            android:inputType="numberPassword" />
-    </TableRow>
+    <EditText
+        android:id="@+id/edit_Class"
+        android:layout_gravity="fill_horizontal"
+        android:hint="院系-年级-班级(可选)" />
 
-    <TableRow>
+    <TextView
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
+        android:text="电话号码:"
+        android:textSize="16sp" />
+    <!-- inputType="phone"表明是输入电话号码的输入框 -->
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="邮箱"
-            android:textSize="16sp" />
+    <EditText
+        android:id="@+id/edit_Phone"
+        android:layout_gravity="fill_horizontal"
+        android:hint="请填写你的号码(可选)"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:selectAllOnFocus="true" />
 
-        <EditText
-            android:id="@+id/edit_Mailbox"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="请填写你的邮箱(可选)"
-            android:selectAllOnFocus="true" />
+    <Space
+        android:layout_column="2"
+        android:layout_gravity="fill_vertical"
+        android:layout_row="10" />
 
-    </TableRow>
+    <EditText
+        android:id="@+id/edt_realname"
+        android:layout_width="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal|top"
+        android:layout_row="1"
+        android:ems="10"
+        android:hint="请填写你的姓名(可选)" >
+    </EditText>
 
-    <TableRow>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="所在班级:"
-            android:textSize="16sp" />
-        <!-- inputType="date"表明是日期输入框 -->
-
-        <EditText
-            android:id="@+id/edit_Class"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="院系-年级-班级(可选)" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="电话号码:"
-            android:textSize="16sp" />
-        <!-- inputType="phone"表明是输入电话号码的输入框 -->
-
-        <EditText
-            android:id="@+id/edit_Phone"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="请填写你的号码(可选)"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:selectAllOnFocus="true" />
-    </TableRow>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="96dp"
+        android:layout_column="0"
+        android:layout_gravity="left|center_vertical"
+        android:layout_row="1"
+        android:text="真实姓名:"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="下一步" />
+        android:layout_column="1"
+        android:layout_gravity="left|top"
+        android:layout_row="10"
+        android:text="提交" />
 
-</TableLayout>
+    <EditText
+        android:id="@+id/edt_qq"
+        android:layout_width="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal|top"
+        android:layout_row="7"
+        android:ems="10"
+        android:hint="请填写你的QQ号(可选)" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="100dp"
+        android:layout_column="0"
+        android:layout_gravity="left|center_vertical"
+        android:layout_row="7"
+        android:text="QQ:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edt_about_me"
+        android:layout_width="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal|top"
+        android:layout_row="9"
+        android:ems="10"
+        android:hint="请填写关于你的个人信息(可选)" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="98dp"
+        android:layout_column="0"
+        android:layout_gravity="left|center_vertical"
+        android:layout_row="9"
+        android:text="关于我:"
+        android:textSize="16sp" />
+
+</GridLayout>

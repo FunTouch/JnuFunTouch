@@ -124,9 +124,9 @@ public class MainActivity extends Activity {
 	
 	public void showExitDialog(){
 		new AlertDialog.Builder(MainActivity.this)
-		.setTitle("退出")
-		.setMessage("确定要退出软件吗嘤嘤嘤\n")
-		.setPositiveButton("确认", new android.content.DialogInterface.OnClickListener(){
+		.setTitle("╮(╯﹏╰）╭退出")
+		.setMessage("  o(>﹏<)o嘤嘤嘤真的要退出我吗?")
+		.setPositiveButton("狠心确定", new android.content.DialogInterface.OnClickListener(){
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
@@ -134,7 +134,7 @@ public class MainActivity extends Activity {
 				System.exit(0);
 				}
 		})
-		.setNegativeButton("取消", null)
+		.setNegativeButton("再耍一会", null)
 		.show();
 	}
 		

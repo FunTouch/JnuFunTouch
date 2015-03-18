@@ -27,7 +27,7 @@ import com.funtouch.Data;
 
 
 public class RegistInfo extends Activity{
-	private EditText userName, password,passwordAgain, userMailbox, userClass, userPhone;
+	private EditText userName, password,passwordAgain, userMailbox, userClass, userPhone, realname, qq, about_me;
 	//public Data application;
 	private List<Act> listSpeaker;
 	private DataRetriever dataRetriever = new DataRetriever();
@@ -59,6 +59,10 @@ public class RegistInfo extends Activity{
 		userMailbox = (EditText) findViewById(R.id.edit_Mailbox);
 		userClass = (EditText) findViewById(R.id.edit_Class);
 		userPhone = (EditText) findViewById(R.id.edit_Phone);
+		realname = (EditText) findViewById(R.id.edt_realname);
+		qq = (EditText) findViewById(R.id.edt_qq);
+		about_me = (EditText) findViewById(R.id.edt_about_me);
+		
 		btnNext=(Button)findViewById(R.id.btn_next);
 		//application = (Data) this.getApplicationContext(); 
 		btnNext.setOnClickListener(new OnClickListener(){
@@ -83,8 +87,8 @@ public class RegistInfo extends Activity{
 	        			showToast("电话号码格式不符合规则!");
 	        		}
 	        		else{
-	        			int flag = dataRetriever.regist(userName.getText().toString(),MD5.Encode(password.getText().toString()),
-	        					userMailbox.getText().toString(),userClass.getText().toString(),userPhone.getText().toString());
+	        			int flag = dataRetriever.regist(userName.getText().toString(),realname.getText().toString(),MD5.Encode(password.getText().toString()),
+	        					userMailbox.getText().toString(),userClass.getText().toString(),userPhone.getText().toString(),qq.getText().toString(),about_me.getText().toString());
 	        			if(flag == 200)
 	        			{
 	        				showToast("注册成功!");
@@ -93,7 +97,7 @@ public class RegistInfo extends Activity{
 	        				startActivity(intent);
 	        				finish();
 	        			}
-	        			else if(flag == 400)
+	        			else if(flag == 415)
 	        			{
 	        				showToast("该用户名已存在!");
 	        			}

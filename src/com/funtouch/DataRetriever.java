@@ -166,7 +166,7 @@ public class DataRetriever extends Activity{
 		}
 		
 	//注册
-	public int regist(String name, String password, String mailbox, String grade,String phone){
+	public int regist(String username, String realname, String password, String mailbox, String grade,String phone,String qq, String about_me){
 		
 		Restful restful = new Restful();
 		
@@ -175,11 +175,14 @@ public class DataRetriever extends Activity{
 		//HttpClient httpClient = new DefaultHttpClient();
 		try {
 			JSONObject json_data = new JSONObject();
-			json_data.put("username", name);
+			json_data.put("username", username);
+			json_data.put("name", realname);
 			json_data.put("password", password);
 			json_data.put("mailbox", mailbox);
 			json_data.put("grade", grade);
 			json_data.put("tel", phone);
+			json_data.put("qq", qq);
+			json_data.put("about_me", about_me);
 			//httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 			//HttpResponse httpResponse = httpClient.execute(httpPost);
 			//HttpEntity httpEntity = httpResponse.getEntity();
@@ -190,12 +193,13 @@ public class DataRetriever extends Activity{
 
 			//JSONObject result = new JSONObject(jsonString);
 			String code = result.getString("code");
-				
-			
+							
 			if (code.equals("200"))      //注册成功
 				return 200;
-			if (code.equals("400"))      //注册失败
+			else if (code.equals("400"))      //注册失败
 				return 400;
+			else if (code.equals("415"))      //注册失败
+				return 415;
 			
 		}catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -230,7 +234,7 @@ public class DataRetriever extends Activity{
 				return 200;
 			}		
 				
-			if (code.equals("412"))      //认证错误
+			else if (code.equals("412"))      //认证错误
 				return 412;
 
 			
@@ -263,9 +267,9 @@ public class DataRetriever extends Activity{
 				
 			if (code.equals("200"))      //创建成功
 				return 200;
-			if (code.equals("420"))      //创建失败
+			else if (code.equals("420"))      //创建失败
 				return 420;
-			if (code.equals("404"))      //未登录
+			else if (code.equals("404"))      //未登录
 				return 404;
 
 		}catch (JSONException e) {
@@ -314,7 +318,7 @@ public class DataRetriever extends Activity{
 		return act;
 	}
 	
-	//修改个人信息
+	//修改活动信息
 	public int updateAct(String token, String act_id, Map<String,String> info){
 					
 		Restful restful = new Restful();					
@@ -342,9 +346,9 @@ public class DataRetriever extends Activity{
 								
 				if (code.equals("200"))      //修改成功
 					return 200;
-				if (code.equals("440"))      //有无效的列名
+				else if (code.equals("440"))      //有无效的列名
 					return 440;
-				if (code.equals("404"))      //未登录
+				else if (code.equals("404"))      //未登录
 					return 404;
 
 		}catch (JSONException e) {
@@ -365,7 +369,6 @@ public class DataRetriever extends Activity{
 	
 				JSONObject result = restful.get("activity/", token+":");
 				String code = result.getString("code");
-				Log.i("act",result.toString());
 		
 				if(code.equals("200"))
 				{			
@@ -449,9 +452,9 @@ public class DataRetriever extends Activity{
 											
 			if (code.equals("200"))      //创建成功
 				return 200;
-			if (code.equals("420"))      //创建失败
+			else if (code.equals("420"))      //创建失败
 				return 420;
-			if (code.equals("404"))      //未登录
+			else if (code.equals("404"))      //未登录
 				return 404;
 
 		}catch (JSONException e) {
@@ -591,7 +594,7 @@ public class DataRetriever extends Activity{
 							
 			if (code.equals("200"))      //投票成功
 				return 200;
-			if (code.equals("430"))      //票数已经用完
+			else if (code.equals("430"))      //票数已经用完
 				return 430;
 
 		}catch (JSONException e) {
@@ -614,7 +617,7 @@ public class DataRetriever extends Activity{
 						
 			if (code.equals("200"))      //删除成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
 
 		}catch (JSONException e) {
@@ -640,9 +643,9 @@ public class DataRetriever extends Activity{
 
 			if (code.equals("200"))      //修改成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
-			if (code.equals("441"))      //原密码错误
+			else if (code.equals("441"))      //原密码错误
 				return 441;
 								
 		}catch (JSONException e) {
@@ -683,9 +686,9 @@ public class DataRetriever extends Activity{
 							
 			if (code.equals("200"))      //修改成功
 				return 200;
-			if (code.equals("440"))      //有无效的列名
+			else if (code.equals("440"))      //有无效的列名
 				return 440;
-			if (code.equals("404"))      //未登录
+			else if (code.equals("404"))      //未登录
 				return 404;
 
 		}catch (JSONException e) {
@@ -758,11 +761,11 @@ public class DataRetriever extends Activity{
 										
 			if (code.equals("200"))      //创建成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
-			if (code.equals("451"))      //已创建过报名
+			else if (code.equals("451"))      //已创建过报名
 				return 451;
-			if (code.equals("454"))      //info存在无效值
+			else if (code.equals("454"))      //info存在无效值
 				return 454;
 
 		}catch (JSONException e) {
@@ -850,11 +853,11 @@ public class DataRetriever extends Activity{
 																	
 			if (code.equals("200"))      //报名成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
-			if (code.equals("450"))      //已报过名
+			else if (code.equals("450"))      //已报过名
 				return 450;
-			if (code.equals("452"))      //名额已满
+			else if (code.equals("452"))      //名额已满
 				return 452;
 
 		}catch (JSONException e) {
@@ -877,9 +880,9 @@ public class DataRetriever extends Activity{
 																		
 			if (code.equals("200"))      //删除成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
-			if (code.equals("432"))      //不是活动的创建者
+			else if (code.equals("432"))      //不是活动的创建者
 				return 432;
 
 		}catch (JSONException e) {
@@ -901,9 +904,9 @@ public class DataRetriever extends Activity{
 																		
 			if (code.equals("200"))      //删除成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
-			if (code.equals("432"))      //不是活动的创建者
+			else if (code.equals("432"))      //不是活动的创建者
 				return 432;
 
 		}catch (JSONException e) {
@@ -925,9 +928,9 @@ public class DataRetriever extends Activity{
 																			
 				if (code.equals("200"))      //删除成功
 					return 200;
-				if (code.equals("404"))      //未登陆
+				else if (code.equals("404"))      //未登陆
 					return 404;
-				if (code.equals("432"))      //不是活动的创建者
+				else if (code.equals("432"))      //不是活动的创建者
 					return 432;
 
 			}catch (JSONException e) {
@@ -951,11 +954,11 @@ public class DataRetriever extends Activity{
 																				
 			if (code.equals("200"))      //删除成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
-			if (code.equals("432"))      //不是活动的创建者
+			else if (code.equals("432"))      //不是活动的创建者
 				return 432;
-			if (code.equals("455"))      //user_id错误
+			else if (code.equals("455"))      //user_id错误
 				return 455;
 
 		}catch (JSONException e) {				// TODO Auto-generated catch block
@@ -1098,9 +1101,9 @@ public class DataRetriever extends Activity{
 																				
 			if (code.equals("200"))      //删除成功
 				return 200;
-			if (code.equals("404"))      //未登陆
+			else if (code.equals("404"))      //未登陆
 				return 404;
-			if (code.equals("456"))      //未报名
+			else if (code.equals("456"))      //未报名
 				return 456;
 
 		}catch (JSONException e) {				// TODO Auto-generated catch block
@@ -1143,7 +1146,6 @@ public class DataRetriever extends Activity{
 			JSONObject json_data = new JSONObject();
 			json_data.put("username", username);
 			JSONObject result = restful.post("activity/"+act_id+"/key/", token+":",json_data.toString());
-			//Log.i("res2",result.toString());
 			String code = result.getString("code");	
 																			
 			if (code.equals("200"))      //成功
@@ -1153,7 +1155,7 @@ public class DataRetriever extends Activity{
 				vali_code.setCode(result.getString("code"));
 				return vali_code;
 			}
-			if (code.equals("460"))      //未激活验证码功能
+			else if (code.equals("460")||code.equals("410"))      //未激活验证码功能
 			{
 				vali_code.setCode(result.getString("code"));
 				return vali_code;
@@ -1165,6 +1167,35 @@ public class DataRetriever extends Activity{
 		return vali_code;
 	}
 	
+	//改变验证码状态
+	public int changeCode(String token, String act_id, String key_id){
+
+			Restful restful = new Restful();
+			//Code vali_code = new Code();
+																	
+			try {
+				JSONObject result = restful.put("activity/"+act_id+"/key/"+key_id+"/", token+":","");
+				String code = result.getString("code");	
+																				
+				if (code.equals("200"))      //成功
+				{
+					return 200;
+				}
+				else if (code.equals("460"))      //未激活验证码功能
+				{
+					return 460;
+				}
+				else if (code.equals("462"))      //key无效
+				{
+					return 462;	
+				}
+
+			}catch (JSONException e) {				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}													
+			return 0;
+		}
+	
 	//查看自己的验证码
 	public List<Code> seeCode(String token){
 
@@ -1174,7 +1205,7 @@ public class DataRetriever extends Activity{
 		try {
 
 			JSONObject result = restful.get("users/keys/", token+":");
-			Log.i("res2",result.toString());
+			//Log.i("res2",result.toString());
 			String code = result.getString("code");	
 																				
 			if (code.equals("200"))      //成功
@@ -1222,8 +1253,67 @@ public class DataRetriever extends Activity{
 			}catch (JSONException e) {				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}													
-			return listCode;
-		}
+		return listCode;
+	}
+	
+	//查看发放的验证码
+	public List<Code> seeRelCode(String token,String act_id){
+
+		Restful restful = new Restful();
+		List<Code> listCode = new ArrayList<Code>();
+																		
+		try {
+
+			JSONObject result = restful.get("activity/"+act_id+"/key/", token+":");
+			String code = result.getString("code");	
+																					
+			if (code.equals("200"))      //成功
+			{
+				String res = result.getString("keys");
+				if(res.equals("[]"))
+				{
+					Code codelist;
+					codelist = new Code();
+					codelist.setCode("null");
+					listCode.add(codelist);
+				}
+			else{
+							
+			JSONArray jsonArray = new JSONArray(res);
+			Code codelist;
+					
+			for (int i = 0; i < jsonArray.length(); i++) {
+
+				JSONObject jsonObj = jsonArray.getJSONObject(i);
+				codelist = new Code();
+
+				codelist.setCode(code);
+						
+				codelist.setName(jsonObj.getString("username"));
+				codelist.setStatus(jsonObj.getString("status"));
+				codelist.setValue(jsonObj.getString("value"));
+				codelist.setKey_id(jsonObj.getString("key_id"));
+
+				listCode.add(codelist);
+					}
+
+				}
+				return listCode;
+			}
+			else if (code.equals("460"))      
+			{
+				Code codelist;
+				codelist = new Code();
+				codelist.setCode(code);
+				listCode.add(codelist);
+				return listCode;
+			}
+
+		}catch (JSONException e) {				// TODO Auto-generated catch block
+			e.printStackTrace();
+		}													
+		return listCode;
+	}
 		
 	// check the Internet connection
 	public boolean isNetworkConnected(Context context) {

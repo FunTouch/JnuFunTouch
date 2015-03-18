@@ -27,7 +27,7 @@
         
         <activity
             android:name=".MainActivity"
-            android:label="甲烷首页" 
+            android:label="Fun Of Touching" 
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,6 +48,8 @@
             android:label="激活验证功能"></activity>
           <activity android:name=".ValiUser"
             android:label="验证用户"></activity>
+          <activity android:name=".RelCode"
+            android:label="已发放验证码"></activity>
           <activity android:name=".MyCode"
              android:launchMode="singleTask"
             android:label="查看我的验证码"></activity>

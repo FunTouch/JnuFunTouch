@@ -7,6 +7,7 @@ public class Code implements Serializable{
     private String status;
     private String value;
     private String act_id;
+    private String key_id;
     private String info;
     private String name;
     
@@ -15,6 +16,9 @@ public class Code implements Serializable{
     }
     public String getAct_id() {
     	return this.act_id;
+    }
+    public String getKey_id() {
+    	return this.key_id;
     }
     public String getInfo() {
     	return this.info;
@@ -31,6 +35,9 @@ public class Code implements Serializable{
     
     public void setCode(String s) {
     	this.code = s;
+    }
+    public void setKey_id(String s) {
+    	this.key_id = s;
     }
     public void setAct_id(String s) {
     	this.act_id = s;
