@@ -1,9 +1,16 @@
 package com.funtouch;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,12 +21,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class CardTransport extends FragmentActivity {
 	private Button btn_Edit;
+	private List<Contact> listContact = new ArrayList<Contact>(); ;
+	private SimpleAdapter adapter0;
 	private Button btn_Transport;
 	private Button btn_Confirm;
 	ViewPager MyPager = null;
@@ -31,6 +44,11 @@ public class CardTransport extends FragmentActivity {
 	ArrayList<EditText> editTexts = null;
 	TextView tv_myCard = null;
 	TextView tv_contacts = null;
+	TextView tv_name,tv_phone = null;
+	Map<String, String> tmp = new HashMap<String, String>();
+	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -110,10 +128,10 @@ public class CardTransport extends FragmentActivity {
 			View view = inflater.inflate(R.layout.fragment_mycard, container, false);
 			btn_Edit = (Button)view.findViewById(R.id.btn_edit);
 			btn_Transport = (Button)view.findViewById(R.id.btn_transport);
-			TextView tv_name = (TextView)view.findViewById(R.id.tv2_name);
+			tv_name = (TextView)view.findViewById(R.id.tv2_name);
 			TextView tv_institute = (TextView)view.findViewById(R.id.tv2_institute);
 			TextView tv_sno = (TextView)view.findViewById(R.id.tv2_sno);
-			TextView tv_phone = (TextView)view.findViewById(R.id.tv2_phone);
+			tv_phone = (TextView)view.findViewById(R.id.tv2_phone);
 			TextView tv_qq = (TextView)view.findViewById(R.id.tv2_qq);
 			TextView tv_wechat = (TextView)view.findViewById(R.id.tv2_wechat);
 			textViews.add(tv_name);textViews.add(tv_institute);
@@ -130,6 +148,20 @@ public class CardTransport extends FragmentActivity {
 			editTexts.add(et_qq);editTexts.add(et_wechat);
 			btn_Edit = (Button)view.findViewById(R.id.btn_edit);
 			btn_Confirm = (Button)view.findViewById(R.id.btn_confirm);
+			
+			btn_Transport.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(CardTransport.this, TransportContact.class);
+					intent.putExtra("name", tv_name.getText().toString());
+					intent.putExtra("phone", tv_phone.getText().toString());
+					startActivity(intent);
+				}
+				
+			});
 			btn_Edit.setOnClickListener(new OnClickListener(){
 
 				@Override
@@ -174,8 +206,87 @@ public class CardTransport extends FragmentActivity {
 				@Nullable Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
 			View view = inflater.inflate(R.layout.fragment_contacts, container, false);
+			ListView lsvContacts = (ListView)view.findViewById(R.id.lsv_my_contact);
+			getContact();
+			getData();
+			adapter0 = new SimpleAdapter(getActivity(), listData, R.layout.lsv_contact_raw,
+					new String[] {"name", "phone"},
+					new int[] {R.id.contact_name, R.id.contact_phone});
+			lsvContacts.setAdapter(adapter0);
+			
+			lsvContacts.setOnItemClickListener(new OnItemClickListener(){
+				public void onItemClick(AdapterView<?> parent, View view,  
+					     int position, long id) {
+					ListView listView = (ListView)parent; 
+					HashMap<String, String> map = (HashMap<String, String>) listView.getItemAtPosition(position);
+					String name = map.get("name");
+					for (Iterator<Contact> it=listContact.iterator(); it.hasNext(); )
+				    {	    	
+				    	Contact contact = it.next();
+				    	if(name.equals(contact.getName()))
+				    	{
+				    		Intent intent = new Intent();
+							intent.setClass(CardTransport.this, TransportContact.class);
+							intent.putExtra("name", name);
+							intent.putExtra("phone", contact.getPhone());
+							startActivity(intent);
+							break;
+				    	}
+				    }
+				}
+				});
+			
 			return view;
 		}
 	}
+	
+	private void getData() {
+		listData.clear();
+		for (Iterator<Contact> it = listContact.iterator(); it.hasNext(); ){
+			Map<String, String> tmp = new HashMap<String, String>();
+			Contact contact = it.next();		
+			tmp.put("name", contact.getName());
+			tmp.put("phone", contact.getPhone());
+			listData.add(tmp);
+		}
+	}
+	
+	public void getContact(){
 
+		//获得所有的联系人   
+		Cursor cur = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);   
+		
+		//循环遍历   
+		if (cur.moveToFirst()) {
+		int idColumn  = cur.getColumnIndex(ContactsContract.Contacts._ID);   
+		int displayNameColumn = cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
+		do {   
+
+		//获得联系人的ID号   
+		String contactId = cur.getString(idColumn);
+
+		//获得联系人姓名   
+		String disPlayName = cur.getString(displayNameColumn);   
+
+		//查看该联系人有多少个电话号码。如果没有这返回值为0   
+		int phoneCount = cur.getInt(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));   
+
+		if(phoneCount>0){
+		   //获得联系人的电话号码   
+		   Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID   
+				   + " = " + contactId, null, null);   
+		   if(phones.moveToFirst()){
+		   do{
+			   //遍历所有的电话号码
+			   String phoneNumber= phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));  		   
+			   Contact contact = new Contact();
+			   contact.setName(disPlayName);
+			   contact.setPhone(phoneNumber);
+			   listContact.add(contact);
+		   		}while(phones.moveToNext());
+		   }
+		}
+		   } while (cur.moveToNext());
+		}   
+	}
 }

@@ -143,11 +143,11 @@ public class MainActivity extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event)   
 	{  
 	    // TODO Auto-generated method stub  	
-	  
+		
 	    if((keyCode == KeyEvent.KEYCODE_BACK)&&(event.getAction() == KeyEvent.ACTION_DOWN))  
 	    {  
-	    	  
-	        if(System.currentTimeMillis() - temptime >2000) // 2s内再按一次返回键退出   
+	    	showExitDialog(); 
+	        /*if(System.currentTimeMillis() - temptime >2000) // 2s内再按一次返回键退出   
 	        {    
 	            Toast.makeText(this, "再按一次返回键退出", Toast.LENGTH_LONG).show();  
 	            temptime = System.currentTimeMillis();  
@@ -157,7 +157,7 @@ public class MainActivity extends Activity {
 	               System.exit(0); //程序正常退出  
 	        }  
 	             
-	        return true;   
+	        return true;  */ 
 	  
 	    }  
 	    return super.onKeyDown(keyCode, event);  
