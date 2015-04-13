@@ -18,7 +18,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class MyVote extends Activity{
+public class MyVote extends MenuHavingActivity{
 	private Button btnBeamVote = null;
     private Button btnOLVote = null;
     public Cookie application ; 

@@ -25,7 +25,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class SignUpEdit extends Activity{
+public class SignUpEdit extends MenuHavingActivity{
 	
 	public Cookie application ;
 	private Button btnOk = null;
@@ -43,19 +43,6 @@ public class SignUpEdit extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sign_up_edit);

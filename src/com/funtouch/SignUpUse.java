@@ -29,7 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SignUpUse extends Activity {
+public class SignUpUse extends MenuHavingActivity {
 	public Cookie application ;
 	private Button btnStop;
 	private ImageView imgUsing;

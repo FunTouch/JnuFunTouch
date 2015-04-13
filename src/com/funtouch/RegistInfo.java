@@ -3,6 +3,7 @@ package com.funtouch;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -26,9 +27,10 @@ import java.util.*;
 import com.funtouch.Data;
 
 
-public class RegistInfo extends Activity{
+public class RegistInfo extends MenuHavingActivity{
 	private EditText userName, password,passwordAgain, userMailbox, userClass, userPhone, realname, qq, about_me;
 	//public Data application;
+	private boolean wifi,internet = true;
 	private List<Act> listSpeaker;
 	private DataRetriever dataRetriever = new DataRetriever();
 	private SimpleAdapter adapter;
@@ -36,20 +38,7 @@ public class RegistInfo extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-     
-		Button btnNext=null;
+			Button btnNext=null;
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.regist_info);
@@ -67,7 +56,20 @@ public class RegistInfo extends Activity{
 		//application = (Data) this.getApplicationContext(); 
 		btnNext.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){
-	        		if(userName.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")
+	        		ConnectivityManager con=(ConnectivityManager)getSystemService(Activity.CONNECTIVITY_SERVICE);  
+					wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();  
+					internet=con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();  
+					
+					int flag0 = 0;
+					if(wifi|internet){  
+						flag0++;
+					}
+					else{  
+						showToast("请检查网络状况!"); 
+					}
+					if(flag0!=0)
+					{
+					if(userName.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")
 	        				||passwordAgain.getText().toString().trim().equals("")){
 						showToast("请输入完整的注册信息!");
 					}
@@ -87,27 +89,27 @@ public class RegistInfo extends Activity{
 	        			showToast("电话号码格式不符合规则!");
 	        		}
 	        		else{
-	        			int flag = dataRetriever.regist(userName.getText().toString(),realname.getText().toString(),MD5.Encode(password.getText().toString()),
-	        					userMailbox.getText().toString(),userClass.getText().toString(),userPhone.getText().toString(),qq.getText().toString(),about_me.getText().toString());
-	        			if(flag == 200)
-	        			{
-	        				showToast("注册成功!");
-	        				Intent intent=new Intent();
-	        				intent.setClass(RegistInfo.this, Login.class);
-	        				startActivity(intent);
-	        				finish();
+		        			int flag = dataRetriever.regist(userName.getText().toString(),realname.getText().toString(),MD5.Encode(password.getText().toString()),
+		        					userMailbox.getText().toString(),userClass.getText().toString(),userPhone.getText().toString(),qq.getText().toString(),about_me.getText().toString());
+		        			if(flag == 200)
+		        			{
+		        				showToast("注册成功!");
+		        				Intent intent=new Intent();
+		        				intent.setClass(RegistInfo.this, Login.class);
+		        				startActivity(intent);
+		        				finish();
+		        			}
+		        			else if(flag == 415)
+		        			{
+		        				showToast("该用户名已存在!");
+		        			}
+		        			else if(flag == 0)
+		        			{
+		        				showToast("注册失败!");
+		        			}
 	        			}
-	        			else if(flag == 415)
-	        			{
-	        				showToast("该用户名已存在!");
-	        			}
-	        			else if(flag == 0)
-	        			{
-	        				showToast("注册失败!");
-	        			}
-	        			}
-	     
-	}
+					}
+	        	}
 	        });
 		
 	}

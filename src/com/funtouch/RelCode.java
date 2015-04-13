@@ -21,7 +21,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class RelCode  extends Activity{
+public class RelCode  extends MenuHavingActivity{
 	private SimpleAdapter adapter;
     private List<Code> listCode;
     public Cookie application ; 
@@ -32,20 +32,7 @@ public class RelCode  extends Activity{
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	
 	protected void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-		
-		// TODO Auto-generated method stub
+			// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rel_code);
 		

@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.funtouch.Cookie;
 
-public class CreateActivity extends Activity{
+public class CreateActivity extends MenuHavingActivity{
 	public Cookie application ; 
 	
 	private EditText name, time, place, type, org, actor, limit, info;
@@ -22,19 +22,6 @@ public class CreateActivity extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_activity);
 		

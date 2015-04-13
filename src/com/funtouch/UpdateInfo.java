@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class UpdateInfo extends Activity{
+public class UpdateInfo extends MenuHavingActivity{
 	public Cookie application ; 
 	private Button btnSubmitUpdate = null;
 	private EditText edtUpdateName, edtUpdateSno, edtUpdateMailbox, edtUpdateGrade, edtUpdatePhone, edtUpdateQQ, edtAboutMe = null;
@@ -26,19 +26,7 @@ public class UpdateInfo extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-     
+		 
   // TODO Auto-generated method stub
   		super.onCreate(savedInstanceState);
   		setContentView(R.layout.update_info);

@@ -18,7 +18,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
 
-public class CodeBeam extends Activity implements CreateNdefMessageCallback,
+public class CodeBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;

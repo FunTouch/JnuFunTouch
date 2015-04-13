@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-public class SignUpOLDetail extends Activity{
+public class SignUpOLDetail extends MenuHavingActivity{
 	public Cookie application ;
 	private SimpleAdapter adapter;
 	private Button btnSignUp = null;

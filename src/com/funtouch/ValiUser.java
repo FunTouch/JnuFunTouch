@@ -21,7 +21,7 @@ import android.os.Parcelable;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ValiUser extends Activity {
+public class ValiUser extends MenuHavingActivity {
 	public Cookie application ;
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;

@@ -19,7 +19,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class EnrollListDetails extends Activity{
+public class EnrollListDetails extends MenuHavingActivity{
 	private SimpleAdapter adapter;
 	public Cookie application ;
 	private String act_id;

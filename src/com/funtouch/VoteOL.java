@@ -18,7 +18,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class VoteOL extends Activity{
+public class VoteOL extends MenuHavingActivity{
 	public Cookie application ; 
 	private SimpleAdapter adapter;
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
@@ -32,19 +32,7 @@ public class VoteOL extends Activity{
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-     
+		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vote_ol);
         

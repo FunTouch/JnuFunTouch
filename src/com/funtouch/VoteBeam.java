@@ -74,7 +74,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class VoteBeam extends Activity implements CreateNdefMessageCallback,
+public class VoteBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
         OnNdefPushCompleteCallback, OnItemClickListener {
     NfcAdapter mNfcAdapter;
     private Button btnSubmit = null;

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TableRow;
 
-public class FunTouchProfile extends Activity {
+public class FunTouchProfile extends MenuHavingActivity {
 
 	TableRow tbrTag = null;
 	TableRow tbrApp = null;

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class FunTouchTagDetails extends Activity {
+public class FunTouchTagDetails extends MenuHavingActivity {
 	TextView tv_details = null;
 	String[] detailsDatas = null;
 	int selectedId = 0;

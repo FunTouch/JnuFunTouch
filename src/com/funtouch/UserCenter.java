@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class UserCenter extends Activity{
+public class UserCenter extends MenuHavingActivity{
 	
 	private ImageButton btnLogoff = null;
 	private ImageButton btnRevBeam = null;

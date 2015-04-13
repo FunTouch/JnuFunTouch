@@ -6,7 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,7 +21,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -31,6 +37,8 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class CardTransport extends FragmentActivity {
 	private Button btn_Edit;
+	public Cookie application ; 
+	private DataRetriever dataRetriever = new DataRetriever();
 	private List<Contact> listContact = new ArrayList<Contact>(); ;
 	private SimpleAdapter adapter0;
 	private Button btn_Transport;
@@ -45,17 +53,35 @@ public class CardTransport extends FragmentActivity {
 	TextView tv_myCard = null;
 	TextView tv_contacts = null;
 	TextView tv_name,tv_phone = null;
+	private Map<String,String> info = null;
 	Map<String, String> tmp = new HashMap<String, String>();
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
+	String cookie = application.getInstance().getCookie();
+	SharedPreferences sharedPreferences;
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cardtransport);
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		sharedPreferences = getSharedPreferences("info",Context.MODE_PRIVATE);
 		init();
-		
+		if(cookie!=null)
+			info = dataRetriever.getInfo(cookie);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	switch (item.getItemId()) {
+	case android.R.id.home:
+		this.finish();
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	private void init() {
@@ -126,6 +152,7 @@ public class CardTransport extends FragmentActivity {
 				@Nullable Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
 			View view = inflater.inflate(R.layout.fragment_mycard, container, false);
+			Editor editor = sharedPreferences.edit();
 			btn_Edit = (Button)view.findViewById(R.id.btn_edit);
 			btn_Transport = (Button)view.findViewById(R.id.btn_transport);
 			tv_name = (TextView)view.findViewById(R.id.tv2_name);
@@ -134,15 +161,65 @@ public class CardTransport extends FragmentActivity {
 			tv_phone = (TextView)view.findViewById(R.id.tv2_phone);
 			TextView tv_qq = (TextView)view.findViewById(R.id.tv2_qq);
 			TextView tv_wechat = (TextView)view.findViewById(R.id.tv2_wechat);
+			if(cookie==null)
+			{
+				tv_name.setText(sharedPreferences.getString("name", null));
+				tv_institute.setText(sharedPreferences.getString("grade", null));
+				tv_sno.setText(sharedPreferences.getString("sno", null));
+				tv_phone.setText(sharedPreferences.getString("phone", null));
+				tv_qq.setText(sharedPreferences.getString("qq", null));
+				tv_wechat.setText(sharedPreferences.getString("wechat", null));
+			}
+			if(cookie!=null&&!info.get("name").toString().equals("null"))
+			{
+				editor.putString("name", info.get("name").toString());
+				tv_name.setText(info.get("name").toString());
+				editor.commit();
+			}		
+			if(cookie!=null&&!info.get("grade").toString().equals("null"))
+			{
+				editor.putString("grade", info.get("grade").toString());
+				tv_institute.setText(info.get("grade").toString());
+				editor.commit();
+			}
+			
+			if(cookie!=null&&!info.get("sno").toString().equals("null"))
+			{
+				editor.putString("sno", info.get("sno").toString());
+				tv_sno.setText(info.get("sno").toString());
+				editor.commit();
+			}
+			
+			if(cookie!=null&&!info.get("phone").toString().equals("null"))
+			{
+				tv_phone.setText(info.get("phone").toString());
+				editor.putString("phone", info.get("phone").toString());
+				editor.commit();
+			}
+
+			if(cookie!=null&&!info.get("qq").toString().equals("null"))
+			{
+				tv_qq.setText(info.get("qq").toString());
+				editor.putString("qq", info.get("qq").toString());
+				editor.commit();
+			}
+			
+			
 			textViews.add(tv_name);textViews.add(tv_institute);
 			textViews.add(tv_sno);textViews.add(tv_phone);
 			textViews.add(tv_qq);textViews.add(tv_wechat);
 			EditText et_name = (EditText)view.findViewById(R.id.et_name);
+			et_name.setText(tv_name.getText().toString());
 			EditText et_institute = (EditText)view.findViewById(R.id.et_institute);
+			et_institute.setText(tv_institute.getText().toString());
 			EditText et_sno = (EditText)view.findViewById(R.id.et_sno);
+			et_sno.setText(tv_sno.getText().toString());
 			EditText et_phone = (EditText)view.findViewById(R.id.et_phone);
+			et_phone.setText(tv_phone.getText().toString());
 			EditText et_qq = (EditText)view.findViewById(R.id.et_qq);
+			et_qq.setText(tv_qq.getText().toString());
 			EditText et_wechat = (EditText)view.findViewById(R.id.et_wechat);
+			et_wechat.setText(tv_wechat.getText().toString());
 			editTexts.add(et_name);editTexts.add(et_institute);
 			editTexts.add(et_sno);editTexts.add(et_phone);
 			editTexts.add(et_qq);editTexts.add(et_wechat);
@@ -188,10 +265,19 @@ public class CardTransport extends FragmentActivity {
 						if(!((temp = editTexts.get(i).getText().toString()).isEmpty())){
 							textViews.get(i).setText(temp);						
 							}
+						
 						editTexts.get(i).setVisibility(View.GONE);
 						textViews.get(i).setVisibility(View.VISIBLE);
 					}
-				
+					Editor editor = sharedPreferences.edit();
+					editor.putString("name", editTexts.get(0).getText().toString());
+					editor.putString("grade", editTexts.get(1).getText().toString());
+					editor.putString("sno", editTexts.get(2).getText().toString());
+					editor.putString("phone", editTexts.get(3).getText().toString());
+					editor.putString("qq", editTexts.get(4).getText().toString());
+					editor.putString("wechat", editTexts.get(5).getText().toString());
+					editor.commit();
+					Log.i("wechat",sharedPreferences.getString("wechat", null));
 				}
 				
 			});

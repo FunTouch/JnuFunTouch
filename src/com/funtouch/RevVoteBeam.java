@@ -44,7 +44,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RevVoteBeam extends Activity implements OnItemClickListener{
+public class RevVoteBeam extends MenuHavingActivity implements OnItemClickListener{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
 	public Cookie application ; 
@@ -56,9 +56,7 @@ public class RevVoteBeam extends Activity implements OnItemClickListener{
     private MyAdapter mSimpleAdapter;
 	private List<Map<String, Object>> teams = null;
 	private DataRetriever dataRetriever = new DataRetriever();
-	String cookie = application.getInstance().getCookie();
-	
-	
+	String cookie = application.getInstance().getCookie();	
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {

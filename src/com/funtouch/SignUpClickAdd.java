@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class SignUpClickAdd extends Activity {
+public class SignUpClickAdd extends MenuHavingActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

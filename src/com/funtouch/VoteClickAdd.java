@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class VoteClickAdd extends Activity{
+public class VoteClickAdd extends MenuHavingActivity{
 
 	private Button btnClickAdd = null;
 	private Button btnUse = null;

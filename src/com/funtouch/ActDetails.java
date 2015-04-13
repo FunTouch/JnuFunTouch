@@ -19,7 +19,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class ActDetails extends Activity{
+public class ActDetails extends MenuHavingActivity{
 	private SimpleAdapter adapter;
 	private List<Map<String, Object>> ActDetail = new ArrayList<Map<String, Object>>();
 	private Button btnDelAct,btnUpdateAct = null;
