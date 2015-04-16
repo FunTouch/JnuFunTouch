@@ -25,7 +25,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class VoteOLDetail extends Activity implements OnItemClickListener{
+public class VoteOLDetail extends MenuHavingActivity implements OnItemClickListener{
 	public Cookie application ;
 	private SimpleAdapter adapter;
 	private List<Map<String, String>> VoteDetail = new ArrayList<Map<String, String>>();

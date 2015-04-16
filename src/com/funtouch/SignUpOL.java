@@ -18,7 +18,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class SignUpOL extends Activity{
+public class SignUpOL extends MenuHavingActivity{
 	private SimpleAdapter adapter;
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	private DataRetriever dataRetriever = new DataRetriever();
@@ -29,20 +29,7 @@ public class SignUpOL extends Activity{
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-     
-        super.onCreate(savedInstanceState);
+		  super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_ol);
         
         ListView lsvActInfo = (ListView)findViewById(R.id.lsv_enroll_act);

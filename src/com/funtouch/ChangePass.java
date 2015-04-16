@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ChangePass extends Activity{
+public class ChangePass extends MenuHavingActivity{
 	public Cookie application ; 
 	private EditText old_pass, new_pass, new_conf_pass = null;
 	private Button btnPassSubmit = null;
@@ -20,19 +20,6 @@ public class ChangePass extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-     
      	// TODO Auto-generated method stub
   		super.onCreate(savedInstanceState);
   		setContentView(R.layout.change_pass);

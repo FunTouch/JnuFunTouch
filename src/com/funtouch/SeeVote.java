@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-public class SeeVote extends Activity{
+public class SeeVote extends MenuHavingActivity{
 	private SimpleAdapter adapter;
 	public Cookie application ; 
 	private List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();
@@ -34,20 +34,6 @@ public class SeeVote extends Activity{
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		authority = intent1.getStringExtra("authority");
-
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-     
      	setContentView(R.layout.see_vote);
      	
      	ListView lsvVoteInfo = (ListView)findViewById(R.id.lsv_vote_info);

@@ -3,7 +3,7 @@ package com.funtouch;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class VoteUse extends Activity {
+public class VoteUse extends MenuHavingActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

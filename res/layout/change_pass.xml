@@ -179,7 +179,7 @@
         android:layout_alignBaseline="@+id/edt_new_pass"
         android:layout_alignBottom="@+id/edt_new_pass"
         android:layout_alignParentLeft="true"
-        android:text="请输入原密码:"
+        android:text="请输入新密码:"
         android:textSize="16dp" />
 
     <TextView
@@ -199,7 +199,7 @@
         android:layout_alignBaseline="@+id/edt_old_pass"
         android:layout_alignBottom="@+id/edt_old_pass"
         android:layout_alignParentLeft="true"
-        android:text="请输入新密码:"
+        android:text="请输入原密码:"
         android:textSize="16dp" />
 
     

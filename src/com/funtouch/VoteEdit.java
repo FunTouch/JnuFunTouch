@@ -30,7 +30,7 @@ import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-public class VoteEdit extends Activity{
+public class VoteEdit extends MenuHavingActivity{
 	public Cookie application ; 
 	private Button btnOk = null;
 	private Button btnUse = null;
@@ -53,19 +53,6 @@ public class VoteEdit extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
      
 		setContentView(R.layout.vote_edit);
 		et_teamName = new EditText(this);

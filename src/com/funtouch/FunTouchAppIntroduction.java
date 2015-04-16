@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class FunTouchAppIntroduction extends Activity{
+public class FunTouchAppIntroduction extends MenuHavingActivity{
 	TextView tv_appInduction = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

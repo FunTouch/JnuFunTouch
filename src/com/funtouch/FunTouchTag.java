@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 
-public class FunTouchTag extends Activity {
+public class FunTouchTag extends MenuHavingActivity {
 	int selectedId = 0;
 	RadioGroup  LabelGroup = null;
 	RadioButton rB_noPaperPost = null;

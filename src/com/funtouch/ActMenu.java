@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class ActMenu extends Activity{
+public class ActMenu extends MenuHavingActivity{
 
 	private ImageButton btnVote = null;
 	private ImageButton btnSignUp = null;

@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-public class UpdateAct extends Activity{
+public class UpdateAct extends MenuHavingActivity{
 	public Cookie application ; 
 	private Button btnSubmitUpdate = null;
 	private EditText edtUpdateName, edtUpdateOrg, edtUpdateTime, edtUpdatePlace, edtUpdateType, edtUpdateActor, edtUpdateInfo = null;
@@ -25,20 +25,7 @@ public class UpdateAct extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-        .detectDiskReads()
-        .detectDiskWrites()
-        .detectAll()   // or .detectAll() for all detectable problems
-        .penaltyLog()
-        .build());
-     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-        .detectLeakedSqlLiteObjects()
-        .detectLeakedClosableObjects()
-        .penaltyLog()
-        .penaltyDeath()
-        .build());
-     
-     
+		
      	super.onCreate(savedInstanceState);
 		setContentView(R.layout.update_act);
 		

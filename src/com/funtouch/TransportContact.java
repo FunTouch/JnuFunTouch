@@ -20,7 +20,7 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
-public class TransportContact extends Activity implements CreateNdefMessageCallback,
+public class TransportContact extends MenuHavingActivity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;

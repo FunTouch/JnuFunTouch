@@ -20,7 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class SignUpBeam extends Activity implements CreateNdefMessageCallback,
+public class SignUpBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
