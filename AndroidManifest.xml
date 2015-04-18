@@ -3,7 +3,7 @@
     package="com.funtouch"
     android:versionCode="1"
     android:versionName="1.0" 
-    android:launchMode="singleTask"   >
+    android:launchMode="singleTask">
     
 
     <uses-sdk
@@ -29,12 +29,8 @@
         <activity
             android:name=".MainActivity"
             android:label="Fun Of Touching" 
-<<<<<<< HEAD
-            android:launchMode="singleTask"   android:screenOrientation="portrait">
-=======
             android:screenOrientation="portrait"
             android:launchMode="singleTask">
->>>>>>> origin/master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,21 +40,6 @@
         
          <activity android:name=".AboutActivity"
             android:label="关于活动"
-<<<<<<< HEAD
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-         <activity android:name=".ActDetails"
-            android:label="活动详情"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-          <activity android:name=".UpdateAct"
-            android:label="修改信息活动"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-          <activity android:name=".ActVali"
-            android:label="激活验证功能"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-          <activity android:name=".ValiUser"
-            android:label="验证用户"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-=======
             android:screenOrientation="portrait"
             android:launchMode="singleTask"></activity>
          <activity android:name=".ActDetails"
@@ -74,30 +55,10 @@
           <activity android:name=".ValiUser"
               android:screenOrientation="portrait"
             android:label="验证用户"></activity>
->>>>>>> origin/master
           <activity android:name=".RelCode"
               android:screenOrientation="portrait"
             android:label="已发放验证码"></activity>
           <activity android:name=".MyCode"
-<<<<<<< HEAD
-             android:launchMode="singleTask"   android:screenOrientation="portrait"
-            android:label="查看我的验证码"></activity>
-          <activity android:name=".CodeBeam"
-            android:label="验证模式"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-          <activity android:name=".TransportContact"
-            android:label="推送联系人"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-          <activity android:name=".SeeActivity"
-            android:label="查看活动"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-          <activity android:name=".GetAward"
-            android:label="领奖"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-          <activity android:name=".ValidatePassActivity"
-            android:label="验证通过"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-=======
              android:launchMode="singleTask"
              android:screenOrientation="portrait"
             android:label="查看我的验证码"></activity>
@@ -116,22 +77,11 @@
           <activity android:name=".ValidatePassActivity"
               android:screenOrientation="portrait"
             android:label="验证通过"></activity>
->>>>>>> origin/master
         <activity android:name=".Login"
             android:screenOrientation="portrait"
             android:label="登陆"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>	
+            android:launchMode="singleTask"></activity>	
         <activity android:name=".ChangePass"
-<<<<<<< HEAD
-            android:label="修改密码"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>	
-         <activity android:name=".UpdateInfo"
-            android:label="个人信息修改"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>	
-         <activity android:name=".MyVote"
-            android:label="我的投票"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>	
-=======
             android:screenOrientation="portrait"
             android:label="修改密码"></activity>	
          <activity android:name=".UpdateInfo"
@@ -140,57 +90,18 @@
          <activity android:name=".MyVote"
              android:screenOrientation="portrait"
             android:label="我的投票"></activity>	
->>>>>>> origin/master
             <activity android:name=".MySignUp"
                 android:screenOrientation="portrait"
             android:label="我的报名"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>																																																																							
+            android:launchMode="singleTask"></activity>																																																																							
         <activity android:name=".ActMenu"
-<<<<<<< HEAD
-            android:label="活动菜单"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-=======
             android:screenOrientation="portrait"
             android:label="活动菜单"></activity>
->>>>>>> origin/master
         <activity android:name=".UserCenter"
             android:screenOrientation="portrait"
             android:label="用户中心"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:launchMode="singleTask"></activity>
         <activity android:name=".SeeVote"
-<<<<<<< HEAD
-            android:label="查看投票"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".CreateActivity"
-            android:label="创建活动"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".RegistInfo"
-            android:label="注册"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".RegistActName"
-            android:label="活动信息"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        
-        <activity android:name=".VoteClickAdd"
-            android:label="发起投票"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".VoteEdit"
-            android:label="投票"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".VoteOL"
-            android:label="在线投票"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".VoteOLDetail"
-            android:label="选择投票队伍"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name="com.funtouch.VoteBeam"
-            android:label="投票界面"
-            android:launchMode="singleTask"   android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".RevVoteBeam"
-            android:label="接触投票"
-            android:launchMode="singleTask"   android:screenOrientation="portrait">
-=======
             android:screenOrientation="portrait"
             android:label="查看投票"></activity>
         <activity android:name=".CreateActivity"
@@ -222,7 +133,6 @@
         <activity android:name=".RevVoteBeam"
             android:screenOrientation="portrait"
             android:label="接触投票">
->>>>>>> origin/master
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
   			<category android:name="android.intent.category.DEFAULT"/>
@@ -230,17 +140,6 @@
 			</intent-filter>
         </activity>
         <activity android:name=".VoteUse"
-<<<<<<< HEAD
-            android:label="使用"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        
-        <activity android:name=".SignUpClickAdd"
-            android:label="发起报名"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".SignUpEdit"
-            android:label="发起报名"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-=======
             android:screenOrientation="portrait"
             android:label="使用"></activity>
         
@@ -250,22 +149,11 @@
         <activity android:name=".SignUpEdit"
             android:screenOrientation="portrait"
             android:label="发起报名"></activity>
->>>>>>> origin/master
         <activity android:name=".EnrollList"
             android:screenOrientation="portrait"
             android:label="报名列表"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:launchMode="singleTask"></activity>
         <activity android:name=".EnrollListDetails"
-<<<<<<< HEAD
-            android:label="报名信息"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".SignUpUse"
-            android:label="使用"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".SignUpBeam"
-            android:label="接触报名"
-            android:launchMode="singleTask"   android:screenOrientation="portrait">
-=======
             android:screenOrientation="portrait"
             android:label="报名信息"></activity>
         <activity android:name=".SignUpUse"
@@ -274,7 +162,6 @@
         <activity android:name=".SignUpBeam"
             android:screenOrientation="portrait"
             android:label="接触报名">
->>>>>>> origin/master
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
   			<category android:name="android.intent.category.DEFAULT"/>
@@ -282,26 +169,6 @@
 			</intent-filter>
         </activity>
         <activity android:name=".SignUpOL"
-<<<<<<< HEAD
-            android:label="在线报名"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-        <activity android:name=".SignUpOLDetail"
-            android:label="报名详情"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".FlyerList"
-            android:label="无纸传单"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".FlyerNew"
-            android:label="新建传单"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".FlyerNewSelectStyle"
-            android:label="选择版式"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-
-		<activity android:name=".FlyerUse"
-            android:label="启用"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-=======
             android:screenOrientation="portrait"
             android:label="在线报名"></activity>
         <activity android:name=".SignUpOLDetail"
@@ -320,74 +187,31 @@
 		<activity android:name=".FlyerUse"
 		    android:screenOrientation="portrait"
             android:label="启用"></activity>
->>>>>>> origin/master
 		<activity android:name=".FlyerSee"
-            android:label="预览"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="预览"></activity>
 		
 		<activity android:name=".ActAuthenticate"
-            android:label="验证功能"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="验证功能"></activity>
 		
 		<activity android:name=".GameList"
-            android:label="游戏"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="游戏"></activity>
 		<activity android:name=".GameUndercoverSetting"
-            android:label="设置"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="设置"></activity>
 		<activity android:name=".GameUndercoverDetail"
-            android:label="已分配的角色"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="已分配的角色"></activity>
 		<activity android:name=".GameUndercoverGetRole"
-            android:label="获得角色"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="获得角色"></activity>
 		
 		<activity android:name=".GameWerewolfSetting"
-            android:label="设置"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="设置"></activity>
 		<activity android:name=".GameWerewolfDetail"
-            android:label="已分配的角色"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="已分配的角色"></activity>
 		<activity android:name=".GameWerewolfGetRole"
-            android:label="获得角色"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="获得角色"></activity>
 		
 		<activity android:name=".SocialFirstUse"
-            android:label="欢迎"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
+            android:label="欢迎"></activity>
 		<activity android:name=".CardTransport"
-<<<<<<< HEAD
-            android:label="名片推送"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".SocialCreateCardMenu"
-            android:label="创建名片"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".SocialCreateCardEdit"
-            android:label="编辑"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".SocialCreateCardImportContact"
-           	android:label="导入联系人"
-           	android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".SocialCardUse"
-            android:label="运行中"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		
-		<activity android:name=".FunTouchProfile"
-            android:label="FunTouch简介"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".FunTouchAppIntroduction"
-            android:label="nfc手机应用"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".FunTouchTag"
-            android:label="NFC标签"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".FunTouchTagDetails"
-            android:label="Wifi标签"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-		<activity android:name=".FunTouchTagOther"
-            android:label="定制"
-            android:launchMode="singleTask"   android:screenOrientation="portrait"></activity>
-=======
 		    android:screenOrientation="portrait"
             android:label="名片推送"></activity>
 		<activity android:name=".SocialCreateCardMenu"
@@ -418,7 +242,6 @@
 		<activity android:name=".FunTouchTagOther"
 		    android:screenOrientation="portrait"
             android:label="定制"></activity>
->>>>>>> origin/master
 
           
     </application>
