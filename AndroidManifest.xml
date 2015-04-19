@@ -29,7 +29,7 @@
         <activity
             android:name=".MainActivity"
             android:label="Fun Of Touching" 
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,98 +40,98 @@
         
          <activity android:name=".AboutActivity"
             android:label="关于活动"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  
             android:launchMode="singleTask"></activity>
          <activity android:name=".ActDetails"
             android:label="活动详情"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  
             android:launchMode="singleTask"></activity>
           <activity android:name=".UpdateAct"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="修改信息活动"></activity>
           <activity android:name=".ActVali"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="激活验证功能"></activity>
           <activity android:name=".ValiUser"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="验证用户"></activity>
           <activity android:name=".RelCode"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="已发放验证码"></activity>
           <activity android:name=".MyCode"
              android:launchMode="singleTask"
-             android:screenOrientation="portrait"
+             android:screenOrientation="portrait"  
             android:label="查看我的验证码"></activity>
           <activity android:name=".CodeBeam"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="验证模式"></activity>
           <activity android:name=".TransportContact"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="推送联系人"></activity>
           <activity android:name=".SeeActivity"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="查看活动"></activity>
           <activity android:name=".GetAward"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="领奖"></activity>
           <activity android:name=".ValidatePassActivity"
-              android:screenOrientation="portrait"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="验证通过"></activity>
         <activity android:name=".Login"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  
             android:label="登陆"
             android:launchMode="singleTask"></activity>	
         <activity android:name=".ChangePass"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="修改密码"></activity>	
          <activity android:name=".UpdateInfo"
-             android:screenOrientation="portrait"
+             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="个人信息修改"></activity>	
          <activity android:name=".MyVote"
-             android:screenOrientation="portrait"
+             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="我的投票"></activity>	
             <activity android:name=".MySignUp"
-                android:screenOrientation="portrait"
+                android:screenOrientation="portrait"  
             android:label="我的报名"
             android:launchMode="singleTask"></activity>																																																																							
         <activity android:name=".ActMenu"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="活动菜单"></activity>
         <activity android:name=".UserCenter"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  
             android:label="用户中心"
             android:launchMode="singleTask"></activity>
         <activity android:name=".SeeVote"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="查看投票"></activity>
         <activity android:name=".CreateActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="创建活动"></activity>
         <activity android:name=".RegistInfo"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="注册"></activity>
         <activity android:name=".RegistActName"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="活动信息"></activity>
         
         <activity android:name=".VoteClickAdd"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="发起投票"></activity>
         <activity android:name=".VoteEdit"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="投票"></activity>
         <activity android:name=".VoteOL"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="在线投票"></activity>
         <activity android:name=".VoteOLDetail"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="选择投票队伍"></activity>
         <activity android:name="com.funtouch.VoteBeam"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="投票界面">
         </activity>
         <activity android:name=".RevVoteBeam"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="接触投票">
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
@@ -140,27 +140,27 @@
 			</intent-filter>
         </activity>
         <activity android:name=".VoteUse"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="使用"></activity>
         
         <activity android:name=".SignUpClickAdd"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="发起报名"></activity>
         <activity android:name=".SignUpEdit"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="发起报名"></activity>
         <activity android:name=".EnrollList"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  
             android:label="报名列表"
             android:launchMode="singleTask"></activity>
         <activity android:name=".EnrollListDetails"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="报名信息"></activity>
         <activity android:name=".SignUpUse"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="使用"></activity>
         <activity android:name=".SignUpBeam"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="接触报名">
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
@@ -169,23 +169,23 @@
 			</intent-filter>
         </activity>
         <activity android:name=".SignUpOL"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="在线报名"></activity>
         <activity android:name=".SignUpOLDetail"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="报名详情"></activity>
 		<activity android:name=".FlyerList"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="无纸传单"></activity>
 		<activity android:name=".FlyerNew"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="新建传单"></activity>
 		<activity android:name=".FlyerNewSelectStyle"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="选择版式"></activity>
 
 		<activity android:name=".FlyerUse"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="启用"></activity>
 		<activity android:name=".FlyerSee"
             android:label="预览"></activity>
@@ -212,35 +212,35 @@
 		<activity android:name=".SocialFirstUse"
             android:label="欢迎"></activity>
 		<activity android:name=".CardTransport"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="名片推送"></activity>
 		<activity android:name=".SocialCreateCardMenu"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="创建名片"></activity>
 		<activity android:name=".SocialCreateCardEdit"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="编辑"></activity>
 		<activity android:name=".SocialCreateCardImportContact"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
            	android:label="导入联系人"></activity>
 		<activity android:name=".SocialCardUse"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="运行中"></activity>
 		
 		<activity android:name=".FunTouchProfile"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="FunTouch简介"></activity>
 		<activity android:name=".FunTouchAppIntroduction"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="nfc手机应用"></activity>
 		<activity android:name=".FunTouchTag"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="NFC标签"></activity>
 		<activity android:name=".FunTouchTagDetails"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="Wifi标签"></activity>
 		<activity android:name=".FunTouchTagOther"
-		    android:screenOrientation="portrait"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="定制"></activity>
 
           

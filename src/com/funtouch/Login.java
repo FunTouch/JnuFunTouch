@@ -1,40 +1,24 @@
 package com.funtouch;
 
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Vector;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.StrictMode;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.Button;
-import com.funtouch.UserInfo;
-import com.funtouch.MD5;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login extends MenuHavingActivity {
 	//private SharedPreferences read ;
@@ -132,6 +116,7 @@ public class Login extends MenuHavingActivity {
 			}
 		});
 	}
+	
 	
 	//提示类
 	private void showToast(CharSequence msg) {

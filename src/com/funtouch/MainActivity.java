@@ -1,5 +1,7 @@
 package com.funtouch;
 
+import java.lang.reflect.Field;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,8 +10,11 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -48,7 +53,7 @@ public class MainActivity extends Activity {
         
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		showOverflowMenu();
 		init();
 		
 		ConnectivityManager con=(ConnectivityManager)getSystemService(Activity.CONNECTIVITY_SERVICE);  
@@ -136,6 +141,27 @@ public class MainActivity extends Activity {
 		});
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.menu_overflow, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch(item.getItemId()){
+		case R.id.menu_aboutus:
+			
+			break;
+		case R.id.menu_help:
+			
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	public void showExitDialog(){
 		new AlertDialog.Builder(MainActivity.this)
 		.setTitle("╮(╯﹏╰）╭退出")
@@ -216,7 +242,18 @@ public class MainActivity extends Activity {
 			MainActivity.this.recreate();
 		}
 	
-	
+		public void showOverflowMenu(){
+			try {  
+		        ViewConfiguration config = ViewConfiguration.get(this);  
+		        Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");  
+		        if(menuKeyField != null) {  
+		            menuKeyField.setAccessible(true);  
+		            menuKeyField.setBoolean(config, false);  
+		        }  
+		    } catch (Exception e) {  
+		        e.printStackTrace();  
+		    }  
+		}
 	
 	
 }

@@ -2,16 +2,14 @@ package com.funtouch;
 
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
-
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -21,16 +19,14 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.StrictMode;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -63,7 +59,6 @@ public class AboutActivity extends MenuHavingActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);  
 		setContentView(R.layout.about_activity);
-
 		ListView lsvActInfo = (ListView)findViewById(R.id.lsv_act_info);
 				
 		init();
@@ -172,6 +167,9 @@ public class AboutActivity extends MenuHavingActivity {
 			}
 		});
 	}
+	
+	
+	
 	
 	public void showDialog(){
 		new AlertDialog.Builder(AboutActivity.this)

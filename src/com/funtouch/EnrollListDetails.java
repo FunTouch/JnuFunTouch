@@ -1,23 +1,24 @@
 package com.funtouch;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class EnrollListDetails extends MenuHavingActivity{
 	private SimpleAdapter adapter;
@@ -32,7 +33,6 @@ public class EnrollListDetails extends MenuHavingActivity{
 		  
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enroll_details);
-		
 		btnDelSign = (Button) findViewById(R.id.btn_delete_enroll);
 		
 		Intent intent1 = getIntent();
@@ -64,6 +64,7 @@ public class EnrollListDetails extends MenuHavingActivity{
         });*/
 		
 	}
+	
 	
 	//提示类
 	private void showToast(CharSequence msg) {

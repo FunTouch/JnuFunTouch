@@ -1,8 +1,10 @@
 package com.funtouch;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,11 +15,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class ValidatePassActivity extends FragmentActivity{
@@ -37,9 +41,55 @@ public class ValidatePassActivity extends FragmentActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_validatepass);
+		showOverflowMenu();
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 		init();
 	}
 	
+	
+	public void showOverflowMenu(){
+		try {  
+	        ViewConfiguration config =ViewConfiguration.get(this);  
+	        Field menuKeyField = ViewConfiguration.class.
+	        getDeclaredField("sHasPermanentMenuKey");  
+	        if(menuKeyField != null) {  
+	         menuKeyField.setAccessible(true);  
+	         menuKeyField.setBoolean(config, false);  
+	        }  
+	    } catch (Exception e) {  
+	        e.printStackTrace();  
+	    }  
+	}
+
+
+
+@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.menu_overflow, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+
+
+
+@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch(item.getItemId()){
+		case android.R.id.home:
+			this.finish();
+			break;
+		case R.id.menu_aboutus:
+			
+			break;
+		case R.id.menu_help:
+			
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 	public void init(){
 		viewPager = (ViewPager)findViewById(R.id.MyViewPager);
 		activityerFragment = new ActivityerFragment();

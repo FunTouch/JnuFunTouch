@@ -1,11 +1,14 @@
 package com.funtouch;
 
-import android.app.Activity;
+import java.lang.reflect.Field;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,7 +26,6 @@ public class ChangePass extends MenuHavingActivity{
      	// TODO Auto-generated method stub
   		super.onCreate(savedInstanceState);
   		setContentView(R.layout.change_pass);
-     
      	btnPassSubmit = (Button) findViewById(R.id.btn_pass_submit);
      	old_pass = (EditText) findViewById(R.id.edt_old_pass);
      	new_pass = (EditText) findViewById(R.id.edt_new_pass);
@@ -65,6 +67,7 @@ public class ChangePass extends MenuHavingActivity{
         });
      	
 	}
+	
 	
 	
 	//提示类

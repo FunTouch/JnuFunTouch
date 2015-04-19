@@ -1,10 +1,14 @@
 package com.funtouch;
 
-import android.app.Activity;
+import java.lang.reflect.Field;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.TableRow;
 
 public class FunTouchProfile extends MenuHavingActivity {
@@ -18,7 +22,6 @@ public class FunTouchProfile extends MenuHavingActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.funtouch_profile);
-		
 		init();
 		
 		tbrTag.setOnClickListener(new OnClickListener() {
@@ -44,6 +47,8 @@ public class FunTouchProfile extends MenuHavingActivity {
 		
 	}
 
+	
+	
 	private void init() {
 		tbrTag = (TableRow)findViewById(R.id.tbr_nfc_tag);
 		tbrApp = (TableRow)findViewById(R.id.tbr_nfc_app);

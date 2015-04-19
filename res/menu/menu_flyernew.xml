@@ -16,4 +16,14 @@
        android:orderInCategory="3"
        android:title="使用无纸传单"
        android:showAsAction="never"/>
+    <item  
+        android:id="@+id/menu_aboutus"  
+        android:orderInCategory="4"  
+        android:showAsAction="never"  
+        android:title="关于我们"/>  
+	<item  
+        android:id="@+id/menu_help"  
+        android:orderInCategory="5"  
+        android:showAsAction="never"  
+        android:title="帮助"/> 
 </menu>

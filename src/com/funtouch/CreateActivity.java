@@ -1,17 +1,17 @@
 package com.funtouch;
 
-import android.app.Activity;
+import java.lang.reflect.Field;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.funtouch.Cookie;
 
 public class CreateActivity extends MenuHavingActivity{
 	public Cookie application ; 
@@ -24,7 +24,6 @@ public class CreateActivity extends MenuHavingActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_activity);
-		
 		Button btnCreateAct = null;
 		
 		name = (EditText) findViewById(R.id.edt_ActName);
@@ -70,6 +69,8 @@ public class CreateActivity extends MenuHavingActivity{
 		});
 		
 	}	
+	
+	
 	
 	//��ʾ��
 		private void showToast(CharSequence msg) {

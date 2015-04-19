@@ -1,7 +1,11 @@
 package com.funtouch;
 
-import android.app.Activity;
+import java.lang.reflect.Field;
+
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.ViewConfiguration;
 import android.widget.TextView;
 
 public class FunTouchTagDetails extends MenuHavingActivity {
@@ -19,6 +23,7 @@ public class FunTouchTagDetails extends MenuHavingActivity {
 		selectedId = getIntent().getIntExtra("selectedId", 0);
 		tv_details.setText(detailsDatas[selectedId]);
 	}
+	
 	
 	public void init(){
 		whatIsThis = getString(R.string.whatisthis);

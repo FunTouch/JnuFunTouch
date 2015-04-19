@@ -1,11 +1,10 @@
 package com.funtouch;
 
+import java.lang.reflect.Field;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.funtouch.util.nfc.BobNdefMessage;
-
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.nfc.NdefMessage;
@@ -16,7 +15,12 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.ViewConfiguration;
 import android.widget.Toast;
+
+import com.funtouch.util.nfc.BobNdefMessage;
 
 public class CodeBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
@@ -32,7 +36,6 @@ OnNdefPushCompleteCallback{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.code_beam);
-        
         Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		username = intent1.getStringExtra("username");
@@ -54,6 +57,7 @@ OnNdefPushCompleteCallback{
         
     }
 
+    
 	@Override
 	public void onNdefPushComplete(NfcEvent event) {
 		// TODO Auto-generated method stub

@@ -1,23 +1,25 @@
 package com.funtouch;
 
-import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class ActDetails extends MenuHavingActivity{
 	private SimpleAdapter adapter;
@@ -74,6 +76,7 @@ public class ActDetails extends MenuHavingActivity{
 			}
 		});
 	}
+	
 	
 	public void showDialog(){
 		new AlertDialog.Builder(ActDetails.this)

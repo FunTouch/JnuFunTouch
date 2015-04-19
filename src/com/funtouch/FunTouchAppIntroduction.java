@@ -1,7 +1,11 @@
 package com.funtouch;
 
-import android.app.Activity;
+import java.lang.reflect.Field;
+
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.ViewConfiguration;
 import android.widget.TextView;
 
 public class FunTouchAppIntroduction extends MenuHavingActivity{
@@ -13,4 +17,6 @@ public class FunTouchAppIntroduction extends MenuHavingActivity{
 		setContentView(R.layout.activity_appintroduction);
 		tv_appInduction = (TextView)findViewById(R.id.tv_appInduction);
 	}
+	
+	
 }

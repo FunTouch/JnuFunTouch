@@ -1,24 +1,25 @@
 package com.funtouch;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class EnrollList extends MenuHavingActivity {
 
@@ -39,7 +40,6 @@ public class EnrollList extends MenuHavingActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enroll_list);
 		init();
-		
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		
@@ -100,6 +100,7 @@ public class EnrollList extends MenuHavingActivity {
 		
 	}
 
+	
 	private void init() {
 		// TODO Auto-generated method stub
 		lsvDetails = (ListView)findViewById(R.id.lsv_enroll_details);

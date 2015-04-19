@@ -1,9 +1,13 @@
 package com.funtouch;
-import android.app.Activity;
+import java.lang.reflect.Field;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,7 +32,7 @@ public class FunTouchTag extends MenuHavingActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.funtouch_nfc_tag);
 		init();
-		
+
 		LabelGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
@@ -70,6 +74,8 @@ public class FunTouchTag extends MenuHavingActivity {
 		
 	}
 
+	
+	
 	private void init() {
 		detailsButton = (Button)findViewById(R.id.btn_details);
 		goBuyButton = (Button)findViewById(R.id.btn_goBuy);

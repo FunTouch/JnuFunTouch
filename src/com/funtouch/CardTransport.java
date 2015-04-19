@@ -1,5 +1,6 @@
 package com.funtouch;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,17 +24,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class CardTransport extends FragmentActivity {
 	private Button btn_Edit;
@@ -66,6 +69,7 @@ public class CardTransport extends FragmentActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cardtransport);
+		showOverflowMenu();
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		sharedPreferences = getSharedPreferences("info",Context.MODE_PRIVATE);
@@ -74,14 +78,45 @@ public class CardTransport extends FragmentActivity {
 			info = dataRetriever.getInfo(cookie);
 	}
 	
+	
+	public void showOverflowMenu(){
+		try {  
+	        ViewConfiguration config =ViewConfiguration.get(this);  
+	        Field menuKeyField = ViewConfiguration.class.
+	        getDeclaredField("sHasPermanentMenuKey");  
+	        if(menuKeyField != null) {  
+	         menuKeyField.setAccessible(true);  
+	         menuKeyField.setBoolean(config, false);  
+	        }  
+	    } catch (Exception e) {  
+	        e.printStackTrace();  
+	    }  
+	}
+
+
+
+@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.menu_overflow, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {
 	case android.R.id.home:
 		this.finish();
-		default:
-			return super.onOptionsItemSelected(item);
+		break;
+	case R.id.menu_aboutus:
+		break;
+	case R.id.menu_help:
+		break;
+		default:	
 		}
+	return super.onOptionsItemSelected(item);
 	}
 
 	private void init() {
