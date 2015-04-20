@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:columnCount="1" 
     android:background="@drawable/background_usercenter"
-    >"
+    >
 
     <ImageButton
         android:id="@+id/btn_logoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/logout"
+        android:background="@drawable/imagebutton_selector_logout"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_logoff"
         android:layout_marginTop="5dp"
-        android:background="@drawable/changeinfo"
+        android:background="@drawable/imagebutton_selector_changeinfo"
         android:layout_alignParentLeft="true"
         />
 
@@ -35,7 +35,7 @@
         android:layout_above="@+id/btn_logoff"
         android:layout_marginTop="5dp"
         android:layout_alignParentRight="true"
-        android:background="@drawable/rev_vote"
+        android:background="@drawable/imagebutton_selector_rev_vote"
          />
 
     <ImageButton
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_above="@+id/btn_update_info"
-        android:background="@drawable/changepass"
+        android:background="@drawable/imagebutton_selector_changepass"
         />
 
     <ImageButton
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/btn_rev_beam"
-        android:background="@drawable/iwantsignup"
+        android:background="@drawable/imagebutton_selector_iwantsignup"
         />
 
     <Button
