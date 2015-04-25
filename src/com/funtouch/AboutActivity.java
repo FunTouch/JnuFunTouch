@@ -128,6 +128,7 @@ public class AboutActivity extends MenuHavingActivity {
 								Intent intent = new Intent();
 								intent.setClass(AboutActivity.this, ActDetails.class);
 								intent.putExtra("ListObject", (Serializable) objectList);
+								intent.putExtra("act_id", spk.getAct_id());
 								startActivity(intent);
 								break;
 					    	}			    	

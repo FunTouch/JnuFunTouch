@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,11 +21,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Login extends MenuHavingActivity {
+public class Login extends Activity {
 	//private SharedPreferences read ;
 	private EditText userName, password;
 	private static final int TIME_OUT = 0; 
     private static final int SUCCESS = 1; 
+    private long temptime = 0;
     // 超时的时限为5秒 
     private static final int TIME_LIMIT = 5000; 
 	public Cookie application ; 
@@ -43,6 +45,7 @@ public class Login extends MenuHavingActivity {
 		
 		Button btnLogin = null;
 		Button btnRegist = null;
+		showOverflowMenu();
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
@@ -54,8 +57,7 @@ public class Login extends MenuHavingActivity {
 		if(cookie!=null)			
 		{
 			Intent intent = new Intent();
-			intent.setClass(Login.this, UserCenter.class);
-			intent.putExtra("flag", "0");
+			intent.setClass(Login.this, MainActivity.class);
 			startActivity(intent);
 			this.finish(); 
 		}
@@ -142,7 +144,7 @@ public class Login extends MenuHavingActivity {
 					{
 						showToast("登陆成功");
 						Intent intent = new Intent();
-						intent.setClass(Login.this, UserCenter.class);
+						intent.setClass(Login.this, MainActivity.class);
 						startActivity(intent);
 						finish();  
 					}
@@ -172,6 +174,65 @@ public class Login extends MenuHavingActivity {
         handler.sendMessage(timeOutMsg); 
     }
 	
+  //双击返回键退出程序
+  	public boolean onKeyDown(int keyCode, KeyEvent event)   
+  	{  
+  	    // TODO Auto-generated method stub  	
+  		
+  	    if((keyCode == KeyEvent.KEYCODE_BACK)&&(event.getAction() == KeyEvent.ACTION_DOWN))  
+  	    {  
+  	    	if(System.currentTimeMillis() - temptime >2000) // 2s内再按一次返回键退出   
+  	        {    
+  	            Toast.makeText(this, "再按一次返回键退出", Toast.LENGTH_LONG).show();  
+  	            temptime = System.currentTimeMillis();  
+  	        }  
+  	        else {  
+  	               finish();   
+  	               System.exit(0); //程序正常退出  
+  	        }  
+  	             
+  	        return true; 
+  	  
+  	    }  
+  	    return super.onKeyDown(keyCode, event);  
+  	}  
+  	
+  	public void showOverflowMenu(){
+		try {  
+	        ViewConfiguration config =ViewConfiguration.get(this);  
+	        Field menuKeyField = ViewConfiguration.class.
+	        getDeclaredField("sHasPermanentMenuKey");  
+	        if(menuKeyField != null) {  
+	         menuKeyField.setAccessible(true);  
+	         menuKeyField.setBoolean(config, false);  
+	        }  
+	    } catch (Exception e) {  
+	        e.printStackTrace();  
+	    }  
+	}
+
+ 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.menu_overflow, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	switch (item.getItemId()) {
+	case android.R.id.home:
+		this.finish();
+		break;
+	case R.id.menu_aboutus:	
+		break;
+	case R.id.menu_help:
+		break;
+		default:
+		}
+	return super.onOptionsItemSelected(item);
+	}
 }
 
 

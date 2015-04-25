@@ -59,11 +59,6 @@ public class MainActivity extends Activity {
 		ConnectivityManager con=(ConnectivityManager)getSystemService(Activity.CONNECTIVITY_SERVICE);  
 		wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();  
 		internet=con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();  
-		//if(wifi|internet){  
-		    //执行相关操作  
-		//}else{  
-		//	showDialog();  
-		//} 
 		
 		btnFunTouch.setOnClickListener(new OnClickListener() {
 			@Override
@@ -79,7 +74,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, AboutActivity.class);
+				intent.setClass(MainActivity.this, ActCenter.class);
 				startActivity(intent);
 				//finish();
 			}
@@ -107,16 +102,11 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, Login.class);
+				intent.setClass(MainActivity.this, UserCenter.class);
 				startActivity(intent);
 				//finish();
 			}
 		});
-		
-		//if(cookie!=null)
-		//{
-		//	btnLogin.setText(name);
-		//}
 		
 		btnValidatePass.setOnClickListener(new OnClickListener(){
 

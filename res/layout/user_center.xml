@@ -61,8 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/btn_update_info"
         android:layout_marginTop="18dp"
-        android:text="我的验证码" />
+        android:text="我持有的验证码" />
 
 </RelativeLayout>

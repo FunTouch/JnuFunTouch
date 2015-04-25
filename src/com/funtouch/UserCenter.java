@@ -97,7 +97,7 @@ public class UserCenter extends MenuHavingActivity{
 				// TODO Auto-generated method stub
 				application.getInstance().setCookie(null); 
 				Intent intent=new Intent();
-        		intent.setClass(UserCenter.this, MainActivity.class);	
+        		intent.setClass(UserCenter.this, Login.class);	
         		startActivity(intent);
         		finish();
 			}	

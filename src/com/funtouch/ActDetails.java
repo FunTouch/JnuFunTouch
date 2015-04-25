@@ -17,6 +17,7 @@ import android.view.ViewConfiguration;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -27,7 +28,12 @@ public class ActDetails extends MenuHavingActivity{
 	private Button btnDelAct,btnUpdateAct = null;
 	private DataRetriever dataRetriever = new DataRetriever();
 	private Cookie application ;
+	private String act_id = null;
 	private String cookie = application.getInstance().getCookie();
+	private Button btnVote = null;
+	private Button btnSignUp = null;
+	private Button btnFlyer = null;
+	private Button btnActVali = null;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		  
@@ -40,9 +46,14 @@ public class ActDetails extends MenuHavingActivity{
 				new String[] {"name", "info", "time","place","type","org","actor"},
 				new int[] {R.id.act_detail_name, R.id.act_detail_info, R.id.act_detail_time,R.id.act_detail_place,R.id.act_detail_type,R.id.act_detail_org,R.id.act_detail_actor,});
 		lsvActDetails.setAdapter(adapter);
+		act_id = getIntent().getStringExtra("act_id");
 		
 		btnDelAct = (Button)findViewById(R.id.btn_del_act);
 		btnUpdateAct = (Button)findViewById(R.id.btn_update_act);
+		btnVote = (Button)findViewById(R.id.btn_vote);
+		btnSignUp = (Button)findViewById(R.id.btn_sign_up);
+		btnFlyer = (Button)findViewById(R.id.btn_nfc_flyer);
+		btnActVali = (Button)findViewById(R.id.btn_act_vali);
 		
 		btnDelAct.setOnClickListener(new OnClickListener() {
 			
@@ -61,6 +72,43 @@ public class ActDetails extends MenuHavingActivity{
 				startActivity(intent);	
 			}
 		});
+		
+		btnVote.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		Intent intent = new Intent();
+        		intent.setClass(ActDetails.this, VoteEdit.class);
+        		intent.putExtra("act_id", act_id);
+        		startActivity(intent);
+        	}
+        });	
+    	
+	btnSignUp.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		Intent intent=new Intent();
+        		intent.setClass(ActDetails.this, SignUpEdit.class);
+        		intent.putExtra("act_id", act_id);
+        		startActivity(intent);
+	
+        	}
+        });
+	
+	btnFlyer.setOnClickListener(new OnClickListener(){
+    	public void onClick(View v){
+    		Intent intent=new Intent();
+    		intent.setClass(ActDetails.this, FlyerNew.class);
+    		startActivity(intent);
+
+    	}
+    });
+	
+	btnActVali.setOnClickListener(new OnClickListener(){
+    	public void onClick(View v){
+    		Intent intent=new Intent();
+    		intent.setClass(ActDetails.this, ActVali.class);
+    		intent.putExtra("act_id", act_id);
+    		startActivity(intent);
+    	}
+    });
 		
 		lsvActDetails.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> parent, View view,  
