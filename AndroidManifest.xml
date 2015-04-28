@@ -22,7 +22,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"    
-        android:theme="@style/AppBaseTheme" 
+        android:theme="@style/AppTheme" 
         >
         
         <activity
@@ -37,8 +37,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:label="登录"
+            android:theme="@style/TranslucentTheme"
             android:screenOrientation="portrait"  
             android:launchMode="singleTask"></activity>
         
@@ -86,7 +86,8 @@
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="验证通过"></activity>
         <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"  
+            android:screenOrientation="portrait" 
+            android:theme="@style/TranslucentTheme" 
             android:label="主菜单"
             android:launchMode="singleTask"></activity>	
         <activity android:name=".ChangePass"

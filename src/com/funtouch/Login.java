@@ -4,10 +4,15 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +22,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +55,17 @@ public class Login extends Activity {
 		showOverflowMenu();
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.royalblue);
+            SystemBarConfig config = tintManager.getConfig();
+		}
+		
 		setContentView(R.layout.login);
 		userName = (EditText) findViewById(R.id.edit_UserName);
 		password = (EditText) findViewById(R.id.edit_UserPassword);

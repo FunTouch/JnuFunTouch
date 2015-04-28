@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="translucent_background">#30000000</color>  
+    <color name="white">#FFFFFF</color><!--白色 -->
+    <color name="lightblue">#ADD8E6</color><!--亮蓝色 -->
+    <color name="skyblue">#87CEEB</color><!--天蓝色 -->
+     <color name="royalblue">#4169E1</color><!--皇家蓝 -->
+     <color name="blue">#0000FF</color><!--蓝色 --> 
+     <color name="deepskyblue">#00BFFF</color><!--深天蓝色 -->
+     <color name="slateblue">#6A5ACD</color><!--石蓝色 -->
+      <color name="mediumslateblue">#7B68EE</color>
+      <color name="cadetblue">#5F9EA0</color><!--军兰色 -->
+      <color name="dodgerblue">#1E90FF</color><!--闪兰色 -->
+      <color name="mediumblue">#0000CD</color><!--中兰色 -->
+      <color name="navy">#000080</color><!--海军色 -->
+      <color name="holo_blue_light">#ff4d4dff</color>
+	<color name="holo_blue_dark">#ff4d4dff</color>
+	<color name="holo_green_light">#ff4d4dff</color>
+	<color name="holo_green_dark">#ff4d4dff</color>
+	<color name="holo_red_light">#ff4d4dff</color>
+	<color name="holo_red_dark">#ff4d4dff</color>
+	<color name="holo_orange_light">#ff4d4dff</color>
+	<color name="holo_orange_dark">#ffff8800</color>
+	<color name="holo_purple">#ff4d4dff</color>
+	<color name="holo_blue_bright">#ff4d4dff</color>
+</resources>

@@ -2,17 +2,25 @@ package com.funtouch;
 
 import java.lang.reflect.Field;
 
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
@@ -52,6 +60,16 @@ public class MainActivity extends Activity {
         .build());
         
 		super.onCreate(savedInstanceState);
+		if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.royalblue);
+            SystemBarConfig config = tintManager.getConfig();
+            
+		}
 		setContentView(R.layout.activity_main);
 		showOverflowMenu();
 		init();
