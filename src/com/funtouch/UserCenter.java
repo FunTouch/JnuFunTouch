@@ -100,6 +100,7 @@ public class UserCenter extends MenuHavingActivity{
         		intent.setClass(UserCenter.this, Login.class);	
         		startActivity(intent);
         		finish();
+        		MainActivity.instance.finish();
 			}	
 		})
 		.setNegativeButton("取消", null)

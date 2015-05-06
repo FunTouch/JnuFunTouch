@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
 	private boolean wifi,internet = true;
 	public Cookie application ; 
 	private long temptime = 0;
+	static MainActivity instance;
 	String cookie = application.getInstance().getCookie();
 	String name = application.getInstance().getName();
 	
@@ -71,6 +72,7 @@ public class MainActivity extends Activity {
             
 		}
 		setContentView(R.layout.activity_main);
+		instance=this;
 		showOverflowMenu();
 		init();
 		
