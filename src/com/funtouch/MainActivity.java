@@ -30,14 +30,15 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	
-	private ImageButton btnFunTouch = null;
-	private ImageButton btnCardTransport = null;
+	//private ImageButton btnFunTouch = null;
+	//private ImageButton btnCardTransport = null;
 	private ImageButton btnAct = null;
 	private ImageButton btnSetting = null;
-	private ImageButton btnGame = null;
-	private Button btnLogin = null;
-	private ImageButton btnValidatePass = null;
-	private ImageButton btnExit = null;
+	//private ImageButton btnGame = null;
+	private ImageButton btnUserCenter = null;
+	private ImageButton btnCampusLife = null;
+	//private ImageButton btnValidatePass = null;
+	//private ImageButton btnExit = null;
 	private boolean wifi,internet = true;
 	public Cookie application ; 
 	private long temptime = 0;
@@ -80,7 +81,7 @@ public class MainActivity extends Activity {
 		wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();  
 		internet=con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();  
 		
-		btnFunTouch.setOnClickListener(new OnClickListener() {
+		/*btnFunTouch.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
@@ -88,7 +89,7 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 				//finish();
 			}
-		});
+		});*/
 		
 		btnAct.setOnClickListener(new OnClickListener() {
 			@Override
@@ -109,16 +110,16 @@ public class MainActivity extends Activity {
 			}
 		});*/
 		
-		btnCardTransport.setOnClickListener(new OnClickListener() {
+		/*btnCardTransport.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, CardTransport.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 		
-		btnLogin.setOnClickListener(new OnClickListener() {
+		btnUserCenter.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
@@ -128,7 +129,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		btnValidatePass.setOnClickListener(new OnClickListener(){
+		/*btnValidatePass.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
@@ -138,9 +139,9 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 			
-		});
+		});*/
 		
-		btnExit.setOnClickListener(new OnClickListener(){
+		/*btnExit.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
@@ -148,7 +149,7 @@ public class MainActivity extends Activity {
 				showExitDialog();
 			}
 			
-		});
+		});*/
 	}
 	
 	@Override
@@ -214,13 +215,14 @@ public class MainActivity extends Activity {
 	}  
 	
 	private void init() {
-		btnFunTouch = (ImageButton) findViewById(R.id.btn_funtouch);
-		btnAct = (ImageButton) findViewById(R.id.btn_about_activity);
-		btnCardTransport = (ImageButton) findViewById(R.id.btnCardTransport);
+		//btnFunTouch = (ImageButton) findViewById(R.id.btn_funtouch);
+		btnAct = (ImageButton) findViewById(R.id.btn_actCenter);
+		//btnCardTransport = (ImageButton) findViewById(R.id.btnCardTransport);
 		btnSetting = (ImageButton) findViewById(R.id.btn_setting);
-		btnLogin = (Button) findViewById(R.id.btn_login);
-		btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);
-		btnExit = (ImageButton) findViewById(R.id.btn_exit);
+		btnUserCenter = (ImageButton) findViewById(R.id.btn_userCenter);
+		btnCampusLife = (ImageButton) findViewById(R.id.btn_campusLife);
+		//btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);
+		//btnExit = (ImageButton) findViewById(R.id.btn_exit);
 	}
 	
 	
