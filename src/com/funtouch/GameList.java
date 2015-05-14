@@ -12,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
 
-public class GameList extends Activity {
+public class GameList extends MenuHavingActivity {
 
 	private Button btnUndercover = null;
 	private Button btnWerewolf = null;

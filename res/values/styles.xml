@@ -1,18 +1,16 @@
 <resources>
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        
     </style>
     
-    <style name="TranslucentTheme" parent="AppBaseTheme">
+    <style name="TranslucentTheme" parent="android:Theme.Holo.Light">
+        
         <item name="android:actionBarStyle">@style/AppTheme.ActionBarStyle</item>
     </style>
 
@@ -20,6 +18,11 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="AppTheme.PopupMenu" parent="android:Widget.Holo.Light.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panelle</item>
+    </style>
+    
     
     <style name="AppTheme.ActionBarStyle" parent="android:Widget.ActionBar">
         <item name="android:background">@color/royalblue</item>

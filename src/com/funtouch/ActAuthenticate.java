@@ -2,11 +2,17 @@ package com.funtouch;
 
 import java.lang.reflect.Field;
 
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
+import android.view.WindowManager;
 
 public class ActAuthenticate extends Activity {
 	
@@ -15,6 +21,17 @@ public class ActAuthenticate extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_authenticate);
+		if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+             tintManager.setStatusBarTintEnabled(true);
+           tintManager.setStatusBarTintResource(R.color.royalblue);
+            SystemBarConfig config = tintManager.getConfig();
+            
+		}
+
 		showOverflowMenu();
 
 	}

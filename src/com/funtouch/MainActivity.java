@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 	private ImageButton btnAct = null;
 	private ImageButton btnSetting = null;
 	private ImageButton btnGame = null;
-	private Button btnLogin = null;
+	//private Button btnLogin = null;
 	private Button btnWho = null;
 	private ImageButton btnValidatePass = null;
 	private ImageButton btnExit = null;
@@ -127,6 +127,15 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, UserCenter.class);
+				startActivity(intent);
+			}
+		});
+		
+		btnCampusLife.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, CampusLife.class);
 				startActivity(intent);
 			}
 		});
@@ -235,7 +244,7 @@ public class MainActivity extends Activity {
 		//btnCardTransport = (ImageButton) findViewById(R.id.btnCardTransport);
 		btnSetting = (ImageButton) findViewById(R.id.btn_setting);
 
-		btnLogin = (Button) findViewById(R.id.btn_login);
+		//btnLogin = (Button) findViewById(R.id.btn_login);
 		btnWho = (Button) findViewById(R.id.btn_who);
 		//btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);
 		btnExit = (ImageButton) findViewById(R.id.btn_exit);

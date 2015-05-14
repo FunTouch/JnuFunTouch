@@ -4,15 +4,30 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.funtouch.R.layout;
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
+
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewStub;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class ActMenu extends MenuHavingActivity{
@@ -35,9 +50,17 @@ public class ActMenu extends MenuHavingActivity{
 		
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.royalblue);
+            SystemBarConfig config = tintManager.getConfig();
+		}
 		setContentView(R.layout.act_menu);
 		init();
-		
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		

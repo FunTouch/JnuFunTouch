@@ -2,19 +2,41 @@ package com.funtouch;
 
 import java.lang.reflect.Field;
 
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
+
 import android.app.ActionBar;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
+import android.os.Handler;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.WindowManager;
 
-abstract class MenuHavingActivity extends Activity{
+abstract class MenuHavingActivity<Context, AttributeSet> extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.royalblue);
+            SystemBarConfig config = tintManager.getConfig();
+		}
+
 		showOverflowMenu();
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);

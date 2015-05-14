@@ -15,11 +15,16 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
+import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
 import com.funtouch.util.nfc.BobNdefMessage;
 
 public class CodeBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
