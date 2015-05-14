@@ -4,75 +4,35 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".SecondActivity" 
-    android:background="@drawable/background_maininterface"
+    android:background="@drawable/bg_afterlogin"
     android:fitsSystemWindows="true"
     android:clipToPadding="true">
 
-     
-
-     
 
      <ImageButton
          android:id="@+id/btn_setting"
-         android:layout_width="113dp"
+         android:layout_width="105dp"
          android:layout_height="43dp"
          android:layout_alignParentRight="true"
          android:layout_alignParentTop="true"
          android:background="@drawable/imagebutton_selector_main_setting" />
-
-     <ImageButton
-         android:id="@+id/btn_funtouch"
+	  
+	  <ImageButton
+         android:id="@+id/btn_actCenter"
          android:layout_width="113dp"
          android:layout_height="43dp"
-         android:layout_alignParentRight="true"
-         android:layout_below="@id/btn_setting"
-         android:layout_alignLeft="@id/btn_setting"
-         android:layout_marginTop="55dp"
-         android:background="@drawable/imagebutton_selector_main_funtouch" />
-     
-     <ImageButton
-         android:id="@+id/btnCardTransport"
-         android:layout_width="113dp"
-         android:layout_height="43dp"
-         android:layout_alignParentRight="true"
-         android:layout_below="@id/btn_funtouch"
-         android:layout_marginTop="7dp"
-         android:background="@drawable/imagebutton_selector_main_card"/>
-     
-     <Button
-         android:id="@+id/btn_login"
-         android:layout_width="113dp"
-         android:layout_height="43dp"
-         android:layout_alignParentRight="true"
-         android:layout_below="@id/btnCardTransport"
-         android:layout_marginTop="7dp"
-         android:background="@drawable/imagebutton_selector_main_login" />
-
-     <ImageButton
-         android:id="@+id/btn_about_activity"
-         android:layout_width="113dp"
-         android:layout_height="43dp"
-         android:layout_alignParentRight="true"
-         android:layout_below="@id/btn_login"
-         android:layout_marginTop="7dp"
+         android:layout_marginTop="280dp"
+         android:layout_centerHorizontal="true"
          android:background="@drawable/imagebutton_selector_main_aboutactivity" />
      
      <ImageButton
-         android:id="@+id/btn_validate_pass"
+         android:id="@+id/btn_userCenter"
          android:layout_width="113dp"
          android:layout_height="43dp"
-         android:layout_alignParentRight="true"
-         android:layout_below="@id/btn_about_activity"
-         android:layout_marginTop="7dp"
-         android:background="@drawable/imagebutton_selector_main_validatepass" />
-	<ImageButton
-         android:id="@+id/btn_exit"
-         android:layout_width="113dp"
-         android:layout_height="43dp"
-         android:layout_alignParentRight="true"
-         android:layout_below="@id/btn_validate_pass"
-         android:layout_marginTop="7dp"
-         android:background="@drawable/imagebutton_selector_main_exit" />
+         android:layout_marginTop="10dp"
+         android:layout_below="@id/btn_actCenter"
+         android:layout_alignLeft="@id/btn_actCenter"
+         android:background="@drawable/imagebutton_selector_main_login" />
 
 	<Button
 	    android:id="@+id/btn_who"
@@ -83,4 +43,13 @@
 	    android:layout_centerHorizontal="true"
 	    android:text="谁是卧底" />
 
+	<ImageButton
+	    android:id="@+id/btn_campusLife"
+	    android:layout_width="113dp"
+	    android:layout_height="43dp"
+	    android:layout_alignLeft="@+id/btn_userCenter"
+	    android:layout_below="@+id/btn_userCenter"
+	    android:layout_marginTop="14dp"
+	    android:background="@drawable/imagebutton_selector_main_exit" />
+	
 </RelativeLayout>

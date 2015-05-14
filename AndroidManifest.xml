@@ -26,7 +26,7 @@
         >
         
         <activity
-            android:name=".Splash"
+            android:name=".firstDisplayActivity"
             android:label="Fun Of Touching" 
             android:screenOrientation="portrait" 
 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
@@ -259,7 +259,9 @@
 		<activity android:name=".FunTouchTagOther"
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="定制"></activity>
-
+		<activity android:name=".OrganDetailsActivity"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="组织信息"></activity>
           
     </application>
     
