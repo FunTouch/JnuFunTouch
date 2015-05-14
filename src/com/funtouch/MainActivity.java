@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 	private ImageButton btnSetting = null;
 	private ImageButton btnGame = null;
 	private Button btnLogin = null;
+	private Button btnWho = null;
 	private ImageButton btnValidatePass = null;
 	private ImageButton btnExit = null;
 	private boolean wifi,internet = true;
@@ -149,6 +150,18 @@ public class MainActivity extends Activity {
 			}
 			
 		});
+		
+		btnWho.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, WhoIsTheSpy.class);
+				startActivity(intent);
+			}
+			
+		});
 	}
 	
 	@Override
@@ -219,6 +232,7 @@ public class MainActivity extends Activity {
 		btnCardTransport = (ImageButton) findViewById(R.id.btnCardTransport);
 		btnSetting = (ImageButton) findViewById(R.id.btn_setting);
 		btnLogin = (Button) findViewById(R.id.btn_login);
+		btnWho = (Button) findViewById(R.id.btn_who);
 		btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);
 		btnExit = (ImageButton) findViewById(R.id.btn_exit);
 	}

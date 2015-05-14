@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="5"
+    android:orientation="horizontal" >
+
+    <Space
+        android:id="@+id/Space3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_gravity="fill_vertical"
+        android:layout_row="4" />
+
+    <Space
+        android:id="@+id/Space1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/Space2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3" />
+
+    <Space
+        android:id="@+id/Space4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <SeekBar
+        android:id="@+id/seek"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_column="3"
+        android:layout_gravity="left|bottom"
+        android:layout_marginTop="25dp"
+        android:layout_row="0"
+        android:layout_toRightOf="@+id/textView1"
+        android:max="16"
+        android:progress="6" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_num"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="273dp"
+        android:layout_row="4"
+        android:text="平民:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="玩家人数:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignTop="@+id/seek"
+        android:text="10"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_undercover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
+        android:text="3"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_civilian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="7"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_civilian"
+        android:layout_alignBottom="@+id/tv_civilian"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@+id/tv_civilian"
+        android:text="卧底:"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_getrole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_begin"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="获取角色" />
+
+    <Button
+        android:id="@+id/btn_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="28dp"
+        android:text="开始游戏(房主)" />
+
+</RelativeLayout>

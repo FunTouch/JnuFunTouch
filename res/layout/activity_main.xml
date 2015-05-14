@@ -73,4 +73,14 @@
          android:layout_below="@id/btn_validate_pass"
          android:layout_marginTop="7dp"
          android:background="@drawable/imagebutton_selector_main_exit" />
+
+	<Button
+	    android:id="@+id/btn_who"
+	    style="?android:attr/buttonStyleSmall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_centerHorizontal="true"
+	    android:text="谁是卧底" />
+
 </RelativeLayout>

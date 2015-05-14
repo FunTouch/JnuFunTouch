@@ -217,7 +217,15 @@
             android:label="已分配的角色"></activity>
 		<activity android:name=".GameWerewolfGetRole"
             android:label="获得角色"></activity>
-		
+		<activity android:name=".WhoIsTheSpy"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="谁是卧底"></activity>
+		<activity android:name=".RoleBeam"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="角色分配"></activity>
+		<activity android:name=".GetRole"
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="获取角色"></activity>
 		<activity android:name=".SocialFirstUse"
             android:label="欢迎"></activity>
 		<activity android:name=".CardTransport"
