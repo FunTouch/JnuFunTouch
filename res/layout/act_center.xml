@@ -4,28 +4,30 @@
     android:layout_height="match_parent" 
     android:background="@drawable/bg_actcenter">
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_launchact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="130dp"
-        android:text="创建活动" />
+        android:background="@drawable/imagebutton_selector_main_createactivity"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_goact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_centerInParent="true"
-        android:text="参与活动" />
+        android:background="@drawable/imagebutton_selector_actsignup"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_govote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="130dp"
-        android:text="参与投票" />
+        android:background="@drawable/imagebutton_selector_actvote" />
 
 </RelativeLayout>

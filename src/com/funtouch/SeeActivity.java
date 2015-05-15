@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -233,16 +234,18 @@ public class SeeActivity extends Activity {
 			
 		});
 		
-		expandListView.setOnItemClickListener(new OnItemClickListener() {
+		expandListView.setOnChildClickListener(new OnChildClickListener() {
+
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(SeeActivity.this,OrganDetailsActivity.class);
-				intent.putExtra("itemNumber", arg2);
+				intent.putExtra("itemNumber", childPosition);
 				startActivity(intent);
 				SeeActivity.this.finish();
+				return false;
 			}
 		});
 		

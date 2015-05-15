@@ -10,9 +10,9 @@
  
     <ImageButton
         android:id="@+id/btn_update_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/imagebutton_selector_changeinfo"
         android:layout_alignParentLeft="true"
         />
@@ -21,20 +21,22 @@
 
     <ImageButton
         android:id="@+id/btn_change_pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/btn_update_info"
+        android:layout_marginTop="7dp"
         android:background="@drawable/imagebutton_selector_changepass"
         />
 
     
     <ImageButton
         android:id="@+id/btn_my_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/btn_change_pass"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/imagebutton_selector_identifyingcode"
         android:text="我持有的验证码" />
 
 </RelativeLayout>
