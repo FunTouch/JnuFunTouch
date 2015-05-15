@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" 
     android:fitsSystemWindows="true"
-    android:clipToPadding="true" >
+    android:clipToPadding="true"
+    >
 
     <TextView
         android:id="@+id/textView1"
@@ -11,16 +12,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:textSize="22sp"
-        android:text="触碰手机以验证用户" />
+        android:layout_marginTop="79dp"
+        android:text="请接触手机以推送角色"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="104dp" />
+        android:layout_marginTop="118dp"
+        android:text="已推送:" />
+
+    <TextView
+        android:id="@+id/tv_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="TextView" />
 
 </RelativeLayout>

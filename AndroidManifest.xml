@@ -44,39 +44,50 @@
         
          <activity android:name=".AboutActivity"
             android:label="关于活动"
-            android:screenOrientation="portrait"  
+            android:screenOrientation="portrait" 
+            android:theme="@style/TranslucentTheme"  
             android:launchMode="singleTask"></activity>
          <activity android:name=".ActCenter"
             android:label="活动中心"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  
             android:launchMode="singleTask"></activity>
          <activity android:name=".ActDetails"
             android:label="活动详情"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  
             android:launchMode="singleTask"></activity>
           <activity android:name=".UpdateAct"
+              android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="修改信息活动"></activity>
           <activity android:name=".ActVali"
+              android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="激活验证功能"></activity>
           <activity android:name=".ValiUser"
+              android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="验证用户"></activity>
           <activity android:name=".RelCode"
+              android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="已发放验证码"></activity>
           <activity android:name=".MyCode"
              android:launchMode="singleTask"
+             android:theme="@style/TranslucentTheme" 
              android:screenOrientation="portrait"  
             android:label="查看我的验证码"></activity>
           <activity android:name=".CodeBeam"
+              android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="验证模式"></activity>
           <activity android:name=".TransportContact"
+              android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="推送联系人"></activity>
           <activity android:name=".SeeActivity"
+              android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="查看活动"></activity>
           <activity android:name=".GetAward"
@@ -91,55 +102,71 @@
             android:label="主菜单"
             android:launchMode="singleTask"></activity>	
         <activity android:name=".ChangePass"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="修改密码"></activity>	
          <activity android:name=".UpdateInfo"
+             android:theme="@style/TranslucentTheme" 
              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="个人信息修改"></activity>	
          <activity android:name=".MyVote"
+             android:theme="@style/TranslucentTheme" 
              android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="我的投票"></activity>	
-            <activity android:name=".MySignUp"
+         <activity android:name=".MySignUp"
+                android:theme="@style/TranslucentTheme" 
                 android:screenOrientation="portrait"  
             android:label="我的报名"
             android:launchMode="singleTask"></activity>																																																																							
         <activity android:name=".ActMenu"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="活动菜单"></activity>
         <activity android:name=".UserCenter"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  
             android:label="用户中心"
             android:launchMode="singleTask"></activity>
         <activity android:name=".SeeVote"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="查看投票"></activity>
         <activity android:name=".CreateActivity"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="创建活动"></activity>
         <activity android:name=".RegistInfo"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="注册"></activity>
         <activity android:name=".RegistActName"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="活动信息"></activity>
         
         <activity android:name=".VoteClickAdd"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="发起投票"></activity>
         <activity android:name=".VoteEdit"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="投票"></activity>
         <activity android:name=".VoteOL"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="在线投票"></activity>
         <activity android:name=".VoteOLDetail"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="选择投票队伍"></activity>
         <activity android:name="com.funtouch.VoteBeam"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="投票界面">
         </activity>
         <activity android:name=".RevVoteBeam"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="接触投票">
             <intent-filter>
@@ -149,26 +176,33 @@
 			</intent-filter>
         </activity>
         <activity android:name=".VoteUse"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="使用"></activity>
         
         <activity android:name=".SignUpClickAdd"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="发起报名"></activity>
         <activity android:name=".SignUpEdit"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="发起报名"></activity>
         <activity android:name=".EnrollList"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  
             android:label="报名列表"
             android:launchMode="singleTask"></activity>
         <activity android:name=".EnrollListDetails"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="报名信息"></activity>
         <activity android:name=".SignUpUse"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="使用"></activity>
         <activity android:name=".SignUpBeam"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="接触报名">
             <intent-filter>
@@ -178,9 +212,11 @@
 			</intent-filter>
         </activity>
         <activity android:name=".SignUpOL"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="在线报名"></activity>
         <activity android:name=".SignUpOLDetail"
+            android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="报名详情"></activity>
 		<activity android:name=".FlyerList"
@@ -200,10 +236,15 @@
             android:label="预览"></activity>
 		
 		<activity android:name=".ActAuthenticate"
+		    android:theme="@style/TranslucentTheme" 
             android:label="验证功能"></activity>
 		
 		<activity android:name=".GameList"
+		    android:theme="@style/TranslucentTheme" 
             android:label="游戏"></activity>
+		<activity android:name=".CampusLife"
+            android:label="校园生活"
+            android:theme="@style/TranslucentTheme" ></activity>
 		<activity android:name=".GameUndercoverSetting"
             android:label="设置"></activity>
 		<activity android:name=".GameUndercoverDetail"
@@ -217,22 +258,38 @@
             android:label="已分配的角色"></activity>
 		<activity android:name=".GameWerewolfGetRole"
             android:label="获得角色"></activity>
-		
+		<activity android:name=".WhoIsTheSpy"
+		    android:theme="@style/TranslucentTheme" 
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="谁是卧底"></activity>
+		<activity android:name=".RoleBeam"
+		    android:theme="@style/TranslucentTheme" 
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="角色分配"></activity>
+		<activity android:name=".GetRole"
+		    android:theme="@style/TranslucentTheme" 
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="获取角色"></activity>
 		<activity android:name=".SocialFirstUse"
             android:label="欢迎"></activity>
 		<activity android:name=".CardTransport"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="名片推送"></activity>
 		<activity android:name=".SocialCreateCardMenu"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="创建名片"></activity>
 		<activity android:name=".SocialCreateCardEdit"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="编辑"></activity>
 		<activity android:name=".SocialCreateCardImportContact"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
            	android:label="导入联系人"></activity>
 		<activity android:name=".SocialCardUse"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="运行中"></activity>
 		

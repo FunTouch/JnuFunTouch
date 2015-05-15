@@ -1,9 +1,12 @@
 package com.funtouch;
 
-import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.funtouch.util.nfc.BobNdefMessage;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -15,36 +18,32 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.ViewConfiguration;
-import android.view.WindowManager;
+import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
-import com.funtouch.util.nfc.BobNdefMessage;
-
-public class CodeBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
+public class RoleBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
 	private static final int MESSAGE_SENT = 1;
+	TextView tv_role;
 	public Cookie application ; 
 	private String username,act_id,value = null;
 	private DataRetriever dataRetriever = new DataRetriever();
     String cookie = application.getInstance().getCookie();
+    List<String> list = new ArrayList<String>();
+    int count = 0;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.code_beam);
+        setContentView(R.layout.role_beam);
         Intent intent1 = getIntent();
-		act_id = intent1.getStringExtra("act_id");
-		username = intent1.getStringExtra("username");
-		value = intent1.getStringExtra("value");
+		list = intent1.getStringArrayListExtra("list");
+		
+		Log.i("list",list.toString());
+		tv_role = (TextView)findViewById(R.id.tv_role);
 		
 		// Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -73,13 +72,18 @@ OnNdefPushCompleteCallback{
 	public NdefMessage createNdefMessage(NfcEvent event) {
 		// TODO Auto-generated method stub
 		JSONObject json_data = new JSONObject();
-		try {
-			json_data.put("username", username);
-			json_data.put("act_id", act_id);
-			json_data.put("value", value);
-		}catch (JSONException e) {				// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		if(count<list.size())
+		{
+			try {
+				json_data.put("role", list.get(count));			
+				count++;
+				System.out.println(list.size());
+			}catch (JSONException e) {				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}
+		else
+			showToast("角色已分配完毕!");
         NdefMessage msg = BobNdefMessage.getNdefMsg_from_RTD_TEXT(json_data.toString(), false, false);
          /**
           * The Android Application Record (AAR) is commented out. When a device
@@ -99,11 +103,15 @@ OnNdefPushCompleteCallback{
         public void handleMessage(Message msg) {
             switch (msg.what) {
             case MESSAGE_SENT:
-                Toast.makeText(getApplicationContext(), "验证码发送成功!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent();
-				intent.setClass(CodeBeam.this, MyCode.class);
-				startActivity(intent);
-				finish();
+                
+                if(count<list.size())
+                {
+                	tv_role.setText(list.get(count)+"");
+                	Toast.makeText(getApplicationContext(), "角色推送成功!", Toast.LENGTH_LONG).show();
+                }
+                else
+                	showToast("角色已分配完毕!");
+                
                 break;
             }
         }
@@ -132,6 +140,5 @@ OnNdefPushCompleteCallback{
   	public void showToast(String msg){
   		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
   	}
- 
 
 }
