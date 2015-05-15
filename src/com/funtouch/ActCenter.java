@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class ActCenter extends MenuHavingActivity{
-	private Button btnLaunchAct;
-	private Button btnGoAct;
-	private Button btnGoVote;
+	private ImageButton btnLaunchAct;
+	private ImageButton btnGoAct;
+	private ImageButton btnGoVote;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	
@@ -26,9 +26,9 @@ public class ActCenter extends MenuHavingActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_center);
 		
-		btnLaunchAct = (Button) findViewById(R.id.btn_launchact);
-		btnGoAct = (Button) findViewById(R.id.btn_goact);
-		btnGoVote = (Button) findViewById(R.id.btn_govote);
+		btnLaunchAct = (ImageButton) findViewById(R.id.btn_launchact);
+		btnGoAct = (ImageButton) findViewById(R.id.btn_goact);
+		btnGoVote = (ImageButton) findViewById(R.id.btn_govote);
 		
 		btnLaunchAct.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){

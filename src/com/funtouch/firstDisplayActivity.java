@@ -1,7 +1,10 @@
 package com.funtouch;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +14,8 @@ import android.view.MotionEvent;
 import android.widget.ImageView;
 
 public class firstDisplayActivity extends Activity {
+	private SharedPreferences preferences;  
+	private Editor editor; 
 	GestureDetector detector = null;
 	ImageView iv_firstDisplay = null;
 	boolean isFling = false;
@@ -27,6 +32,20 @@ public class firstDisplayActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_firstdisplay);
+		preferences = getSharedPreferences("count",MODE_WORLD_READABLE);   
+        int count = preferences.getInt("count", 0); 
+		//判断是不是首次登录，  
+        if (count != 0) {    
+            Intent intent = new Intent();   
+            intent.setClass(firstDisplayActivity.this,Login.class);    
+            startActivity(intent);    
+            this.finish();    
+           }    
+        Editor editor = preferences.edit();    
+        //存入数据      
+        editor.putInt("count", ++count);    
+        //提交修改      
+        editor.commit();
 		iv_firstDisplay = (ImageView) findViewById(R.id.iv_firstDisplay);
 		goNextFrameThread = new GoNextFrameThread();
 		goNextFrameHandler = new GoNextFrameHandler();

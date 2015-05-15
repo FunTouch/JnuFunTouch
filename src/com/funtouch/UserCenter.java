@@ -20,7 +20,7 @@ public class UserCenter extends MenuHavingActivity{
 	private ImageButton btnChangePass = null;
 	private ImageButton btnUpdateInfo = null;
 	private ImageButton btnSignUpBeam = null;
-	private Button btnMyCode = null;
+	private ImageButton btnMyCode = null;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	
@@ -32,18 +32,18 @@ public class UserCenter extends MenuHavingActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_center);
 		
-		btnLogoff = (ImageButton) findViewById(R.id.btn_logoff);
+		//btnLogoff = (ImageButton) findViewById(R.id.btn_logoff);
 		//btnRevBeam = (ImageButton)findViewById(R.id.btn_rev_beam);
 		btnChangePass = (ImageButton)findViewById(R.id.btn_change_pass);
 		btnUpdateInfo = (ImageButton)findViewById(R.id.btn_update_info);	
 		//btnSignUpBeam = (ImageButton)findViewById(R.id.btn_sign_up_beam);
-		btnMyCode = (Button)findViewById(R.id.btn_my_code);
+		btnMyCode = (ImageButton)findViewById(R.id.btn_my_code);
 		
-		btnLogoff.setOnClickListener(new OnClickListener(){
+		/*btnLogoff.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		showDialog();
         	}
-        });
+        });*/
 		
 		btnMyCode.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
