@@ -30,7 +30,7 @@ public class GameList extends MenuHavingActivity {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
-				intent.setClass(GameList.this, GameUndercoverSetting.class);
+				intent.setClass(GameList.this, WhoIsTheSpy.class);
 				startActivity(intent);
 			}
 		});

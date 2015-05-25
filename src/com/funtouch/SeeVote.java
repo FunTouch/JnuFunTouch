@@ -62,7 +62,7 @@ public class SeeVote extends MenuHavingActivity{
      	
      //提示类
     private void showToast(CharSequence msg) {
-    	Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    	Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
     
   //获取投票数据

@@ -12,14 +12,20 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WhoIsTheSpy extends Activity {
 	
 	SeekBar mSeekBar;
 	TextView mProgressText,tv_civilian,tv_undercover;
-	int num,civilian,undercover,idiot=0;
+	int num,idiot,room_id=0;
+	int civilian=7;
+	int undercover=3;
 	List<String> list = new ArrayList<String>();
 	Button btnBegin,btnGetRole = null;
+	public Cookie application ; 
+	String cookie = application.getInstance().getCookie();
+	private DataRetriever dataRetriever = new DataRetriever();
     
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +40,7 @@ public class WhoIsTheSpy extends Activity {
 		tv_undercover = (TextView)findViewById(R.id.tv_undercover);
        	btnBegin = (Button) findViewById(R.id.btn_begin);
        	btnGetRole = (Button) findViewById(R.id.btn_getrole);
-       	list.clear();
+       /*	list.clear();
     	for (int i = 0; i < 7; i++)
         {
         	list.add("civilian");
@@ -43,22 +49,30 @@ public class WhoIsTheSpy extends Activity {
         {
         	list.add("undercover");
         }       
-        Collections.shuffle(list);
+        Collections.shuffle(list);*/
         mSeekBar.setOnSeekBarChangeListener(new setSeekBarListener());
   
         btnBegin.setOnClickListener(new OnClickListener() {
     		public void onClick(View v) {
-    			Intent intent = new Intent();
-    			intent.setClass(WhoIsTheSpy.this, RoleBeam.class);
-    			intent.putStringArrayListExtra("list",(ArrayList<String>) list);
-    			startActivity(intent);
+    			Spy room = dataRetriever.createRoom(Integer.toString(undercover), Integer.toString(civilian), cookie);
+    			if(room.getCode().equals("200"))
+    			{
+    				room_id = room.getRoomId();
+	    			Intent intent = new Intent();
+	    			intent.setClass(WhoIsTheSpy.this, SpyRoomBeam.class);
+	    			intent.putExtra("room_id", room_id);
+	    			intent.putExtra("num", undercover+civilian);
+	    			startActivity(intent);
+    			}
+    			else
+    				showToast("创建房间失败!");
 
     		}
     	});
         btnGetRole.setOnClickListener(new OnClickListener() {
     		public void onClick(View v) {
     			Intent intent = new Intent();
-    			intent.setClass(WhoIsTheSpy.this, GetRole.class);
+    			intent.setClass(WhoIsTheSpy.this, SpyGetRoom.class);
     			startActivity(intent);
 
     		}
@@ -156,4 +170,9 @@ public class WhoIsTheSpy extends Activity {
 			
 		}
 	}
+	
+	//提示类
+  	public void showToast(String msg){
+  		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+  	}
 }

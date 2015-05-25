@@ -1314,6 +1314,122 @@ public class DataRetriever extends Activity{
 		}													
 		return listCode;
 	}
+	
+	//创建卧底房间
+	public Spy createRoom(String total_spy, String total_common , String token){
+
+		Restful restful = new Restful();
+		Spy room = new Spy();
+																	
+		try {
+			JSONObject json_data = new JSONObject();
+			json_data.put("total_spy", total_spy);
+			json_data.put("total_common", total_common);
+			JSONObject result = restful.post("spy/rooms", token+":",json_data.toString());
+			String code = result.getString("code");		
+																				
+			if (code.equals("200"))      //成功
+			{
+				room.setCommonPhrase(result.getString("common_phrase"));
+				room.setRoomId(result.getInt("room_id"));
+				room.setSpyPhrase(result.getString("spy_phrase"));
+				room.setTotalCommon(result.getString("total_common"));
+				room.setTotalSpy(result.getString("total_spy"));
+				room.setCode(result.getString("code"));
+			}
+			else       
+			{
+				room.setCode(result.getString("code"));
+				return room;
+				}
+
+			}catch (JSONException e) {				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}													
+		return room;
+	}
+	
+	//玩家获取角色
+	public Spy getRole(String room_id , String token){
+
+		Restful restful = new Restful();
+		Spy role = new Spy();
+																		
+		try {
+			JSONObject result = restful.post("spy/rooms/"+ room_id, token+":", "");
+			String code = result.getString("code");		
+																					
+			if (code.equals("200"))      //成功
+			{
+				role.setRoomId(result.getInt("room_id"));
+				role.setCode(result.getString("code"));
+				role.setPhrase(result.getString("phrase"));
+				role.setIsspy(result.getString("isspy"));
+			}
+			else       
+			{
+				role.setCode(result.getString("code"));
+				return role;
+				}
+
+			}catch (JSONException e) {				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}													
+		return role;
+	}
+	
+	//房主获取角色
+	public Spy getAllRole(int room_id , String token){
+
+		Restful restful = new Restful();
+		Spy role = new Spy();
+																			
+		try {
+			JSONObject result = restful.get("spy/rooms/"+ room_id, token+":");
+			String code = result.getString("code");		
+																						
+			if (code.equals("200"))      //成功
+			{
+				role.setCommons(result.getString("commons"));
+				role.setSpys(result.getString("spys"));
+				role.setCode(result.getString("code"));
+				//Log.i("role",result.getString("spys"));
+			}
+			else       
+			{
+				role.setCode(result.getString("code"));
+				return role;
+				}
+			}catch (JSONException e) {				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}													
+		return role;
+	}
+	
+	//房主获取角色
+	public String getBill(int doornum , String token){
+
+		Restful restful = new Restful();
+		String bill = null;
+		
+		try {
+			JSONObject result = restful.get("electricity/"+ doornum, token+":");
+			String code = result.getString("code");		
+																							
+				if (code.equals("200"))      //成功
+				{
+					bill = result.getString("electricity");
+				}
+				else       
+				{
+					bill = result.getString("message");
+					return bill;
+					}
+				}catch (JSONException e) {				// TODO Auto-generated catch block
+					e.printStackTrace();
+				}													
+		return bill;
+	}
 		
 	// check the Internet connection
 	public boolean isNetworkConnected(Context context) {

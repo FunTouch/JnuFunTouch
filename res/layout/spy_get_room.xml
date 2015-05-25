@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
     android:fitsSystemWindows="true"
-    android:clipToPadding="true"
-    >
+    android:clipToPadding="true" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="79dp"
-        android:text="请接触手机以推送角色"
+        android:layout_marginTop="55dp"
+        android:text="接触手机以获得房间号"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tv_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_below="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp"
-        android:text="已推送:" />
+        android:layout_centerVertical="true"
+        android:text="房间号：" />
 
     <TextView
         android:id="@+id/tv_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_hint"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="TextView" />
+        android:layout_marginTop="59dp"
+        android:textSize="20sp" />
 
 </RelativeLayout>

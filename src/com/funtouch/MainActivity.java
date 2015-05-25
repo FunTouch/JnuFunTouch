@@ -245,7 +245,6 @@ public class MainActivity extends Activity {
 		btnSetting = (ImageButton) findViewById(R.id.btn_setting);
 
 		//btnLogin = (Button) findViewById(R.id.btn_login);
-		btnWho = (Button) findViewById(R.id.btn_who);
 		//btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);
 		btnExit = (ImageButton) findViewById(R.id.btn_exit);
 
@@ -258,7 +257,7 @@ public class MainActivity extends Activity {
 	
 	//提示类
 		public void showToast(String msg){
-			Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
 		
 		public void showDialog(){

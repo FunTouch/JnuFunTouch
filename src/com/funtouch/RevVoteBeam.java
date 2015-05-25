@@ -379,7 +379,7 @@ public class RevVoteBeam extends MenuHavingActivity implements OnItemClickListen
     
   //提示类
   	public void showToast(String msg){
-  		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+  		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
   	}
     
     

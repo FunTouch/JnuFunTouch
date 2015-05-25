@@ -19,36 +19,44 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RoleBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
+public class SpyRoomBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
 	private static final int MESSAGE_SENT = 1;
-	TextView tv_role;
+	TextView tv_role, tv_count;
+	Button btnSeeRole;
 	public Cookie application ; 
-	private String username,act_id,value = null;
 	private DataRetriever dataRetriever = new DataRetriever();
     String cookie = application.getInstance().getCookie();
     List<String> list = new ArrayList<String>();
-    int count = 0;
+    int room_id;
+    int count ,num = 0;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.role_beam);
+        setContentView(R.layout.spy_room_beam);
         Intent intent1 = getIntent();
-		list = intent1.getStringArrayListExtra("list");
+		room_id = intent1.getIntExtra("room_id", 0);
+		num = intent1.getIntExtra("num", 0);
 		
-		Log.i("list",list.toString());
 		tv_role = (TextView)findViewById(R.id.tv_role);
+		tv_count = (TextView)findViewById(R.id.tv_count);
+		btnSeeRole = (Button)findViewById(R.id.btn_seerole);
 		
 		// Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mPendingIntent = PendingIntent.getActivity(this, 0,
         		new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+        
+		tv_role.setText(room_id+"");
         
         if (mNfcAdapter == null) {
             showToast("NFC is not available on this device.");
@@ -58,6 +66,21 @@ OnNdefPushCompleteCallback{
             // Register callback to listen for message-sent success
             mNfcAdapter.setOnNdefPushCompleteCallback(this, this);
         }
+        
+        btnSeeRole.setOnClickListener(new OnClickListener() {
+    		public void onClick(View v) {
+    			if(count >= num)
+    			{
+        			Intent intent = new Intent();
+        			intent.setClass(SpyRoomBeam.this, SpySeeRole.class);
+        			intent.putExtra("room_id", room_id);
+        			startActivity(intent);
+    			}
+    			else
+    				showToast("请先为每个玩家推送房间号!");
+
+    		}
+    	});
         
     }
 
@@ -71,20 +94,7 @@ OnNdefPushCompleteCallback{
 	@Override
 	public NdefMessage createNdefMessage(NfcEvent event) {
 		// TODO Auto-generated method stub
-		JSONObject json_data = new JSONObject();
-		if(count<list.size())
-		{
-			try {
-				json_data.put("role", list.get(count));			
-				count++;
-				System.out.println(list.size());
-			}catch (JSONException e) {				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-		}
-		else
-			showToast("角色已分配完毕!");
-        NdefMessage msg = BobNdefMessage.getNdefMsg_from_RTD_TEXT(json_data.toString(), false, false);
+        NdefMessage msg = BobNdefMessage.getNdefMsg_from_RTD_TEXT(Integer.toString(room_id), false, false);
          /**
           * The Android Application Record (AAR) is commented out. When a device
           * receives a push with an AAR in it, the application specified in the AAR
@@ -103,19 +113,22 @@ OnNdefPushCompleteCallback{
         public void handleMessage(Message msg) {
             switch (msg.what) {
             case MESSAGE_SENT:
-                
-                if(count<list.size())
+            	if(count < num)
                 {
-                	tv_role.setText(list.get(count)+"");
-                	Toast.makeText(getApplicationContext(), "角色推送成功!", Toast.LENGTH_LONG).show();
+
+                	count++;
+                	tv_count.setText(count+"");
+                	Toast.makeText(getApplicationContext(), "房间推送成功!", Toast.LENGTH_LONG).show();
                 }
-                else
-                	showToast("角色已分配完毕!");
+            	else
+            		showToast("已超过人数最大限制!!");
                 
                 break;
             }
         }
     };
+    
+  
     
     protected void onResume() {
 		// TODO Auto-generated method stub
@@ -138,7 +151,7 @@ OnNdefPushCompleteCallback{
 	
   //提示类
   	public void showToast(String msg){
-  		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+  		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
   	}
 
 }

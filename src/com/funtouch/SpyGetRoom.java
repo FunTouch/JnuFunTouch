@@ -20,11 +20,11 @@ import android.os.Parcelable;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class GetRole extends MenuHavingActivity{
+public class SpyGetRoom extends MenuHavingActivity{
 	public Cookie application ;
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
-	private TextView role = null;
+	private TextView room , tv_hint, tv_role = null;
 	private DataRetriever dataRetriever = new DataRetriever();
 	String cookie = application.getInstance().getCookie();
 	
@@ -32,10 +32,12 @@ public class GetRole extends MenuHavingActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.vali_user);
+		setContentView(R.layout.spy_get_room);
 		
-		role = (TextView)findViewById(R.id.username);
-
+		room = (TextView)findViewById(R.id.tv_room);
+		tv_hint = (TextView)findViewById(R.id.tv_hint);
+		tv_role = (TextView)findViewById(R.id.tv_role);
+		
 		 // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mPendingIntent = PendingIntent.getActivity(this, 0,
@@ -141,14 +143,18 @@ public class GetRole extends MenuHavingActivity{
     
     private void uiControl(final Uri uri)
     {
-    	try {
-			JSONObject json_data = new JSONObject(uri.toString());
-	    	role.setText(json_data.getString("role"));
-
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    room.setText(uri.toString()+"");
+	    Spy role = dataRetriever.getRole(uri.toString(), cookie);
+	    if(role.getCode().equals("200"))
+	    {
+	    	tv_hint.setText("你的角色(不要给别人看哦)"+"");
+	    	if(role.getIsspy().equals("false"))
+	    		tv_role.setText("平民"+"");
+	    	else
+	    		tv_role.setText("卧底"+"");
+	    }
+	    else
+	    	showToast("获取角色出错!");
     }
     
     @Override
@@ -176,7 +182,7 @@ public class GetRole extends MenuHavingActivity{
     
   //提示类
   	public void showToast(String msg){
-  		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+  		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
   	}
 
 }

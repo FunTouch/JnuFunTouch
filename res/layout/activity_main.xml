@@ -34,14 +34,6 @@
          android:layout_alignLeft="@id/btn_actCenter"
          android:background="@drawable/imagebutton_selector_main_login" />
 
-	<Button
-	    android:id="@+id/btn_who"
-	    style="?android:attr/buttonStyleSmall"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentTop="true"
-	    android:layout_centerHorizontal="true"
-	    android:text="谁是卧底" />
 
 	<ImageButton
 	    android:id="@+id/btn_campusLife"

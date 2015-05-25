@@ -14,8 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 public class CampusLife extends MenuHavingActivity  {
-	private Button btnGame,btnContact = null;
-	
+	private Button btnGame,btnContact,btnBill = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,7 @@ public class CampusLife extends MenuHavingActivity  {
 		
 		btnGame = (Button) findViewById(R.id.btn_game);
 		btnContact = (Button) findViewById(R.id.btn_contact);
+		btnBill = (Button) findViewById(R.id.btn_bill);
 		
 		btnGame.setOnClickListener(new OnClickListener() {
 			@Override
@@ -49,6 +49,15 @@ public class CampusLife extends MenuHavingActivity  {
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
 				intent.setClass(CampusLife.this, CardTransport.class);
+				startActivity(intent);
+			}
+		});
+		
+		btnBill.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(CampusLife.this, CheckBill.class);
 				startActivity(intent);
 			}
 		});

@@ -262,11 +262,15 @@
 		    android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="谁是卧底"></activity>
-		<activity android:name=".RoleBeam"
+		<activity android:name=".SpyRoomBeam"
 		    android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="角色分配"></activity>
-		<activity android:name=".GetRole"
+		<activity android:name=".SpySeeRole"
+		    android:theme="@style/TranslucentTheme" 
+              android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="角色列表"></activity>
+		<activity android:name=".SpyGetRoom"
 		    android:theme="@style/TranslucentTheme" 
               android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="获取角色"></activity>
@@ -276,6 +280,10 @@
 		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="名片推送"></activity>
+		<activity android:name=".CheckBill"
+		    android:theme="@style/TranslucentTheme" 
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="查询电费"></activity>
 		<activity android:name=".SocialCreateCardMenu"
 		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
