@@ -149,9 +149,9 @@ public class SpyGetRoom extends MenuHavingActivity{
 	    {
 	    	tv_hint.setText("你的角色(不要给别人看哦)"+"");
 	    	if(role.getIsspy().equals("false"))
-	    		tv_role.setText("平民"+"");
+	    		tv_role.setText("平民 "+""+"\n词汇: "+role.getPhrase());
 	    	else
-	    		tv_role.setText("卧底"+"");
+	    		tv_role.setText("卧底 "+""+"\n词汇: "+role.getPhrase());
 	    }
 	    else
 	    	showToast("获取角色出错!");

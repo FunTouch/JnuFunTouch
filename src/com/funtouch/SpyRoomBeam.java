@@ -8,7 +8,9 @@ import org.json.JSONObject;
 
 import com.funtouch.util.nfc.BobNdefMessage;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -19,6 +21,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,7 +33,7 @@ OnNdefPushCompleteCallback{
 	NfcAdapter mNfcAdapter;
 	private PendingIntent mPendingIntent;
 	private static final int MESSAGE_SENT = 1;
-	TextView tv_role, tv_count;
+	TextView tv_role, tv_count , tv_common_phrase, tv_spy_phrase;
 	Button btnSeeRole;
 	public Cookie application ; 
 	private DataRetriever dataRetriever = new DataRetriever();
@@ -38,6 +41,7 @@ OnNdefPushCompleteCallback{
     List<String> list = new ArrayList<String>();
     int room_id;
     int count ,num = 0;
+    String common_phrase, spy_phrase = null;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,9 +50,14 @@ OnNdefPushCompleteCallback{
         Intent intent1 = getIntent();
 		room_id = intent1.getIntExtra("room_id", 0);
 		num = intent1.getIntExtra("num", 0);
+		num = intent1.getIntExtra("num", 0);
+		common_phrase = intent1.getStringExtra("common_phrase");
+		spy_phrase = intent1.getStringExtra("spy_phrase");
 		
 		tv_role = (TextView)findViewById(R.id.tv_role);
 		tv_count = (TextView)findViewById(R.id.tv_count);
+		tv_common_phrase = (TextView)findViewById(R.id.tv_common_phrase);
+		tv_spy_phrase = (TextView)findViewById(R.id.tv_spy_phrase);
 		btnSeeRole = (Button)findViewById(R.id.btn_seerole);
 		
 		// Check for available NFC Adapter
@@ -57,7 +66,9 @@ OnNdefPushCompleteCallback{
         		new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
         
 		tv_role.setText(room_id+"");
-        
+		tv_common_phrase.setText(common_phrase+"");
+		tv_spy_phrase.setText(spy_phrase+"");
+		
         if (mNfcAdapter == null) {
             showToast("NFC is not available on this device.");
         } else {
@@ -115,7 +126,6 @@ OnNdefPushCompleteCallback{
             case MESSAGE_SENT:
             	if(count < num)
                 {
-
                 	count++;
                 	tv_count.setText(count+"");
                 	Toast.makeText(getApplicationContext(), "房间推送成功!", Toast.LENGTH_LONG).show();
@@ -153,5 +163,32 @@ OnNdefPushCompleteCallback{
   	public void showToast(String msg){
   		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
   	}
+  	
+  	public void showDialog(){
+		new AlertDialog.Builder(SpyRoomBeam.this)
+		.setMessage("							确定要退出游戏吗?")
+		.setPositiveButton("退出", new android.content.DialogInterface.OnClickListener(){
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+			
+		})
+		.setNegativeButton("再耍一会", null)
+		.show();
+	}
+  	
+  	public boolean onKeyDown(int keyCode, KeyEvent event)   
+	{  
+	    // TODO Auto-generated method stub  	
+		
+	    if((keyCode == KeyEvent.KEYCODE_BACK)&&(event.getAction() == KeyEvent.ACTION_DOWN))  
+	    {  
+	    	showDialog(); 
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 
 }

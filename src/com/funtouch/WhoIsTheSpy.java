@@ -14,7 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WhoIsTheSpy extends Activity {
+public class WhoIsTheSpy extends MenuHavingActivity {
 	
 	SeekBar mSeekBar;
 	TextView mProgressText,tv_civilian,tv_undercover;
@@ -62,6 +62,8 @@ public class WhoIsTheSpy extends Activity {
 	    			intent.setClass(WhoIsTheSpy.this, SpyRoomBeam.class);
 	    			intent.putExtra("room_id", room_id);
 	    			intent.putExtra("num", undercover+civilian);
+	    			intent.putExtra("common_phrase", room.getCommonPhrase());
+	    			intent.putExtra("spy_phrase", room.getSpyPhrase());
 	    			startActivity(intent);
     			}
     			else

@@ -41,4 +41,13 @@
         android:background="@drawable/imagebutton_selector_identifyingcode"
         android:text="我持有的验证码" />
 
+    <Button
+        android:id="@+id/btn_logoff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="注销" />
+
 </RelativeLayout>

@@ -1358,7 +1358,8 @@ public class DataRetriever extends Activity{
 		try {
 			JSONObject result = restful.post("spy/rooms/"+ room_id, token+":", "");
 			String code = result.getString("code");		
-																					
+			//Log.i("res",result.toString());
+			
 			if (code.equals("200"))      //成功
 			{
 				role.setRoomId(result.getInt("room_id"));
@@ -1393,6 +1394,8 @@ public class DataRetriever extends Activity{
 				role.setCommons(result.getString("commons"));
 				role.setSpys(result.getString("spys"));
 				role.setCode(result.getString("code"));
+				role.setCommonPhrase(result.getString("common_phrase"));
+				role.setSpyPhrase(result.getString("spy_phrase"));
 				//Log.i("role",result.getString("spys"));
 			}
 			else       
@@ -1406,7 +1409,7 @@ public class DataRetriever extends Activity{
 		return role;
 	}
 	
-	//房主获取角色
+	//查询电费
 	public String getBill(int doornum , String token){
 
 		Restful restful = new Restful();

@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignRight="@+id/textView2"
-        android:layout_below="@+id/textView2" />
+        android:layout_below="@+id/textView2"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -30,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="房间号：" />
+        android:text="房间号："
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_role"
