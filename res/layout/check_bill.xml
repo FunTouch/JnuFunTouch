@@ -32,7 +32,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="108dp"
-        android:text="该宿舍剩余电费:"
+        android:text="该宿舍剩余电量:"
         android:textSize="20sp" />
 
     <TextView

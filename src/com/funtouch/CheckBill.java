@@ -91,7 +91,7 @@ public class CheckBill extends MenuHavingActivity {
 	                pd.dismiss(); 
 	                if(!bill.equals("failed"))
 					{
-	                	tv_bill.setText(bill+"");
+	                	tv_bill.setText(bill+""+" 度");
 					}
 	                else
 	                	showToast("查询失败!");
