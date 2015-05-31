@@ -3,7 +3,8 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/bg_startgame">
 
     <TextView
         android:id="@+id/tsv_info"
@@ -11,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="174dp"
+        android:layout_marginTop="120dp"
+        android:textSize="20sp"
         android:text="接触即可获得角色" />
 
     <Button

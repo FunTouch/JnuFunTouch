@@ -3,7 +3,8 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/bg_wolfgame">
 
     <TextView
         android:id="@+id/tsv_game_num"
@@ -24,13 +25,13 @@
         android:ems="10"
         android:inputType="number" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_game_num"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="128dp"
-        android:text="开始游戏" />
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tsv_game_num"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/imagebutton_selector_startgame"/>
 
 </RelativeLayout>

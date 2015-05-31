@@ -7,6 +7,7 @@
     android:orientation="horizontal"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
+    android:background="@drawable/bg_wodi"
      >
 
     <Space
@@ -73,7 +74,7 @@
         android:layout_alignBottom="@+id/textView4"
         android:layout_toRightOf="@+id/textView4"
         android:text="3"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_civilian"
@@ -83,16 +84,16 @@
         android:layout_alignBottom="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
         android:text="7"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_civilian"
-        android:layout_alignBottom="@+id/tv_civilian"
-        android:layout_marginLeft="24dp"
+        android:layout_below="@id/textView2"
         android:layout_toRightOf="@+id/tv_civilian"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
         android:text="卧底数量:"
         android:textSize="18sp" />
 
@@ -110,8 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="250dp"
         android:text="创建房间" />
 
     <TextView
@@ -120,8 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/seek"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="80dp"
         android:text="平民数量:"
         android:textSize="18sp" />
 

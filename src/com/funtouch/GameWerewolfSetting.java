@@ -10,10 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class GameWerewolfSetting extends Activity {
-	private Button btnStart = null;
+	private ImageButton btnStart = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class GameWerewolfSetting extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	private void init() {
-		btnStart = (Button) findViewById(R.id.btn_start);
+		btnStart = (ImageButton) findViewById(R.id.btn_start);
 		
 	}
 

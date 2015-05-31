@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:fitsSystemWindows="true"
-    android:clipToPadding="true" >
+    android:clipToPadding="true" 
+    android:background="@drawable/bg_startgame">
 
     <TextView
         android:id="@+id/tv_hint"

@@ -2,7 +2,6 @@ package com.funtouch;
 
 import java.lang.reflect.Field;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,12 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class GameList extends MenuHavingActivity {
 
-	private Button btnUndercover = null;
-	private Button btnWerewolf = null;
+	private ImageButton btnUndercover = null;
+	private ImageButton btnWerewolf = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +85,8 @@ public class GameList extends MenuHavingActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	private void init() {
-		btnUndercover = (Button) findViewById(R.id.btn_who_is_undercover);
-		btnWerewolf = (Button) findViewById(R.id.btn_werewolf);
+		btnUndercover = (ImageButton) findViewById(R.id.btn_who_is_undercover);
+		btnWerewolf = (ImageButton) findViewById(R.id.btn_werewolf);
 		
 	}
 

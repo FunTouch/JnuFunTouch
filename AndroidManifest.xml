@@ -302,21 +302,27 @@
             android:label="运行中"></activity>
 		
 		<activity android:name=".FunTouchProfile"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="FunTouch简介"></activity>
 		<activity android:name=".FunTouchAppIntroduction"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="nfc手机应用"></activity>
 		<activity android:name=".FunTouchTag"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="NFC标签"></activity>
 		<activity android:name=".FunTouchTagDetails"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="Wifi标签"></activity>
 		<activity android:name=".FunTouchTagOther"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="定制"></activity>
 		<activity android:name=".OrganDetailsActivity"
+		    android:theme="@style/TranslucentTheme" 
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="组织信息"></activity>
           

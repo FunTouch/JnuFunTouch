@@ -4,6 +4,7 @@
     android:layout_height="match_parent" 
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
+    android:background="@drawable/bg_startgame"
     >
 
     <TextView
@@ -68,7 +69,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:layout_marginLeft="14dp"
         android:layout_marginTop="23dp"
         android:text="平民词："
         android:textSize="18sp" />
@@ -79,7 +79,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView4"
         android:layout_alignBottom="@+id/textView4"
-        android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/textView4"
         android:text="TextView"
         android:textSize="18sp" />
@@ -88,9 +87,10 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="26dp"
+        android:layout_alignTop="@id/textView4"
+        android:layout_alignBottom="@id/textView4"
+        android:layout_toRightOf="@id/tv_common_phrase"
+        android:layout_marginLeft="20dp"
         android:text="卧底词："
         android:textSize="18sp" />
 

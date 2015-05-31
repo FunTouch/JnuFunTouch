@@ -6,24 +6,26 @@
     android:orientation="vertical" 
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
+    android:background="@drawable/bg_gameassist"
     >
 
-    <Button
-        android:id="@+id/btn_werewolf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="102dp"
-        android:text="狼人游戏" />
-
-    <Button
+    <ImageButton
         android:id="@+id/btn_who_is_undercover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_werewolf"
-        android:layout_below="@+id/btn_werewolf"
-        android:layout_marginTop="29dp"
-        android:text="谁是卧底" />
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/imagebutton_selector_wodi"/>
+    
+    <ImageButton
+        android:id="@+id/btn_werewolf"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="150dp"
+        android:layout_below="@id/btn_who_is_undercover"
+        android:background="@drawable/imagebutton_selector_wolfgame"
+        />
+    
 
 </RelativeLayout>

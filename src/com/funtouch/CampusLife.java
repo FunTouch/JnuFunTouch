@@ -1,21 +1,21 @@
 package com.funtouch;
 
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
-
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
 
 public class CampusLife extends MenuHavingActivity  {
-	private Button btnGame,btnContact,btnBill = null;
-	
+	private ImageButton btnGame,btnContact = null;
+	private Button btnBill = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,8 +31,8 @@ public class CampusLife extends MenuHavingActivity  {
 		}
 		setContentView(R.layout.campus_life);
 		
-		btnGame = (Button) findViewById(R.id.btn_game);
-		btnContact = (Button) findViewById(R.id.btn_contact);
+		btnGame = (ImageButton) findViewById(R.id.btn_game);
+		btnContact = (ImageButton) findViewById(R.id.btn_contact);
 		btnBill = (Button) findViewById(R.id.btn_bill);
 		
 		btnGame.setOnClickListener(new OnClickListener() {

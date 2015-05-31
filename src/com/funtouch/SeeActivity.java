@@ -241,10 +241,14 @@ public class SeeActivity extends Activity {
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
 				// TODO Auto-generated method stub
+				
 				Intent intent = new Intent(SeeActivity.this,OrganDetailsActivity.class);
-				intent.putExtra("itemNumber", childPosition);
+				if(0 == groupPosition){
+					intent.putExtra("itemNumber", childPosition);
+				}else if(1 == groupPosition){
+					intent.putExtra("itemNumber", childPosition + 6);	
+				}
 				startActivity(intent);
-				SeeActivity.this.finish();
 				return false;
 			}
 		});
@@ -392,7 +396,7 @@ public class SeeActivity extends Activity {
 		public boolean isChildSelectable(int groupPosition,
 				int childPosition) {
 			// TODO Auto-generated method stub
-			return false;
+			return true;
 		}
 		
 	}
