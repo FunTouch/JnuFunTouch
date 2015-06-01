@@ -26,7 +26,7 @@
         >
         
         <activity
-            android:name=".firstDisplayActivity"
+            android:name=".Splash"
             android:label="Fun Of Touching" 
             android:screenOrientation="portrait" 
 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
@@ -36,6 +36,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".firstDisplayActivity"
+            android:label="向导"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:screenOrientation="portrait"  
+            android:launchMode="singleTask"></activity>
         <activity android:name=".Login"
             android:label="登录"
             android:theme="@style/TranslucentTheme"

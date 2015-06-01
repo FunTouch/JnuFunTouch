@@ -12,33 +12,6 @@
         android:text="活动名称：" />
 
     <TextView
-        android:id="@+id/enroll_act_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/enroll_act_name"
-        android:layout_alignParentRight="true"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/enroll_act_rest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/textView3"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView4"
-        android:text="活动简介：" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,14 +29,6 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_toLeftOf="@+id/enroll_act_info"
-        android:text="剩余名额：" />
-
-    <TextView
         android:id="@+id/enroll_act_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,5 +36,41 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/enroll_act_name"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/enroll_act_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/enroll_act_time"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/enroll_act_time"
+        android:lines="3"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/enroll_act_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/enroll_act_info"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/enroll_act_info"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/enroll_act_info"
+        android:text="剩余名额：" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/enroll_act_info"
+        android:layout_marginTop="17dp"
+        android:layout_toLeftOf="@+id/enroll_act_info"
+        android:text="活动简介：" />
 
 </RelativeLayout>

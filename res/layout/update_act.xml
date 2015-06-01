@@ -111,8 +111,8 @@
         android:layout_alignLeft="@+id/edt_update_name"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView2"
-        android:ems="10"
-        android:inputType="textMultiLine|textShortMessage" />
+		android:minLines="3"
+        android:inputType="textMultiLine" />
 
     <TextView
         android:id="@+id/textView8"

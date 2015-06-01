@@ -10,22 +10,23 @@
     >
 
     <ImageButton
+        android:id="@+id/btn_werewolf"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="73dp"
+        android:layout_marginRight="14dp"
+        android:background="@drawable/imagebutton_selector_wolfgame" />
+
+    <ImageButton
         android:id="@+id/btn_who_is_undercover"
         android:layout_width="135dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
         android:layout_marginTop="140dp"
-        android:background="@drawable/imagebutton_selector_wodi"/>
-    
-    <ImageButton
-        android:id="@+id/btn_werewolf"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="150dp"
-        android:layout_below="@id/btn_who_is_undercover"
-        android:background="@drawable/imagebutton_selector_wolfgame"
-        />
-    
+        android:background="@drawable/imagebutton_selector_wodi" />
 
 </RelativeLayout>

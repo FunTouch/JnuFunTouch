@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,10 +20,11 @@ import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.util.Log;
 
 public class CreateActivity extends MenuHavingActivity{
 	public Cookie application ; 
-	
+	//private int maxflag = 0;
 	private EditText name, time, place, type, org, actor, limit, info;
 	private DataRetriever dataRetriever = new DataRetriever();
 	String cookie = application.getInstance().getCookie();
@@ -40,6 +43,48 @@ public class CreateActivity extends MenuHavingActivity{
 		actor = (EditText) findViewById(R.id.edt_ActActor);
 		info = (EditText) findViewById(R.id.edt_ActInfo);
 		btnCreateAct = (Button) findViewById(R.id.btn_CreateAct);	
+		
+		info.setFilters(new InputFilter[] { new InputFilter() {
+		    @Override
+		    public CharSequence filter(CharSequence source, int start,
+		      int end, Spanned dest, int dstart, int dend) {
+		    
+		     if (dest.length() > 49) {
+		    	 //showToast("字数已超过50字!");
+		    	 //Log.i("1111",source+" "+start+" "+end+" "+dest.toString()+" "+dstart+" "+dend);
+		    	 //maxflag = 0;		    	 
+		    	 return "";			//长度超过了当前的字符就不要显示了，也就不返回了
+		     } 
+		     else
+		     {
+		    	 //maxflag = 1;
+		    	 return source;		//没超过就送给editText
+		     }
+		    }
+		   } });
+		
+		name.setFilters(new InputFilter[] { new InputFilter() {
+		    @Override
+		    public CharSequence filter(CharSequence source, int start,
+		      int end, Spanned dest, int dstart, int dend) {
+		    	//Log.i("1111",dest.length()+dest.toString()+" "+dstart+" "+dend);
+		    	if (dest.length() > 10) {
+			    	 showToast("字数已超过10字!");
+			    	 //maxflag = 0;		    	 
+			    	 return "";			//长度超过了当前的字符就不要显示了，也就不返回了
+			    }
+		    	if (dest.length() > 9) {
+			    	 //showToast("字数已超过50字!");
+			    	 //maxflag = 0;		    	 
+			    	 return "";			//长度超过了当前的字符就不要显示了，也就不返回了
+			    } 		    	
+			    else
+			    {
+			    	//maxflag = 1;
+			    	return source;		//没超过就送给editText
+			    }
+		    }
+		   } });
 		
 		btnCreateAct.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {

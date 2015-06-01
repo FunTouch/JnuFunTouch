@@ -22,7 +22,7 @@ public class Splash extends Activity{
     class splashhandler implements Runnable{  
   
         public void run() {  
-            startActivity(new Intent(getApplication(),Login.class));  
+            startActivity(new Intent(getApplication(),firstDisplayActivity.class));  
             Splash.this.finish();  
         } 
     }

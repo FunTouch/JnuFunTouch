@@ -88,7 +88,7 @@ public class ActDetails extends MenuHavingActivity{
         	}
         });	
     	
-	btnSignUp.setOnClickListener(new OnClickListener(){
+		btnSignUp.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Intent intent=new Intent();
         		intent.setClass(ActDetails.this, SignUpEdit.class);
@@ -116,7 +116,7 @@ public class ActDetails extends MenuHavingActivity{
     	}
     });
 		
-		lsvActDetails.setOnItemClickListener(new OnItemClickListener(){
+		/*lsvActDetails.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> parent, View view,  
 				     int position, long id) {
 				ListView listView = (ListView)parent;
@@ -128,7 +128,7 @@ public class ActDetails extends MenuHavingActivity{
 				intent.putExtra("act_id", ActDetail.get(0).get("act_id").toString());
 				startActivity(intent);	
 			}
-		});
+		});*/
 	}
 	
 	

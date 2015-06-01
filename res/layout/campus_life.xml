@@ -6,7 +6,7 @@
     tools:context=".SecondActivity" 
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
-    android:background="@drawable/bg_campuslife">
+    android:background="@drawable/bg_actcenter1">
 
     <ImageButton
         android:id="@+id/btn_contact"

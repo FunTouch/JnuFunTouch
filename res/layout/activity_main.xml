@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".SecondActivity" 
-    android:background="@drawable/bg_afterlogin"
+    android:background="@drawable/bg_afterlogin1"
     android:fitsSystemWindows="true"
     android:clipToPadding="true">
 
@@ -24,16 +24,6 @@
          android:layout_marginTop="280dp"
          android:layout_centerHorizontal="true"
          android:background="@drawable/imagebutton_selector_actcenter" />
-     
-     <ImageButton
-         android:id="@+id/btn_userCenter"
-         android:layout_width="113dp"
-         android:layout_height="43dp"
-         android:layout_marginTop="10dp"
-         android:layout_below="@id/btn_actCenter"
-         android:layout_alignLeft="@id/btn_actCenter"
-         android:background="@drawable/imagebutton_selector_usercenter" />
-
 
 	<ImageButton
 	    android:id="@+id/btn_campusLife"
@@ -41,7 +31,16 @@
 	    android:layout_height="43dp"
 	    android:layout_alignLeft="@+id/btn_userCenter"
 	    android:layout_below="@+id/btn_userCenter"
-	    android:layout_marginTop="14dp"
+	    android:layout_marginTop="16dp"
 	    android:background="@drawable/imagebutton_selector_campuslife" />
+
+	<ImageButton
+	    android:id="@+id/btn_userCenter"
+	    android:layout_width="113dp"
+	    android:layout_height="43dp"
+	    android:layout_alignLeft="@+id/btn_actCenter"
+	    android:layout_below="@+id/btn_actCenter"
+	    android:layout_marginTop="17dp"
+	    android:background="@drawable/imagebutton_selector_usercenter" />
 	
 </RelativeLayout>

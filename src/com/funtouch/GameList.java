@@ -34,7 +34,7 @@ public class GameList extends MenuHavingActivity {
 			}
 		});
 		
-		btnWerewolf.setOnClickListener(new OnClickListener() {
+		/*btnWerewolf.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
@@ -42,7 +42,7 @@ public class GameList extends MenuHavingActivity {
 				intent.setClass(GameList.this, GameWerewolfSetting.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 	}
 
 	public void showOverflowMenu(){

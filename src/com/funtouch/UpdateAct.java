@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +44,45 @@ public class UpdateAct extends MenuHavingActivity{
 		btnSubmitUpdate = (Button)findViewById(R.id.btn_submit_update);
 		
 		act = dataRetriever.seeAct(cookie,act_id);
+		
+		edtUpdateName.setFilters(new InputFilter[] { new InputFilter() {
+		    @Override
+		    public CharSequence filter(CharSequence source, int start,
+		      int end, Spanned dest, int dstart, int dend) {
+		    	//Log.i("1111",dest.length()+dest.toString()+" "+dstart+" "+dend);
+		    	if (dest.length() > 10) {
+			    	 showToast("字数已超过10字!");	    	 
+			    	 return "";			
+			    }
+		    	if (dest.length() > 9) {
+			    	 //showToast("字数已超过50字!");		    	 
+			    	 return "";			
+			    } 		    	
+			    else
+			    {
+			    	return source;		//没超过就送给editText
+			    }
+		    }
+		   } });
+		
+		edtUpdateInfo.setFilters(new InputFilter[] { new InputFilter() {
+		    @Override
+		    public CharSequence filter(CharSequence source, int start,
+		      int end, Spanned dest, int dstart, int dend) {
+		    
+		     if (dest.length() > 49) {
+		    	 //showToast("字数已超过50字!");
+		    	 //Log.i("1111",source+" "+start+" "+end+" "+dest.toString()+" "+dstart+" "+dend);
+		    	 //maxflag = 0;		    	 
+		    	 return "";			//长度超过了当前的字符就不要显示了，也就不返回了
+		     } 
+		     else
+		     {
+		    	 //maxflag = 1;
+		    	 return source;		//没超过就送给editText
+		     }
+		    }
+		   } });
 		
 		if(act.getCode().equals("200"))
   		{

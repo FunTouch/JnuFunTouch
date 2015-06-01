@@ -1,114 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/GridLayout1"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="16"
-    android:orientation="horizontal"
-    android:fitsSystemWindows="true"
     android:clipToPadding="true"
-     >
+    android:columnCount="21"
+    android:fitsSystemWindows="true"
+    android:orientation="horizontal" >
 
-    <Space />
-    <Space />
+    <Space
+        android:id="@+id/Space1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Space />
+    <Space
+        android:id="@+id/Space17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/Space18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/Space19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/Space20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/Space21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/Space22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:id="@+id/Space23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/edt_ActName"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="3"
+        android:layout_toRightOf="@+id/TextView1"
         android:ems="10"
         android:hint="请填写活动名称"
         android:selectAllOnFocus="true" />
 
-    <Space android:layout_row="8" />
+    <Space
+        android:id="@+id/Space4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="8" />
 
     <Space
+        android:id="@+id/Space7"
         android:layout_width="1dp"
         android:layout_height="15dp"
-        android:layout_row="22" />
+        android:layout_below="@+id/edt_ActActor"
+        android:layout_row="22"
+        android:layout_toRightOf="@+id/Space5" />
 
     <Space
+        android:id="@+id/Space9"
         android:layout_width="1dp"
         android:layout_height="15dp"
-        android:layout_row="33" />
+        android:layout_below="@+id/btn_CreateAct"
+        android:layout_marginTop="69dp"
+        android:layout_row="36"
+        android:layout_toRightOf="@+id/Space7" />
 
     <EditText
         android:id="@+id/edt_ActInfo"
         android:layout_width="252dp"
+        android:layout_height="74dp"
+        android:layout_alignLeft="@+id/edt_ActName"
+        android:layout_below="@+id/edt_ActName"
+        android:inputType="textMultiLine"
+    	android:minLines="2"
         android:layout_column="1"
         android:layout_gravity="left|top"
         android:layout_row="4"
+        android:layout_toLeftOf="@+id/Space11"
         android:ems="10"
-        android:hint="50字以内"
-        android:inputType="text" >
+        android:layout_alignParentRight="true"
+        android:hint="50字以内">
 
-        
     </EditText>
 
-    <TextView
-        android:id="@+id/TextView2"
-        android:layout_column="0"
-        android:layout_gravity="left|center_vertical"
-        android:layout_row="4"
-        android:text="活动简介："
-        android:textSize="16sp" />
+    <Space
+        android:id="@+id/Space11"
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:layout_alignTop="@+id/edt_ActInfo"
+        android:layout_toRightOf="@+id/Space9" />
 
     <Space
+        android:id="@+id/Space14"
         android:layout_width="1dp"
-        android:layout_height="15dp" />
-
-    <Space
-        android:layout_width="1dp"
-        android:layout_height="15dp" />
+        android:layout_height="15dp"
+        android:layout_alignTop="@+id/edt_ActInfo"
+        android:layout_toRightOf="@+id/Space11" />
 
     <EditText
         android:id="@+id/edt_ActTime"
         android:layout_width="254dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_ActName"
+        android:layout_below="@+id/edt_ActInfo"
         android:layout_column="1"
         android:layout_gravity="center_horizontal|top"
         android:layout_row="5"
         android:ems="10"
         android:hint="活动举办时间"
+        android:layout_alignParentRight="true"
         android:inputType="date" />
 
     <TextView
         android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView1"
+        android:layout_below="@+id/edt_ActInfo"
         android:layout_column="0"
         android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="12dp"
         android:layout_row="5"
         android:text="活动时间："
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/TextView1"
-        android:layout_column="0"
-        android:layout_gravity="left|top"
-        android:layout_marginTop="12dp"
-        android:layout_row="3"
-        android:text="活动名称："
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/edt_ActPlace"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_ActName"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_ActTime"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="9"
@@ -117,8 +194,13 @@
 
     <TextView
         android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView1"
+        android:layout_below="@+id/edt_ActTime"
         android:layout_column="0"
         android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="12dp"
         android:layout_row="9"
         android:text="活动地点："
         android:textSize="16sp" />
@@ -126,6 +208,10 @@
     <EditText
         android:id="@+id/edt_ActType"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_ActName"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_ActPlace"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="13"
@@ -134,8 +220,13 @@
 
     <TextView
         android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView1"
+        android:layout_below="@+id/edt_ActPlace"
         android:layout_column="0"
         android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="12dp"
         android:layout_row="13"
         android:text="活动类型："
         android:textSize="16sp" />
@@ -143,6 +234,10 @@
     <EditText
         android:id="@+id/edt_ActOrg"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_ActName"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_ActType"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="17"
@@ -151,8 +246,13 @@
 
     <TextView
         android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView1"
+        android:layout_below="@+id/edt_ActType"
         android:layout_column="0"
         android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="12dp"
         android:layout_row="17"
         android:text="举办组织："
         android:textSize="16sp" />
@@ -160,6 +260,10 @@
     <EditText
         android:id="@+id/edt_ActActor"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_ActName"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_ActOrg"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal|top"
         android:layout_row="19"
@@ -168,21 +272,65 @@
 
     <TextView
         android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView1"
+        android:layout_below="@+id/edt_ActOrg"
         android:layout_column="0"
         android:layout_gravity="center"
+        android:layout_marginTop="12dp"
         android:layout_row="19"
         android:text="活动对象："
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/btn_CreateAct"
-        android:layout_column="1"
-        android:layout_gravity="center"
-        android:layout_row="32"
-        android:text="提交" />
+    <Space
+        android:id="@+id/Space5"
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:layout_alignTop="@+id/edt_ActActor"
+        android:layout_toRightOf="@+id/edt_ActName" />
 
     <Space
+        android:id="@+id/Space12"
         android:layout_width="1dp"
-        android:layout_height="15dp" />
+        android:layout_height="15dp"
+        android:layout_alignLeft="@+id/Space11"
+        android:layout_alignTop="@+id/edt_ActActor" />
 
-</GridLayout>
+    <Space
+        android:id="@+id/Space15"
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:layout_alignLeft="@+id/Space14"
+        android:layout_alignTop="@+id/edt_ActActor" />
+
+    <TextView
+        android:id="@+id/TextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_ActName"
+        android:layout_alignBottom="@+id/edt_ActName"
+        android:layout_alignParentLeft="true"
+        android:text="活动名称："
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_ActInfo"
+        android:layout_alignBottom="@+id/edt_ActInfo"
+        android:layout_alignParentLeft="true"
+        android:text="活动简介："
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_CreateAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_ActActor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
+        android:text="提交" />
+
+</RelativeLayout>
