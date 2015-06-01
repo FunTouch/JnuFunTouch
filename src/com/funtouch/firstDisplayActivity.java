@@ -21,7 +21,7 @@ public class firstDisplayActivity extends Activity {
 	boolean isFling = false;
 	boolean run = true;
 	int currentFrame = 0;
-	int[] firstDisplayDrawables = new int[]{R.drawable.bg_welcome,
+	int[] firstDisplayDrawables = new int[]{
 	R.drawable.bg_welcome1,R.drawable.bg_welcome2, 
 	R.drawable.bg_welcome3,R.drawable.bg_welcome4
 	};
@@ -46,10 +46,12 @@ public class firstDisplayActivity extends Activity {
         editor.putInt("count", ++count);    
         //提交修改      
         editor.commit();
+        
 		iv_firstDisplay = (ImageView) findViewById(R.id.iv_firstDisplay);
 		goNextFrameThread = new GoNextFrameThread();
 		goNextFrameHandler = new GoNextFrameHandler();
 		goNextFrameThread.start();
+		
 		detector = new GestureDetector(this, new GestureDetector.OnGestureListener() {
 			
 			@Override
@@ -144,7 +146,7 @@ public class firstDisplayActivity extends Activity {
 			if(!isFling){
 				Message goNextMsg = new Message();
 				goNextMsg.what = 0x123;
-				goNextFrameHandler.sendMessageDelayed(goNextMsg, 1500);
+				goNextFrameHandler.sendMessageDelayed(goNextMsg, 3000);
 				
 			}
 		  }
