@@ -23,7 +23,7 @@ public class firstDisplayActivity extends Activity {
 	int currentFrame = 0;
 	int[] firstDisplayDrawables = new int[]{R.drawable.bg_welcome,
 	R.drawable.bg_welcome1,R.drawable.bg_welcome2, 
-	R.drawable.bg_welcome3
+	R.drawable.bg_welcome3,R.drawable.bg_welcome4
 	};
 	GoNextFrameThread goNextFrameThread = null;
 	GoNextFrameHandler goNextFrameHandler = null;
