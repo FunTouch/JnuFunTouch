@@ -4,42 +4,43 @@
     android:layout_height="match_parent" 
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
+    android:background="@drawable/bg_general"
     >
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_act_vali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
-        android:text="激活验证码功能" />
+        android:background="@drawable/imagebutton_selector_activateauthcode" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_gen_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/btn_act_vali"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="76dp"
-        android:text="生成验证码" />
+        android:background="@drawable/imagebutton_selector_createauthcode" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_vali_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/btn_gen_code"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="73dp"
-        android:text="验证用户" />
+        android:background="@drawable/imagebutton_selector_authuser" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_see_rel_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
-        android:text="查看发放的验证码" />
+        android:background="@drawable/imagebutton_selector_checkauthcode" />
 
 </RelativeLayout>

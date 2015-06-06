@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 
 public class UserCenter extends MenuHavingActivity{
 	
-	private Button btnLogoff = null;
+	private ImageButton btnLogoff = null;
 	private ImageButton btnRevBeam = null;
 	private ImageButton btnChangePass = null;
 	private ImageButton btnUpdateInfo = null;
@@ -32,7 +32,7 @@ public class UserCenter extends MenuHavingActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_center);
 		
-		btnLogoff = (Button) findViewById(R.id.btn_logoff);
+		btnLogoff = (ImageButton) findViewById(R.id.btn_logoff);
 		//btnRevBeam = (ImageButton)findViewById(R.id.btn_rev_beam);
 		btnChangePass = (ImageButton)findViewById(R.id.btn_change_pass);
 		btnUpdateInfo = (ImageButton)findViewById(R.id.btn_update_info);	

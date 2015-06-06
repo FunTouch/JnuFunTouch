@@ -7,7 +7,8 @@
     tools:context=".SecondActivity" 
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/bg_general">
 
     <ListView
         android:id="@+id/lsv_act_details"
@@ -17,55 +18,58 @@
         android:layout_alignParentTop="true" >
     </ListView>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_nfc_flyer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/lsv_act_details"
         android:layout_marginRight="32dp"
-        android:text="无纸传单" />
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/imagebutton_selector_nopaper" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/btn_nfc_flyer"
         android:layout_below="@+id/btn_nfc_flyer"
-        android:text="发起报名" />
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/imagebutton_selector_faqibaoming" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_act_vali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/btn_sign_up"
         android:layout_below="@+id/btn_vote"
-        android:text="激活验证" />
+        android:background="@drawable/imagebutton_selector_activateauth" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_vote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/btn_sign_up"
         android:layout_below="@+id/btn_sign_up"
-        android:text="发起投票" />
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/imagebutton_selector_faqitoupiao" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_update_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/btn_del_act"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/btn_sign_up"
-        android:text="修改活动信息" />
+        android:background="@drawable/imagebutton_selector_changeactinfo" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_del_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignBottom="@+id/btn_sign_up"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="17dp"
-        android:layout_marginLeft="29dp"
-        android:text="删除活动" />
+        android:background="@drawable/imagebutton_selector_deleteact" />
 
 </RelativeLayout>

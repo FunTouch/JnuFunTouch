@@ -7,9 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
-
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +14,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,26 +29,30 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
+
 public class CardTransport extends FragmentActivity {
-	private Button btn_Edit;
+	private ImageButton btn_Edit;
 	public Cookie application ; 
 	private DataRetriever dataRetriever = new DataRetriever();
 	private List<Contact> listContact = new ArrayList<Contact>(); ;
 	private SimpleAdapter adapter0;
-	private Button btn_Transport;
-	private Button btn_Confirm;
+	private ImageButton btn_Transport;
+	private ImageButton btn_Confirm;
 	ViewPager MyPager = null;
 	FragmentPagerAdapter adapter = null;
 	Fragment myCardFragment = null;
@@ -205,8 +206,8 @@ public class CardTransport extends FragmentActivity {
 			// TODO Auto-generated method stub
 			View view = inflater.inflate(R.layout.fragment_mycard, container, false);
 			Editor editor = sharedPreferences.edit();
-			btn_Edit = (Button)view.findViewById(R.id.btn_edit);
-			btn_Transport = (Button)view.findViewById(R.id.btn_transport);
+			btn_Edit = (ImageButton)view.findViewById(R.id.btn_edit);
+			btn_Transport = (ImageButton)view.findViewById(R.id.btn_transport);
 			tv_name = (TextView)view.findViewById(R.id.tv2_name);
 			TextView tv_institute = (TextView)view.findViewById(R.id.tv2_institute);
 			TextView tv_sno = (TextView)view.findViewById(R.id.tv2_sno);
@@ -275,8 +276,8 @@ public class CardTransport extends FragmentActivity {
 			editTexts.add(et_name);editTexts.add(et_institute);
 			editTexts.add(et_sno);editTexts.add(et_phone);
 			editTexts.add(et_qq);editTexts.add(et_wechat);
-			btn_Edit = (Button)view.findViewById(R.id.btn_edit);
-			btn_Confirm = (Button)view.findViewById(R.id.btn_confirm);
+			btn_Edit = (ImageButton)view.findViewById(R.id.btn_edit);
+			btn_Confirm = (ImageButton)view.findViewById(R.id.btn_confirm);
 			
 			btn_Transport.setOnClickListener(new OnClickListener(){
 

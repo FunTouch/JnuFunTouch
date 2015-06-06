@@ -6,21 +6,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class MyVote extends MenuHavingActivity{
-	private Button btnBeamVote = null;
-    private Button btnOLVote = null;
+	private ImageButton btnBeamVote = null;
+    private ImageButton btnOLVote = null;
     public Cookie application ; 
     private List<Act> listAct;
     private SimpleAdapter adapter;
@@ -39,8 +39,8 @@ public class MyVote extends MenuHavingActivity{
 		ListView lsvAct = (ListView)findViewById(R.id.lsv_my_vote);
 		listAct = dataRetriever.seeMySignUp(cookie);
 		
-		btnBeamVote = (Button) findViewById(R.id.btn_beam_vote);
-		btnOLVote = (Button) findViewById(R.id.btn_ol_vote);
+		btnBeamVote = (ImageButton) findViewById(R.id.btn_beam_vote);
+		btnOLVote = (ImageButton) findViewById(R.id.btn_ol_vote);
 		
 		btnBeamVote.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){

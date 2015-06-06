@@ -97,22 +97,22 @@
         android:text="卧底数量:"
         android:textSize="18sp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_getrole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignBottom="@+id/btn_begin"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
-        android:text="加入房间" />
+        android:background="@drawable/imagebutton_selector_joinroom" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_begin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/textView2"
         android:layout_marginTop="250dp"
-        android:text="创建房间" />
+        android:background="@drawable/imagebutton_selector_createroom" />
 
     <TextView
         android:id="@+id/textView2"

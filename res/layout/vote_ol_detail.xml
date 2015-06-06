@@ -31,13 +31,13 @@
 
     </ListView>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_vote_act_detail_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="提交" />
+        android:background="@drawable/imagebutton_selector_createact_summit" />
 
     <TextView
         android:id="@+id/vote_act_detail_name"

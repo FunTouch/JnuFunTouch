@@ -17,14 +17,14 @@
         android:background="@drawable/imagebutton_selector_cardtransport"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_bill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/btn_game"
         android:layout_below="@id/btn_game"
         android:layout_marginTop="20dp"
-        android:text="查询电费" />
+        android:background="@drawable/imagebutton_selector_checkdianfei" />
 
     <ImageButton
         android:id="@+id/btn_game"

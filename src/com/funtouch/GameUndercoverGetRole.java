@@ -10,10 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class GameUndercoverGetRole extends Activity {
-	private Button btnRoleDetail = null;
+	private ImageButton btnRoleDetail = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class GameUndercoverGetRole extends Activity {
 	}
 
 	private void init() {
-		btnRoleDetail = (Button) findViewById(R.id.btn_role_detail);
+		btnRoleDetail = (ImageButton) findViewById(R.id.btn_role_detail);
 		
 	}
 

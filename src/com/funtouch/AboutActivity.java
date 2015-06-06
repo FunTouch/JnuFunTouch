@@ -2,16 +2,12 @@ package com.funtouch;
 
 
 import java.io.Serializable;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
-
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,17 +18,12 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.ViewConfiguration;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -40,8 +31,8 @@ import android.widget.Toast;
 public class AboutActivity extends MenuHavingActivity {
 	public Cookie application ; 
 
-	private Button btnCreateAct = null;
-	private Button btnSeeAct = null;
+	private ImageButton btnCreateAct = null;
+	private ImageButton btnSeeAct = null;
 	private SimpleAdapter adapter;
 	private boolean wifi,internet = true;
 	private SimpleAdapter adapter1;
@@ -198,8 +189,8 @@ public class AboutActivity extends MenuHavingActivity {
 	
 
 	private void init() {
-		btnCreateAct = (Button) findViewById(R.id.btn_create_activity);
-		btnSeeAct = (Button) findViewById(R.id.btn_see_activity);
+		btnCreateAct = (ImageButton) findViewById(R.id.btn_create_activity);
+		btnSeeAct = (ImageButton) findViewById(R.id.btn_see_activity);
 	}
 	
 	//获取活动列表数据

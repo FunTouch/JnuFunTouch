@@ -11,11 +11,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class FlyerSee extends Activity {
 
-	private Button btnUse = null;
-	private Button btnDelete = null;
+	private ImageButton btnUse = null;
+	private ImageButton btnDelete = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +78,8 @@ public class FlyerSee extends Activity {
 	}
 
 	private void init() {
-		btnUse = (Button) findViewById(R.id.btn_del_vote);
-		btnDelete = (Button) findViewById(R.id.btn_delete);
+		btnUse = (ImageButton) findViewById(R.id.btn_del_vote);
+		btnDelete = (ImageButton) findViewById(R.id.btn_delete);
 		
 	}
 

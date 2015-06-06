@@ -7,7 +7,8 @@
     android:layout_height="fill_parent"
     tools:context=".SecondActivity" 
     android:fitsSystemWindows="true"
-    android:clipToPadding="true" >
+    android:clipToPadding="true" 
+    android:background="@drawable/bg_general">
 
     <ListView
         android:id="@+id/lsv_act_info"
@@ -18,22 +19,24 @@
         android:layout_alignParentTop="true" >
     </ListView>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_see_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="35dp"
-        android:text="查看活动" />
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/imagebutton_selector_seeact" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_create_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="38dp"
-        android:text="创建活动" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/imagebutton_selector_createact" />
 
 </RelativeLayout>

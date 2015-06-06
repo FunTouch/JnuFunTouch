@@ -28,22 +28,22 @@
         android:layout_gravity="fill_vertical"
         android:layout_row="1" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_beam_vote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="35dp"
-        android:text="接触投票" />
+        android:background="@drawable/imagebutton_selector_touchvote" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_ol_vote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="37dp"
-        android:text="在线投票" />
+        android:background="@drawable/imagebutton_selector_onlinevote" />
 
 </RelativeLayout>

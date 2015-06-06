@@ -1,26 +1,14 @@
 package com.funtouch;
 
-import java.lang.reflect.Field;
-
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.ViewConfiguration;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
-import android.util.Log;
 
 public class CreateActivity extends MenuHavingActivity{
 	public Cookie application ; 
@@ -33,8 +21,8 @@ public class CreateActivity extends MenuHavingActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_activity);
-		Button btnCreateAct = null;
-		
+		ImageButton btnCreateAct = null;
+		ImageButton btnCancelAct = null;
 		name = (EditText) findViewById(R.id.edt_ActName);
 		time = (EditText) findViewById(R.id.edt_ActTime);
 		place = (EditText) findViewById(R.id.edt_ActPlace);
@@ -42,8 +30,8 @@ public class CreateActivity extends MenuHavingActivity{
 		org = (EditText) findViewById(R.id.edt_ActOrg);
 		actor = (EditText) findViewById(R.id.edt_ActActor);
 		info = (EditText) findViewById(R.id.edt_ActInfo);
-		btnCreateAct = (Button) findViewById(R.id.btn_CreateAct);	
-		
+		btnCreateAct = (ImageButton) findViewById(R.id.btn_CreateAct);	
+		btnCancelAct = (ImageButton) findViewById(R.id.btn_cancelAct);	
 		info.setFilters(new InputFilter[] { new InputFilter() {
 		    @Override
 		    public CharSequence filter(CharSequence source, int start,

@@ -3,24 +3,25 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/bg_general">
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="返回" />
+        android:background="@drawable/imagebutton_selector_nopaper_back" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/btn_return"
-        android:text="确定" />
+        android:layout_marginRight="5dp"
+        android:background="@drawable/imagebutton_selector_nopaper_confirm" />
 
     <ListView
         android:id="@+id/listView1"
@@ -32,13 +33,14 @@
 
     </ListView>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/btn_ok"
-        android:text="退出" />
+        android:layout_marginRight="20dp"
+        android:background="@drawable/imagebutton_selector_selectversion_exit" />
 
 </RelativeLayout>

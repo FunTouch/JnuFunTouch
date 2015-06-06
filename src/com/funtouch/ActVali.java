@@ -1,31 +1,21 @@
 package com.funtouch;
 
-import java.lang.reflect.Field;
-
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class ActVali extends MenuHavingActivity {
-	private Button btnActVali = null;
-	private Button btnGenCode = null;
-	private Button btnValiUser = null;
-	private Button btnSeeRelCode = null;
+	private ImageButton btnActVali = null;
+	private ImageButton btnGenCode = null;
+	private ImageButton btnValiUser = null;
+	private ImageButton btnSeeRelCode = null;
 	public Cookie application ;
 	String cookie = application.getInstance().getCookie();
 	private String act_id;
@@ -42,10 +32,10 @@ public class ActVali extends MenuHavingActivity {
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");
 		
-		btnActVali = (Button)findViewById(R.id.btn_act_vali);
-		btnGenCode = (Button)findViewById(R.id.btn_gen_code);
-		btnSeeRelCode = (Button)findViewById(R.id.btn_see_rel_code);
-		btnValiUser = (Button)findViewById(R.id.btn_vali_user);
+		btnActVali = (ImageButton)findViewById(R.id.btn_act_vali);
+		btnGenCode = (ImageButton)findViewById(R.id.btn_gen_code);
+		btnSeeRelCode = (ImageButton)findViewById(R.id.btn_see_rel_code);
+		btnValiUser = (ImageButton)findViewById(R.id.btn_vali_user);
 		
 
 		btnActVali.setOnClickListener(new OnClickListener(){

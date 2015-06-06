@@ -12,15 +12,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class FlyerNew extends Activity {
 
-	private Button btnImportImg = null;
-	private Button btnAddDetail = null;
-	private Button btnSelectStyle = null;
-	private Button btnOk = null;
-	private Button btnDelete = null;
-	private Button btnPreview = null;
+	private ImageButton btnImportImg = null;
+	private ImageButton btnAddDetail = null;
+	private ImageButton btnSelectStyle = null;
+	private ImageButton btnOk = null;
+	private ImageButton btnDelete = null;
+	private ImageButton btnPreview = null;
 	//private Button btnReturn = null;
 	
 	@Override
@@ -82,12 +83,12 @@ public class FlyerNew extends Activity {
 	}
 	
 	private void init() {
-		btnImportImg = (Button) findViewById(R.id.btn_import_image);
-		btnAddDetail = (Button) findViewById(R.id.btn_add_detail);
-		btnSelectStyle = (Button) findViewById(R.id.btn_select_style);
-		btnOk = (Button) findViewById(R.id.btn_ok);
-		btnDelete = (Button) findViewById(R.id.btn_delete);
-		btnPreview = (Button) findViewById(R.id.btn_preview);
+		btnImportImg = (ImageButton) findViewById(R.id.btn_import_image);
+		btnAddDetail = (ImageButton) findViewById(R.id.btn_add_detail);
+		btnSelectStyle = (ImageButton) findViewById(R.id.btn_select_style);
+		btnOk = (ImageButton) findViewById(R.id.btn_ok);
+		btnDelete = (ImageButton) findViewById(R.id.btn_delete);
+		btnPreview = (ImageButton) findViewById(R.id.btn_preview);
 		
 	}
 

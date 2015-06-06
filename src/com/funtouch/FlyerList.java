@@ -10,12 +10,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class FlyerList extends Activity {
 
-	private Button btnNewFlyer = null;
-	private Button btnSeeFlyer = null;
+	private ImageButton btnNewFlyer = null;
+	private ImageButton btnSeeFlyer = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +89,8 @@ public class FlyerList extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	private void init() {
-		btnNewFlyer = (Button) findViewById(R.id.btn_new_flyer);
-		btnSeeFlyer =  (Button) findViewById(R.id.btn_see_flyer);
+		btnNewFlyer = (ImageButton) findViewById(R.id.btn_new_flyer);
+		btnSeeFlyer =  (ImageButton) findViewById(R.id.btn_see_flyer);
 		
 	}
 

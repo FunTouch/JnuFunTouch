@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:stretchColumns="1" 
     android:fitsSystemWindows="true"
-    android:clipToPadding="true">
+    android:clipToPadding="true"
+    android:background="@drawable/bg_general">
 
     <TextView
         android:layout_width="fill_parent"
@@ -102,39 +103,39 @@
         <requestFocus />
     </EditText>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_sign_ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="完成" />
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/imagebutton_selector_finish" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center" >
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_sign_rev_beam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_alignParentTop="true"
-            android:text="使用" />
+            android:background="@drawable/imagebutton_selector_shiyong" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_sign_see"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="查看" />
+            android:background="@drawable/imagebutton_selector_chakan" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_sign_del"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="删除" />
+            android:background="@drawable/imagebutton_selector_nopaper_delete" />
 
     </RelativeLayout>
 

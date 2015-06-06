@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 
-public class ActAuthenticate extends Activity {
+public class ActAuthenticate extends MenuHavingActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

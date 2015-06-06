@@ -3,11 +3,6 @@ package com.funtouch;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.funtouch.util.nfc.BobNdefMessage;
-
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
@@ -20,13 +15,15 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.funtouch.util.nfc.BobNdefMessage;
 
 public class SpyRoomBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
 OnNdefPushCompleteCallback{
@@ -34,7 +31,7 @@ OnNdefPushCompleteCallback{
 	private PendingIntent mPendingIntent;
 	private static final int MESSAGE_SENT = 1;
 	TextView tv_role, tv_count , tv_common_phrase, tv_spy_phrase;
-	Button btnSeeRole;
+	ImageButton btnSeeRole;
 	public Cookie application ; 
 	private DataRetriever dataRetriever = new DataRetriever();
     String cookie = application.getInstance().getCookie();
@@ -58,7 +55,7 @@ OnNdefPushCompleteCallback{
 		tv_count = (TextView)findViewById(R.id.tv_count);
 		tv_common_phrase = (TextView)findViewById(R.id.tv_common_phrase);
 		tv_spy_phrase = (TextView)findViewById(R.id.tv_spy_phrase);
-		btnSeeRole = (Button)findViewById(R.id.btn_seerole);
+		btnSeeRole = (ImageButton)findViewById(R.id.btn_seerole);
 		
 		// Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);

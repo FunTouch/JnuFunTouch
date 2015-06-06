@@ -1,28 +1,18 @@
 package com.funtouch;
 
-import java.lang.reflect.Field;
-
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class ChangePass extends MenuHavingActivity{
 	public Cookie application ; 
 	private EditText old_pass, new_pass, new_conf_pass = null;
-	private Button btnPassSubmit = null;
+	private ImageButton btnPassSubmit = null;
 	private DataRetriever dataRetriever = new DataRetriever();
 	String cookie = application.getInstance().getCookie();
 	
@@ -32,7 +22,7 @@ public class ChangePass extends MenuHavingActivity{
      	// TODO Auto-generated method stub
   		super.onCreate(savedInstanceState);
    		setContentView(R.layout.change_pass);
-     	btnPassSubmit = (Button) findViewById(R.id.btn_pass_submit);
+     	btnPassSubmit = (ImageButton) findViewById(R.id.btn_pass_submit);
      	old_pass = (EditText) findViewById(R.id.edt_old_pass);
      	new_pass = (EditText) findViewById(R.id.edt_new_pass);
      	new_conf_pass = (EditText) findViewById(R.id.edt_new_conf_pass);

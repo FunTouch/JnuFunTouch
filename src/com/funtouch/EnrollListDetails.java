@@ -1,6 +1,5 @@
 package com.funtouch;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,13 +8,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -24,7 +20,7 @@ public class EnrollListDetails extends MenuHavingActivity{
 	private SimpleAdapter adapter;
 	public Cookie application ;
 	private String act_id;
-	private Button btnDelSign = null;
+	private ImageButton btnDelSign = null;
 	private List<Map<String, String>> EnrollDetail = new ArrayList<Map<String, String>>();
 	String cookie = application.getInstance().getCookie();
 	private DataRetriever dataRetriever = new DataRetriever();
@@ -33,7 +29,7 @@ public class EnrollListDetails extends MenuHavingActivity{
 		  
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enroll_details);
-		btnDelSign = (Button) findViewById(R.id.btn_delete_enroll);
+		btnDelSign = (ImageButton) findViewById(R.id.btn_delete_enroll);
 		
 		Intent intent1 = getIntent();
 		act_id = intent1.getStringExtra("act_id");

@@ -7,6 +7,7 @@ import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Build.VERSION;
@@ -71,6 +72,9 @@ abstract class MenuHavingActivity<Context, AttributeSet> extends Activity{
 		this.finish();
 		break;
 	case R.id.menu_aboutus:	
+		Intent intent = new Intent();
+		intent.setClass(this, FunTouchAppIntroduction.class);
+		startActivity(intent);
 		break;
 	case R.id.menu_help:
 		break;

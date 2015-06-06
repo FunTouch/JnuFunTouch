@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:background="@drawable/bg_general">
 
     <GridLayout
         android:id="@+id/GridLayout1"
@@ -139,35 +140,35 @@
             android:layout_row="6" />
     </GridLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignBaseline="@+id/btn_transport"
         android:layout_alignBottom="@+id/btn_transport"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="25dp"
-        android:text="确认"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/imagebutton_selector_mingpian_confirm"
         android:visibility="gone" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignBaseline="@+id/btn_transport"
         android:layout_alignBottom="@+id/btn_transport"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="52dp"
-        android:text="编辑" />
+        android:layout_marginRight="10dp"
+        android:background="@drawable/imagebutton_selector_mingpian_edit"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_transport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/GridLayout1"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="14dp"
-        android:text="推送" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/imagebutton_selector_mingpian_tuisong" />
 
 </RelativeLayout>

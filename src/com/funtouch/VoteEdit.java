@@ -6,14 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,18 +20,18 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 public class VoteEdit extends MenuHavingActivity{
 	public Cookie application ; 
-	private Button btnOk = null;
-	private Button btnUse = null;
-	private Button btnExport = null;
-	private Button btnDelVote = null;
+	private ImageButton btnOk = null;
+	private ImageButton btnUse = null;
+	private ImageButton btnExport = null;
+	private ImageButton btnDelVote = null;
 	private RadioGroup rg = null;
 	private ListView lv_team = null;
 	private ArrayList<Map<String, Object>> teams = null;
@@ -58,10 +54,10 @@ public class VoteEdit extends MenuHavingActivity{
 		et_teamName = new EditText(this);
 		teamNames = new ArrayList<String>();
 		teams = new ArrayList<Map<String, Object>>();
-		btnOk = (Button)findViewById(R.id.btn_ok);
-		btnUse = (Button)findViewById(R.id.btn_use);
-		btnDelVote = (Button)findViewById(R.id.btn_del_vote);
-		btnExport = (Button)findViewById(R.id.btn_export);
+		btnOk = (ImageButton)findViewById(R.id.btn_ok);
+		btnUse = (ImageButton)findViewById(R.id.btn_use);
+		btnDelVote = (ImageButton)findViewById(R.id.btn_del_vote);
+		btnExport = (ImageButton)findViewById(R.id.btn_export);
 		rg = (RadioGroup)findViewById(R.id.rg);
 		rg.check(R.id.radio1);
 		checkRadioButton = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
@@ -89,7 +85,7 @@ public class VoteEdit extends MenuHavingActivity{
 		
      	if(listTeam.get(0).getCode().equals("200"))
 		{
-			btnUse.setText("进入投票");
+			btnUse.setBackgroundResource(R.drawable.imagebutton_selector_entervote);
 			
 			//导出投票结果
 			btnExport.setOnClickListener(new OnClickListener(){
@@ -206,7 +202,7 @@ public class VoteEdit extends MenuHavingActivity{
 				int flag = dataRetriever.delVote(cookie, act_id);
 				if (flag == 200)
 				{
-					btnUse.setText("开始使用");
+					//btnUse.setText("开始使用");
 					showToast("删除成功");
 					VoteEdit.this.recreate();
 				}

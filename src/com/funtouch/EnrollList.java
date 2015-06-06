@@ -1,7 +1,6 @@
 package com.funtouch;
 
 import java.io.Serializable;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,13 +9,11 @@ import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -25,7 +22,7 @@ public class EnrollList extends MenuHavingActivity {
 
 	private ListView lsvDetails = null;
 	public Cookie application ;
-	private Button btnExport = null;
+	private ImageButton btnExport = null;
 	private List<Enroll> listEnroll;
 	private String act_id;
 	private SimpleAdapter adapter;
@@ -105,7 +102,7 @@ public class EnrollList extends MenuHavingActivity {
 		// TODO Auto-generated method stub
 		lsvDetails = (ListView)findViewById(R.id.lsv_enroll_details);
 		
-		btnExport = (Button)findViewById(R.id.btn_export);
+		btnExport = (ImageButton)findViewById(R.id.btn_export);
 	}
 	
 	//获取报名列表数据

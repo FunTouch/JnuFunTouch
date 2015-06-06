@@ -1,27 +1,15 @@
 package com.funtouch;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.ViewConfiguration;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -31,15 +19,15 @@ import android.widget.Toast;
 public class ActDetails extends MenuHavingActivity{
 	private SimpleAdapter adapter;
 	private List<Map<String, Object>> ActDetail = new ArrayList<Map<String, Object>>();
-	private Button btnDelAct,btnUpdateAct = null;
+	private ImageButton btnDelAct,btnUpdateAct = null;
 	private DataRetriever dataRetriever = new DataRetriever();
 	private Cookie application ;
 	private String act_id = null;
 	private String cookie = application.getInstance().getCookie();
-	private Button btnVote = null;
-	private Button btnSignUp = null;
-	private Button btnFlyer = null;
-	private Button btnActVali = null;
+	private ImageButton btnVote = null;
+	private ImageButton btnSignUp = null;
+	private ImageButton btnFlyer = null;
+	private ImageButton btnActVali = null;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		  
@@ -54,12 +42,12 @@ public class ActDetails extends MenuHavingActivity{
 		lsvActDetails.setAdapter(adapter);
 		act_id = getIntent().getStringExtra("act_id");
 		
-		btnDelAct = (Button)findViewById(R.id.btn_del_act);
-		btnUpdateAct = (Button)findViewById(R.id.btn_update_act);
-		btnVote = (Button)findViewById(R.id.btn_vote);
-		btnSignUp = (Button)findViewById(R.id.btn_sign_up);
-		btnFlyer = (Button)findViewById(R.id.btn_nfc_flyer);
-		btnActVali = (Button)findViewById(R.id.btn_act_vali);
+		btnDelAct = (ImageButton)findViewById(R.id.btn_del_act);
+		btnUpdateAct = (ImageButton)findViewById(R.id.btn_update_act);
+		btnVote = (ImageButton)findViewById(R.id.btn_vote);
+		btnSignUp = (ImageButton)findViewById(R.id.btn_sign_up);
+		btnFlyer = (ImageButton)findViewById(R.id.btn_nfc_flyer);
+		btnActVali = (ImageButton)findViewById(R.id.btn_act_vali);
 		
 		btnDelAct.setOnClickListener(new OnClickListener() {
 			

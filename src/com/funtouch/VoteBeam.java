@@ -1,45 +1,15 @@
 package com.funtouch;
 
-import android.app.Activity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import android.app.PendingIntent;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcAdapter.CreateNdefMessageCallback;
-import android.nfc.NfcEvent;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import android.annotation.SuppressLint;
-import com.funtouch.util.nfc.BobNdefMessage;
-
-import com.funtouch.R;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.google.common.primitives.Bytes;
-
-
-import android.app.Activity;
-import android.content.Intent;
-import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import android.nfc.NfcAdapter.OnNdefPushCompleteCallback;
@@ -47,38 +17,28 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
-import android.provider.Settings;
-import android.text.format.Time;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.funtouch.util.nfc.BobNdefMessage;
 
 
 public class VoteBeam extends MenuHavingActivity implements CreateNdefMessageCallback,
         OnNdefPushCompleteCallback, OnItemClickListener {
     NfcAdapter mNfcAdapter;
-    private Button btnSubmit = null;
-    private Button btnReturn = null;
+    private ImageButton btnSubmit = null;
+    private ImageButton btnReturn = null;
     private List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();
     private PendingIntent mPendingIntent;
     private static final int MESSAGE_SENT = 1;
@@ -105,8 +65,8 @@ public class VoteBeam extends MenuHavingActivity implements CreateNdefMessageCal
         lv_vote_team = (ListView)findViewById(R.id.lv_vote_team);
         List<TeamListInfo> objectList = (List<TeamListInfo>)getIntent().getSerializableExtra("teamlist");
         listTeam = objectList.get(0).getTeamList();		 //获得intent传过来的listTeam
-        btnSubmit = (Button)findViewById(R.id.btn_submit);
-        btnReturn = (Button)findViewById(R.id.btn_return);
+        btnSubmit = (ImageButton)findViewById(R.id.btn_submit);
+        btnReturn = (ImageButton)findViewById(R.id.btn_return);
         
         // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);

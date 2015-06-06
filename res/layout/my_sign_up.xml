@@ -16,22 +16,22 @@
 
     </ListView>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_beam_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="38dp"
-        android:text="接触报名" />
+        android:background="@drawable/imagebutton_selector_touchsignin" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_ol_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="41dp"
-        android:text="在线报名" />
+        android:background="@drawable/imagebutton_selector_onlinesignin" />
 
 </RelativeLayout>

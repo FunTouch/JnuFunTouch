@@ -4,20 +4,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class CheckBill extends MenuHavingActivity {
 	public Cookie application ;
-	private Button btnCheck = null;
+	private ImageButton btnCheck = null;
 	private TextView tv_bill = null;
 	private EditText edt_doornum = null;
 	private DataRetriever dataRetriever = new DataRetriever();
@@ -37,7 +36,7 @@ public class CheckBill extends MenuHavingActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.check_bill);
 		
-		btnCheck = (Button) findViewById(R.id.btn_check);
+		btnCheck = (ImageButton) findViewById(R.id.btn_check);
 		tv_bill = (TextView) findViewById(R.id.tv_bill);
 		edt_doornum = (EditText) findViewById(R.id.edt_doornum);
 		

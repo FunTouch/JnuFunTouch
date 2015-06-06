@@ -6,15 +6,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -22,7 +21,7 @@ import android.widget.Toast;
 public class SignUpOLDetail extends MenuHavingActivity{
 	public Cookie application ;
 	private SimpleAdapter adapter;
-	private Button btnSignUp = null;
+	private ImageButton btnSignUp = null;
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	private String act_id = null;
 	private List<Act> listAct;
@@ -43,7 +42,7 @@ public class SignUpOLDetail extends MenuHavingActivity{
 		listAct = dataRetriever.getEnrollActDetail(act_id);
 		
 		ListView lsvDetail = (ListView)findViewById(R.id.lsv_enroll_act_detail);	
-		btnSignUp = (Button)findViewById(R.id.btn_sign_up);
+		btnSignUp = (ImageButton)findViewById(R.id.btn_sign_up);
 		
 		getData();
 		adapter = new SimpleAdapter(this, listData, R.layout.lsv_enroll_act_detail_raw,
@@ -83,7 +82,7 @@ public class SignUpOLDetail extends MenuHavingActivity{
 		}
 		else if(flag.equals("1"))
 		{
-			btnSignUp.setText("撤销报名");
+			btnSignUp.setBackgroundResource(R.drawable.imagebutton_selector_cancelsignin);
 			btnSignUp.setOnClickListener(new OnClickListener() {			
 				@Override
 				public void onClick(View arg0) {

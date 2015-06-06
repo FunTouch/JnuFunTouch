@@ -3,17 +3,7 @@ package com.funtouch;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.funtouch.RevVoteBeam.MyAdapter;
-import com.google.common.base.Preconditions;
-
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,14 +14,15 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.common.base.Preconditions;
 
 public class SignUpUse extends MenuHavingActivity {
 	public Cookie application ;
-	private Button btnStop;
+	private ImageButton btnStop;
 	private ImageView imgUsing;
 	//private TextView cookie;
 	NfcAdapter mNfcAdapter;
@@ -78,7 +69,7 @@ public class SignUpUse extends MenuHavingActivity {
 
 	private void init() {
 		// TODO Auto-generated method stub
-		btnStop = (Button)findViewById(R.id.btn_stop);
+		btnStop = (ImageButton)findViewById(R.id.btn_stop);
 		imgUsing = (ImageView)findViewById(R.id.img_using);
 	}
 	

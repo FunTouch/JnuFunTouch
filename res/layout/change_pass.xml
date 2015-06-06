@@ -59,16 +59,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_pass_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/edt_old_pass"
         android:layout_below="@+id/Space16"
         android:layout_column="1"
         android:layout_gravity="center_vertical"
         android:layout_row="70"
-        android:text="确认修改" />
+        android:background="@drawable/imagebutton_selector_confirmchange" />
 
     <EditText
         android:id="@+id/edt_old_pass"

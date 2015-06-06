@@ -6,22 +6,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class MySignUp  extends MenuHavingActivity{
-	private Button btnBeamSignUp = null;
-    private Button btnOLSignUp = null;
+	private ImageButton btnBeamSignUp = null;
+    private ImageButton btnOLSignUp = null;
     private SimpleAdapter adapter;
     private List<Act> listAct;
     public Cookie application ; 
@@ -36,8 +35,8 @@ public class MySignUp  extends MenuHavingActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_sign_up);
 		
-		btnBeamSignUp = (Button) findViewById(R.id.btn_beam_sign_up);
-		btnOLSignUp = (Button) findViewById(R.id.btn_ol_sign_up);
+		btnBeamSignUp = (ImageButton) findViewById(R.id.btn_beam_sign_up);
+		btnOLSignUp = (ImageButton) findViewById(R.id.btn_ol_sign_up);
 		
 		ListView lsvAct = (ListView)findViewById(R.id.lsv_my_sign_up);
 		listAct = dataRetriever.seeMySignUp(cookie);

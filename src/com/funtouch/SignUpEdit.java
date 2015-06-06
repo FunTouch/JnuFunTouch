@@ -1,37 +1,30 @@
 package com.funtouch;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class SignUpEdit extends MenuHavingActivity{
 	
 	public Cookie application ;
-	private Button btnOk = null;
-	private Button btnUse = null;
-	private Button btnDelete = null;
-	private Button btnSee = null;
+	private ImageButton btnOk = null;
+	private ImageButton btnUse = null;
+	private ImageButton btnDelete = null;
+	private ImageButton btnSee = null;
 	private CheckBox chkName,chkSno,chkPhone,chkMailbox,chkQQ,chkClass = null;
 	private EditText edtLimit = null;
 	private String act_id, limit;
@@ -182,11 +175,11 @@ public class SignUpEdit extends MenuHavingActivity{
 	private void initCreate() {
 		// TODO Auto-generated method stub
 		//button
-		btnOk = (Button)findViewById(R.id.btn_sign_ok);
-		btnUse = (Button)findViewById(R.id.btn_sign_rev_beam);
-		btnDelete = (Button)findViewById(R.id.btn_sign_del);
-		btnSee = (Button)findViewById(R.id.btn_sign_see);
-		btnDelete = (Button)findViewById(R.id.btn_sign_del);
+		btnOk = (ImageButton)findViewById(R.id.btn_sign_ok);
+		btnUse = (ImageButton)findViewById(R.id.btn_sign_rev_beam);
+		btnDelete = (ImageButton)findViewById(R.id.btn_sign_del);
+		btnSee = (ImageButton)findViewById(R.id.btn_sign_see);
+		btnDelete = (ImageButton)findViewById(R.id.btn_sign_del);
 		chkName = (CheckBox)findViewById(R.id.chk_name);
 		chkSno = (CheckBox)findViewById(R.id.chk_sno);
 		chkPhone = (CheckBox)findViewById(R.id.chk_phone);

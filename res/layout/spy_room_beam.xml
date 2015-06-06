@@ -54,14 +54,14 @@
         android:layout_centerHorizontal="true"
         android:textSize="18sp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_seerole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="55dp"
         android:layout_below="@+id/tv_count"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="查看各玩家的角色" />
+        android:background="@drawable/imagebutton_selector_seeplayerrole"/>
 
     <TextView
         android:id="@+id/textView4"

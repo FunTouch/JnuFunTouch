@@ -6,20 +6,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.funtouch.VoteBeam.MyAdapter;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -30,7 +28,7 @@ public class VoteOLDetail extends MenuHavingActivity implements OnItemClickListe
 	private SimpleAdapter adapter;
 	private List<Map<String, String>> VoteDetail = new ArrayList<Map<String, String>>();
 	private Map<String,String> Team = new HashMap<String, String>();
-	private Button btnSubmit = null;
+	private ImageButton btnSubmit = null;
 	private TextView name,info,time, type, place, actor, org, limit,rest = null;
 	private List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	private String act_id = null;
@@ -53,7 +51,7 @@ public class VoteOLDetail extends MenuHavingActivity implements OnItemClickListe
 		act_id = intent1.getStringExtra("act_id");
 		//listAct = dataRetriever.getEnrollActDetail(act_id);
 		lv_vote_team = (ListView)findViewById(R.id.lsv_vote_act_team);
-		btnSubmit = (Button)findViewById(R.id.btn_vote_act_detail_submit);
+		btnSubmit = (ImageButton)findViewById(R.id.btn_vote_act_detail_submit);
 		name = (TextView)findViewById(R.id.vote_act_detail_name);
 		info = (TextView)findViewById(R.id.vote_act_detail_info);
 		time = (TextView)findViewById(R.id.vote_act_detail_time);

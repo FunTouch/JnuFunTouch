@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +22,7 @@ public class WhoIsTheSpy extends MenuHavingActivity {
 	int civilian=7;
 	int undercover=3;
 	List<String> list = new ArrayList<String>();
-	Button btnBegin,btnGetRole = null;
+	ImageButton btnBegin,btnGetRole = null;
 	public Cookie application ; 
 	String cookie = application.getInstance().getCookie();
 	private DataRetriever dataRetriever = new DataRetriever();
@@ -38,8 +38,8 @@ public class WhoIsTheSpy extends MenuHavingActivity {
 		mProgressText = (TextView)findViewById(R.id.tv_num);
 		tv_civilian = (TextView)findViewById(R.id.tv_civilian);
 		tv_undercover = (TextView)findViewById(R.id.tv_undercover);
-       	btnBegin = (Button) findViewById(R.id.btn_begin);
-       	btnGetRole = (Button) findViewById(R.id.btn_getrole);
+       	btnBegin = (ImageButton) findViewById(R.id.btn_begin);
+       	btnGetRole = (ImageButton) findViewById(R.id.btn_getrole);
        /*	list.clear();
     	for (int i = 0; i < 7; i++)
         {

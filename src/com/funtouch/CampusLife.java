@@ -15,7 +15,7 @@ import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
 
 public class CampusLife extends MenuHavingActivity  {
 	private ImageButton btnGame,btnContact = null;
-	private Button btnBill = null;
+	private ImageButton btnBill = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class CampusLife extends MenuHavingActivity  {
 		
 		btnGame = (ImageButton) findViewById(R.id.btn_game);
 		btnContact = (ImageButton) findViewById(R.id.btn_contact);
-		btnBill = (Button) findViewById(R.id.btn_bill);
+		btnBill = (ImageButton) findViewById(R.id.btn_bill);
 		
 		btnGame.setOnClickListener(new OnClickListener() {
 			@Override

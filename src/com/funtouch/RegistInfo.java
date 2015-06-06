@@ -1,30 +1,20 @@
 package com.funtouch;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-
-
-import android.os.StrictMode;
-import com.funtouch.UserInfo;
-
-import java.security.MessageDigest;
-import java.util.*;
-
-import com.funtouch.Data;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 
 public class RegistInfo extends MenuHavingActivity{
@@ -38,7 +28,7 @@ public class RegistInfo extends MenuHavingActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-			Button btnNext=null;
+		ImageButton btnNext=null;
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.regist_info);
@@ -52,7 +42,7 @@ public class RegistInfo extends MenuHavingActivity{
 		qq = (EditText) findViewById(R.id.edt_qq);
 		about_me = (EditText) findViewById(R.id.edt_about_me);
 		
-		btnNext=(Button)findViewById(R.id.btn_next);
+		btnNext=(ImageButton)findViewById(R.id.btn_next);
 		//application = (Data) this.getApplicationContext(); 
 		btnNext.setOnClickListener(new OnClickListener(){
 	        	public void onClick(View v){

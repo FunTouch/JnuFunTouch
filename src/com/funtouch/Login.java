@@ -4,9 +4,6 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.funtouch.util.SystemBarTintManager;
-import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -22,11 +19,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.funtouch.util.SystemBarTintManager;
+import com.funtouch.util.SystemBarTintManager.SystemBarConfig;
 
 public class Login extends Activity {
 	//private SharedPreferences read ;
@@ -50,8 +50,8 @@ public class Login extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		Button btnLogin = null;
-		Button btnRegist = null;
+		ImageButton btnLogin = null;
+		ImageButton btnRegist = null;
 		showOverflowMenu();
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -69,7 +69,7 @@ public class Login extends Activity {
 		setContentView(R.layout.login);
 		userName = (EditText) findViewById(R.id.edit_UserName);
 		password = (EditText) findViewById(R.id.edit_UserPassword);
-		btnLogin = (Button) findViewById(R.id.btn_login);		
+		btnLogin = (ImageButton) findViewById(R.id.btn_login);		
 		
 		//用户已登录
 		if(cookie!=null)			
@@ -126,7 +126,7 @@ public class Login extends Activity {
 			}
 		});
 		
-		btnRegist = (Button) findViewById(R.id.btn_regist);
+		btnRegist = (ImageButton) findViewById(R.id.btn_regist);
 		btnRegist.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent();

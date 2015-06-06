@@ -3,20 +3,18 @@ package com.funtouch;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class UpdateInfo extends MenuHavingActivity{
 	public Cookie application ; 
-	private Button btnSubmitUpdate = null;
+	private ImageButton btnSubmitUpdate = null;
 	private EditText edtUpdateName, edtUpdateSno, edtUpdateMailbox, edtUpdateGrade, edtUpdatePhone, edtUpdateQQ, edtAboutMe = null;
 	private DataRetriever dataRetriever = new DataRetriever();
 	private Map<String,String> info = null;
@@ -38,7 +36,7 @@ public class UpdateInfo extends MenuHavingActivity{
   		edtAboutMe = (EditText) findViewById(R.id.edt_about_me);
   		edtUpdatePhone = (EditText) findViewById(R.id.edt_update_phone);
   		edtUpdateQQ = (EditText) findViewById(R.id.edt_update_qq);
-  		btnSubmitUpdate = (Button)findViewById(R.id.btn_submit_update);
+  		btnSubmitUpdate = (ImageButton)findViewById(R.id.btn_submit_update);
   		
   		info = dataRetriever.getInfo(cookie);
  		
