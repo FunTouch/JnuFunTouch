@@ -2,18 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:clipToPadding="true"
-    android:fitsSystemWindows="true"
     android:background="@drawable/bg_general">
-
-    <android.widget.TextView
+    
+    <TextView 
         android:id="@+id/tv_appInduction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="61dp"
         android:text="@string/AppInduction"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        android:layout_marginTop="100dp"
+        />
 
 </RelativeLayout>
