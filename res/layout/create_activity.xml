@@ -327,8 +327,8 @@
 
     <ImageButton
         android:id="@+id/btn_CreateAct"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/edt_ActActor"
         android:layout_marginTop="58dp"
         android:layout_marginLeft="15dp"
@@ -336,8 +336,8 @@
         android:background="@drawable/imagebutton_selector_createact_summit" />
 	<ImageButton
         android:id="@+id/btn_cancelAct"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/edt_ActActor"
         android:layout_marginTop="58dp"
         android:layout_marginLeft="10dp"

@@ -142,8 +142,8 @@
 
     <ImageButton
         android:id="@+id/btn_confirm"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignBaseline="@+id/btn_transport"
         android:layout_alignBottom="@+id/btn_transport"
         android:layout_alignParentRight="true"
@@ -153,21 +153,21 @@
 
     <ImageButton
         android:id="@+id/btn_edit"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignBaseline="@+id/btn_transport"
         android:layout_alignBottom="@+id/btn_transport"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:background="@drawable/imagebutton_selector_mingpian_edit"/>
 
     <ImageButton
         android:id="@+id/btn_transport"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/GridLayout1"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/imagebutton_selector_mingpian_tuisong" />
 

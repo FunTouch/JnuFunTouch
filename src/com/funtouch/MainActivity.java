@@ -187,12 +187,17 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		switch(item.getItemId()){
-		case R.id.menu_aboutus:
-			
+		case android.R.id.home:
+			this.finish();
+			break;
+		case R.id.menu_aboutus:	
+			Intent intent = new Intent();
+			intent.setClass(this, FunTouchAppIntroduction.class);
+			startActivity(intent);
 			break;
 		case R.id.menu_help:
-			
 			break;
+			default:
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -242,7 +247,7 @@ public class MainActivity extends Activity {
 		//btnFunTouch = (ImageButton) findViewById(R.id.btn_funtouch);
 		btnAct = (ImageButton) findViewById(R.id.btn_actCenter);
 		//btnCardTransport = (ImageButton) findViewById(R.id.btnCardTransport);
-		btnSetting = (ImageButton) findViewById(R.id.btn_setting);
+		//btnSetting = (ImageButton) findViewById(R.id.btn_setting);
 
 		//btnLogin = (Button) findViewById(R.id.btn_login);
 		//btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);

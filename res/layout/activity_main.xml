@@ -8,14 +8,6 @@
     android:fitsSystemWindows="true"
     android:clipToPadding="true">
 
-
-     <ImageButton
-         android:id="@+id/btn_setting"
-         android:layout_width="105dp"
-         android:layout_height="43dp"
-         android:layout_alignParentRight="true"
-         android:layout_alignParentTop="true"
-         android:background="@drawable/imagebutton_selector_main_setting" />
 	  
 	  <ImageButton
          android:id="@+id/btn_actCenter"

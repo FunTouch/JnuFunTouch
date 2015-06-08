@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:fitsSystemWindows="true"
-    android:clipToPadding="true" >
+    android:clipToPadding="true" 
+    android:background="@drawable/bg_general">
 
     <TextView
         android:id="@+id/textView1"
@@ -75,8 +76,8 @@
 
     <ImageButton
         android:id="@+id/btn_submit_update"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/edt_update_qq"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="63dp"

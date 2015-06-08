@@ -86,7 +86,7 @@ public class GameList extends MenuHavingActivity {
 	}
 	private void init() {
 		btnUndercover = (ImageButton) findViewById(R.id.btn_who_is_undercover);
-		btnWerewolf = (ImageButton) findViewById(R.id.btn_werewolf);
+		//btnWerewolf = (ImageButton) findViewById(R.id.btn_werewolf);
 		
 	}
 

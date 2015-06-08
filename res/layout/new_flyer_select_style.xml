@@ -16,11 +16,12 @@
 
     <ImageButton
         android:id="@+id/btn_ok"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/imagebutton_selector_nopaper_confirm" />
 
     <ListView
@@ -29,18 +30,20 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_ok"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/btn_return" >
+        android:layout_below="@+id/btn_return" 
+        android:layout_marginBottom="30dp">
 
     </ListView>
 
     <ImageButton
         android:id="@+id/btn_exit"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/btn_ok"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/imagebutton_selector_selectversion_exit" />
 
 </RelativeLayout>

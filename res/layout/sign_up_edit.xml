@@ -105,8 +105,9 @@
 
     <ImageButton
         android:id="@+id/btn_sign_ok"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/imagebutton_selector_finish" />
 
     <RelativeLayout
@@ -119,6 +120,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:background="@drawable/imagebutton_selector_shiyong" />
 
         <ImageButton
@@ -127,6 +129,7 @@
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:background="@drawable/imagebutton_selector_chakan" />
 
         <ImageButton
@@ -135,6 +138,7 @@
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:background="@drawable/imagebutton_selector_nopaper_delete" />
 
     </RelativeLayout>

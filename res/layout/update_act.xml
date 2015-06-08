@@ -89,8 +89,8 @@
 
     <ImageButton
         android:id="@+id/btn_submit_update"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"

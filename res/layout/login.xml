@@ -63,17 +63,17 @@
     >
     <ImageButton
     android:id="@+id/btn_login"
-    android:layout_width="135dp"
-    android:layout_height="50dp"
+    android:layout_width="80dp"
+    android:layout_height="45dp"
     android:background="@drawable/imagebutton_selector_login"
-    android:layout_marginRight="5dp"
+    android:layout_marginRight="10dp"
      />
 	<ImageButton
     android:id="@+id/btn_regist"
-    android:layout_width="135dp"
-    android:layout_height="50dp"
+    android:layout_width="80dp"
+    android:layout_height="45dp"
     android:background="@drawable/imagebutton_selector_register"
-    android:layout_marginLeft="5dp"
+    android:layout_marginLeft="10dp"
     />
     
 </LinearLayout>

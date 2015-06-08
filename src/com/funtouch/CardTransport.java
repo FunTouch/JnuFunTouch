@@ -145,7 +145,7 @@ public class CardTransport extends FragmentActivity {
 			
 			tv_myCard = (TextView)findViewById(R.id.tv_myCard);
 			tv_contacts = (TextView)findViewById(R.id.tv_Contacts);
-			tv_myCard.setTextColor(Color.GREEN);
+			tv_myCard.setTextColor(Color.BLUE);
 			
 			myCardFragment = new MyCardFragment();
 			contactsFragment = new ContactsFragment();
@@ -174,9 +174,9 @@ public class CardTransport extends FragmentActivity {
 					resetColor();
 					switch(arg0){
 					case 0:
-						tv_myCard.setTextColor(Color.GREEN);break;
+						tv_myCard.setTextColor(Color.BLUE);break;
 					case 1:
-						tv_contacts.setTextColor(Color.GREEN);break;
+						tv_contacts.setTextColor(Color.BLUE);break;
 					}
 				}
 				

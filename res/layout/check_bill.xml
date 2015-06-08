@@ -47,11 +47,12 @@
 
     <ImageButton
         android:id="@+id/btn_check"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/edt_doornum"
         android:layout_marginTop="14dp"
         android:layout_toRightOf="@+id/textView2"
+        android:layout_marginRight="15dp"
         android:background="@drawable/imagebutton_selector_dianfei_check" />
 
 </RelativeLayout>

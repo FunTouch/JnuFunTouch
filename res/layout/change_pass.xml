@@ -7,6 +7,7 @@
     android:orientation="horizontal"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
+    android:background="@drawable/bg_general"
      >
 
     <Space
@@ -61,8 +62,8 @@
 
     <ImageButton
         android:id="@+id/btn_pass_submit"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignLeft="@+id/edt_old_pass"
         android:layout_below="@+id/Space16"
         android:layout_column="1"

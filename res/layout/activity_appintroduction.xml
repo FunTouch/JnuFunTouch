@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:background="@drawable/bg_general">
+    
     <TextView 
         android:id="@+id/tv_appInduction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/AppInduction"
         android:textSize="17sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         />
 
 </RelativeLayout>

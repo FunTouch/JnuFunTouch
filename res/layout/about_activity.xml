@@ -21,22 +21,24 @@
 
     <ImageButton
         android:id="@+id/btn_see_activity"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/imagebutton_selector_seeact" />
 
     <ImageButton
         android:id="@+id/btn_create_activity"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/imagebutton_selector_createact" />
 
 </RelativeLayout>
