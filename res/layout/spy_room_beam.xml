@@ -4,7 +4,7 @@
     android:layout_height="match_parent" 
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
-    android:background="@drawable/bg_startgame"
+    android:background="@drawable/bg_startgame1"
     >
 
     <TextView
@@ -15,26 +15,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="118dp"
         android:text="房间号:"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="83dp"
-        android:text="你已创建房间，接触其他手机来推送房间号吧！"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_role"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
-        android:text="已推送人数:"
         android:textSize="18sp" />
 
     <TextView
@@ -52,25 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:textSize="18sp" />
-
-    <ImageButton
-        android:id="@+id/btn_seerole"
-        android:layout_width="135dp"
-        android:layout_height="55dp"
-        android:layout_below="@+id/tv_count"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:background="@drawable/imagebutton_selector_seeplayerrole"/>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="23dp"
-        android:text="平民词："
         android:textSize="18sp" />
 
     <TextView
@@ -102,6 +63,46 @@
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/textView6"
         android:text="TextView"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:text="你已创建房间\n接触其他手机来推送房间号吧！"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_role"
+        android:layout_centerHorizontal="true"
+        android:text="已推送人数:"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/btn_seerole"
+        android:layout_width="135dp"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/imagebutton_selector_seeplayerrole" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="26dp"
+        android:layout_toLeftOf="@+id/btn_seerole"
+        android:text="平民词："
         android:textSize="18sp" />
 
 </RelativeLayout>

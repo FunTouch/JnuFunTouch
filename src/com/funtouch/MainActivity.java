@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 	private ImageButton btnAct = null;
 	private ImageButton btnSetting = null;
 	private ImageButton btnGame = null;
-	//private Button btnLogin = null;
+	//private Button btn1 = null;
 	private Button btnWho = null;
 	private ImageButton btnValidatePass = null;
 	private ImageButton btnExit = null;
@@ -85,15 +85,7 @@ public class MainActivity extends Activity {
 		wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();  
 		internet=con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();  
 		
-		/*btnFunTouch.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, FunTouchProfile.class);
-				startActivity(intent);
-				//finish();
-			}
-		});*/
+		
 		
 		btnAct.setOnClickListener(new OnClickListener() {
 			@Override
@@ -104,23 +96,6 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		/*btnGame.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, GameList.class);
-				startActivity(intent);
-			}
-		});*/
-		
-		/*btnCardTransport.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, CardTransport.class);
-				startActivity(intent);
-			}
-		});*/
 		
 		btnUserCenter.setOnClickListener(new OnClickListener() {
 			@Override
@@ -249,7 +224,7 @@ public class MainActivity extends Activity {
 		//btnCardTransport = (ImageButton) findViewById(R.id.btnCardTransport);
 		//btnSetting = (ImageButton) findViewById(R.id.btn_setting);
 
-		//btnLogin = (Button) findViewById(R.id.btn_login);
+		//btn1 = (Button) findViewById(R.id.button1);
 		//btnValidatePass = (ImageButton) findViewById(R.id.btn_validate_pass);
 		btnExit = (ImageButton) findViewById(R.id.btn_exit);
 

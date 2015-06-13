@@ -10,8 +10,12 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="21" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
 	<uses-permission android:name="android.permission.WRITE_CONTACTS"/>
     
@@ -172,7 +176,8 @@
         </activity>
         <activity android:name=".RevVoteBeam"
             android:theme="@style/TranslucentTheme" 
-            android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:screenOrientation="portrait"  
+            android:launchMode="singleTask"
             android:label="接触投票">
             <intent-filter>
   			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
@@ -242,15 +247,19 @@
 		
 		<activity android:name=".ActAuthenticate"
 		    android:theme="@style/TranslucentTheme" 
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="验证功能"></activity>
 		
 		<activity android:name=".GameList"
 		    android:theme="@style/TranslucentTheme" 
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="游戏"></activity>
 		<activity android:name=".CampusLife"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="校园生活"
             android:theme="@style/TranslucentTheme" ></activity>
 		<activity android:name=".GameUndercoverSetting"
+		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="设置"></activity>
 		<activity android:name=".GameUndercoverDetail"
             android:label="已分配的角色"></activity>
@@ -331,6 +340,36 @@
 		    android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="组织信息"></activity>
           
+		<activity
+            android:name=".UsefulTag"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="多彩标签" >
+        </activity>
+		
+		<activity
+            android:name=".NfcWiFiAssistant"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:label="Easy-WiFi" >
+        </activity>
+        <activity android:name=".WifiConnectConfigWriter"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
+            android:theme="@style/TranslucentTheme"  
+            android:label="写入WiFi信息">
+        </activity>
+        <activity
+            android:name=".WifiConnectHandler"
+            android:launchMode="singleInstance" 
+            android:screenOrientation="portrait"  
+            android:theme="@style/TranslucentTheme" 
+            android:label="连接WiFi">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
     </application>
     
     

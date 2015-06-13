@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/bg_startgame1" 
+    android:src="@drawable/bg_startgame_720p"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom">
+    
+
+</bitmap>

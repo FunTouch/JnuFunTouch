@@ -163,7 +163,8 @@ OnNdefPushCompleteCallback{
   	
   	public void showDialog(){
 		new AlertDialog.Builder(SpyRoomBeam.this)
-		.setMessage("							确定要退出游戏吗?")
+		.setTitle("退出")
+		.setMessage("确定要退出游戏吗?")
 		.setPositiveButton("退出", new android.content.DialogInterface.OnClickListener(){
 			
 			@Override
