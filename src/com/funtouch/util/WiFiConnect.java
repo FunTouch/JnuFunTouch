@@ -93,9 +93,10 @@ public class WiFiConnect {
         config.allowedProtocols.clear();
         config.SSID = "\"" + SSID + "\"";
         if (Type == WifiCipherType.WIFICIPHER_NOPASS) {
-            config.wepKeys[0] = "";
+            //config.wepKeys[0] = "";
             config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-            config.wepTxKeyIndex = 0;
+            return config;
+            //config.wepTxKeyIndex = 0;
         }
         if (Type == WifiCipherType.WIFICIPHER_WEP) {
             config.preSharedKey = "\"" + Password + "\"";

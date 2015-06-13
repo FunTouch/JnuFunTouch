@@ -267,15 +267,7 @@ public class WifiConnectConfigWriter extends MenuHavingActivity {
         return dialog;
     }
 
-    /**
-     * @Title ：WriteNdefTag.java
-     * @Package ：skyseraph.nfc_demo.tag.write
-     * @ClassName : WriteTask
-     * @Description ： TODO
-     * @author ： skyseraph00@163.com
-     * @date ： 2013-9-13 上午11:38:58
-     * @version ： V1.0
-     */
+
     static class WriteTask extends AsyncTask<Void, Void, Void> {
         Activity host = null;
 

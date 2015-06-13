@@ -39,5 +39,13 @@
     <string name="inquire">询问</string>
     <string name="nfc_notice2">没发现NFC设备，请确认您的手机支持NFC功能!</string>
     <string name="nfc_notice3">请确认NFC功能是否开启!</string>
-    <string name="dialog_notice">NfcWiFiAssistant ©SkySeraph</string>
+    <string name="dialog_notice">NfcWiFiAssistant ©xiaob</string>
+    
+    <string name="write_ndef_tag_chosse_tips">请选择待写入TAG类型：</string>
+    <string name="write_ndef_tag_save_to_tag">储存填写内容</string>
+    <string name="write_ndef_tag_write_to_tag">写入到标签</string>
+    <string name="write_ndef_tag_google_com">baidu.com</string>
+    <string name="write_ndef_tag_exit">退出</string>
+    <string name="write_ndef_tag_note">note</string>
+
 </resources>

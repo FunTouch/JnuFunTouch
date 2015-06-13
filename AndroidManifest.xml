@@ -179,11 +179,7 @@
             android:screenOrientation="portrait"  
             android:launchMode="singleTask"
             android:label="接触投票">
-            <intent-filter>
-  			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
-  			<category android:name="android.intent.category.DEFAULT"/>
- 			<data android:mimeType="text/plain"/>
-			</intent-filter>
+
         </activity>
         <activity android:name=".VoteUse"
             android:theme="@style/TranslucentTheme" 
@@ -215,11 +211,7 @@
             android:theme="@style/TranslucentTheme" 
             android:screenOrientation="portrait"  android:launchMode="singleTask"
             android:label="接触报名">
-            <intent-filter>
-  			<action android:name="android.nfc.action.NDEF_DISCOVERED"/>
-  			<category android:name="android.intent.category.DEFAULT"/>
- 			<data android:mimeType="text/plain"/>
-			</intent-filter>
+            
         </activity>
         <activity android:name=".SignUpOL"
             android:theme="@style/TranslucentTheme" 
@@ -347,6 +339,18 @@
             android:label="多彩标签" >
         </activity>
 		
+		<activity
+            android:name=".NfcTagWriter"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait"  android:launchMode="singleTask"
+            
+            android:label="Easy-Tag" >
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
 		<activity
             android:name=".NfcWiFiAssistant"
             android:theme="@style/TranslucentTheme"

@@ -30,27 +30,17 @@ public class NfcWiFiAssistant extends MenuHavingActivity {
     private static final String TAG_ASSIST = "[NfcWiFiAssistant]-";
 
     private Button mBtn = null;
-
     private EditText mEditText1 = null;
-
     private EditText mEditText2 = null;
-
     private Spinner mSpinner = null;
-
     private ArrayAdapter mAdapter = null;
-
     private static final String[] spinnerStr = {
-            "NONE", "WEP", "WPA/WPA2",
+            "None", "WEP", "WPA/WPA2",
     };
-
     private String ssidString = null;
-
     private String keyString = null;
-
     private String securityStirng = null;
-
     private AlertDialog alertDialog = null;
-
     private Context mContext;
 
     @Override
@@ -76,13 +66,18 @@ public class NfcWiFiAssistant extends MenuHavingActivity {
                     ssidString = mEditText1.getText().toString();
                     flag=1;
                 }
-                if (null == keyString) {
-                	showToast("请输入密钥!");
+                if ( securityStirng.equals("none")  ) {
+                	keyString = "qaz123456";
+                    flag=1;
+                }
+                else if (!securityStirng.equals("none") && null == keyString ) {
+                	showToast("请输入密钥!");           	
                     flag=0;
                 } else {
                     keyString = mEditText2.getText().toString();
                     flag=1;
                 }
+                 
                 if(flag==1)
                 {
 	                SimpleWifiInfo simpleWifiInfo = new SimpleWifiInfo(securityStirng, ssidString,

@@ -32,7 +32,7 @@ public class WifiConnectHandler extends Activity {
     protected void onResume() {
         super.onResume();
         handleIntent();
-        showLongToast("diu!");
+        //showLongToast("diu!");
         finish();
     }
 
@@ -181,7 +181,7 @@ public class WifiConnectHandler extends Activity {
         }
         boolean flag = wiFiConnect.Connect(ssid, key, Type);
         if (flag == true) {
-            showLongToast("Now connected to known network \"" + wifiInfo.getSsid());
+            showLongToast("现在已连接到WiFi热点 \"" + wifiInfo.getSsid() +"\"");
         } else {
             showLongToast("Creating connection failed.");
         }
@@ -198,7 +198,7 @@ public class WifiConnectHandler extends Activity {
                 foundAKnownNetwork = true;
                 boolean result = wifiManager.enableNetwork(wifiConfiguration.networkId, true);
                 if (result) {
-                    showLongToast("Now connected to known network \""
+                    showLongToast("现在已连接到WiFi热点 \""
                             + wifiInfo.getSsid()
                             + "\". If you want to set a new WPA key, please delete the network first.");
                 } else {

@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 public class UsefulTag extends MenuHavingActivity{
 	private Button btnWiFi = null;
+	private Button btnTag = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,12 +17,22 @@ public class UsefulTag extends MenuHavingActivity{
 		setContentView(R.layout.useful_tag);
 		
 		btnWiFi = (Button) findViewById(R.id.btnWiFi);
+		btnTag = (Button) findViewById(R.id.btnTag);
 		
 		btnWiFi.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
 				intent.setClass(UsefulTag.this, NfcWiFiAssistant.class);
+				startActivity(intent);
+			}
+		});
+		
+		btnTag.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(UsefulTag.this, NfcTagWriter.class);
 				startActivity(intent);
 			}
 		});
